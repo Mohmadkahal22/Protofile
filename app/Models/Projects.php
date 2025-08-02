@@ -17,14 +17,14 @@ class Projects extends Model
 
     ];
 
-    public function service(): BelongsTo
+    public function service()
     {
         return $this->belongsTo(Services::class);
     }
     /**
      * علاقة المشروع بالصور (واحد إلى كثير)
      */
-    public function images(): HasMany
+    public function images()
     {
         return $this->hasMany(Imag_Progect::class, 'project_id');
     }
@@ -32,7 +32,7 @@ class Projects extends Model
     /**
      * علاقة المشروع بالمميزات (واحد إلى كثير)
      */
-    public function features(): HasMany
+    public function features()
     {
         return $this->hasMany(Fetures_Project::class, 'project_id');
     }
