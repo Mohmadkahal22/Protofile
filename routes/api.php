@@ -5,7 +5,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ProjectsController;
-
+use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\FAQController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\VideoController;
+use App\Http\Controllers\Registration\RegisterController;
+use App\Http\Controllers\Registration\LoginController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,6 +27,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/login', [LoginController::class, 'login']);
+
+
     Route::get('/storage/{path}', function ($path) {
         $filePath = storage_path('app/public/' . $path);
 
@@ -35,12 +44,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::prefix('teams')->group(function () {
         Route::get('index', [TeamController::class, 'index']);
 
-        Route::post('store', [TeamController::class, 'store']);
+        Route::post('store', [TeamController::class, 'store'])->middleware('admin');
 
         Route::get('show/{team}', [TeamController::class, 'show']);
 
-        Route::post('update/{team}', [TeamController::class, 'update']);
-        Route::delete('delete/{team}', [TeamController::class, 'destroy']);
+        Route::post('update/{team}', [TeamController::class, 'update'])->middleware('admin');
+        Route::delete('delete/{team}', [TeamController::class, 'destroy'])->middleware('admin');
     });
 
 
@@ -60,4 +69,51 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         Route::get('show/{team}', [ProjectsController::class, 'show']);
         Route::post('update/{team}', [ProjectsController::class, 'update']);
         Route::delete('delete/{team}', [ProjectsController::class, 'destroy']);
+    });
+
+
+
+    Route::prefix('about_us')->group(function () {
+        Route::get('index', [AboutUsController::class, 'index']);
+        Route::post('store', [AboutUsController::class, 'store']);
+        Route::get('show/', [AboutUsController::class, 'show']);
+        Route::post('update/', [AboutUsController::class, 'update']);
+        Route::delete('delete', [AboutUsController::class, 'destroy']);
+    });
+
+
+
+    Route::prefix('contact_us')->group(function () {
+        Route::get('index', [ContactUsController::class, 'index']);
+        Route::post('store', [ContactUsController::class, 'store']);
+        Route::get('show/{id}', [ContactUsController::class, 'show']);
+        Route::put('update/{id}', [ContactUsController::class, 'update']);
+        Route::delete('delete/{id}', [ContactUsController::class, 'destroy']);
+    });
+
+
+    Route::prefix('faq')->group(function () {
+        Route::get('index', [FAQController::class, 'index']);
+        Route::post('store', [FAQController::class, 'store']);
+        Route::get('show/{id}', [FAQController::class, 'show']);
+        Route::put('update/{id}', [FAQController::class, 'update']);
+        Route::delete('delete/{id}', [FAQController::class, 'destroy']);
+    });
+
+
+    Route::prefix('review')->group(function () {
+        Route::get('index', [ReviewController::class, 'index']);
+        Route::post('store', [ReviewController::class, 'store']);
+        Route::get('show/{id}', [ReviewController::class, 'show']);
+        Route::put('update/{id}', [ReviewController::class, 'update']);
+        Route::delete('delete/{id}', [ReviewController::class, 'destroy']);
+    });
+
+
+    Route::prefix('video')->group(function () {
+        Route::get('index', [VideoController::class, 'index']);
+        Route::post('store', [VideoController::class, 'store']);
+        Route::get('show/{id}', [VideoController::class, 'show']);
+        Route::put('update/{id}', [VideoController::class, 'update']);
+        Route::delete('delete/{id}', [VideoController::class, 'destroy']);
     });
