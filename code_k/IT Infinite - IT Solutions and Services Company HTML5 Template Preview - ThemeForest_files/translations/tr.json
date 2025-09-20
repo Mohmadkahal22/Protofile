@@ -1,0 +1,378 @@
+{
+  "header": {
+    "search": "Ara",
+    "menu_alt": "Menü",
+    "languages": {
+      "en": "İngilizce",
+      "ar": "Arapça",
+      "tr": "Türkçe"
+    },
+
+    "logo": "kayan code",
+    "home": "Ana Sayfa",
+    "about": "Hakkımızda",
+    "services": "Hizmetlerimiz",
+    "projects": "Projelerimiz",
+    "why_choose_us": "Neden Bizi Seçmelisiniz",
+    "contact": "İletişim",
+    "join_team": "Ekibimize Katıl",
+    "search_placeholder": "Ara"
+  },
+  "vision": {
+    "title": "Teknoloji ile Geleceği Şekillendirmek",
+    "description": "KayanCode'da teknolojiyi sadece araçlar olarak görmüyoruz - onu geleceğin dili olarak görüyoruz.",
+    "paragraph1": "Vizyonumuz, her büyük fikrin bir dijital vücut bulmayı hak ettiği ve her iddialı projenin fırlatmak için sağlam bir teknolojik temele ihtiyaç duyduğu sağlam bir inançtan kaynaklanmaktadır.",
+    "paragraph2": "Arap dünyasında ve küresel olarak önde gelen teknik ortak olmayı hedefliyoruz - fikirleri somut dijital ürünlere dönüştürüyor ve bireyler ve kuruluşlar için derin pazar anlayışına dayalı profesyonel, özelleştirilmiş bir yaklaşımla dijital dönüşüm yolculuğuna öncülük ediyoruz.",
+    "paragraph3": "Vizyonumuz, yeniliği destekleyen ve müşterilerimize hızla değişen bir pazarda büyümek, genişlemek ve rekabet etmek için ihtiyaç duydukları dijital araçları sağlayan entegre bir teknoloji ekosistemi oluşturmaya odaklanıyor. Sadece yazılım oluşturmuyoruz - müşterilerimizin hedeflerini yansıtan ve gerçekte somutlaştıran net kimliklere sahip gerçek, gelişmiş 'dijital varlıklar' inşa ediyoruz.",
+    "paragraph4": "Körfez'den Amerika'ya, Lübnan ve Türkiye üzerinden KayanCode adını kalite, bağlılık ve teknolojik yenilikle eşanlamlı hale getirmeyi hedefliyoruz.",
+    "objectives": {
+      "title": "Hedeflerimiz",
+      "1": "Kapsamlı, yenilikçi teknik çözümler sunmak",
+      "2": "Kuruluşların dijital dönüşümünü sağlamak",
+      "3": "Müşterilerle stratejik ilişkiler kurmak",
+      "4": "Körfez ve uluslararası pazarlarda lider olmak",
+      "5": "Yenilik ve araştırmaya yatırım yapmak",
+      "6": "Seçkin bir teknik ekip geliştirmek",
+      "7": "Güvenilir bir teknik marka oluşturmak"
+    }
+  },
+  "banner": {
+    "image_alt": "Kayan Code banner arka planı",
+    "satisfied_clients": "Memnun Müşteriler",
+    "title": "Dijital Bir Geleceğe Doğru",
+    "subtitle": "Zeka ve Teknoloji ile",
+    "description": "Kayan Code'da, işletmelerin büyümesine ve küresel pazarlara güvenle genişlemesine yardımcı olan yenilikçi teknolojik çözümler geliştiriyoruz.",
+    "start_project": "Projenizi Başlatın",
+    "contact_us": "Bize Ulaşın",
+    "clients": "1250+ Memnun Müşteri"
+  },
+  "about": {
+    "title": "Teknolojinin Pazar İçgörüsüyle Buluştuğu Yer",
+    "subtitle": "Kayan Code Hakkında",
+    "description": "Mühendis Youssef Saheel liderliğinde yazılım, uygulamalar ve web geliştirme konusunda uzmanlaşmış bir teknoloji startup'ı.",
+    "intro": "Mühendislik yaratıcılığını derin pazar anlayışıyla birleştiriyoruz ve Lübnan, Türkiye, BAE ve Amerika Birleşik Devletleri'ndeki müşterilere hizmet veriyoruz.",
+    "rated": "1000'den fazla küresel müşteriden 4.80/5 puan",
+    "strengths": {
+      "1_title": "Disiplinlerarası Ekip ",
+      "1_description": " Tam yığın teknik uzmanlık",
+      "2_title": "Pazar Odaklı ",
+      "2_description": " İş ihtiyaçlarına uygun çözümler",
+      "3_title": "Kalite Odaklı ",
+      "3_description": " Katı geliştirme standartları",
+      "4_title": "Hızlı Uygulama ",
+      "4_description": " Ödünsüz çevik teslimat"
+    },
+    "projects": "240+ Başarılı Proje",
+    "satisfaction": "%100 Müşteri Memnuniyeti",
+    "founder": {
+      "name": "Youssef Saheel",
+      "position": "Kurucu ve Baş Mühendis"
+    },
+    "story": "Hikayemiz"
+  },
+  "services": {
+    "title": "Kapsamlı Dijital Çözümler",
+    "subtitle": "Hizmetlerimiz",
+    "description": "Fikirlerinizi başarılı dijital ürünlere dönüştürmeye yardımcı olan entegre teknik çözümler sunuyoruz:",
+    "web": {
+      "alt": "Web Geliştirme Simgesi",
+      "title": "Web Geliştirme",
+      "description": "En son teknolojilerle oluşturulmuş hızlı, duyarlı, titizlikle tasarlanmış ve ölçeklenebilir web siteleri."
+    },
+    "mobile": {
+      "title": "Mobil Uygulama Geliştirme",
+      "description": "En son çerçeveler ve teknolojiler kullanılarak geliştirilen yerel iOS ve Android uygulamaları."
+    },
+    "uiux": {
+      "title": "UI/UX Tasarımı",
+      "description": "İnsan merkezli tasarım ilkeleriyle oluşturulmuş etkileyici kullanıcı arayüzleri ve sorunsuz deneyimler."
+    },
+    "mvp": {
+      "title": "MVP Geliştirme",
+      "description": "Startup'lar için minimum zaman ve maliyet yatırımıyla minimum uygulanabilir ürünlerin hızlı geliştirilmesi."
+    },
+    "software": {
+      "title": "Özel Yazılım",
+      "description": "Benzersiz iş gereksinimlerinize ve iş akışlarınıza özel olarak tasarlanmış çözümler."
+    },
+    "consulting": {
+      "title": "Teknoloji Danışmanlığı",
+      "description": "Dijital dönüşüm yolculuğunuz için uçtan uca proje yönetimi ve teknik rehberlik."
+    }
+  },
+  "projects": {
+    "title": "Teknoloji ile Sektörleri Dönüştürmek",
+    "subtitle": "Projelerimiz",
+    "medical": {
+      "title": "İstanbul Tıp Kliniği",
+      "description": "Randevu planlama, tele-tıp ve hasta kayıt yönetimi özelliklerine sahip İstanbul'daki önde gelen bir klinik için özel tıp uygulaması.",
+      "category": "Sağlık"
+    },
+    "ecommerce": {
+      "title": "Dubai Pazar Yeri",
+      "description": "Dubai'nin perakende pazarı için çok satıcılı destek, Arapça/İngilizce arayüz ve entegre ödeme ağ geçitleri ile kapsamlı bir e-ticaret çözümü.",
+      "category": "Perakende"
+    },
+    "logistics": {
+      "title": "Beyrut Lojistik",
+      "description": "Lübnan'ın büyüyen teslimat sektörü için gerçek zamanlı takip, filo yönetimi ve otomatik yönlendirme ile uçtan uca lojistik yönetim platformu.",
+      "category": "Lojistik"
+    },
+    "booking": {
+      "title": "Kaliforniya Rezervasyonları",
+      "description": "Kaliforniya merkezli bir konaklama grubu için dinamik fiyatlandırma, çoklu mülk yönetimi ve büyük seyahat platformlarıyla sorunsuz entegrasyon sunan yapay zeka destekli rezervasyon sistemi.",
+      "category": "Konaklama"
+    },
+    "quote": "Üstlendiğimiz her proje, sadece bir kerelik bir uygulama değil, uzun vadeli bir ortaklıktır.",
+    "view_all": "Tüm Projeleri Görüntüle"
+  },
+  "team": {
+    "title": "Ekibimiz dost canlısı, konuşkan ve tamamen güvenilirdir.",
+    "subtitle": "Ekibimiz",
+    "description": "Hepimiz yetiştirilme tarzımız sayesinde çok fazla yük taşıyoruz. Çoğu insan, kendini sınırlayan inançların bütün bir serisini beraberinde taşır.",
+    "members": {
+      "anne": {
+        "name": "Khaled Tabaa",
+        "position": "Officer"
+      },
+      "mellissa": {
+        "name": "Gorge Soltan",
+        "position": "Analyst"
+      },
+      "john": {
+        "name": "Alaa Bayan",
+        "position": "Director"
+      },
+      "paul": {
+        "name": "Paul Flavius",
+        "position": "Coordinator"
+      }
+    },
+    "stats": {
+      "business": " İş İnsanı",
+      "projects": " Tamamlanan Proje",
+      "customers": " Mutlu Müşteri"
+    }
+  },
+  "events": {
+    "subtitle_icon": "Etkinlikler Simgesi",
+    "subtitle": "Etkinlikler",
+    "title": "Etkinlik Programı",
+    "day1": "1. Gün",
+    "day2": "2. Gün",
+    "day3": "3. Gün",
+    "day1_title": "Birinci Gün",
+    "day2_title": "İkinci Gün",
+    "day3_title": "Üçüncü Gün",
+    "april_monday": "Nisan, Pazartesi",
+    "location_icon": "Konum Simgesi",
+    "time_icon": "Zaman Simgesi",
+    "day1_event1": {
+      "title": "Teknoloji Yenilikçileri Zirvesi",
+      "location": "Apple Upper West Side, Brooklyn",
+      "time": "10.00 – 12.00"
+    },
+    "day1_event2": {
+      "title": "Yapay Zeka ve Bulut Fuarı",
+      "location": "The Majestic Etkinlik Alanı, Houston",
+      "time": "13.00 – 15.00"
+    },
+    "day1_event3": {
+      "title": "DevOps'un Geleceği",
+      "location": "Crystal Davet Salonu, Miami Beach",
+      "time": "16.00 – 18.00"
+    },
+    "day2_event1": {
+      "title": "Veri Analitiği Devrim Forumu",
+      "location": "Aurora Etkinlik Merkezi, San Francisco",
+      "time": "12.00 – 14.00"
+    },
+    "day2_event2": {
+      "title": "Yeni Nesil Blockchain Sempozyumu",
+      "location": "Aurora Etkinlik Merkezi, San Francisco",
+      "time": "14.30 – 17.00"
+    },
+    "day2_event3": {
+      "title": "Akıllı Şehirler Teknoloji Fuarı",
+      "location": "Silver Oak Mekanı, Austin",
+      "time": "19.00 – 21.00"
+    },
+    "day3_event1": {
+      "title": "BT'de Yeni Trendler",
+      "location": "Palm Grove Salonu, Beverly Hills",
+      "time": "22.00 – 00.00"
+    },
+    "day3_event2": {
+      "title": "Geliştirici Buluşması",
+      "location": "Willow Creek Lodge, Portland",
+      "time": "22.00 – 00.00"
+    },
+    "day3_event3": {
+      "title": "Teknoloji Startup'ları Pitch Günü",
+      "location": "Heritage Davet Salonu, Atlanta",
+      "time": "22.00 – 00.00"
+    }
+  },
+  "advantages": {
+    "title": "Teknoloji Ortağınız, Sadece Bir Tedarikçi Değil",
+    "subtitle": "Neden Kayan Code'u Seçmelisiniz",
+    "description": "İşinizin ihtiyaçlarını gerçekten anlamadan teknolojinin hiçbir şey ifade etmediğine inanıyoruz.",
+    "quality": {
+      "title": "Premium Kalite Kod",
+      "description": "Ölçeklenebilir, sürdürülebilir çözümler sağlayan endüstri en iyi uygulamalarına ve kodlama standartlarına sıkı sıkıya bağlılık."
+    },
+    "support": {
+      "title": "Sürekli Destek",
+      "description": "Operasyonel gereksinimlerinize göre özelleştirilmiş teslimat sonrası bakım ve destek paketleri."
+    },
+    "delivery": {
+      "title": "Hızlı Ancak Profesyonel Teslimat",
+      "description": "Kaliteye veya detaylara verilen önemi ödün vermeden hızlı teslimat sağlayan çevik geliştirme süreçleri."
+    },
+    "pricing": {
+      "title": "Esnek ve Rekabetçi Fiyatlandırma",
+      "description": "Bütçenize ve proje kapsamınıza uyacak şekilde tasarlanmış özelleştirilebilir katılım modelleri ve fiyatlandırma yapıları."
+    },
+    "team": {
+      "title": "Uzatılmış Geliştirme Ekibiniz",
+      "description": "Uzun vadeli başarınıza adanmış bir şirket içi ekip olarak operasyonlarınıza entegre oluyoruz."
+    },
+    "business": {
+      "title": "İş Öncelikli Yaklaşım",
+      "description": "Belirli operasyonel zorluklarınız ve pazar fırsatlarınız etrafında tasarlanmış çözümler."
+    },
+    "start_project": "Projenizi Başlatın"
+  },
+  "contact": {
+    "title": "Projenizi başlatmaya hazır mısınız yoksa danışmanlığa mı ihtiyacınız var?",
+    "subtitle": "Kayan Code ile İletişim",
+    "email": "info@kayancode.com",
+    "email_label": "7/24 çevrimiçi destek",
+    "phone": "+961 XXX XXX",
+    "phone_label": "Pzt-Cuma 8:30 - 18:30",
+    "whatsapp": "+90 XXX XXX",
+    "whatsapp_label": "WhatsApp mevcut",
+    "social": "Bizimle Bağlantı Kurun",
+    "locations": "Beyrut • İstanbul • Dubai • New York'tan size hizmet veriyoruz",
+    "process": {
+      "title": "Küresel Varlığımız",
+      "1": "Proje gereksinimlerinizi paylaşın",
+      "2": "Ücretsiz danışmanlık alın",
+      "3": "Özelleştirilmiş bir teklif alın"
+    },
+    "form": {
+      "title": "Projenizi tartışalım",
+      "description": "Size yardımcı olmaktan ve sorularınızı yanıtlamaktan mutluluk duyarız",
+      "name": "Tam Ad*",
+      "email": "E-posta Adresi*",
+      "phone": "Telefon Numarası*",
+      "service": "Hizmet Seçin",
+      "services": {
+        "web": "Web Geliştirme",
+        "mobile": "Mobil Uygulama Geliştirme",
+        "uiux": "UI/UX Tasarımı",
+        "consulting": "Teknoloji Danışmanlığı"
+      },
+      "company": "Şirket Adı",
+      "message": "Projeniz hakkında bize bilgi verin*",
+      "submit": "Gönder"
+    }
+  },
+  "careers": {
+    "title": "Büyüyen Ekibimize Katılın",
+    "subtitle": "KayanCode'da Kariyer",
+    "description": "Ekibimize katılmak için yetenekli bireyler arıyoruz",
+    "form": {
+      "name": "Tam Ad*",
+      "email": "E-posta*",
+      "phone": "Telefon Numarası*",
+      "position": "Pozisyon Seçin",
+      "positions": {
+        "frontend": "Frontend Geliştirici",
+        "backend": "Backend Geliştirici",
+        "fullstack": "Full Stack Geliştirici",
+        "mobile": "Mobile Geliştirici",
+        "ios": "iOS Geliştirici",
+        "android": "Android Geliştirici",
+        "devops": "DevOps Mühendisi",
+        "embedded": "Gömülü Sistem Geliştirici",
+        "uiux": "UI/UX Tasarımcısı",
+        "graphic": "Grafik Tasarımcısı",
+        "pm": "Proje Yöneticisi",
+        "techlead": "Teknik Lider",
+        "datascientist": "Veri Bilimci",
+        "dataengineer": "Veri Mühendisi",
+        "ai": "Yapay Zeka Mühendisi",
+        "ml": "Makine Öğrenimi Mühendisi",
+        "qa": "Kalite Güvence Mühendisi",
+        "test": "Test Otomasyon Mühendisi",
+        "security": "Güvenlik Mühendisi",
+        "cloud": "Cloud Mühendisi",
+        "blockchain": "Blockchain Geliştirici",
+        "business": "İş Analisti",
+        "system": "Sistem Analisti",
+        "product": "Ürün Yöneticisi",
+        "other": "Diğer"
+      },
+      "cover": "Ön Yazı (İsteğe Bağlı)",
+      "resume": "Özgeçmiş Yükle (PDF veya Word)*",
+      "submit": "Başvuruyu Gönder"
+    }
+  },
+  "footer": {
+    "address": {
+      "title": "Bizi Nerede Bulabilirsiniz",
+      "location": "Mısır - Kahire - Maadi 55",
+      "phone": "+2 01555 735513",
+      "phone_label": "Pzt-Cuma 9:00-18:00",
+      "email": "info@kayancode.com",
+      "email_label": "7/24 çevrimiçi destek"
+    },
+    "newsletter": {
+      "title": "Bülten",
+      "placeholder": "E-postanızı Girin"
+    },
+    "links": {
+      "title": "Hızlı Bağlantılar",
+      "home": "Ana Sayfa",
+      "about": "Hakkımızda",
+      "team": "Ekip",
+      "team_single": "Ekip Üyesi",
+      "service": "Hizmet",
+      "service_single": "Hizmet Detayı",
+      "why_choose_us": "Neden Bizi Seçmelisiniz",
+      "blog_single": "Tekil Blog",
+      "contact": "İletişim"
+    },
+    "call": {
+      "title": "Çağrı Merkezi",
+      "number": "+2-1555-735513",
+      "text": "ve ücretsiz teklif alın"
+    },
+    "copyright": "Kayan Code tarafından geliştirilmiş ve tasarlanmıştır"
+  },
+  "marquee": {
+    "web_design": {
+      "title": "Web Tasarım",
+      "alt": "Web Tasarım Simgesi"
+    },
+
+    "uiux": {
+      "title": "UI/UX Tasarımı",
+      "alt": "UI/UX Tasarım Simgesi"
+    },
+    "developer": {
+      "title": "Geliştirici",
+      "alt": "Geliştirici Simgesi"
+    },
+    "ios": {
+      "title": "iOS Geliştirici",
+
+      "alt": "iOS Geliştirici Simgesi"
+    },
+    "digital_agency": {
+      "title": "Dijital Ajans",
+      "alt": "Dijital Ajans Simgesi"
+    }
+  }
+}
