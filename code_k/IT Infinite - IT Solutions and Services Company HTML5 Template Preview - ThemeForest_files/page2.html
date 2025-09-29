@@ -75,11 +75,6 @@
                 </div>
 
                 <!-- Include Services Components -->
-                <div id="services-hero-container"></div>
-                <div id="services-list-container"></div>
-                <div id="projects-showcase-container"></div>
-                <div id="events-section-container"></div>
-                <div id="team-section-container"></div>
                 <div id="advantages-section-container"></div>
                 <div id="contact-section-container"></div>
                 <div id="join-team-section-container"></div>
@@ -112,9 +107,7 @@
         <script src="assets/js/SwiperAnimation.min.js"></script>
         <script src="assets/js/translations.js"></script>
         <script src="assets/js/config.js"></script>
-        <script src="assets/components/Services/TeamSection.js"></script>
-        <script src="assets/components/Services/ServicesList.js"></script>
-        <script src="assets/components/Services/ProjectsShowcase.js"></script>
+        <script src="assets/components/Services/ContactSection.js"></script>
 
         <!-- Component Loader -->
         <script>
@@ -127,6 +120,24 @@
                     console.log(
                         `${componentName} loaded, ${loadedComponents}/${totalComponents}`
                     );
+                    // Scroll to #contact after contact section is loaded
+                    if (
+                        componentName === "ContactSection" &&
+                        window.location.hash === "#contact"
+                    ) {
+                        setTimeout(() => {
+                            const targetElement =
+                                document.getElementById("contact");
+                            if (targetElement) {
+                                targetElement.scrollIntoView({});
+                                console.log("Scrolled to contact section");
+                            } else {
+                                console.error(
+                                    "Contact section with id='contact' not found"
+                                );
+                            }
+                        }, 1100); // Delay to ensure DOM is updated
+                    }
                 }
 
                 function handleLoadError(componentName, xhr, status, error) {
@@ -138,7 +149,7 @@
                             0,
                             200
                         )}...`
-                    ); // Log first 200 chars of response
+                    );
                     checkAllLoaded(componentName);
                 }
 
@@ -153,85 +164,6 @@
                                 xhr.statusText
                             );
                         else checkAllLoaded("Header");
-                    }
-                );
-                $("#services-hero-container").load(
-                    "assets/components/Services/ServicesHero.html",
-                    function (response, status, xhr) {
-                        if (status === "error")
-                            handleLoadError(
-                                "ServicesHero",
-                                xhr,
-                                status,
-                                xhr.statusText
-                            );
-                        else checkAllLoaded("ServicesHero");
-                    }
-                );
-                $("#services-list-container").load(
-                    "assets/components/Services/ServicesList.html",
-                    function (response, status, xhr) {
-                        if (status === "error")
-                            handleLoadError(
-                                "ServicesList",
-                                xhr,
-                                status,
-                                xhr.statusText
-                            );
-                        else checkAllLoaded("ServicesList");
-                    }
-                );
-                $("#projects-showcase-container").load(
-                    "assets/components/Services/ProjectsShowcase.html",
-                    function (response, status, xhr) {
-                        if (status === "error")
-                            handleLoadError(
-                                "ProjectsShowcase",
-                                xhr,
-                                status,
-                                xhr.statusText
-                            );
-                        else checkAllLoaded("ProjectsShowcase");
-                    }
-                );
-                $("#events-section-container").load(
-                    "assets/components/Services/EventsSection.html",
-                    function (response, status, xhr) {
-                        if (status === "error")
-                            handleLoadError(
-                                "EventsSection",
-                                xhr,
-                                status,
-                                xhr.statusText
-                            );
-                        else checkAllLoaded("EventsSection");
-                    }
-                );
-                $("#team-section-container").load(
-                    "assets/components/Services/TeamSection.html",
-                    function (response, status, xhr) {
-                        if (status === "error")
-                            handleLoadError(
-                                "TeamSection",
-                                xhr,
-                                status,
-                                xhr.statusText
-                            );
-                        else {
-                            checkAllLoaded("TeamSection");
-                            if (typeof Alpine !== "undefined") {
-                                Alpine.initTree(
-                                    document.getElementById(
-                                        "team-section-container"
-                                    )
-                                );
-                                console.log(
-                                    "Alpine initialized for team section"
-                                );
-                            } else {
-                                console.error("Alpine.js not loaded");
-                            }
-                        }
                     }
                 );
                 $("#advantages-section-container").load(
@@ -257,7 +189,21 @@
                                 status,
                                 xhr.statusText
                             );
-                        else checkAllLoaded("ContactSection");
+                        else {
+                            checkAllLoaded("ContactSection");
+                            if (typeof Alpine !== "undefined") {
+                                Alpine.initTree(
+                                    document.getElementById(
+                                        "contact-section-container"
+                                    )
+                                );
+                                console.log(
+                                    "Alpine initialized for contact section"
+                                );
+                            } else {
+                                console.error("Alpine.js not loaded");
+                            }
+                        }
                     }
                 );
                 $("#join-team-section-container").load(

@@ -100,51 +100,52 @@ document.addEventListener('alpine:init', () => {
         },
 
         populateProjectsSection() {
-            const projectsContainer = document.querySelector('.case-study-fancy-wrapper');
-            if (!projectsContainer) {
+            const projectContainers = document.querySelectorAll('.project-boxs.grid-wrapper');
+            if (projectContainers.length < 2) {
                 return;
             }
 
-            projectsContainer.innerHTML = ''; // Clear static content
+            projectContainers.forEach(container => container.innerHTML = '');
+            const leftContainer = projectContainers[1];
+            const rightContainer = projectContainers[0];
 
             this.projectsData.forEach((project, index) => {
-                const imagePath = project.images[0].image_path;
-                const isActive = index === 0 ? 'active' : ''; // Make first project active, as in original HTML
+                const imagePath = project.images && project.images[0]?.image_path || 'assets/images/default-project.jpg';
                 const projectItem = document.createElement('div');
-                projectItem.className = `case-studies-wrapper case-studies-style-1 ${isActive}`;
-
-                console.log(imagePath);
-
-                projectItem.className = `case-studies-wrapper case-studies-style-1 ${isActive}`;
+                projectItem.className = 'team-item team-style-2';
                 projectItem.innerHTML = `
-                    <div class="case-studies-img">
+                    <div class="team-img">
                         <img
+                            loading="lazy"
                             class="img-fluid"
                             src="${imagePath}"
                             alt="${project.title || 'Project'}"
+                            onerror="this.src='assets/images/default-project.jpg';"
                         />
-                    </div>
-                    <div class="case-studies-info">
-                        <div class="case-studies-info-inner">
-                            <h3 class="case-studies-title">
-                                <a href="#">${project.title || 'N/A'}</a>
-                            </h3>
-                            <div class="case-studies-content">
-                                <div class="case-studies-description">${project.description || 'No description available'}</div>
-                            </div>
-                            <div class="case-study-link">
-                                <a class="btn-arrow" href="project.html?id=${project.id}">
-                                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="25" cy="25" r="25" fill="#F8F8F8"/>
-                                        <path d="M15 25H35" stroke="#191A23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M27 17L35 25L27 33" stroke="#191A23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
+                        <div class="image-overlay"></div>
+                        <div class="team-social">
+                            <div class="share-icon">
+                                <a href="project.html?id=${project.id}">
+                                    <i class="fa-solid fa-eye"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
+                    <div class="team-info">
+                        <a href="project.html?id=${project.id}" class="team-title">${project.title || 'Unknown'}</a>
+                        <span class="team-destination">${project.category || 'N/A'}</span>
+                        <div class="team-details">
+                            <p><strong>Description:</strong> ${project.description || 'N/A'}</p>
+                        </div>
+                    </div>
                 `;
-                projectsContainer.appendChild(projectItem);
+                if (index % 2 === 0) {
+                    rightContainer.appendChild(projectItem);
+
+                } else {
+                    leftContainer.appendChild(projectItem);
+
+                }
             });
         }
     }));

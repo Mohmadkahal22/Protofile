@@ -1,371 +1,79 @@
 <section
-    class="space-pt ellipse-top bg-black z-index-2"
-    id="Case"
+    id="projects"
+    class="space-pt bg-black z-index-2 ellipse-top"
     x-data="projectsSection"
 >
     <div class="space-pb ellipse-bottom">
         <div class="container">
-           
             <div id="projectsContainer">
-                <div class="row justify-content-center">
-                    <div class="col-md-10">
-                        <div class="section-title text-center">
-                            <span class="sub-title justify-content-center">
-                                <img
-                                    class="img-fluid"
-                                    src="assets/images/subtitle-icon.png"
-                                    alt=""
-                                    data-i18n="[alt]projects.subtitle_icon"
-                                />
-                                <span data-i18n="projects.subtitle"
-                                    >Our Projects</span
+                <div class="row justify-content-between">
+                    <div class="col-xxl-5 col-xl-5 mb-5 mb-xl-0">
+                        <div class="sticky-top" style="top: 80px">
+                            <div class="section-title">
+                                <span
+                                    class="sub-title"
+                                    data-i18n="projects.subtitle"
                                 >
-                            </span>
-                            <h2 class="title" data-i18n="projects.title">
-                                Case Studies
-                            </h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="container-fluid g-md-0">
-                    <div class="row g-0">
-                        <div class="col-lg-12">
-                            <div class="case-study-fancy-wrapper">
-                                <!-- Medical App Case Study -->
-                                <div
-                                    class="case-studies-wrapper case-studies-style-1"
-                                >
-                                    <div class="case-studies-img">
+                                    <img
+                                        class="img-fluid"
+                                        src="assets/images/subtitle-icon.png"
+                                        alt=""
+                                        data-i18n="[alt]projects.subtitle_icon"
+                                    />
+                                    <span data-i18n="projects.subtitle"
+                                        >Our Projects</span
+                                    >
+                                </span>
+                                <h2 class="title" data-i18n="projects.title">
+                                    Case Studies
+                                </h2>
+                            </div>
+                            <div class="ps-xxl-5 ms-0 ms-md-5">
+                                <p>
+                                    Explore our innovative projects that deliver
+                                    exceptional solutions across various
+                                    industries.
+                                </p>
+                                <div class="rotate-images">
+                                    <img
+                                        class="img-fluid rotate-bg-img"
+                                        src="assets/images/banner-bg-01.png"
+                                        alt=""
+                                    />
+                                    <div class="rotate-img">
                                         <img
-                                            class="img-fluid"
-                                            src="assets/images/01(1).png"
-                                            data-i18n="projects.medical.image_alt"
+                                            class="img-fluid rotate"
+                                            src="assets/images/shape.png"
+                                            alt=""
                                         />
-                                        <a
-                                            href="#"
-                                            class="category"
-                                            data-i18n="projects.medical.category"
-                                            >Medical</a
-                                        >
-                                    </div>
-                                    <div class="case-studies-info">
-                                        <div class="case-studies-info-inner">
-                                            <h3 class="case-studies-title">
-                                                <a
-                                                    href="#"
-                                                    data-i18n="projects.medical.title"
-                                                    >Medical App</a
-                                                >
-                                            </h3>
-                                            <div class="case-studies-content">
-                                                <div
-                                                    class="case-studies-description"
-                                                    data-i18n="projects.medical.description"
-                                                >
-                                                    A healthcare app for remote
-                                                    consultations.
-                                                </div>
-                                            </div>
-                                            <div class="case-study-link">
-                                                <a class="btn-arrow" href="#">
-                                                    <svg
-                                                        width="50"
-                                                        height="50"
-                                                        viewBox="0 0 50 50"
-                                                        fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                    >
-                                                        <circle
-                                                            cx="25"
-                                                            cy="25"
-                                                            r="25"
-                                                            fill="#F8F8F8"
-                                                        />
-                                                        <path
-                                                            d="M15 25H35"
-                                                            stroke="#191A23"
-                                                            stroke-width="2"
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                        />
-                                                        <path
-                                                            d="M27 17L35 25L27 33"
-                                                            stroke="#191A23"
-                                                            stroke-width="2"
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                        />
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- E-commerce Platform -->
-                                <div
-                                    class="case-studies-wrapper case-studies-style-1"
-                                >
-                                    <div class="case-studies-img">
-                                        <img
-                                            class="img-fluid"
-                                            src="assets/images/04(2).jpg"
-                                            data-i18n="projects.ecommerce.image_alt"
-                                        />
-                                        <a
-                                            href="#"
-                                            class="category"
-                                            data-i18n="projects.ecommerce.category"
-                                            >E-commerce</a
-                                        >
-                                    </div>
-                                    <div class="case-studies-info">
-                                        <div class="case-studies-info-inner">
-                                            <h3 class="case-studies-title">
-                                                <a
-                                                    href="#"
-                                                    data-i18n="projects.ecommerce.title"
-                                                    >E-commerce Platform</a
-                                                >
-                                            </h3>
-                                            <div class="case-studies-content">
-                                                <div
-                                                    class="case-studies-description"
-                                                    data-i18n="projects.ecommerce.description"
-                                                >
-                                                    A scalable online shopping
-                                                    platform.
-                                                </div>
-                                            </div>
-                                            <div class="case-study-link">
-                                                <a class="btn-arrow" href="#">
-                                                    <svg
-                                                        width="50"
-                                                        height="50"
-                                                        viewBox="0 0 50 50"
-                                                        fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                    >
-                                                        <circle
-                                                            cx="25"
-                                                            cy="25"
-                                                            r="25"
-                                                            fill="#F8F8F8"
-                                                        />
-                                                        <path
-                                                            d="M15 25H35"
-                                                            stroke="#191A23"
-                                                            stroke-width="2"
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                        />
-                                                        <path
-                                                            d="M27 17L35 25L27 33"
-                                                            stroke="#191A23"
-                                                            stroke-width="2"
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                        />
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Logistics Platform -->
-                                <div
-                                    class="case-studies-wrapper case-studies-style-1"
-                                >
-                                    <div class="case-studies-img">
-                                        <img
-                                            class="img-fluid"
-                                            src="assets/images/02(2).jpg"
-                                            data-i18n="projects.logistics.image_alt"
-                                        />
-                                        <a
-                                            href="#"
-                                            class="category"
-                                            data-i18n="projects.logistics.category"
-                                            >Logistics</a
-                                        >
-                                    </div>
-                                    <div class="case-studies-info">
-                                        <div class="case-studies-info-inner">
-                                            <h3 class="case-studies-title">
-                                                <a
-                                                    href="#"
-                                                    data-i18n="projects.logistics.title"
-                                                    >Logistics Platform</a
-                                                >
-                                            </h3>
-                                            <div class="case-studies-content">
-                                                <div
-                                                    class="case-studies-description"
-                                                    data-i18n="projects.logistics.description"
-                                                >
-                                                    Streamlined supply chain
-                                                    management system.
-                                                </div>
-                                            </div>
-                                            <div class="case-study-link">
-                                                <a class="btn-arrow" href="#">
-                                                    <svg
-                                                        width="50"
-                                                        height="50"
-                                                        viewBox="0 0 50 50"
-                                                        fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                    >
-                                                        <circle
-                                                            cx="25"
-                                                            cy="25"
-                                                            r="25"
-                                                            fill="#F8F8F8"
-                                                        />
-                                                        <path
-                                                            d="M15 25H35"
-                                                            stroke="#191A23"
-                                                            stroke-width="2"
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                        />
-                                                        <path
-                                                            d="M27 17L35 25L27 33"
-                                                            stroke="#191A23"
-                                                            stroke-width="2"
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                        />
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Booking System -->
-                                <div
-                                    class="case-studies-wrapper case-studies-style-1 active"
-                                >
-                                    <div class="case-studies-img">
-                                        <img
-                                            class="img-fluid"
-                                            src="assets/images/05.png"
-                                            data-i18n="projects.booking.image_alt"
-                                        />
-                                        <a
-                                            href="#"
-                                            class="category"
-                                            data-i18n="projects.booking.category"
-                                            >Booking</a
-                                        >
-                                    </div>
-                                    <div class="case-studies-info">
-                                        <div class="case-studies-info-inner">
-                                            <h3 class="case-studies-title">
-                                                <a
-                                                    href="#"
-                                                    data-i18n="projects.booking.title"
-                                                    >Booking System</a
-                                                >
-                                            </h3>
-                                            <div class="case-studies-content">
-                                                <div
-                                                    class="case-studies-description"
-                                                    data-i18n="projects.booking.description"
-                                                >
-                                                    An efficient reservation
-                                                    platform.
-                                                </div>
-                                            </div>
-                                            <div class="case-study-link">
-                                                <a class="btn-arrow" href="#">
-                                                    <svg
-                                                        width="50"
-                                                        height="50"
-                                                        viewBox="0 0 50 50"
-                                                        fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                    >
-                                                        <circle
-                                                            cx="25"
-                                                            cy="25"
-                                                            r="25"
-                                                            fill="#F8F8F8"
-                                                        />
-                                                        <path
-                                                            d="M15 25H35"
-                                                            stroke="#191A23"
-                                                            stroke-width="2"
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                        />
-                                                        <path
-                                                            d="M27 17L35 25L27 33"
-                                                            stroke="#191A23"
-                                                            stroke-width="2"
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                        />
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="text-center mt-5 pt-4">
-                        <div class="client-testimonial">
-                            <p
-                                class="testimonial-text"
-                                data-i18n="projects.quote"
-                            >
-                                Our clients love the innovative solutions we
-                                deliver.
-                            </p>
-                        </div>
-                        <div class="attract-hover mt-4">
-                            <div
-                                class="attract-hover-easing"
-                                style="transform: translate(0px)"
-                            >
-                                <a class="btn btn-effect" href="#">
-                                    <span data-i18n="projects.view_all"
-                                        >View All Projects</span
-                                    >
-                                    <svg
-                                        width="50"
-                                        height="50"
-                                        viewBox="0 0 50 50"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <circle
-                                            cx="25"
-                                            cy="25"
-                                            r="25"
-                                            fill="#F8F8F8"
-                                        />
-                                        <path
-                                            d="M15 25H35"
-                                            stroke="#191A23"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        />
-                                        <path
-                                            d="M27 17L35 25L27 33"
-                                            stroke="#191A23"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        />
-                                    </svg>
-                                </a>
+                    <div class="col-xxl-6 col-xl-7">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="project-boxs grid-wrapper">
+                                    <!-- Projects populated dynamically -->
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div
+                                    class="project-boxs grid-wrapper project-top-space"
+                                >
+                                    <!-- Projects populated dynamically -->
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div id="projectsLoading" class="hidden">
+                <!-- Loading indicator content -->
+            </div>
+            <div id="projectsEmptyState" class="hidden">
+                <!-- Empty state content -->
             </div>
         </div>
     </div>
