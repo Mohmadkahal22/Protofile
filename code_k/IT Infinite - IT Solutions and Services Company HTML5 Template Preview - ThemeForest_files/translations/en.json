@@ -384,5 +384,11 @@
         "title": "Common Questions",
         "description": "Answers to your common queries about our services and how we operate.",
         "contact_us": "Contact Us for More Inquiries"
+    },
+    "reviews": {
+        "subtitle": "Customer Reviews",
+        "title": "What Our Clients Say",
+        "description": "Discover the experiences and feedback from our valued clients.",
+        "submit_review": "Submit a Review"
     }
 }

@@ -93,6 +93,8 @@
                 <div id="projects-showcase-container"></div>
                 <div id="team-section-container"></div>
                 <div id="advantages-section-container"></div>
+                <div id="reviews-section-container"></div>
+
                 <div id="faq-container"></div>
 
                 <!-- Include Vision -->
@@ -132,6 +134,7 @@
         <script src="assets/components/Services/ProjectsShowcase.js"></script>
         <script src="assets/components/Services/TeamSection.js"></script>
         <script src="assets/components/Services/FAQSection.js"></script>
+        <script src="assets/components/Services/ReviewsSection.js"></script>
 
         <!-- Component Loader -->
         <script>
@@ -161,6 +164,15 @@
                             document.getElementById("faq-container")
                         );
                         console.log("Alpine initialized for FAQ section");
+                    }
+                    if (
+                        componentName === "Reviews" &&
+                        typeof Alpine !== "undefined"
+                    ) {
+                        Alpine.initTree(
+                            document.getElementById("reviews-section-container")
+                        );
+                        console.log("Alpine initialized for reviews section");
                     }
                 }
 
@@ -295,6 +307,33 @@
                                 xhr.statusText
                             );
                         else checkAllLoaded("AdvantagesSection");
+                    }
+                );
+                $("#reviews-section-container").load(
+                    "assets/components/Services/ReviewsSection.html",
+                    function (response, status, xhr) {
+                        if (status === "error")
+                            handleLoadError(
+                                "Reviews",
+                                xhr,
+                                status,
+                                xhr.statusText
+                            );
+                        else {
+                            checkAllLoaded("Reviews");
+                            if (typeof Alpine !== "undefined") {
+                                Alpine.initTree(
+                                    document.getElementById(
+                                        "reviews-section-container"
+                                    )
+                                );
+                                console.log(
+                                    "Alpine initialized for reviews section"
+                                );
+                            } else {
+                                console.error("Alpine.js not loaded");
+                            }
+                        }
                     }
                 );
                 $("#faq-container").load(
