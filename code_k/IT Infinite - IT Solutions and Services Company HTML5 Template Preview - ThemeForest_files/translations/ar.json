@@ -405,5 +405,11 @@
         "title": "آراء عملائنا",
         "description": "تعرف على تجارب عملائنا وتقييماتهم لخدماتنا.",
         "submit_review": "إرسال تقييم"
-    }
+    },
+    "video_section.title": "فيديو الشركة",
+    "video_section.subtitle": "فيديو تعريفي",
+    "video_section.subtitle_icon": "أيقونة الفيديو",
+    "video_section.description": "شاهد هذا الفيديو التعريفي للتعرف على رؤيتنا ورسالتنا وأهدافنا.",
+    "video_section.loading": "جاري تحميل الفيديو...",
+    "video_section.no_video": "لا يوجد فيديو متاح حاليًا."
 }

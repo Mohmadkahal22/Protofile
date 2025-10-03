@@ -7,7 +7,7 @@
             "ar": "Arabic",
             "tr": "Turkish"
         },
-        "logo": "kayan code",
+        "logo": "Hexa Tech",
         "home": "Home",
         "about": "About Us",
         "services": "Our Services",
@@ -18,8 +18,8 @@
         "search_placeholder": "Search"
     },
     "vision": {
-        "title": "Shaping the future through technology",
-        "description": "At KayanCode, we don't see technology as mere tools - we view it as the language of the future.",
+        "title": "Shaping the future through Tech",
+        "description": "At KayanCode, we don't see Tech as mere tools - we view it as the language of the future.",
         "paragraph1": "Our vision stems from a firm belief that every great idea deserves a digital embodiment, and every ambitious project deserves a solid technological foundation to launch from.",
         "paragraph2": "We aspire to be the premier technical partner in the Arab world and globally - transforming ideas into tangible digital products and leading the digital transformation journey for individuals and organizations with a professional, customized approach built on deep market understanding.",
         "paragraph3": "Our vision focuses on building an integrated technological ecosystem that supports innovation and provides our clients with the digital tools they need to grow, expand, and compete in a rapidly changing market. We don't just create software - we build real, advanced 'digital entities' with clear identities that reflect our clients' ambitions and embody their goals in reality.",
@@ -37,17 +37,17 @@
     },
     "banner": {
         "satisfied_clients": "Satisfied clients",
-        "image_alt": "Kayan Code banner background",
+        "image_alt": "Hexa Tech banner background",
         "title": "Towards a Digital Future",
-        "subtitle": "With Intelligence & Technology",
-        "description": "At Kayan Code, we develop innovative technological solutions that help businesses grow and confidently expand into global markets.",
+        "subtitle": "With Intelligence & Tech",
+        "description": "At Hexa Tech, we develop innovative technological solutions that help businesses grow and confidently expand into global markets.",
         "start_project": "Start Your Project",
         "contact_us": "Contact Us",
         "clients": "1,250+ Satisfied clients"
     },
     "about": {
-        "title": "Where Technology Meets Market Insight",
-        "subtitle": "About Kayan Code",
+        "title": "Where Tech Meets Market Insight",
+        "subtitle": "About Hexa Tech",
         "description": "A tech startup led by Engineer Youssef Saheel, specializing in software, applications, and web development.",
         "intro": "We combine engineering creativity with deep market understanding, serving clients across Lebanon, Turkey, UAE, and the United States.",
         "rated": "Rated 4.80/5 from 1000+ global clients",
@@ -100,7 +100,7 @@
         }
     },
     "projects": {
-        "title": "Transforming Industries Through Technology",
+        "title": "Transforming Industries Through Tech",
         "subtitle": "Our Projects",
         "medical": {
             "title": "Istanbul Medical Clinic",
@@ -213,9 +213,9 @@
         }
     },
     "advantages": {
-        "title": "Your Technology Partner, Not Just a Vendor",
-        "subtitle": "Why Choose Kayan Code",
-        "description": "We believe technology means nothing without truly understanding your business needs.",
+        "title": "Your Tech Partner, Not Just a Vendor",
+        "subtitle": "Why Choose Hexa Tech",
+        "description": "We believe Tech means nothing without truly understanding your business needs.",
         "quality": {
             "title": "Premium Quality Code",
             "description": "Rigorous adherence to industry best practices and coding standards that ensure scalable, maintainable solutions."
@@ -244,7 +244,7 @@
     },
     "contact": {
         "title": "Ready to start your project or need consultation?",
-        "subtitle": "Contact Kayan Code",
+        "subtitle": "Contact Hexa Tech",
         "email": "info@kayancode.com",
         "email_label": "24/7 online support",
         "phone": "+961 XXX XXX",
@@ -349,7 +349,7 @@
             "number": "+2-1555-735513",
             "text": "and get a free estimate"
         },
-        "copyright": "Develop and design by Kayan Code"
+        "copyright": "Develop and design by Hexa Tech"
     },
     "marquee": {
         "web_design": {
@@ -390,5 +390,11 @@
         "title": "What Our Clients Say",
         "description": "Discover the experiences and feedback from our valued clients.",
         "submit_review": "Submit a Review"
-    }
+    },
+    "video_section.title": "Company Video",
+    "video_section.subtitle": "Intro Video",
+    "video_section.subtitle_icon": "Video Icon",
+    "video_section.description": "Watch this introductory video to learn about our vision, mission and goals.",
+    "video_section.loading": "Loading video...",
+    "video_section.no_video": "No video available at the moment."
 }

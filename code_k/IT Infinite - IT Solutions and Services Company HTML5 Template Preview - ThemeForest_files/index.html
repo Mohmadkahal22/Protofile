@@ -12,7 +12,7 @@
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <title>Kayan Code</title>
+        <title>Hexa Tech</title>
         <!-- Favicon -->
         <link
             rel="shortcut icon"
@@ -87,6 +87,7 @@
 
                 <!-- Include Banner -->
                 <div id="banner-container"></div>
+                <div id="video-section-container"></div>
 
                 <div id="services-hero-container"></div>
                 <div id="services-list-container"></div>
@@ -135,6 +136,8 @@
         <script src="assets/components/Services/TeamSection.js"></script>
         <script src="assets/components/Services/FAQSection.js"></script>
         <script src="assets/components/Services/ReviewsSection.js"></script>
+        <script src="assets/components/VideoSection.js"></script>
+        <!-- ملف JS الجديد -->
 
         <!-- Component Loader -->
         <script>
@@ -213,6 +216,23 @@
                                 xhr.statusText
                             );
                         else checkAllLoaded("Banner");
+                    }
+                );
+                $("#video-section-container").load(
+                    "assets/components/VideoSection.html",
+                    function (response, status, xhr) {
+                        if (status === "error")
+                            handleLoadError(
+                                "VideoSection",
+                                xhr,
+                                status,
+                                xhr.statusText
+                            );
+                        else {
+                            checkAllLoaded("VideoSection");
+                            // تحميل الفيديو بعد تحميل القسم
+                            loadVideoData();
+                        }
                     }
                 );
                 $("#vision-container").load(

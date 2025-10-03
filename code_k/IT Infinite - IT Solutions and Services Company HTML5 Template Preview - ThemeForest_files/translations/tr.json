@@ -8,7 +8,7 @@
       "tr": "Türkçe"
     },
 
-    "logo": "kayan code",
+    "logo": "Hexa Tech",
     "home": "Ana Sayfa",
     "about": "Hakkımızda",
     "services": "Hizmetlerimiz",
@@ -37,18 +37,18 @@
     }
   },
   "banner": {
-    "image_alt": "Kayan Code banner arka planı",
+    "image_alt": "Hexa Tech banner arka planı",
     "satisfied_clients": "Memnun Müşteriler",
     "title": "Dijital Bir Geleceğe Doğru",
     "subtitle": "Zeka ve Teknoloji ile",
-    "description": "Kayan Code'da, işletmelerin büyümesine ve küresel pazarlara güvenle genişlemesine yardımcı olan yenilikçi teknolojik çözümler geliştiriyoruz.",
+    "description": "Hexa Tech'da, işletmelerin büyümesine ve küresel pazarlara güvenle genişlemesine yardımcı olan yenilikçi teknolojik çözümler geliştiriyoruz.",
     "start_project": "Projenizi Başlatın",
     "contact_us": "Bize Ulaşın",
     "clients": "1250+ Memnun Müşteri"
   },
   "about": {
     "title": "Teknolojinin Pazar İçgörüsüyle Buluştuğu Yer",
-    "subtitle": "Kayan Code Hakkında",
+    "subtitle": "Hexa Tech Hakkında",
     "description": "Mühendis Youssef Saheel liderliğinde yazılım, uygulamalar ve web geliştirme konusunda uzmanlaşmış bir teknoloji startup'ı.",
     "intro": "Mühendislik yaratıcılığını derin pazar anlayışıyla birleştiriyoruz ve Lübnan, Türkiye, BAE ve Amerika Birleşik Devletleri'ndeki müşterilere hizmet veriyoruz.",
     "rated": "1000'den fazla küresel müşteriden 4.80/5 puan",
@@ -215,7 +215,7 @@
   },
   "advantages": {
     "title": "Teknoloji Ortağınız, Sadece Bir Tedarikçi Değil",
-    "subtitle": "Neden Kayan Code'u Seçmelisiniz",
+    "subtitle": "Neden Hexa Tech'u Seçmelisiniz",
     "description": "İşinizin ihtiyaçlarını gerçekten anlamadan teknolojinin hiçbir şey ifade etmediğine inanıyoruz.",
     "quality": {
       "title": "Premium Kalite Kod",
@@ -245,7 +245,7 @@
   },
   "contact": {
     "title": "Projenizi başlatmaya hazır mısınız yoksa danışmanlığa mı ihtiyacınız var?",
-    "subtitle": "Kayan Code ile İletişim",
+    "subtitle": "Hexa Tech ile İletişim",
     "email": "info@kayancode.com",
     "email_label": "7/24 çevrimiçi destek",
     "phone": "+961 XXX XXX",
@@ -349,7 +349,7 @@
       "number": "+2-1555-735513",
       "text": "ve ücretsiz teklif alın"
     },
-    "copyright": "Kayan Code tarafından geliştirilmiş ve tasarlanmıştır"
+    "copyright": "Hexa Tech tarafından geliştirilmiş ve tasarlanmıştır"
   },
   "marquee": {
     "web_design": {

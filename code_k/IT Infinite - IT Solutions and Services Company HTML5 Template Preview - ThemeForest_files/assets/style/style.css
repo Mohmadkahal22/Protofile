@@ -2668,12 +2668,108 @@ blockquote.blockquote-style-1:before {
     .team-boxs.team-top-space {
         margin-top: 30px;
     }
-        .project-boxs.project-top-space {
+    .project-boxs.project-top-space {
         margin-top: 30px;
     }
     .team-style-2 {
         margin-bottom: 0;
     }
+}
+/* Video Section - Fullscreen Style */
+.video-section {
+    background: #000;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-player-fullscreen {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.video-iframe-fullscreen {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* حالة التحميل */
+#videoLoading {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* حالة عدم وجود فيديو */
+#videoEmptyState {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#videoEmptyState .alert {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+/* التكيف مع الأجهزة المحمولة */
+@media (max-width: 768px) {
+    .video-section {
+        min-height: 60vh;
+    }
+
+    .video-player-fullscreen {
+        height: 60vh;
+    }
+}
+
+@media (max-width: 576px) {
+    .video-section {
+        min-height: 50vh;
+    }
+
+    .video-player-fullscreen {
+        height: 50vh;
+    }
+}
+
+/* كلاس hidden */
+.hidden {
+    display: none !important;
+} /* Video Section with Margin */
+.video-section-with-margin {
+    background: #000;
+    padding: 40px 0;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* نسبة 16:9 */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.video-responsive {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 /*****************************
