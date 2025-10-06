@@ -1,5 +1,8 @@
 {
     "header": {
+        "logo_part1": "Hexa",
+        "logo_part2": "Terminal",
+    
         "search": "Search",
         "menu_alt": "Menu",
         "languages": {
@@ -7,11 +10,13 @@
             "ar": "Arabic",
             "tr": "Turkish"
         },
-        "logo": "Hexa Tech",
+        "logo": "Hexa Terminal",
         "home": "Home",
         "about": "About Us",
         "services": "Our Services",
         "projects": "Our Projects",
+        "ourteam": "Our Team",
+
         "why_choose_us": "Why Choose Us",
         "contact": "Contact Us",
         "join_team": "Join Our Team",
@@ -36,18 +41,18 @@
         }
     },
     "banner": {
-        "satisfied_clients": "Satisfied clients",
-        "image_alt": "Hexa Tech banner background",
-        "title": "Towards a Digital Future",
-        "subtitle": "With Intelligence & Tech",
-        "description": "At Hexa Tech, we develop innovative technological solutions that help businesses grow and confidently expand into global markets.",
-        "start_project": "Start Your Project",
-        "contact_us": "Contact Us",
-        "clients": "1,250+ Satisfied clients"
+        "satisfied_clients": "Trusted Clients",
+        "image_alt": "Innovative Hexa Terminal Banner Background",
+        "title": "Towards Unprecedented Digital Horizons",
+        "subtitle": "With Technical Creativity & Advanced Intelligence",
+        "description": "At Hexa Terminal, we develop cutting-edge technological solutions that empower businesses to achieve sustainable growth and confidently expand into global markets through digital leadership.",
+        "start_project": "Launch Your Digital Project",
+        "contact_us": "Consult Our Experts",
+        "clients": "+1,250 Successful Client Partnerships"
     },
     "about": {
         "title": "Where Tech Meets Market Insight",
-        "subtitle": "About Hexa Tech",
+        "subtitle": "About Hexa Terminal",
         "description": "A tech startup led by Engineer Youssef Saheel, specializing in software, applications, and web development.",
         "intro": "We combine engineering creativity with deep market understanding, serving clients across Lebanon, Turkey, UAE, and the United States.",
         "rated": "Rated 4.80/5 from 1000+ global clients",
@@ -214,7 +219,7 @@
     },
     "advantages": {
         "title": "Your Tech Partner, Not Just a Vendor",
-        "subtitle": "Why Choose Hexa Tech",
+        "subtitle": "Why Choose Hexa Terminal",
         "description": "We believe Tech means nothing without truly understanding your business needs.",
         "quality": {
             "title": "Premium Quality Code",
@@ -244,7 +249,7 @@
     },
     "contact": {
         "title": "Ready to start your project or need consultation?",
-        "subtitle": "Contact Hexa Tech",
+        "subtitle": "Contact Hexa Terminal",
         "email": "info@kayancode.com",
         "email_label": "24/7 online support",
         "phone": "+961 XXX XXX",
@@ -349,7 +354,7 @@
             "number": "+2-1555-735513",
             "text": "and get a free estimate"
         },
-        "copyright": "Develop and design by Hexa Tech"
+        "copyright": "Develop and design by Hexa Terminal"
     },
     "marquee": {
         "web_design": {

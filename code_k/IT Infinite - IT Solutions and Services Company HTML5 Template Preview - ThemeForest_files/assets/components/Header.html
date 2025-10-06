@@ -1,184 +1,256 @@
 <!-- Header Component -->
 <header
-  class="header header-3 header-sticky header-absolute is-sticky sticky-show"
+    class="header header-3 header-sticky header-absolute is-sticky sticky-show"
 >
-  <div class="header-inner">
-    <div class="site-logo">
-      <h4><a class="navbar-brand" href="#">Hexa Tech</a></h4>
+    <div class="header-inner">
+        <div class="site-logo">
+            <h4>
+                <a class="navbar-brand" href="#">
+                    <!-- شعار ديناميكي يدعم اللغات -->
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1200 400"
+                        width="300"
+                        height="100"
+                        role="img"
+                        aria-label="Hexa Terminal logo"
+                        class="header-logo"
+                    >
+                        <!-- Hexagon with white fill and blue stroke -->
+                        <polygon
+                            points="270,200 225,278 135,278 90,200 135,122 225,122"
+                            fill="#FFFFFF"
+                            stroke="#2B9BFF"
+                            stroke-width="18"
+                            stroke-linejoin="round"
+                            stroke-linecap="round"
+                        />
+
+                        <!-- Terminal prompt centered inside hexagon (black) -->
+                        <text
+                            x="180"
+                            y="200"
+                            font-family="Segoe UI, Roboto, Arial, sans-serif"
+                            font-weight="700"
+                            font-size="86"
+                            fill="#000000"
+                            text-anchor="middle"
+                            dominant-baseline="middle"
+                        >
+                            &gt;_
+                        </text>
+
+                        <!-- النص الديناميكي الذي يتغير مع اللغة -->
+                        <g transform="translate(360,120)">
+                            <text
+                                x="0"
+                                y="80"
+                                font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif"
+                                font-weight="700"
+                                font-size="110"
+                                fill="#FFFFFF"
+                                class="logo-text-part1"
+                                data-i18n="header.logo_part1"
+                            >
+                                Hexa
+                            </text>
+                            <text
+                                x="0"
+                                y="200"
+                                font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif"
+                                font-weight="700"
+                                font-size="110"
+                                fill="#FFFFFF"
+                                class="logo-text-part2"
+                                data-i18n="header.logo_part2"
+                            >
+                                Terminal
+                            </text>
+                        </g>
+                    </svg>
+                </a>
+            </h4>
+        </div>
+        <div class="site-menu d-none d-xl-block">
+            <ul class="main-menu">
+                <li class="nav-item active">
+                    <a
+                        class="nav-link"
+                        href="index.html#"
+                        data-i18n="header.home"
+                    ></a>
+                </li>
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="index.html#Service"
+                        data-i18n="header.services"
+                    ></a>
+                </li>
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="index.html#projects"
+                        data-i18n="header.projects"
+                    ></a>
+                </li>
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="index.html#ourteam"
+                        data-i18n="header.ourteam"
+                    ></a>
+                </li>
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="index.html#Blog"
+                        data-i18n="header.why_choose_us"
+                    ></a>
+                </li>
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="page2.html#contact"
+                        data-i18n="header.contact"
+                    ></a>
+                </li>
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="page2.html#JoinOurTeam"
+                        data-i18n="header.join_team"
+                    ></a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="site-action">
+            <select
+                class="language-select"
+                onchange="changeLanguage(this.value)"
+            >
+                <option value="en" data-i18n="header.languages.en">EN</option>
+                <option value="ar" data-i18n="header.languages.ar">AR</option>
+                <option value="tr" data-i18n="header.languages.tr">TR</option>
+            </select>
+
+            <div class="action-hamburger">
+                <a
+                    class="hamburger"
+                    href="#"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight"
+                >
+                    <span class="hamburger-container">
+                        <img
+                            loading="lazy"
+                            class="img-fluid"
+                            src="assets/icons/dots-menu.svg"
+                            alt=""
+                            data-i18n="header.menu_alt"
+                        />
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        <div class="mobile-action">
+            <form class="header-search-form">
+                <input
+                    type="text"
+                    class="form-control"
+                    data-i18n-placeholder="header.search_placeholder"
+                    placeholder="Search"
+                />
+                <button
+                    type="submit"
+                    class="search-btn"
+                    data-i18n="header.search"
+                ></button>
+            </form>
+
+            <div class="mobile-hamburger">
+                <a
+                    class="hamburger"
+                    href=""
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#menuOffcanvas"
+                    aria-controls="menuOffcanvas"
+                >
+                    <span class="hamburger-container">
+                        <img
+                            loading="lazy"
+                            class="img-fluid"
+                            src="assets/icons/dots-menu.svg"
+                            alt=""
+                            data-i18n="header.menu_alt"
+                        />
+                    </span>
+                </a>
+            </div>
+        </div>
     </div>
-    <div class="site-menu d-none d-xl-block">
-      <ul class="main-menu">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html#" data-i18n="header.home"></a>
-        </li>
-
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            href="index.html#Service"
-            data-i18n="header.services"
-          ></a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            href="index.html#projects"
-            data-i18n="header.projects"
-          ></a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            href="page2.html#Blog"
-            data-i18n="header.why_choose_us"
-          ></a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            href="page2.html#contact"
-            data-i18n="header.contact"
-          ></a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            href="page2.html#JoinOurTeam"
-            data-i18n="header.join_team"
-          ></a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="site-action">
-      <form class="header-search-form">
-        <input
-          type="text"
-          class="form-control"
-          data-i18n-placeholder="header.search_placeholder"
-          placeholder="Search"
-        />
-        <button
-          type="submit"
-          class="search-btn"
-          data-i18n="header.search"
-        ></button>
-      </form>
-
-      <select class="language-select" onchange="changeLanguage(this.value)">
-        <option value="en" data-i18n="header.languages.en">EN</option>
-        <option value="ar" data-i18n="header.languages.ar">AR</option>
-        <option value="tr" data-i18n="header.languages.tr">TR</option>
-      </select>
-
-      <div class="action-hamburger">
-        <a
-          class="hamburger"
-          href="#"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasRight"
-          aria-controls="offcanvasRight"
-        >
-          <span class="hamburger-container">
-            <img
-              loading="lazy"
-              class="img-fluid"
-              src="assets/icons/dots-menu.svg"
-              alt=""
-              data-i18n="header.menu_alt"
-            />
-          </span>
-        </a>
-      </div>
-    </div>
-
-    <div class="mobile-action">
-      <form class="header-search-form">
-        <input
-          type="text"
-          class="form-control"
-          data-i18n-placeholder="header.search_placeholder"
-          placeholder="Search"
-        />
-        <button
-          type="submit"
-          class="search-btn"
-          data-i18n="header.search"
-        ></button>
-      </form>
-
-      <div class="mobile-hamburger">
-        <a
-          class="hamburger"
-          href=""
-          data-bs-toggle="offcanvas"
-          data-bs-target="#menuOffcanvas"
-          aria-controls="menuOffcanvas"
-        >
-          <span class="hamburger-container">
-            <img
-              loading="lazy"
-              class="img-fluid"
-              src="assets/icons/dots-menu.svg"
-              alt=""
-              data-i18n="header.menu_alt"
-            />
-          </span>
-        </a>
-      </div>
-    </div>
-  </div>
 </header>
-
 <!-- Header Side Panel -->
 <div
-  class="offcanvas offcanvas-end sidepanel-offcanvas"
-  tabindex="-1"
-  id="offcanvasRight"
+    class="offcanvas offcanvas-end sidepanel-offcanvas"
+    tabindex="-1"
+    id="offcanvasRight"
 >
-  <div class="offcanvas-header">
-    <button
-      type="button"
-      class="btn-close"
-      data-bs-dismiss="offcanvas"
-      aria-label="Close"
-    >
-      <i class="fa-solid fa-xmark"></i>
-    </button>
-  </div>
-
-  <div class="offcanvas-body lenis-scroll-disable">
-    <div class="body-inner">
-      <div class="about-info">
-        <h4 class="title mb-3">Scalable Business for Startups</h4>
-        <p>
-          Get the oars in the water and start rowing. Execution is the single
-          biggest factor in achievement so the faster and better your execution.
-        </p>
-      </div>
-      <div class="socail-info">
-        <ul>
-          <li>
-            <a href="#"><i class="fa-brands fa-facebook-f"></i>Facebook</a>
-          </li>
-          <li>
-            <a href="#"><i class="fa-brands fa-instagram"></i>Instagram</a>
-          </li>
-          <li>
-            <a href="#"><i class="fab fa-linkedin-in"></i>Linkedin </a>
-          </li>
-          <li>
-            <a href="#"><i class="fab fa-twitter"></i>Twitter </a>
-          </li>
-        </ul>
-      </div>
-      <div class="contact-info">
-        <span class="number">+2 01555 735513</span>
-        <a class="mail" href="#"><i></i>info@kayancode.com</a>
-        <span class="text"
-          >Looking for collaboration for your next creative project?</span
+    <div class="offcanvas-header">
+        <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
         >
-      </div>
+            <i class="fa-solid fa-xmark"></i>
+        </button>
     </div>
-  </div>
+
+    <div class="offcanvas-body lenis-scroll-disable">
+        <div class="body-inner">
+            <div class="about-info">
+                <h4 class="title mb-3">Scalable Business for Startups</h4>
+                <p>
+                    Get the oars in the water and start rowing. Execution is the
+                    single biggest factor in achievement so the faster and
+                    better your execution.
+                </p>
+            </div>
+            <div class="socail-info">
+                <ul>
+                    <li>
+                        <a href="#"
+                            ><i class="fa-brands fa-facebook-f"></i>Facebook</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><i class="fa-brands fa-instagram"></i>Instagram</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><i class="fab fa-linkedin-in"></i>Linkedin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-twitter"></i>Twitter </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="contact-info">
+                <span class="number">+2 01555 735513</span>
+                <a class="mail" href="#"><i></i>info@kayancode.com</a>
+                <span class="text"
+                    >Looking for collaboration for your next creative
+                    project?</span
+                >
+            </div>
+        </div>
+    </div>
 </div>
