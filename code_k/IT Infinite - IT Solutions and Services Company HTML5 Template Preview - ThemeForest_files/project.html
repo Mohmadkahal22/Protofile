@@ -2,17 +2,20 @@
 <html lang="zxx" class="lenis" style="--scrollbar-width: 4px">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="keywords" content="HTML5 Template, Project Details" />
+        <meta
+            name="keywords"
+            content="Hexa Terminal, Tech Projects, Innovation, Technology Solutions"
+        />
         <meta
             name="description"
-            content="Hexa Terminal - Detailed view of our innovative projects"
+            content="Explore detailed insights into Hexa Terminal's cutting-edge technology projects and solutions."
         />
-        <meta name="author" content="kayancode.com" />
+        <meta name="author" content="Hexa Terminal" />
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <title>Hexa Terminal - Project Details</title>
+        <title>Hexa Terminal - Innovative Project Insights</title>
 
         <!-- Favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico" />
@@ -31,16 +34,18 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Jost:ital,wght@0,100..900;1,100..900&family=Russo+One&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Jost:wght@400;500;600;700&family=Russo+One&display=swap"
             rel="stylesheet"
         />
 
         <style>
             body {
-                font-family: "Cairo", sans-serif;
-                background-color: #121212;
-                color: #ffffff;
-                line-height: 1.6;
+                font-family: "Cairo", "Jost", sans-serif;
+                background: linear-gradient(135deg, #1c1c2e 0%, #2a2a4a 100%);
+                color: #d9d9e3;
+                line-height: 1.7;
+                margin: 0;
+                padding: 0;
             }
             h1,
             h2,
@@ -50,6 +55,7 @@
             h6 {
                 font-family: "Russo One", "Cairo", sans-serif;
                 color: #ffffff;
+                margin-bottom: 15px;
             }
             .english-lang {
                 font-family: "Jost", sans-serif;
@@ -59,12 +65,13 @@
                 font-family: "Cairo", sans-serif;
                 direction: rtl;
             }
+
             .project-hero {
-                padding: 80px 0;
-                background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-                text-align: center;
+                background: url("assets/images/tech-pattern.png") repeat center;
                 position: relative;
+                padding: 110px 0;
                 overflow: hidden;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
             .project-hero::before {
                 content: "";
@@ -73,191 +80,223 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: url("assets/images/subtitle-icon.png") no-repeat
-                    center;
-                background-size: 50%;
-                opacity: 0.05;
-                z-index: 0;
+                background: rgba(0, 0, 0, 0.6);
+                z-index: 1;
+            }
+            .project-hero .container {
+                position: relative;
+                z-index: 2;
+                text-align: center;
             }
             .project-hero .sub-title {
                 font-size: 1.2rem;
-                color: #00c4b4;
-                margin-bottom: 10px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 10px;
+                color: #00c4cc;
+                text-transform: uppercase;
+                letter-spacing: 2.5px;
+                font-weight: 500;
+                animation: fadeIn 1.2s ease-out;
             }
             .project-hero .title {
-                font-size: 2.5rem;
+                font-size: 3.5rem;
                 font-weight: 700;
-                margin-bottom: 20px;
-                animation: fadeInUp 0.8s ease-out;
+                margin: 10px 0 20px;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                animation: fadeInUp 1.2s ease-out 0.5s backwards;
             }
-            .project-section {
-                padding: 60px 0;
-                background-color: #1a1a1a;
+
+            .project-content {
+                padding: 100px 0;
+                background: #1c1c2e;
             }
-            .carousel-item img {
-                max-height: 600px;
+            .image-gallery {
+                margin-bottom: 40px;
+                overflow-x: auto;
+                white-space: nowrap;
+                padding: 15px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+            .image-gallery::-webkit-scrollbar {
+                height: 6px;
+            }
+            .image-gallery::-webkit-scrollbar-track {
+                background: #2a2a4a;
+                border-radius: 3px;
+            }
+            .image-gallery::-webkit-scrollbar-thumb {
+                background: #00c4cc;
+                border-radius: 3px;
+            }
+            .image-gallery img {
+                gap: 20px;
+                width: 70%;
+                height: 70%;
                 object-fit: cover;
-                border-radius: 10px;
-                transition: transform 0.5s ease;
-                loading: lazy;
+                border-radius: 12px;
+                margin-right: 20px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                transition: transform 0.4s ease, box-shadow 0.4s ease;
             }
-            .carousel-item img:hover {
-                transform: scale(1.05);
+            .image-gallery img:hover {
+                transform: scale(1.03);
+                box-shadow: 0 6px 18px rgba(0, 196, 204, 0.4);
             }
-            .carousel-caption {
-                background: rgba(0, 0, 0, 0.7);
-                border-radius: 5px;
-                padding: 10px;
+            .project-card {
+                background: #252545;
+                border-radius: 15px;
+                padding: 25px;
+                margin-bottom: 25px;
+                transition: transform 0.4s ease, box-shadow 0.4s ease;
+                border-left: 5px solid #00c4cc;
             }
-            .list-group-item1 {
-                background-color: #2a2a2a;
-                color: #fff;
-                border: none;
-                border-radius: 8px;
-                margin-bottom: 10px;
-                padding: 15px;
-                transition: background-color 0.3s ease;
+            .project-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 12px 24px rgba(0, 196, 204, 0.15);
             }
-            .list-group-item {
-                background-color: #1a1a1a;
-                color: #fff;
-                border: none;
-                border-radius: 8px;
-                margin-bottom: 10px;
-                padding: 15px;
-                transition: background-color 0.3s ease;
+            .project-card h4 {
+                color: #ff6b81;
+                margin-bottom: 20px;
+                font-size: 1.4rem;
             }
-            .list-group-item1:hover,
-            .list-group-item:hover {
-                background-color: #3a3a3a;
+            .project-card p {
+                color: #b3b3c7;
+                font-size: 1rem;
+                margin-bottom: 15px;
             }
-            .list-group-item1,
-            .list-group-item strong {
-                color: #00c4b4;
+            .project-card .link-btn {
+                color: #00c4cc;
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 1rem;
+                transition: color 0.4s ease;
             }
-            .video-container {
+            .project-card .link-btn:hover {
+                color: #ff6b81;
+            }
+
+            .video-wrapper {
                 position: relative;
-                padding-bottom: 56.25%; /* 16:9 aspect ratio */
-                height: 0;
+                padding-bottom: 56.25%;
+                border-radius: 12px;
                 overflow: hidden;
-                border-radius: 10px;
-                margin-bottom: 30px;
+                background: #2a2a4a;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             }
-            .video-container iframe {
+            .video-wrapper iframe {
                 position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
-            }
-            .error-container {
-                text-align: center;
-                padding: 40px;
-                background: #2a2a2a;
-                border-radius: 10px;
-                margin: 20px 0;
-            }
-            .error-container .btn-retry {
-                background-color: #ff4d4f;
                 border: none;
-                padding: 10px 20px;
-                border-radius: 50px;
-                color: #fff;
             }
-            .error-container .btn-retry:hover {
-                background-color: #e6393b;
-            }
-            .image-error {
-                background-color: #2a2a2a;
-                color: #ff4d4f;
-                text-align: center;
-                padding: 10px;
-                border-radius: 5px;
-                margin-bottom: 10px;
-            }
-            .service-image {
-                max-width: 100%;
-                max-height: 200px;
-                object-fit: cover;
-                border-radius: 8px;
-                margin-top: 10px;
-                loading: lazy;
-            }
-            .icon-link {
-                color: #00c4b4;
-                font-size: 1.5rem;
-                margin-left: 10px;
-                transition: color 0.3s ease;
-            }
-            .icon-link:hover {
-                color: #00a69a;
-            }
+
             .btn-back {
-                background: linear-gradient(135deg, #00c4b4 0%, #00968a 100%);
+                position: sticky;
+                bottom: 25px;
+                left: 25px;
+                background: linear-gradient(135deg, #ff6b81 0%, #ff8c94 100%);
                 border: none;
-                padding: 14px 28px;
-                border-radius: 50px;
+                padding: 14px 30px;
+                border-radius: 30px;
                 font-weight: 600;
-                font-size: 1rem;
                 color: #ffffff;
                 text-decoration: none;
                 display: inline-flex;
                 align-items: center;
-                transition: all 0.3s ease;
-                box-shadow: 0 4px 15px rgba(0, 196, 180, 0.3);
-                position: relative;
-                overflow: hidden;
-            }
-            .btn-back::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.2),
-                    transparent
-                );
-                transition: left 0.5s ease;
+                transition: all 0.4s ease;
+                box-shadow: 0 6px 18px rgba(255, 107, 129, 0.3);
+                z-index: 10;
             }
             .btn-back:hover {
-                background: linear-gradient(135deg, #00a69a 0%, #008a7a 100%);
-                transform: translateY(-3px);
-                box-shadow: 0 6px 20px rgba(0, 196, 180, 0.4);
-            }
-            .btn-back:hover::before {
-                left: 100%;
-            }
-            .btn-back:active {
-                transform: translateY(-1px);
+                background: linear-gradient(135deg, #e63946 0%, #ff4d5a 100%);
+                transform: scale(1.06);
+                box-shadow: 0 8px 24px rgba(255, 107, 129, 0.4);
             }
             .btn-back i {
-                font-size: 1.1rem;
-                transition: transform 0.3s ease;
+                margin-right: 10px;
+                font-size: 1.2rem;
             }
-            .btn-back:hover i {
-                transform: translateX(-3px);
+
+            .loading-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.85);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                color: #00c4cc;
+                font-size: 1.6rem;
+                font-weight: 500;
             }
+            .error-overlay {
+                text-align: center;
+                padding: 50px;
+                background: #2a2a4a;
+                border-radius: 15px;
+                margin: 30px auto;
+                max-width: 500px;
+                color: #ff6b81;
+                box-shadow: 0 6px 18px rgba(255, 107, 129, 0.2);
+            }
+            .error-overlay button {
+                background: #ff6b81;
+                border: none;
+                padding: 12px 25px;
+                border-radius: 25px;
+                color: #fff;
+                font-weight: 600;
+                margin-top: 20px;
+                transition: background 0.4s ease;
+            }
+            .error-overlay button:hover {
+                background: #e63946;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(25px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
             @media (max-width: 768px) {
                 .project-hero .title {
-                    font-size: 1.8rem;
+                    font-size: 2.2rem;
                 }
-                .carousel-item img {
-                    max-height: 400px;
+                .project-content {
+                    padding: 60px 0;
                 }
-                .service-image {
-                    max-height: 150px;
+                .image-gallery img {
+                    width: 220px;
+                    height: 160px;
+                    margin-right: 10px;
+                }
+                .project-card {
+                    padding: 20px;
                 }
                 .btn-back {
-                    padding: 12px 24px;
-                    font-size: 0.95rem;
+                    position: static;
+                    margin-top: 25px;
+                    width: 100%;
+                    justify-content: center;
+                    font-size: 1rem;
+                    padding: 12px 25px;
                 }
             }
         </style>
@@ -269,261 +308,164 @@
 
             <div class="site-content" x-data="projectDetail">
                 <!-- Hero Section -->
-                <section class="project-hero">
-                    <div class="container">
-                        <span class="sub-title fade-in">
-                            <img
-                                class="img-fluid"
-                                src="assets/images/subtitle-icon.png"
-                                alt="Project Subtitle Icon"
-                                width="24"
-                            />
-                            <span
-                                x-text="projectData.service?.title || 'Project'"
-                            ></span>
-                        </span>
-                        <h1
-                            class="title fade-in"
-                            x-text="projectData.title || 'Project Details'"
-                        ></h1>
-                    </div>
-                </section>
 
                 <!-- Main Project Section -->
-                <section class="project-section">
+                <section class="project-content">
                     <div class="container">
                         <!-- Loading State -->
-                        <div
-                            id="projectLoading"
-                            class="text-white text-center py-4 fade-in"
-                            x-show="isLoading"
-                        >
-                            <i class="fas fa-spinner fa-spin me-2"></i>Loading
-                            project details...
+                        <div class="loading-overlay" x-show="isLoading">
+                            <i class="fas fa-spinner fa-spin"></i> Loading
+                            Project...
                         </div>
 
                         <!-- Error State -->
-                        <div
-                            id="projectError"
-                            class="error-container"
-                            x-show="errorMessage"
-                        >
-                            <p
-                                class="text-white mb-4"
-                                x-text="errorMessage"
-                            ></p>
-                            <button
-                                class="btn btn-retry"
-                                @click="fetchProjectData()"
-                            >
-                                Retry
-                            </button>
+                        <div class="error-overlay" x-show="errorMessage">
+                            <p x-text="errorMessage"></p>
+                            <button @click="fetchProjectData()">Retry</button>
                         </div>
 
                         <!-- Project Content -->
-                        <div
-                            id="projectContent"
-                            x-show="!isLoading && !errorMessage"
-                        >
+                        <div x-show="!isLoading && !errorMessage">
+                            <!-- Image Gallery (First Section) -->
+                            <div
+                                class="image-gallery"
+                                x-show="projectData.images && projectData.images.length > 0"
+                            >
+                                <template
+                                    x-for="image in projectData.images"
+                                    :key="image.image_path"
+                                >
+                                    <img
+                                        :src="image.image_path || 'assets/images/placeholder.jpg'"
+                                        class="img-fluid"
+                                        :alt="projectData.title || 'Project Image'"
+                                        @error="handleImageError($event)"
+                                    />
+                                </template>
+                            </div>
+                            <p
+                                x-show="!projectData.images || projectData.images.length === 0"
+                                class="text-warning text-center mb-5"
+                            >
+                                No images available for this project.
+                            </p>
+
                             <div class="row g-4">
-                                <!-- Project Images Carousel -->
-                                <div class="col-lg-6">
-                                    <div
-                                        x-show="!projectData.images || projectData.images.length === 0"
-                                        class="image-error"
-                                    >
-                                        No images available for this project.
-                                    </div>
-                                    <div
-                                        id="projectImagesCarousel"
-                                        class="carousel slide mb-4"
-                                        data-bs-ride="carousel"
-                                        x-show="projectData.images && projectData.images.length > 0"
-                                    >
-                                        <div class="carousel-inner">
-                                            <template
-                                                x-for="image in projectData.images"
-                                                :key="image.image_path"
-                                            >
-                                                <div
-                                                    :class="['carousel-item', { active: $index === 0 }]"
-                                                >
-                                                    <img
-                                                        :src="image.image_path || 'assets/images/placeholder.jpg'"
-                                                        class="d-block w-100 img-fluid"
-                                                        :alt="projectData.title || 'Project Image'"
-                                                        loading="lazy"
-                                                        @error="handleImageError($event)"
-                                                    />
-                                                    <div
-                                                        class="carousel-caption d-none d-md-block"
-                                                    >
-                                                        <h5
-                                                            x-text="projectData.title || 'Project Image'"
-                                                        ></h5>
-                                                    </div>
-                                                </div>
-                                            </template>
-                                        </div>
-                                        <button
-                                            class="carousel-control-prev"
-                                            type="button"
-                                            data-bs-target="#projectImagesCarousel"
-                                            data-bs-slide="prev"
-                                            aria-label="Previous"
+                                <!-- Project Overview -->
+                                <div class="col-md-6">
+                                    <div class="project-card">
+                                        <h4>Project Overview</h4>
+                                        <p
+                                            x-text="projectData.description || 'No description available'"
+                                        ></p>
+                                        <template
+                                            x-if="projectData.project_url"
                                         >
-                                            <span
-                                                class="carousel-control-prev-icon"
-                                                aria-hidden="true"
-                                            ></span>
-                                        </button>
-                                        <button
-                                            class="carousel-control-next"
-                                            type="button"
-                                            data-bs-target="#projectImagesCarousel"
-                                            data-bs-slide="next"
-                                            aria-label="Next"
-                                        >
-                                            <span
-                                                class="carousel-control-next-icon"
-                                                aria-hidden="true"
-                                            ></span>
-                                        </button>
-                                    </div>
-
-                                    <!-- Video Player (if video_url is valid) -->
-                                    <div
-                                        class="video-container"
-                                        x-show="isValidVideoUrl(projectData.video_url)"
-                                    >
-                                        <iframe
-                                            :src="getVideoEmbedUrl(projectData.video_url)"
-                                            frameborder="0"
-                                            allow="autoplay; encrypted-media"
-                                            allowfullscreen
-                                            title="Project Video"
-                                        ></iframe>
-                                    </div>
-                                </div>
-
-                                <!-- Project Details -->
-                                <div class="col-lg-6">
-                                    <h4 class="mb-3 fade-in">
-                                        Project Information
-                                    </h4>
-                                    <ul class="list-group mb-4">
-                                        <li class="list-group-item fade-in">
-                                            <strong>Title:</strong>
-                                            <span
-                                                x-text="projectData.title || 'N/A'"
-                                            ></span>
-                                        </li>
-                                        <li class="list-group-item fade-in">
-                                            <strong>Description:</strong>
-                                            <span
-                                                x-text="projectData.description || 'No description available'"
-                                            ></span>
-                                        </li>
-                                        <li
-                                            class="list-group-item1 fade-in"
-                                            x-show="projectData.project_url"
-                                        >
-                                            <strong>Project URL:</strong>
                                             <a
                                                 :href="projectData.project_url"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                class="icon-link"
-                                                :title="projectData.project_url || 'Visit Project'"
+                                                class="link-btn"
                                             >
-                                                <i class="fas fa-link"></i>
+                                                Visit Project
+                                                <i
+                                                    class="fas fa-external-link-alt"
+                                                ></i>
                                             </a>
-                                        </li>
-                                        <li
-                                            class="list-group-item1 fade-in"
-                                            x-show="projectData.video_url"
-                                        >
-                                            <strong>Video:</strong>
-                                            <a
-                                                :href="projectData.video_url"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                class="icon-link"
-                                                :title="projectData.video_url || 'Watch Video'"
-                                            >
-                                                <i class="fas fa-video"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                        </template>
+                                    </div>
+                                    <div
+                                        class="project-card"
+                                        x-show="isValidVideoUrl(projectData.video_url)"
+                                    >
+                                        <h4>Video Presentation</h4>
+                                        <div class="video-wrapper">
+                                            <iframe
+                                                :src="getVideoEmbedUrl(projectData.video_url)"
+                                                frameborder="0"
+                                                allow="autoplay; encrypted-media"
+                                                allowfullscreen
+                                                title="Project Video"
+                                            ></iframe>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                    <h4 class="mb-3 fade-in">
-                                        Service Details
-                                    </h4>
-                                    <ul class="list-group mb-4">
-                                        <li class="list-group-item fade-in">
-                                            <strong>Service Title:</strong>
+                                <!-- Project Details -->
+                                <div class="col-md-6">
+                                    <div class="project-card">
+                                        <h4>Project Details</h4>
+                                        <p>
+                                            <strong>Title:</strong>
+                                            <span
+                                                x-text="projectData.title || 'N/A'"
+                                            ></span>
+                                        </p>
+                                        <p>
+                                            <strong>Service:</strong>
                                             <span
                                                 x-text="projectData.service?.title || 'N/A'"
                                             ></span>
-                                        </li>
-                                        <li class="list-group-item fade-in">
-                                            <strong
-                                                >Service Description:</strong
-                                            >
+                                        </p>
+                                        <p>
+                                            <strong>Description:</strong>
                                             <span
-                                                x-text="projectData.service?.description || 'No description available'"
+                                                x-text="projectData.service?.description || 'N/A'"
                                             ></span>
-                                        </li>
-                                        <li class="list-group-item fade-in">
-                                            <strong>Service Image:</strong>
-                                            <div
-                                                x-show="projectData.service?.image_path"
-                                            >
-                                                <img
-                                                    :src="projectData.service?.image_path || 'assets/images/placeholder.jpg'"
-                                                    class="service-image"
-                                                    :alt="projectData.service?.title || 'Service Image'"
-                                                    loading="lazy"
-                                                    @error="handleImageError($event)"
-                                                />
-                                            </div>
-                                            <span
-                                                x-show="!projectData.service?.image_path"
-                                                >No image available</span
-                                            >
-                                        </li>
-                                    </ul>
-
-                                    <h4 class="mb-3 fade-in">Features</h4>
-                                    <ul class="list-group mb-4">
-                                        <template
-                                            x-for="feature in projectData.features"
-                                            :key="feature.feature_text"
+                                        </p>
+                                        <div
+                                            x-show="projectData.service?.image_path"
                                         >
+                                            <img
+                                                :src="projectData.service?.image_path || 'assets/images/placeholder.jpg'"
+                                                class="img-fluid"
+                                                :alt="projectData.service?.title || 'Service Image'"
+                                                @error="handleImageError($event)"
+                                                style="
+                                                    border-radius: 12px;
+                                                    max-height: 200px;
+                                                    object-fit: cover;
+                                                "
+                                            />
+                                        </div>
+                                        <p
+                                            x-show="!projectData.service?.image_path"
+                                            class="text-warning"
+                                        >
+                                            No service image available
+                                        </p>
+                                    </div>
+                                    <div class="project-card">
+                                        <h4>Key Features</h4>
+                                        <ul class="list-unstyled">
+                                            <template
+                                                x-for="feature in projectData.features"
+                                                :key="feature.feature_text"
+                                            >
+                                                <li
+                                                    x-text="feature.feature_text || 'N/A'"
+                                                    class="mb-3"
+                                                ></li>
+                                            </template>
                                             <li
-                                                class="list-group-item fade-in"
-                                                x-text="feature.feature_text || 'N/A'"
-                                            ></li>
-                                        </template>
-                                        <li
-                                            class="list-group-item fade-in"
-                                            x-show="!projectData.features || projectData.features.length === 0"
-                                        >
-                                            No features available
-                                        </li>
-                                    </ul>
-
-                                    <a
-                                        href="page2.html"
-                                        class="btn btn-back fade-in"
-                                        role="button"
-                                        aria-label="Back to Projects"
-                                    >
-                                        <i class="fas fa-arrow-left me-2"></i
-                                        >Back to Projects
-                                    </a>
+                                                x-show="!projectData.features || projectData.features.length === 0"
+                                                class="mb-3"
+                                            >
+                                                No features available
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
+                            <a
+                                href="page2.html"
+                                class="btn btn-back"
+                                role="button"
+                                aria-label="Return to Projects"
+                            >
+                                <i class="fas fa-arrow-left"></i> Return to
+                                Projects
+                            </a>
                         </div>
                     </div>
                 </section>
@@ -627,7 +569,10 @@
                             const data = await response.json();
                             if (data.status === "success" && data.data) {
                                 this.projectData = data.data;
-                                console.log("Project Data:", this.projectData);
+                                console.log(
+                                    "Fetched Project Data:",
+                                    this.projectData
+                                );
                                 this.isLoading = false;
                             } else {
                                 throw new Error(
@@ -640,6 +585,7 @@
                                 "Failed to fetch project details";
                             this.isLoading = false;
                             this.showToast("danger", this.errorMessage);
+                            console.error("Fetch Error:", error);
                         }
                     },
 
@@ -670,8 +616,9 @@
 
                     handleImageError(event) {
                         console.error(
-                            "Image failed to load:",
-                            event.target.src
+                            "Image load failed:",
+                            event.target.src,
+                            "Switching to placeholder"
                         );
                         event.target.src = "assets/images/placeholder.jpg";
                     },

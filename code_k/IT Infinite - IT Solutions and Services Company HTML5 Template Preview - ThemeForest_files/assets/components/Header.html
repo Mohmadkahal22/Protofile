@@ -1,7 +1,5 @@
 <!-- Header Component -->
-<header
-    class="header header-3 header-sticky header-absolute is-sticky sticky-show"
->
+<header class="header header-3 header-sticky header-absolute">
     <div class="header-inner">
         <div class="site-logo">
             <h4>
@@ -116,13 +114,13 @@
                         data-i18n="header.contact"
                     ></a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a
                         class="nav-link"
                         href="page2.html#JoinOurTeam"
                         data-i18n="header.join_team"
                     ></a>
-                </li>
+                </li> -->
             </ul>
         </div>
 
@@ -133,7 +131,6 @@
             >
                 <option value="en" data-i18n="header.languages.en">EN</option>
                 <option value="ar" data-i18n="header.languages.ar">AR</option>
-                <option value="tr" data-i18n="header.languages.tr">TR</option>
             </select>
 
             <div class="action-hamburger">
@@ -145,13 +142,7 @@
                     aria-controls="offcanvasRight"
                 >
                     <span class="hamburger-container">
-                        <img
-                            loading="lazy"
-                            class="img-fluid"
-                            src="assets/icons/dots-menu.svg"
-                            alt=""
-                            data-i18n="header.menu_alt"
-                        />
+                        <i class="fa-solid fa-bars"></i>
                     </span>
                 </a>
             </div>
@@ -179,26 +170,24 @@
                     data-bs-toggle="offcanvas"
                     data-bs-target="#menuOffcanvas"
                     aria-controls="menuOffcanvas"
+                    aria-label="Toggle mobile menu"
                 >
                     <span class="hamburger-container">
-                        <img
-                            loading="lazy"
-                            class="img-fluid"
-                            src="assets/icons/dots-menu.svg"
-                            alt=""
+                        <i
+                            class="fa-solid fa-bars"
                             data-i18n="header.menu_alt"
-                        />
+                        ></i>
                     </span>
                 </a>
             </div>
         </div>
     </div>
 </header>
-<!-- Header Side Panel -->
 <div
     class="offcanvas offcanvas-end sidepanel-offcanvas"
     tabindex="-1"
     id="offcanvasRight"
+    aria-labelledby="offcanvasRightLabel"
 >
     <div class="offcanvas-header">
         <button
@@ -214,7 +203,7 @@
     <div class="offcanvas-body lenis-scroll-disable">
         <div class="body-inner">
             <div class="about-info">
-                <h4 class="title mb-3">Scalable Business for Startups</h4>
+                <h4 class="title">Scalable Business for Startups</h4>
                 <p>
                     Get the oars in the water and start rowing. Execution is the
                     single biggest factor in achievement so the faster and
@@ -235,17 +224,19 @@
                     </li>
                     <li>
                         <a href="#"
-                            ><i class="fab fa-linkedin-in"></i>Linkedin
-                        </a>
+                            ><i class="fab fa-linkedin-in"></i>Linkedin</a
+                        >
                     </li>
                     <li>
-                        <a href="#"><i class="fab fa-twitter"></i>Twitter </a>
+                        <a href="#"><i class="fab fa-twitter"></i>Twitter</a>
                     </li>
                 </ul>
             </div>
             <div class="contact-info">
                 <span class="number">+2 01555 735513</span>
-                <a class="mail" href="#"><i></i>info@kayancode.com</a>
+                <a class="mail" href="mailto:info@kayancode.com"
+                    >info@kayancode.com</a
+                >
                 <span class="text"
                     >Looking for collaboration for your next creative
                     project?</span
@@ -254,3 +245,143 @@
         </div>
     </div>
 </div>
+
+<style>
+    .sidepanel-offcanvas {
+        background-color: #f8f9fa;
+        color: #333333;
+        width: 280px;
+        font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+        direction: ltr;
+    }
+
+    .offcanvas-header {
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .btn-close .fa-xmark {
+        font-size: 20px;
+        color: #333333;
+        transition: color 0.3s ease;
+    }
+
+    .btn-close .fa-xmark:hover {
+        color: #2b9bff;
+    }
+
+    .offcanvas-body {
+        padding: 20px;
+    }
+
+    .body-inner {
+        display: grid;
+        grid-template-rows: auto auto auto;
+        gap: 20px;
+    }
+
+    .about-info .title {
+        font-size: 25px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #2b9bff;
+    }
+
+    .about-info p {
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 0;
+        color: #555555;
+    }
+
+    .socail-info ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .socail-info li a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #333333;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .socail-info li a i {
+        font-size: 16px;
+        color: #2b9bff;
+        transition: transform 0.3s ease;
+    }
+
+    .socail-info li a:hover {
+        color: #2b9bff;
+    }
+
+    .socail-info li a:hover i {
+        transform: scale(1.2);
+    }
+
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .contact-info .number {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333333;
+    }
+
+    .contact-info .mail {
+        color: #2b9bff;
+        text-decoration: none;
+        font-size: 14px;
+        transition: text-decoration 0.3s ease;
+    }
+
+    .contact-info .mail:hover {
+        text-decoration: underline;
+    }
+
+    .contact-info .text {
+        font-size: 14px;
+        color: #555555;
+        line-height: 1.5;
+        margin-bottom: 10px;
+    }
+
+    .contact-info .text::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 2px;
+        background-color: #2b9bff;
+        margin-top: 10px;
+    }
+
+    /* RTL support for Arabic */
+    html[dir="rtl"] .sidepanel-offcanvas {
+        direction: rtl;
+    }
+
+    html[dir="rtl"] .offcanvas-header {
+        justify-content: flex-start;
+    }
+
+    html[dir="rtl"] .socail-info ul {
+        flex-direction: row-reverse;
+    }
+
+    html[dir="rtl"] .socail-info li a {
+        flex-direction: row-reverse;
+    }
+</style>

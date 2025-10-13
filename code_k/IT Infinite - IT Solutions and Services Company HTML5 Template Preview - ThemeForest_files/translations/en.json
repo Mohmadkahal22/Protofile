@@ -2,7 +2,7 @@
     "header": {
         "logo_part1": "Hexa",
         "logo_part2": "Terminal",
-    
+
         "search": "Search",
         "menu_alt": "Menu",
         "languages": {
@@ -22,13 +22,13 @@
         "join_team": "Join Our Team",
         "search_placeholder": "Search"
     },
-    "vision": {
+     "vision": {
         "title": "Shaping the future through Tech",
-        "description": "At KayanCode, we don't see Tech as mere tools - we view it as the language of the future.",
+        "description": "At Hexa Terminal, we redefine technology as the engine of innovation and growth. We deliver cutting-edge digital solutions tailored to your needs, ensuring your competitive edge with world-class technical expertise.",
         "paragraph1": "Our vision stems from a firm belief that every great idea deserves a digital embodiment, and every ambitious project deserves a solid technological foundation to launch from.",
         "paragraph2": "We aspire to be the premier technical partner in the Arab world and globally - transforming ideas into tangible digital products and leading the digital transformation journey for individuals and organizations with a professional, customized approach built on deep market understanding.",
         "paragraph3": "Our vision focuses on building an integrated technological ecosystem that supports innovation and provides our clients with the digital tools they need to grow, expand, and compete in a rapidly changing market. We don't just create software - we build real, advanced 'digital entities' with clear identities that reflect our clients' ambitions and embody their goals in reality.",
-        "paragraph4": "From the Gulf to America, through Lebanon and Turkey, we aim to make the KayanCode name synonymous with quality, commitment, and technological innovation.",
+        "paragraph4": "From Syria to America, through Lebanon and Turkey, we aim to make the Hexa Terminal name synonymous with quality, commitment, and technological innovation.",
         "objectives": {
             "title": "Our Objectives",
             "1": "Deliver comprehensive, innovative technical solutions",
