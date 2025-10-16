@@ -377,6 +377,51 @@
                     requestAnimationFrame(raf);
                 }
             });
-        </script>
+        </script><script>
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const response = await fetch("http://127.0.0.1:8000/api/about_us/index");
+    const result = await response.json();
+
+    if (result.status === "success" && result.data) {
+      const data = result.data;
+
+      // تحديث اسم الشركة في الفوتر
+      const footerLogo = document.querySelector(".footer-logo");
+      if (footerLogo) footerLogo.textContent = data.company_name || "Company";
+
+      // تحديث البريد الإلكتروني
+      const emailElement = document.querySelector(
+        '[data-i18n="footer.address.email"]'
+      );
+      if (emailElement) emailElement.textContent = data.contact_email || "";
+
+      // تحديث روابط التواصل الاجتماعي
+      const facebook = document.querySelector('.fab.fa-facebook-f')?.parentElement;
+      const instagram = document.querySelector('.fab.fa-instagram')?.parentElement;
+      const linkedin = document.querySelector('.fab.fa-linkedin-in')?.parentElement;
+      const twitter = document.querySelector('.fab.fa-twitter')?.parentElement;
+
+      if (facebook) facebook.href = data.facebook_url || "#";
+      if (instagram) instagram.href = data.instagram_url || "#";
+      if (linkedin) linkedin.href = data.linkedin_url || "#";
+      if (twitter) twitter.href = data.github_url || "#"; // استخدم GitHub بدلاً من تويتر إذا أردت
+
+      // تحديث الوصف في قسم "أين تجدنا" أو مكان آخر
+      const descriptionTarget = document.querySelector(".widget-address-info p");
+      if (descriptionTarget) descriptionTarget.textContent = data.company_description || "";
+
+      // تحديث شعار الشركة إن وجد
+      const logoImg = document.querySelector(".header-logo");
+      if (logoImg && data.company_logo) {
+        logoImg.setAttribute("src", data.company_logo);
+      }
+    }
+  } catch (error) {
+    console.error("خطأ أثناء جلب بيانات الشركة:", error);
+  }
+});
+</script>
+
     </body>
 </html>

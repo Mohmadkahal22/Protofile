@@ -7453,6 +7453,10 @@ form.form-dark .form-control:focus {
     top: 54px;
     left: 102px;
 }
+.sub-title img {
+    height: 52px;
+    width: 52px;
+}
 
 .main-banner.main-banner-3 .banner-inner .banner-conent .banner-conent-footer {
     display: flex;

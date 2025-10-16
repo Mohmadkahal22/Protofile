@@ -22,7 +22,7 @@
         "join_team": "Join Our Team",
         "search_placeholder": "Search"
     },
-     "vision": {
+    "vision": {
         "title": "Shaping the future through Tech",
         "description": "At Hexa Terminal, we redefine technology as the engine of innovation and growth. We deliver cutting-edge digital solutions tailored to your needs, ensuring your competitive edge with world-class technical expertise.",
         "paragraph1": "Our vision stems from a firm belief that every great idea deserves a digital embodiment, and every ambitious project deserves a solid technological foundation to launch from.",
@@ -327,8 +327,8 @@
     "footer": {
         "address": {
             "title": "Where To Find Us",
-            "location": "Egypt - Cairo - 55 Maadi",
-            "phone": "+2 01555 735513",
+            "location": "Syria - Damascus",
+            "phone": "+963-949805426",
             "phone_label": "Mon-fri 9:00am 6:00pm",
             "email": "info@kayancode.com",
             "email_label": "24x7 online support"
@@ -338,6 +338,8 @@
             "placeholder": "Enter Your Email"
         },
         "links": {
+            "project": "Projects",
+
             "title": "Quick Links",
             "home": "Home",
             "about": "About us",
@@ -351,7 +353,7 @@
         },
         "call": {
             "title": "Call Center",
-            "number": "+2-1555-735513",
+            "number": "+963-935027218",
             "text": "and get a free estimate"
         },
         "copyright": "Develop and design by Hexa Terminal"
