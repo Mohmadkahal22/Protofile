@@ -18,7 +18,6 @@ document.addEventListener('alpine:init', () => {
                 });
 
                 const data = await response.json();
-                console.log(data);
 
                 if (response.ok && data.status === 'success') {
                     this.faqs = data.data.map(faq => ({
@@ -29,7 +28,6 @@ document.addEventListener('alpine:init', () => {
                         updated_at: faq.updated_at,
                         isOpen: false
                     }));
-                    console.log(`Loaded ${data.count} FAQs`);
                 } else {
                     throw new Error(data.message || 'Failed to fetch FAQs');
                 }

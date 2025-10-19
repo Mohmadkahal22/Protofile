@@ -7,7 +7,7 @@
             name="description"
             content="Hexa Terminal - IT Solutions and Services"
         />
-        <meta name="author" content="kayancode.com" />
+        <meta name="author" content="hexaterminal.com" />
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -116,9 +116,7 @@
 
                 function checkAllLoaded(componentName) {
                     loadedComponents++;
-                    console.log(
-                        `${componentName} loaded, ${loadedComponents}/${totalComponents}`
-                    );
+
                     // Scroll to #contact after contact section is loaded
                     if (
                         componentName === "ContactSection" &&
@@ -129,7 +127,6 @@
                                 document.getElementById("contact");
                             if (targetElement) {
                                 targetElement.scrollIntoView({});
-                                console.log("Scrolled to contact section");
                             } else {
                                 console.error(
                                     "Contact section with id='contact' not found"
@@ -143,12 +140,7 @@
                     console.error(
                         `Error loading ${componentName}.html: ${status} (${xhr.status}) - ${error}`
                     );
-                    console.log(
-                        `Response text: ${xhr.responseText.substring(
-                            0,
-                            200
-                        )}...`
-                    );
+
                     checkAllLoaded(componentName);
                 }
 
@@ -195,9 +187,6 @@
                                     document.getElementById(
                                         "contact-section-container"
                                     )
-                                );
-                                console.log(
-                                    "Alpine initialized for contact section"
                                 );
                             } else {
                                 console.error("Alpine.js not loaded");

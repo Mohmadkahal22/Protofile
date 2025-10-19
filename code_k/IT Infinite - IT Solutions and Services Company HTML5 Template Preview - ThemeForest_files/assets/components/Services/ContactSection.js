@@ -58,7 +58,6 @@ document.addEventListener('alpine:init', () => {
             };
 
             try {
-                console.log('Submitting payload:', payload);
                 const response = await fetch(`${this.apiBaseUrl}/api/contact_us/store`, {
                     method: 'POST',
                     headers: {
@@ -68,7 +67,6 @@ document.addEventListener('alpine:init', () => {
                 });
 
                 const data = await response.json();
-                console.log('Response:', data);
 
                 if (!response.ok) {
                     if (data.errors && typeof data.errors === 'object') {

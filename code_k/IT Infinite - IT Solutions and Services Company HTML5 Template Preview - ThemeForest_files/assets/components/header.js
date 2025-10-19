@@ -1,6 +1,5 @@
 // إدارة الوضع الفاتح والداكن
 function initTheme() {
-    console.log("swe");
 
     const themeSwitch = document.getElementById("theme-checkbox");
     if (!themeSwitch) return;

@@ -114,314 +114,111 @@
         <script src="assets/components/VideoSection.js"></script>
         <script src="assets/components/header.js"></script>
 
-        <!-- ملف JS الجديد -->
-
-        <!-- Component Loader -->
         <script>
             $(document).ready(function () {
                 let loadedComponents = 0;
                 const totalComponents = 7;
 
-                function checkAllLoaded(componentName) {
-                    loadedComponents++;
-                    console.log(
-                        `${componentName} loaded, ${loadedComponents}/${totalComponents}`
-                    );
-                    if (
-                        componentName === "About" &&
-                        typeof Alpine !== "undefined"
-                    ) {
-                        Alpine.initTree(
-                            document.getElementById("about-container")
-                        );
-                        console.log("Alpine initialized for about section");
-                    }
-                    if (
-                        componentName === "FAQ" &&
-                        typeof Alpine !== "undefined"
-                    ) {
-                        Alpine.initTree(
-                            document.getElementById("faq-container")
-                        );
-                        console.log("Alpine initialized for FAQ section");
-                    }
-                    if (
-                        componentName === "Reviews" &&
-                        typeof Alpine !== "undefined"
-                    ) {
-                        Alpine.initTree(
-                            document.getElementById("reviews-section-container")
-                        );
-                        console.log("Alpine initialized for reviews section");
-                    }
-                }
-
-                function handleLoadError(componentName, xhr, status, error) {
-                    console.error(
-                        `Error loading ${componentName}.html: ${status} (${xhr.status}) - ${error}`
-                    );
-                    console.log(
-                        `Response text: ${xhr.responseText.substring(
-                            0,
-                            200
-                        )}...`
-                    );
-                    checkAllLoaded(componentName);
-                }
-
-                $("#header-container").load(
-                    "assets/components/Header.html",
-                    function (response, status, xhr) {
-                        if (status === "error")
-                            handleLoadError(
-                                "Header",
-                                xhr,
-                                status,
-                                xhr.statusText
-                            );
-                        else checkAllLoaded("Header");
-                    }
-                );
-                $("#banner-container").load(
-                    "assets/components/Banner.html",
-                    function (response, status, xhr) {
-                        if (status === "error")
-                            handleLoadError(
-                                "Banner",
-                                xhr,
-                                status,
-                                xhr.statusText
-                            );
-                        else checkAllLoaded("Banner");
-                    }
-                );
+                $("#header-container").load("assets/components/Header.html");
+                $("#banner-container").load("assets/components/Banner.html");
                 $("#video-section-container").load(
-                    "assets/components/VideoSection.html",
-                    function (response, status, xhr) {
-                        if (status === "error")
-                            handleLoadError(
-                                "VideoSection",
-                                xhr,
-                                status,
-                                xhr.statusText
-                            );
-                        else {
-                            checkAllLoaded("VideoSection");
-                            // تحميل الفيديو بعد تحميل القسم
-                            loadVideoData();
-                        }
-                    }
+                    "assets/components/VideoSection.html"
                 );
-                $("#vision-container").load(
-                    "assets/components/Vision.html",
-                    function (response, status, xhr) {
-                        if (status === "error")
-                            handleLoadError(
-                                "Vision",
-                                xhr,
-                                status,
-                                xhr.statusText
-                            );
-                        else checkAllLoaded("Vision");
-                    }
-                );
+                $("#vision-container").load("assets/components/Vision.html");
 
                 $("#services-hero-container").load(
-                    "assets/components/Services/ServicesHero.html",
-                    function (response, status, xhr) {
-                        if (status === "error")
-                            handleLoadError(
-                                "ServicesHero",
-                                xhr,
-                                status,
-                                xhr.statusText
-                            );
-                        else checkAllLoaded("ServicesHero");
-                    }
+                    "assets/components/Services/ServicesHero.html"
                 );
                 $("#services-list-container").load(
-                    "assets/components/Services/ServicesList.html",
-                    function (response, status, xhr) {
-                        if (status === "error")
-                            handleLoadError(
-                                "ServicesList",
-                                xhr,
-                                status,
-                                xhr.statusText
-                            );
-                        else checkAllLoaded("ServicesList");
-                    }
+                    "assets/components/Services/ServicesList.html"
                 );
                 $("#projects-showcase-container").load(
-                    "assets/components/Services/ProjectsShowcase.html",
-                    function (response, status, xhr) {
-                        if (status === "error")
-                            handleLoadError(
-                                "ProjectsShowcase",
-                                xhr,
-                                status,
-                                xhr.statusText
-                            );
-                        else checkAllLoaded("ProjectsShowcase");
-                    }
+                    "assets/components/Services/ProjectsShowcase.html"
                 );
                 $("#team-section-container").load(
-                    "assets/components/Services/TeamSection.html",
-                    function (response, status, xhr) {
-                        if (status === "error")
-                            handleLoadError(
-                                "TeamSection",
-                                xhr,
-                                status,
-                                xhr.statusText
-                            );
-                        else {
-                            checkAllLoaded("TeamSection");
-                            if (typeof Alpine !== "undefined") {
-                                Alpine.initTree(
-                                    document.getElementById(
-                                        "team-section-container"
-                                    )
-                                );
-                                console.log(
-                                    "Alpine initialized for team section"
-                                );
-                            } else {
-                                console.error("Alpine.js not loaded");
-                            }
-                        }
-                    }
+                    "assets/components/Services/TeamSection.html"
                 );
 
                 $("#advantages-section-container").load(
-                    "assets/components/Services/AdvantagesSection.html",
-                    function (response, status, xhr) {
-                        if (status === "error")
-                            handleLoadError(
-                                "AdvantagesSection",
-                                xhr,
-                                status,
-                                xhr.statusText
-                            );
-                        else checkAllLoaded("AdvantagesSection");
-                    }
+                    "assets/components/Services/AdvantagesSection.html"
                 );
                 $("#reviews-section-container").load(
-                    "assets/components/Services/ReviewsSection.html",
-                    function (response, status, xhr) {
-                        if (status === "error")
-                            handleLoadError(
-                                "Reviews",
-                                xhr,
-                                status,
-                                xhr.statusText
-                            );
-                        else {
-                            checkAllLoaded("Reviews");
-                            if (typeof Alpine !== "undefined") {
-                                Alpine.initTree(
-                                    document.getElementById(
-                                        "reviews-section-container"
-                                    )
-                                );
-                                console.log(
-                                    "Alpine initialized for reviews section"
-                                );
-                            } else {
-                                console.error("Alpine.js not loaded");
-                            }
-                        }
-                    }
+                    "assets/components/Services/ReviewsSection.html"
                 );
                 $("#faq-container").load(
-                    "assets/components/Services/FAQSection.html",
-                    function (response, status, xhr) {
-                        if (status === "error")
-                            handleLoadError("FAQ", xhr, status, xhr.statusText);
-                        else {
-                            checkAllLoaded("FAQ");
-                            if (typeof Alpine !== "undefined") {
-                                Alpine.initTree(
-                                    document.getElementById("faq-container")
-                                );
-                                console.log(
-                                    "Alpine initialized for FAQ section"
-                                );
-                            } else {
-                                console.error("Alpine.js not loaded");
-                            }
-                        }
-                    }
+                    "assets/components/Services/FAQSection.html"
                 );
-                $("#footer-container").load(
-                    "assets/components/Footer.html",
-                    function (response, status, xhr) {
-                        if (status === "error")
-                            handleLoadError(
-                                "Footer",
-                                xhr,
-                                status,
-                                xhr.statusText
-                            );
-                        else checkAllLoaded("Footer");
-                    }
-                );
+                $("#footer-container").load("assets/components/Footer.html");
 
                 // Initialize Lenis for smooth scrolling
-                if (typeof Lenis !== "undefined") {
-                    const lenis = new Lenis();
-                    function raf(time) {
-                        lenis.raf(time);
-                        requestAnimationFrame(raf);
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", async () => {
+                try {
+                    const response = await fetch(
+                        "http://127.0.0.1:8000/api/about_us/index"
+                    );
+                    const result = await response.json();
+
+                    if (result.status === "success" && result.data) {
+                        const data = result.data;
+
+                        // تحديث اسم الشركة في الفوتر
+                        const footerLogo =
+                            document.querySelector(".footer-logo");
+                        if (footerLogo)
+                            footerLogo.textContent =
+                                data.company_name || "Company";
+
+                        // تحديث البريد الإلكتروني
+                        const emailElement = document.querySelector(
+                            '[data-i18n="footer.address.email"]'
+                        );
+                        if (emailElement)
+                            emailElement.textContent = data.contact_email || "";
+
+                        // تحديث روابط التواصل الاجتماعي
+                        const facebook =
+                            document.querySelector(
+                                ".fab.fa-facebook-f"
+                            )?.parentElement;
+                        const instagram =
+                            document.querySelector(
+                                ".fab.fa-instagram"
+                            )?.parentElement;
+                        const linkedin = document.querySelector(
+                            ".fab.fa-linkedin-in"
+                        )?.parentElement;
+                        const twitter =
+                            document.querySelector(
+                                ".fab.fa-twitter"
+                            )?.parentElement;
+
+                        if (facebook) facebook.href = data.facebook_url || "#";
+                        if (instagram)
+                            instagram.href = data.instagram_url || "#";
+                        if (linkedin) linkedin.href = data.linkedin_url || "#";
+                        if (twitter) twitter.href = data.github_url || "#"; // استخدم GitHub بدلاً من تويتر إذا أردت
+
+                        // تحديث الوصف في قسم "أين تجدنا" أو مكان آخر
+                        const descriptionTarget = document.querySelector(
+                            ".widget-address-info p"
+                        );
+                        if (descriptionTarget)
+                            descriptionTarget.textContent =
+                                data.company_description || "";
+
+                        // تحديث شعار الشركة إن وجد
+                        const logoImg = document.querySelector(".header-logo");
+                        if (logoImg && data.company_logo) {
+                            logoImg.setAttribute("src", data.company_logo);
+                        }
                     }
-                    requestAnimationFrame(raf);
+                } catch (error) {
+                    console.error("خطأ أثناء جلب بيانات الشركة:", error);
                 }
             });
-        </script><script>
-document.addEventListener("DOMContentLoaded", async () => {
-  try {
-    const response = await fetch("http://127.0.0.1:8000/api/about_us/index");
-    const result = await response.json();
-
-    if (result.status === "success" && result.data) {
-      const data = result.data;
-
-      // تحديث اسم الشركة في الفوتر
-      const footerLogo = document.querySelector(".footer-logo");
-      if (footerLogo) footerLogo.textContent = data.company_name || "Company";
-
-      // تحديث البريد الإلكتروني
-      const emailElement = document.querySelector(
-        '[data-i18n="footer.address.email"]'
-      );
-      if (emailElement) emailElement.textContent = data.contact_email || "";
-
-      // تحديث روابط التواصل الاجتماعي
-      const facebook = document.querySelector('.fab.fa-facebook-f')?.parentElement;
-      const instagram = document.querySelector('.fab.fa-instagram')?.parentElement;
-      const linkedin = document.querySelector('.fab.fa-linkedin-in')?.parentElement;
-      const twitter = document.querySelector('.fab.fa-twitter')?.parentElement;
-
-      if (facebook) facebook.href = data.facebook_url || "#";
-      if (instagram) instagram.href = data.instagram_url || "#";
-      if (linkedin) linkedin.href = data.linkedin_url || "#";
-      if (twitter) twitter.href = data.github_url || "#"; // استخدم GitHub بدلاً من تويتر إذا أردت
-
-      // تحديث الوصف في قسم "أين تجدنا" أو مكان آخر
-      const descriptionTarget = document.querySelector(".widget-address-info p");
-      if (descriptionTarget) descriptionTarget.textContent = data.company_description || "";
-
-      // تحديث شعار الشركة إن وجد
-      const logoImg = document.querySelector(".header-logo");
-      if (logoImg && data.company_logo) {
-        logoImg.setAttribute("src", data.company_logo);
-      }
-    }
-  } catch (error) {
-    console.error("خطأ أثناء جلب بيانات الشركة:", error);
-  }
-});
-</script>
-
+        </script>
     </body>
 </html>

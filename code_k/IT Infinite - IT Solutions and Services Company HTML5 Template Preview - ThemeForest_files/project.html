@@ -569,10 +569,7 @@
                             const data = await response.json();
                             if (data.status === "success" && data.data) {
                                 this.projectData = data.data;
-                                console.log(
-                                    "Fetched Project Data:",
-                                    this.projectData
-                                );
+
                                 this.isLoading = false;
                             } else {
                                 throw new Error(
@@ -650,21 +647,14 @@
 
                 function checkAllLoaded(componentName) {
                     loadedComponents++;
-                    console.log(
-                        `${componentName} loaded, ${loadedComponents}/${totalComponents}`
-                    );
+
                 }
 
                 function handleLoadError(componentName, xhr, status, error) {
                     console.error(
                         `Error loading ${componentName}.html: ${status} (${xhr.status}) - ${error}`
                     );
-                    console.log(
-                        `Response text: ${xhr.responseText.substring(
-                            0,
-                            200
-                        )}...`
-                    );
+
                     checkAllLoaded(componentName);
                 }
 

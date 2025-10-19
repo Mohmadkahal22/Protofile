@@ -13,12 +13,10 @@ document.addEventListener('alpine:init', () => {
         },
 
         async init() {
-            console.log('Initializing reviews component...');
             await this.fetchReviews();
         },
 
         async fetchReviews() {
-            console.log('Fetching reviews from:', `${this.apiBaseUrl}/api/review/index`);
             try {
                 const response = await fetch(`${this.apiBaseUrl}/api/review/index`, {
                     method: 'GET',
@@ -28,9 +26,7 @@ document.addEventListener('alpine:init', () => {
                     }
                 });
 
-                console.log('Response status:', response.status);
                 const data = await response.json();
-                console.log('API response:', data);
 
                 if (response.ok && data.status === 'success') {
                     this.reviews = data.data.map(review => ({
@@ -43,7 +39,6 @@ document.addEventListener('alpine:init', () => {
                         created_at: review.created_at,
                         updated_at: review.updated_at
                     }));
-                    console.log(`Loaded ${data.count} reviews:`, this.reviews);
                 } else {
                     throw new Error(data.message || 'Failed to fetch reviews');
                 }

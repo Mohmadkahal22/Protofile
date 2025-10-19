@@ -43,8 +43,9 @@ document.addEventListener('alpine:init', () => {
     Alpine.data('videoSection', () => ({
         videoData: {},
         embedUrl: '',
-        apiBaseUrl: 'http://127.0.0.1:8000',
-
+        apiBaseUrl:
+            typeof API_CONFIG !== "undefined" &&
+            API_CONFIG.BASE_URL_Renter,
         async init() {
             await this.$nextTick();
             await this.fetchVideoData();
@@ -59,16 +60,13 @@ document.addEventListener('alpine:init', () => {
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
                 const data = await response.json();
-                console.log('Video API Response:', data);
 
                 if (data.status === 'success' && data.data?.length > 0) {
                     this.videoData = data.data[0];
-                    console.log('Video data loaded:', this.videoData);
 
                     if (this.videoData.video_url?.trim()) {
                         // تحويل الرابط إلى رابط مضمن
                         this.embedUrl = this.convertToEmbedUrl(this.videoData.video_url);
-                        console.log('Converted embed URL:', this.embedUrl);
 
                         loadingIndicator.hideVideoLoader();
                     } else {
@@ -88,7 +86,6 @@ document.addEventListener('alpine:init', () => {
         convertToEmbedUrl(url) {
             if (!url) return '';
 
-            console.log('Original URL:', url);
 
             // YouTube - جميع الأنماط
             if (url.includes('youtube.com') || url.includes('youtu.be')) {
