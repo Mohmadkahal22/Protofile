@@ -30,15 +30,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/login', [LoginController::class, 'login']);
 
 
+// Add this to your routes/api.php
     Route::get('/storage/{path}', function ($path) {
-        $filePath = storage_path('app/public/' . $path);
-
-        if (!File::exists($filePath)) {
-            abort(404);
+        if (!Storage::disk('public')->exists($path)) {
+            abort(404, 'File not found');
         }
 
-        return response()->file($filePath);
-    })->where('path', '.*');
+        return response()->file(Storage::disk('public')->path($path));
+    })->where('path', '.*')->name('api.storage');
+
+
+
+
 
 
     Route::prefix('teams')->group(function () {
