@@ -19,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+             \Filament\Tables\Columns\TextColumn::configureUsing(function ($column) {
+            if (method_exists($column, 'dateTime')) {
+                $column->date('Y-m-d H:i:s');
+            }
+        });
     }
 }
