@@ -10,8 +10,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
 
 class TeamResource extends Resource
 {
@@ -119,6 +117,11 @@ class TeamResource extends Resource
                     ->icon('heroicon-m-document')
                     ->url(fn ($record) => $record->cv_file)
                     ->openUrlInNewTab(),
+
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

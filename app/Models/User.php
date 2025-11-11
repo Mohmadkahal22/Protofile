@@ -46,4 +46,9 @@ class User extends Authenticatable
     ];
 
 
+    public function canAccessFilament(): bool
+    {
+        return $this->type == 1; // Only users with type = 1 can access
+    }
+
 }

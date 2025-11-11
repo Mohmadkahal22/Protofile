@@ -23,4 +23,32 @@ class Services extends Model
     }
 
 
+
+
+        protected static function boot()
+    {
+        parent::boot();
+
+        // Automatically delete files when model is deleted
+        static::deleting(function ($service) {
+            // Delete image file
+            if ($service->image_path) {
+                $filePath = parse_url($service->image_path, PHP_URL_PATH);
+                $filePath = str_replace('api/storage/', '', $filePath);
+
+                if (Storage::disk('public')->exists($filePath)) {
+                    Storage::disk('public')->delete($filePath);
+                }
+            }
+        });
+    }
+
+    /**
+     * Accessor for projects count
+     */
+    public function getProjectsCountAttribute(): int
+    {
+        return $this->projects()->count();
+    }
+
 }

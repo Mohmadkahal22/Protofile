@@ -5,7 +5,6 @@ namespace App\Filament\Resources\TeamResource\Pages;
 use App\Filament\Resources\TeamResource;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class CreateTeam extends CreateRecord
 {

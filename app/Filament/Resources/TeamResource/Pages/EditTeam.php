@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class EditTeam extends EditRecord
 {
-    protected static string $resource = TeamResource::class; // FIXED: lowercase 'r'
+    protected static string $resource = TeamResource::class;
 
     protected function mutateFormDataBeforeSave(array $data): array
     {

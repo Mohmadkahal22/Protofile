@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Fetures_Project extends Model
 {
+    protected $table = 'fetures_projects'; // Make sure table name matches your database
+
     protected $fillable = [
         'project_id',
         'feature_text',
-
     ];
 
     /**
@@ -18,6 +19,14 @@ class Fetures_Project extends Model
      */
     public function project(): BelongsTo
     {
-        return $this->belongsTo(Projects::class);
+        return $this->belongsTo(Projects::class, 'project_id');
+    }
+
+    /**
+     * Accessor for feature preview
+     */
+    public function getFeaturePreviewAttribute(): string
+    {
+        return Str::limit($this->feature_text, 50);
     }
 }
