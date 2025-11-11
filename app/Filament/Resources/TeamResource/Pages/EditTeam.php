@@ -6,11 +6,10 @@ use App\Filament\Resources\TeamResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class EditTeam extends EditRecord
 {
-    protected static string $Resource = TeamResource::class;
+    protected static string $resource = TeamResource::class; // FIXED: lowercase 'r'
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
