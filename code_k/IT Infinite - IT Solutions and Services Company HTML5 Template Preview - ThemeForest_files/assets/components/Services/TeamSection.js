@@ -25,6 +25,20 @@ document.addEventListener('alpine:init', () => {
         }
     };
 
+    // 🔗 دالة لتحويل رابط Google Drive إلى رابط مباشر للعرض
+    function getDirectDriveLink(driveUrl) {
+        try {
+            if (!driveUrl) return '';
+            const fileIdMatch = driveUrl.match(/\/d\/([^/]+)/);
+            if (fileIdMatch && fileIdMatch[1]) {
+                return `https://drive.google.com/uc?export=view&id=${fileIdMatch[1]}`;
+            }
+            return driveUrl; // في حال لم يكن من Google Drive
+        } catch {
+            return driveUrl;
+        }
+    }
+
     function coloredToast(color, message) {
         if (typeof Swal !== 'undefined') {
             const toast = Swal.mixin({
@@ -43,7 +57,10 @@ document.addEventListener('alpine:init', () => {
 
     Alpine.data('teamSection', () => ({
         teamData: [],
-        apiBaseUrl: typeof API_CONFIG !== 'undefined' && API_CONFIG.BASE_URL_Renter ? API_CONFIG.BASE_URL_Renter : 'http://127.0.0.1:8000',
+        apiBaseUrl:
+            typeof API_CONFIG !== 'undefined' && API_CONFIG.BASE_URL_Renter
+                ? API_CONFIG.BASE_URL_Renter
+                : 'http://127.0.0.1:8000',
 
         async init() {
             await this.$nextTick();
@@ -68,7 +85,6 @@ document.addEventListener('alpine:init', () => {
                         Authorization: `Bearer ${token}`,
                     },
                 });
-
 
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
@@ -103,6 +119,10 @@ document.addEventListener('alpine:init', () => {
 
             this.teamData.forEach((member, index) => {
                 const fullName = `${member.first_name || ''} ${member.last_name || ''}`.trim();
+
+                // ✅ تحويل الصورة إذا كانت من Google Drive
+                const photoUrl = getDirectDriveLink(member.photo) || 'assets/images/person1.jpg';
+
                 const teamItem = document.createElement('div');
                 teamItem.className = 'team-item team-style-2 mb-4';
                 teamItem.innerHTML = `
@@ -110,7 +130,7 @@ document.addEventListener('alpine:init', () => {
                         <img
                             loading="lazy"
                             class="img-fluid rounded"
-                            src="${member.photo || 'assets/images/person1.jpg'}"
+                            src="${photoUrl}"
                             alt="${fullName || 'Team Member'}"
                             onerror="this.src='assets/images/person1.jpg';"
                         />
@@ -161,4 +181,3 @@ document.addEventListener('alpine:init', () => {
         }
     }));
 });
-
