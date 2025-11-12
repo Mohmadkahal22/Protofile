@@ -28,7 +28,7 @@ class FAQSeeder extends Seeder
             [
                 'question' => 'ما هي التقنيات ولغات البرمجة التي تعملون بها؟',
                 'answer' => 'فريقنا متخصص في أحدث التقنيات الحديثة:<br>
-                    <strong>الواجهة الخلفية:</strong> PHP (Laravel)، Python (Django, Flask)، Node.js، Java<br>
+                    <strong>الواجهة الخلفية:</strong> PHP، Python، Node.js، Java<br>
                     <strong>الواجهة الأمامية:</strong> JavaScript، React، Vue.js، Angular، TypeScript<br>
                     <strong>تطبيقات الجوال:</strong> React Native، Flutter، Swift، Kotlin<br>
                     <strong>قواعد البيانات:</strong> MySQL، PostgreSQL، MongoDB، Redis<br>

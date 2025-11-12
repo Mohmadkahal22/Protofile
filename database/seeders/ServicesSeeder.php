@@ -22,7 +22,7 @@ class ServicesSeeder extends Seeder
             [
                 'title' => 'تطبيقات الجوال',
                 'description' => 'نصمم ونطور تطبيقات جوال مبتكرة لنظامي iOS و Android باستخدام React Native و Flutter. تطبيقات سلسة وسريعة مع تجربة مستخدم استثنائية.',
-                'image_path' => 'https://cdn-icons-png.flaticon.com/512/2961/2961345.png',
+                'image_path' => 'https://cdn-icons-png.flaticon.com/512/3448/3448656.png',
             ],
             [
                 'title' => 'حلول التجارة الإلكترونية',
