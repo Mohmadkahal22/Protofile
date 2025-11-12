@@ -292,7 +292,7 @@
                 total: 10,
                 errors: 0,
                 maxRetries: 3,
-                retryDelays: [1000, 3000, 5000], // تأخيرات إعادة المحاولة بالمللي ثانية
+                retryDelays: [1000, 3000, 5000],
             };
 
             // تحديث شريط التقدم
@@ -311,7 +311,6 @@
                     statusText;
             }
 
-            // عرض الصفحة بعد تحميل جميع المكونات
             function showPage() {
                 if (
                     componentState.loaded + componentState.errors >=
