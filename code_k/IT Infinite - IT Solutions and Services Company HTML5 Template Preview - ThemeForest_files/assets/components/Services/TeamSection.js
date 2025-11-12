@@ -1,14 +1,7 @@
+
 document.addEventListener('alpine:init', () => {
     const loadingIndicator = {
-        show: function () {
-            const indicator = document.getElementById('loadingIndicator');
-            if (indicator) indicator.classList.remove('hidden');
-        },
-        hide: function () {
-            const indicator = document.getElementById('loadingIndicator');
-            if (indicator) indicator.classList.add('hidden');
-        },
-        showTeamLoader: function () {
+        showTeamLoader() {
             const teamLoading = document.getElementById('teamLoading');
             const teamContainer = document.getElementById('teamContainer');
             const teamEmptyState = document.getElementById('teamEmptyState');
@@ -16,13 +9,13 @@ document.addEventListener('alpine:init', () => {
             if (teamContainer) teamContainer.classList.add('hidden');
             if (teamEmptyState) teamEmptyState.classList.add('hidden');
         },
-        hideTeamLoader: function () {
+        hideTeamLoader() {
             const teamLoading = document.getElementById('teamLoading');
             const teamContainer = document.getElementById('teamContainer');
             if (teamLoading) teamLoading.classList.add('hidden');
             if (teamContainer) teamContainer.classList.remove('hidden');
         },
-        showEmptyState: function () {
+        showEmptyState() {
             const teamEmptyState = document.getElementById('teamEmptyState');
             const teamContainer = document.getElementById('teamContainer');
             const teamLoading = document.getElementById('teamLoading');
@@ -62,7 +55,7 @@ document.addEventListener('alpine:init', () => {
                 loadingIndicator.showTeamLoader();
                 const token = localStorage.getItem('authToken') || 'your-test-token';
                 if (!token) {
-                    coloredToast('danger', 'Authentication token missing');
+                    coloredToast('error', 'Authentication token missing');
                     loadingIndicator.hideTeamLoader();
                     loadingIndicator.showEmptyState();
                     return;
@@ -76,11 +69,12 @@ document.addEventListener('alpine:init', () => {
                     },
                 });
 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
                 const data = await response.json();
+                console.log(data);
+
                 if (data.status === 'success' && data.data) {
                     this.teamData = data.data || [];
                     if (this.teamData.length === 0) {
@@ -95,15 +89,13 @@ document.addEventListener('alpine:init', () => {
             } catch (error) {
                 loadingIndicator.hideTeamLoader();
                 loadingIndicator.showEmptyState();
-                coloredToast('danger', error.message || 'Failed to fetch team data');
+                coloredToast('error', error.message || 'Failed to fetch team data');
             }
         },
 
         populateTeamSection() {
             const teamContainers = document.querySelectorAll('.team-boxs.grid-wrapper');
-            if (teamContainers.length < 2) {
-                return;
-            }
+            if (teamContainers.length < 2) return;
 
             teamContainers.forEach(container => container.innerHTML = '');
             const leftContainer = teamContainers[0];
@@ -112,12 +104,12 @@ document.addEventListener('alpine:init', () => {
             this.teamData.forEach((member, index) => {
                 const fullName = `${member.first_name || ''} ${member.last_name || ''}`.trim();
                 const teamItem = document.createElement('div');
-                teamItem.className = 'team-item team-style-2';
+                teamItem.className = 'team-item team-style-2 mb-4';
                 teamItem.innerHTML = `
                     <div class="team-img">
                         <img
                             loading="lazy"
-                            class="img-fluid"
+                            class="img-fluid rounded"
                             src="${member.photo || 'assets/images/person1.jpg'}"
                             alt="${fullName || 'Team Member'}"
                             onerror="this.src='assets/images/person1.jpg';"
@@ -129,27 +121,23 @@ document.addEventListener('alpine:init', () => {
                                 <ul>
                                     <li>
                                         <a href="${member.github_url || '#'}" target="_blank">
-                                            <span data-i18n="social.github">GitHub</span>
-                                            <i class="fa-brands fa-github"></i>
+                                            GitHub <i class="fa-brands fa-github"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" target="_blank">
-                                            <span data-i18n="social.linkedin">LinkedIn</span>
-                                            <i class="fa-brands fa-linkedin-in"></i>
+                                        <a href="${member.linkedin_url || '#'}" target="_blank">
+                                            LinkedIn <i class="fa-brands fa-linkedin-in"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" target="_blank">
-                                            <span data-i18n="social.facebook">Facebook</span>
-                                            <i class="fa-brands fa-facebook-f"></i>
+                                        <a href="${member.facebook_url || '#'}" target="_blank">
+                                            Facebook <i class="fa-brands fa-facebook-f"></i>
                                         </a>
                                     </li>
                                     ${member.cv_file ? `
                                         <li>
                                             <a href="${member.cv_file}" target="_blank" download>
-                                                <span data-i18n="social.cv">Download CV</span>
-                                                <i class="fa-solid fa-file-pdf"></i>
+                                                Download CV <i class="fa-solid fa-file-pdf"></i>
                                             </a>
                                         </li>
                                     ` : ''}
@@ -157,22 +145,20 @@ document.addEventListener('alpine:init', () => {
                             </div>
                         </div>
                     </div>
-                    <div class="team-info">
-                        <a href="#" class="team-title">${fullName || 'Unknown'}</a>
+                    <div class="team-info mt-2">
+                        <h5 class="team-title">${fullName || 'Unknown'}</h5>
                         <span class="team-destination">${member.position || 'N/A'}</span>
-                        <div class="team-details">
+                        <div class="team-details mt-1">
                             <p><strong>Email:</strong> <a href="mailto:${member.email || '#'}" class="${member.email ? '' : 'text-muted'}">${member.email || 'N/A'}</a></p>
                             <p><strong>Phone:</strong> <a href="tel:${member.phone || '#'}" class="${member.phone ? '' : 'text-muted'}">${member.phone || 'N/A'}</a></p>
                             <p><strong>Specialization:</strong> ${member.specialization || 'N/A'}</p>
                         </div>
                     </div>
                 `;
-                if (index % 2 === 0) {
-                    leftContainer.appendChild(teamItem);
-                } else {
-                    rightContainer.appendChild(teamItem);
-                }
+                if (index % 2 === 0) leftContainer.appendChild(teamItem);
+                else rightContainer.appendChild(teamItem);
             });
         }
     }));
 });
+

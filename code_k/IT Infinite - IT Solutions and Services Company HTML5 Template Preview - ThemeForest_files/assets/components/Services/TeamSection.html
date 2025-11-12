@@ -5,6 +5,19 @@
 >
     <div class="space-pb ellipse-bottom">
         <div class="container">
+            <!-- Loading Indicator -->
+            <div id="teamLoading" class="text-center py-5 hidden">
+                <div class="spinner-border text-light" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div id="teamEmptyState" class="text-center py-5 hidden text-white">
+                <h5>No team members found.</h5>
+            </div>
+
+            <!-- Team Container -->
             <div id="teamContainer">
                 <div class="row justify-content-between">
                     <div class="col-xxl-5 col-xl-5 mb-5 mb-xl-0">
@@ -36,13 +49,7 @@
                                         src="assets/images/banner-bg-01.png"
                                         alt=""
                                     />
-                                    <div class="rotate-img">
-                                        <!-- <img
-                                            class="img-fluid rotate"
-                                            src="assets/images/shape.png"
-                                            alt=""
-                                        /> -->
-                                    </div>
+                                    <div class="rotate-img"></div>
                                 </div>
                             </div>
                         </div>
@@ -51,14 +58,14 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="team-boxs grid-wrapper">
-                                    <!-- Team members populated dynamically -->
+                                    <!-- Left column team members populated dynamically -->
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div
                                     class="team-boxs grid-wrapper team-top-space"
                                 >
-                                    <!-- Team members populated dynamically -->
+                                    <!-- Right column team members populated dynamically -->
                                 </div>
                             </div>
                         </div>
