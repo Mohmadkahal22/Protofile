@@ -17,12 +17,12 @@ class TeamSeeder extends Seeder
             [
                 'first_name' => 'Majd',
                 'last_name' => 'Bayer',
-                'phone' => '+966500000001',
+                'phone' => '+96395027218',
                 'email' => 'majd.bayer@example.com',
                 'photo' => 'https://drive.google.com/file/d/1Cx-Am8xV6TkistDc9jM18wbaQ0x_6ZGz/view?usp=drive_link',
                 'github_url' => 'https://github.com/majdbayer',
                 'cv_file' => 'https://docs.google.com/document/d/1VE-6TenLolMeUrTKCTkbxXggtXVbawbl/edit?usp=drive_link&ouid=101154777687743530485&rtpof=true&sd=true', // You can upload this later
-                'specialization' => 'Backend Development',
+                'specialization' => 'software Development',
                 'position' => 'Senior Backend Engineer',
             ],
             [
@@ -33,7 +33,7 @@ class TeamSeeder extends Seeder
                 'photo' => 'https://drive.google.com/file/d/1t_RKtQTx-twQfsYSA2B4sifj-K1jG51q/view?usp=drive_link',
                 'github_url' => 'https://github.com/mohamadkahal',
                 'cv_file' => 'https://drive.google.com/file/d/1qP8EEuN2QxWjOJPlzvPGcjmYZt6jGiJg/view?usp=drive_link', // You can upload this later
-                'specialization' => 'Frontend Development',
+                'specialization' => 'software Development',
                 'position' => 'Senior Frontend Engineer',
             ],
         ];
