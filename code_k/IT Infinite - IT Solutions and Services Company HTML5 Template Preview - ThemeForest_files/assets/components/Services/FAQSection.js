@@ -1,7 +1,7 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('faqComponent', () => ({
         faqs: [],
-        apiBaseUrl: typeof API_CONFIG !== 'undefined' && API_CONFIG.BASE_URL_Renter ? API_CONFIG.BASE_URL_Renter : 'http://127.0.0.1:8000',
+        apiBaseUrl: typeof API_CONFIG !== 'undefined' && API_CONFIG.BASE_URL_Renter ? API_CONFIG.BASE_URL_Renter : 'http://62.84.188.239',
 
         async init() {
             await this.fetchFaqs();

@@ -3,7 +3,7 @@ document.addEventListener('alpine:init', () => {
         reviews: [],
         apiBaseUrl: typeof API_CONFIG !== 'undefined' && API_CONFIG.BASE_URL_Renter
             ? API_CONFIG.BASE_URL_Renter
-            : 'http://127.0.0.1:8000',
+            : 'http://62.84.188.239',
 
         // مؤقتًا، نعرض جميع التقييمات بدلاً من تصفية المعتمدة فقط
         get approvedReviews() {

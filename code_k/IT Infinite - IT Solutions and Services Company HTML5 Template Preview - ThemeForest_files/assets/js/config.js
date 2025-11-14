@@ -2,8 +2,8 @@
 window.API_CONFIG = {
     // BASE_URL_Renter: 'http://localhost:8000',
 
-    BASE_URL_Renter: 'http://127.0.0.1:8000',
-    BASE_URL_Uber: 'https://api.doosdoos.com/api/v1',
+    BASE_URL_Renter: 'http://62.84.188.239',
+    BASE_URL_Uber: 'http://62.84.188.239',
 
     ENDPOINTS: {
         LOGIN: '/api/login',
