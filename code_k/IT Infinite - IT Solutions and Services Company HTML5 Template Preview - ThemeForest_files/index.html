@@ -10,35 +10,29 @@
 
         <title>HexaTerminal | Software & Web Development Company</title>
 
-        <!-- Meta Description (SEO Optimized) -->
+        <!-- Meta Tags -->
         <meta
             name="description"
-            content="HexaTerminal is a professional software development company specializing in web development, mobile app development, UI/UX design, and digital transformation services. We create innovative digital solutions that empower businesses to grow."
+            content="HexaTerminal is a professional software development company..."
         />
-
-        <!-- Arabic Meta Description -->
         <meta
             name="description:ar"
-            content="هيكسا تيرمينال هي شركة برمجيات احترافية متخصصة في تطوير المواقع، تطبيقات الجوال، تصميم واجهات المستخدم، والتحول الرقمي. نبتكر حلولًا رقمية تساعد الشركات على النمو والتميز."
+            content="هيكسا تيرمينال هي شركة برمجيات احترافية..."
         />
-
-        <!-- Keywords -->
         <meta
             name="keywords"
-            content="HexaTerminal, Software Development, Web Development, Mobile App Development, UI/UX Design, IT Solutions, Cloud Services, E-commerce Development, Digital Transformation, Custom Software, برمجة, تطوير تطبيقات, تصميم مواقع, شركة برمجة"
+            content="HexaTerminal, Software Development, Web Development..."
         />
-
-        <!-- Author -->
         <meta name="author" content="HexaTerminal Team" />
 
-        <!-- Open Graph (for social media) -->
+        <!-- Open Graph -->
         <meta
             property="og:title"
             content="HexaTerminal | Software Development Company"
         />
         <meta
             property="og:description"
-            content="Innovative software development and digital solutions — empowering businesses through technology."
+            content="Innovative software development and digital solutions..."
         />
         <meta
             property="og:image"
@@ -46,56 +40,32 @@
         />
         <meta property="og:url" content="https://hexa-terminal.com" />
         <meta property="og:type" content="website" />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:locale:alternate" content="ar_AR" />
 
-        <!-- Twitter Cards -->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-            name="twitter:title"
-            content="HexaTerminal | Software Development Company"
-        />
-        <meta
-            name="twitter:description"
-            content="Building smart digital solutions for web, mobile, and enterprise platforms."
-        />
-        <meta
-            name="twitter:image"
-            content="https://hexa-terminal.com/assets/images/twitter-card.jpg"
-        />
-
-        <!-- Favicon -->
+        <!-- Preload Critical Resources -->
         <link
-            rel="shortcut icon"
-            href="https://themes.potenzaglobalsolutions.com/html/it-infinite/images/favicon.ico"
+            rel="preload"
+            href="assets/libs/css/font-awesome.min.css"
+            as="style"
         />
-
-        <!-- Fonts -->
-        <link
-            href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap"
-            rel="stylesheet"
-        />
+        <link rel="preload" href="assets/libs/css/cairo-font.css" as="style" />
+        <link rel="preload" href="assets/style/bootstrap.min.css" as="style" />
+        <link rel="preload" href="assets/style/style.css" as="style" />
 
         <!-- CSS Files -->
-        <link
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-            rel="stylesheet"
-        />
-        <link href="assets/style/all.min.css" rel="stylesheet" />
+        <link href="assets/libs/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="assets/libs/css/cairo-font.css" rel="stylesheet" />
         <link href="assets/style/bootstrap.min.css" rel="stylesheet" />
+        <link href="assets/style/all.min.css" rel="stylesheet" />
         <link href="assets/style/css2.css" rel="stylesheet" />
         <link href="assets/style/magnific-popup.css" rel="stylesheet" />
         <link href="assets/style/owl.carousel.min.css" rel="stylesheet" />
         <link href="assets/style/swiper.min.css" rel="stylesheet" />
         <link href="assets/style/style.css" rel="stylesheet" />
+        <link href="assets/libs/css/sweetalert2.min.css" rel="stylesheet" />
 
-        <!-- Fonts Family -->
+        <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Jost:ital,wght@0,100..900;1,100..900&family=Russo+One&display=swap"
-            rel="stylesheet"
-        />
 
         <style>
             /* شاشة التحميل */
@@ -162,17 +132,14 @@
                 }
             }
 
-            /* إخفاء المحتوى الرئيسي أثناء التحميل */
             #page {
                 opacity: 0;
                 transition: opacity 0.5s ease;
             }
-
             #page.loaded {
                 opacity: 1;
             }
 
-            /* أنماط لرسائل الخطأ */
             .error-message {
                 background-color: #f8d7da;
                 color: #721c24;
@@ -191,10 +158,6 @@
                 border-radius: 4px;
                 cursor: pointer;
                 margin-top: 10px;
-            }
-
-            .retry-button:hover {
-                background-color: #0056b3;
             }
         </style>
     </head>
@@ -231,40 +194,30 @@
                     </div>
                 </div>
 
-                <!-- Include Banner -->
+                <!-- Include Components -->
                 <div id="banner-container"></div>
-                <!-- <div id="video-section-container"></div> -->
-
                 <div id="services-hero-container"></div>
                 <div id="services-list-container"></div>
                 <div id="projects-showcase-container"></div>
                 <div id="team-section-container"></div>
                 <div id="advantages-section-container"></div>
                 <div id="reviews-section-container"></div>
-
                 <div id="faq-container"></div>
-
-                <!-- Include Vision -->
                 <div id="vision-container"></div>
-
-                <!-- Include About -->
             </div>
 
             <!-- Include Footer -->
             <div id="footer-container"></div>
         </div>
 
-        <!-- JavaScript Libraries -->
-        <script src="https://unpkg.com/i18next/dist/umd/i18next.min.js"></script>
-        <script src="https://unpkg.com/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.js"></script>
-        <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script
-            defer
-            src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
-        ></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+        <!-- JavaScript Libraries (محلي) -->
+        <script src="assets/libs/js/i18next.min.js"></script>
+        <script src="assets/libs/js/i18next-browser-languagedetector.min.js"></script>
+        <script src="assets/libs/js/i18next-http-backend.min.js"></script>
+        <script src="assets/js/jquery-3.7.1.min.js"></script>
+        <script src="assets/libs/js/alpinejs.min.js" defer></script>
+        <script src="assets/libs/js/sweetalert2.min.js"></script>
+        <script src="assets/libs/js/lenis.min.js"></script>
 
         <!-- JavaScript Files -->
         <script src="assets/js/bootstrap.min.js"></script>
@@ -277,6 +230,8 @@
         <script src="assets/js/swiper.min.js"></script>
         <script src="assets/js/SwiperAnimation.min.js"></script>
         <script src="assets/js/translations.js"></script>
+
+        <!-- Component Scripts -->
         <script src="assets/components/Services/ServicesList.js"></script>
         <script src="assets/components/Services/ProjectsShowcase.js"></script>
         <script src="assets/components/Services/TeamSection.js"></script>
@@ -286,16 +241,15 @@
         <script src="assets/components/header.js"></script>
 
         <script>
-            // كائن لتتبع حالة تحميل المكونات
+            // تهيئة التحميل
             const componentState = {
                 loaded: 0,
-                total: 10,
+                total: 11,
                 errors: 0,
-                maxRetries: 3,
-                retryDelays: [1000, 3000, 5000], // تأخيرات إعادة المحاولة بالمللي ثانية
+                maxRetries: 2,
+                retryDelays: [1000, 3000],
             };
 
-            // تحديث شريط التقدم
             function updateProgress() {
                 const progress =
                     (componentState.loaded / componentState.total) * 100;
@@ -304,14 +258,12 @@
 
                 const statusText =
                     componentState.errors > 0
-                        ? `جاري تحميل المحتوى...  أخطاء`
-                        : `جاري تحميل المحتوى... `;
-
+                        ? `جاري تحميل المحتوى... (${componentState.errors} أخطاء)`
+                        : `جاري تحميل المحتوى...`;
                 document.getElementById("loading-status").textContent =
                     statusText;
             }
 
-            // عرض الصفحة بعد تحميل جميع المكونات
             function showPage() {
                 if (
                     componentState.loaded + componentState.errors >=
@@ -328,36 +280,29 @@
                                 "loading-screen"
                             ).style.display = "none";
 
-                            // تهيئة Lenis للتمرير السلس بعد تحميل الصفحة
+                            // تهيئة Lenis
                             const lenis = new Lenis({
                                 duration: 1.2,
                                 easing: (t) =>
                                     Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                                direction: "vertical",
-                                gestureDirection: "vertical",
                                 smooth: true,
-                                smoothTouch: false,
-                                touchMultiplier: 2,
                             });
 
                             function raf(time) {
                                 lenis.raf(time);
                                 requestAnimationFrame(raf);
                             }
-
                             requestAnimationFrame(raf);
                         }, 500);
                     }, 500);
                 }
             }
 
-            // دالة لتحميل المكونات مع إدارة الأخطاء وإعادة المحاولة
             function loadComponent(containerId, url, retryCount = 0) {
                 return new Promise((resolve, reject) => {
                     $(containerId).load(url, function (response, status, xhr) {
                         if (status === "error") {
                             if (retryCount < componentState.maxRetries) {
-                                // إعادة المحاولة بعد تأخير
                                 const delay =
                                     componentState.retryDelays[retryCount];
                                 document.getElementById(
@@ -376,21 +321,19 @@
                                         .catch(reject);
                                 }, delay);
                             } else {
-                                // فشلت جميع محاولات إعادة التحميل
                                 componentState.errors++;
                                 $(containerId).html(`
                                     <div class="error-message">
-                                        <p>تعذر تحميل هذا القسم. قد يكون هناك مشكلة في الاتصال بالإنترنت.</p>
+                                        <p>تعذر تحميل هذا القسم.</p>
                                         <button class="retry-button" onclick="retryComponent('${containerId}', '${url}')">
                                             إعادة المحاولة
                                         </button>
                                     </div>
                                 `);
                                 updateProgress();
-                                resolve(); // نعتبره محملاً مع خطأ للمضي قدمًا
+                                resolve();
                             }
                         } else {
-                            // تم التحميل بنجاح
                             componentState.loaded++;
                             updateProgress();
                             resolve();
@@ -399,22 +342,17 @@
                 });
             }
 
-            // دالة لإعادة تحميل مكون معين
             function retryComponent(containerId, url) {
                 $(containerId).html(
                     '<div class="text-center">جاري إعادة التحميل...</div>'
                 );
                 componentState.errors--;
-                loadComponent(containerId, url).then(() => {
-                    // بعد إعادة التحميل الناجحة، نتحقق إذا كنا بحاجة لتحديث حالة الصفحة
-                    showPage();
-                });
+                loadComponent(containerId, url).then(showPage);
             }
 
-            // تحميل جميع المكونات
+            // تحميل المكونات
             $(document).ready(async function () {
                 try {
-                    // قائمة المكونات للتحميل
                     const components = [
                         {
                             id: "#header-container",
@@ -463,16 +401,10 @@
                     ];
 
                     componentState.total = components.length;
-
-                    // تحميل جميع المكونات بشكل متوازي
                     const loadPromises = components.map((comp) =>
                         loadComponent(comp.id, comp.url)
                     );
-
-                    // انتظار تحميل جميع المكونات
                     await Promise.allSettled(loadPromises);
-
-                    // بعد تحميل جميع المكونات، نعرض الصفحة
                     showPage();
                 } catch (error) {
                     console.error("خطأ أثناء تحميل المكونات:", error);
@@ -484,7 +416,7 @@
         </script>
 
         <script>
-            // جلب بيانات الشركة من API
+            // جلب بيانات الشركة
             document.addEventListener("DOMContentLoaded", async () => {
                 try {
                     const response = await fetch(
@@ -495,14 +427,13 @@
                     if (result.status === "success" && result.data) {
                         const data = result.data;
 
-                        // تحديث اسم الشركة في الفوتر
+                        // تحديث بيانات الشركة
                         const footerLogo =
                             document.querySelector(".footer-logo");
                         if (footerLogo)
                             footerLogo.textContent =
                                 data.company_name || "Company";
 
-                        // تحديث البريد الإلكتروني
                         const emailElement = document.querySelector(
                             '[data-i18n="footer.address.email"]'
                         );
@@ -510,41 +441,22 @@
                             emailElement.textContent = data.contact_email || "";
 
                         // تحديث روابط التواصل الاجتماعي
-                        const facebook =
-                            document.querySelector(
-                                ".fab.fa-facebook-f"
-                            )?.parentElement;
-                        const instagram =
-                            document.querySelector(
-                                ".fab.fa-instagram"
-                            )?.parentElement;
-                        const linkedin = document.querySelector(
-                            ".fab.fa-linkedin-in"
-                        )?.parentElement;
-                        const twitter =
-                            document.querySelector(
-                                ".fab.fa-twitter"
-                            )?.parentElement;
+                        const socialLinks = {
+                            ".fa-facebook-f": data.facebook_url,
+                            ".fa-instagram": data.instagram_url,
+                            ".fa-linkedin-in": data.linkedin_url,
+                            ".fa-twitter": data.github_url,
+                        };
 
-                        if (facebook) facebook.href = data.facebook_url || "#";
-                        if (instagram)
-                            instagram.href = data.instagram_url || "#";
-                        if (linkedin) linkedin.href = data.linkedin_url || "#";
-                        if (twitter) twitter.href = data.github_url || "#"; // استخدم GitHub بدلاً من تويتر إذا أردت
-
-                        // تحديث الوصف في قسم "أين تجدنا" أو مكان آخر
-                        const descriptionTarget = document.querySelector(
-                            ".widget-address-info p"
+                        Object.entries(socialLinks).forEach(
+                            ([selector, url]) => {
+                                const element =
+                                    document.querySelector(
+                                        selector
+                                    )?.parentElement;
+                                if (element && url) element.href = url;
+                            }
                         );
-                        if (descriptionTarget)
-                            descriptionTarget.textContent =
-                                data.company_description || "";
-
-                        // تحديث شعار الشركة إن وجد
-                        const logoImg = document.querySelector(".header-logo");
-                        if (logoImg && data.company_logo) {
-                            logoImg.setAttribute("src", data.company_logo);
-                        }
                     }
                 } catch (error) {
                     console.error("خطأ أثناء جلب بيانات الشركة:", error);

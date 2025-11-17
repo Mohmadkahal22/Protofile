@@ -110,7 +110,7 @@ document.addEventListener('alpine:init', () => {
             const rightContainer = projectContainers[0];
 
             this.projectsData.forEach((project, index) => {
-                const imagePath = project.images && project.images[0]?.image_path || 'assets/images/default-project.jpg';
+                const imagePath = project.images && project.images[0]?.image_path;
                 const projectItem = document.createElement('div');
                 projectItem.className = 'team-item team-style-2';
                 projectItem.innerHTML = `
@@ -120,7 +120,6 @@ document.addEventListener('alpine:init', () => {
                             class="img-fluid"
                             src="${imagePath}"
                             alt="${project.title || 'Project'}"
-                            onerror="this.src='assets/images/default-project.jpg';"
                         />
                         <div class="image-overlay"></div>
                         <div class="team-social">

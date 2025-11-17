@@ -6979,258 +6979,7 @@ form.form-dark .form-control:focus {
 /*====================================================*/
 /* Responsive CSS */
 /*====================================================*/
-@media (max-width: 1599px) {
-    .header-3 .site-menu .main-menu {
-        gap: 0 35px;
-    }
-    .header-3 .site-action {
-        gap: 25px;
-    }
-    .header-3 .site-action .header-search-form .form-control {
-        width: 150px;
-        padding: 15px 65px 15px 0;
-    }
-    .header-3 .site-action .header-search-form .form-control .search-btn {
-        font-size: 16px;
-    }
-}
 
-@media (max-width: 1499px) {
-    .header-default .site-menu .main-menu {
-        gap: 0 38px;
-        width: max-content;
-    }
-}
-
-@media (max-width: 1399px) {
-    /*---------------------*/
-    /* Header Default */
-    /*---------------------*/
-    .header-default {
-        padding: 0 50px;
-    }
-    .header-default .header-inner {
-        gap: 30px;
-    }
-    .header-default .site-logo {
-        min-width: 200px;
-    }
-    .header-default .site-action {
-        min-width: 200px;
-    }
-    .header-default .site-menu .main-menu {
-        gap: 0 20px;
-    }
-    /*---------------------*/
-    /* Header-3 */
-    /*---------------------*/
-    .header-3 {
-        padding: 0 50px;
-    }
-    .header-3 .header-inner {
-        gap: 30px;
-    }
-    .header-3 .site-logo {
-        min-width: 200px;
-    }
-    .header-3 .site-menu .main-menu {
-        gap: 0 20px;
-    }
-    .header-3 .site-action .header-search-form .form-control {
-        width: 145px;
-        padding: 15px 60px 15px 0;
-    }
-    .header-3 .site-action .header-search-form .search-btn {
-        font-size: 16px;
-    }
-    .header-3 .site-action .action-hamburger .hamburger {
-        width: 60px;
-        height: 60px;
-        padding: 18px;
-    }
-    /*---------------------*/
-    /* Header Menu Overlay */
-    /*---------------------*/
-    .header-2 {
-        padding: 0 50px;
-    }
-    .header-2 .site-action .widget-share .share-list {
-        justify-content: flex-end;
-    }
-    .offcanvas.menu-overlay-offcanvas .navbar .navbar-nav .nav-item > a {
-        font-size: 50px;
-    }
-}
-
-@media (max-width: 1199px) {
-    /*---------------------*/
-    /* Header-3 */
-    /*---------------------*/
-    .header-3 .site-logo .navbar-brand {
-        padding: 30px 0;
-    }
-    .header-3 .site-action {
-        display: none;
-    }
-    .header-3 .mobile-action {
-        display: flex;
-    }
-    .header-3.is-sticky .site-logo .navbar-brand {
-        padding: 25px 0;
-    }
-}
-
-@media (max-width: 991px) {
-    /*---------------------*/
-    /* Page Header */
-    /*---------------------*/
-    .inner-header {
-        height: 350px;
-    }
-    /*---------------------*/
-    /* Header Menu Overlay */
-    /*---------------------*/
-    .header-default {
-        padding: 0 30px;
-    }
-    .header-default .site-logo .navbar-brand {
-        display: block;
-        padding: 20px 0;
-    }
-    .offcanvas.menu-overlay-offcanvas .offcanvas-close {
-        z-index: 2;
-    }
-    .offcanvas.menu-overlay-offcanvas .offcanvas-body .body-inner {
-        padding: 0 50px;
-    }
-    .offcanvas.menu-overlay-offcanvas .navbar {
-        margin-right: 0;
-    }
-    /*---------------------*/
-    /* Header-3 */
-    /*---------------------*/
-    .header-3 {
-        padding: 0 30px;
-    }
-    .header-3 .site-logo .navbar-brand {
-        padding: 25px 0;
-    }
-    .header-3 .mobile-action .mobile-hamburger .hamburger {
-        width: 50px;
-        height: 50px;
-        padding: 15px;
-    }
-    .header-3 .mobile-action .header-search-form .form-control {
-        width: 180px;
-        padding: 10px 60px 10px 0;
-    }
-    .header-3 .mobile-action .header-search-form .search-btn {
-        font-size: 16px;
-    }
-    .header-3.is-sticky .site-logo .navbar-brand {
-        padding: 15px 0;
-    }
-}
-
-@media (max-width: 767px) {
-    /*---------------------*/
-    /* Header Default */
-    /*---------------------*/
-    .header-default {
-        padding: 0 20px;
-    }
-    /*---------------------*/
-    /* Header Menu Overlay */
-    /*---------------------*/
-    .header-2 {
-        padding: 0 20px;
-    }
-    /*---------------------*/
-    /* Header-3 */
-    /*---------------------*/
-    .header-3 .site-logo .navbar-brand {
-        padding: 20px 0;
-    }
-    .header-3 .mobile-action .header-search-form {
-        display: none;
-    }
-    /*---------------------*/
-    /* Page Header */
-    /*---------------------*/
-    .inner-header {
-        height: 300px;
-    }
-}
-
-@media (max-width: 575px) {
-    .offcanvas-start,
-    .offcanvas-end {
-        width: 320px !important;
-    }
-    .main-menu-offcanvas .offcanvas-body {
-        padding: 30px 40px;
-    }
-    .offcanvas-header {
-        padding: 30px 40px;
-        gap: 5px;
-    }
-    .offcanvas-header .btn-close {
-        height: 45px;
-        width: 45px;
-    }
-    /*---------------------*/
-    /* Header Menu Overlay */
-    /*---------------------*/
-    .header-2 .site-logo {
-        min-width: auto;
-        border-right: none;
-    }
-    .offcanvas.menu-overlay-offcanvas .offcanvas-body .body-inner {
-        padding: 0 30px;
-    }
-    .offcanvas.menu-overlay-offcanvas .container-top {
-        height: 85%;
-    }
-    .offcanvas.menu-overlay-offcanvas .container-bottom {
-        padding-top: 40px;
-    }
-    .offcanvas.menu-overlay-offcanvas .container-bottom .contact-info .text {
-        display: none;
-    }
-    .offcanvas.menu-overlay-offcanvas .navbar .navbar-nav {
-        gap: 15px;
-    }
-    .offcanvas.menu-overlay-offcanvas .navbar .navbar-nav .nav-item > a {
-        font-size: 40px;
-    }
-    .offcanvas.menu-overlay-offcanvas .navbar .navbar-nav .nav-item > a:hover {
-        padding-left: 0;
-    }
-    .offcanvas.menu-overlay-offcanvas
-        .navbar
-        .navbar-nav
-        .nav-item
-        > .dropdown-menu
-        li
-        a {
-        font-size: 24px;
-        line-height: 30px;
-    }
-    /*---------------------*/
-    /* Header Menu Overlay */
-    /*---------------------*/
-    .header-3 {
-        padding: 0px 12px;
-    }
-    .header-3 .site-logo {
-        min-width: 180px;
-    }
-    .header-3 .mobile-action .mobile-hamburger .hamburger {
-        width: 40px;
-        height: 40px;
-        padding: 10px;
-    }
-}
 
 /*****************************
   Site Banner
@@ -7363,10 +7112,15 @@ form.form-dark .form-control:focus {
 /*-----------------------------------*/
 /* Main Banner 3 */
 /*-----------------------------------*/
+
+/* Banner Base Styles */
 .main-banner.main-banner-3 {
     overflow: hidden;
     padding: 280px 0 175px 0;
     position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 .main-banner.main-banner-3 .banner-bg {
@@ -7382,14 +7136,15 @@ form.form-dark .form-control:focus {
 .main-banner.main-banner-3 .banner-inner {
     position: relative;
     padding: 0 150px;
+    width: 100%;
 }
 
-.main-banner.main-banner-3 .banner-inner .banner-conent {
+.main-banner.main-banner-3 .banner-inner .banner-content {
     width: 65%;
     position: relative;
 }
 
-.main-banner.main-banner-3 .banner-inner .banner-conent .sub-title {
+.main-banner.main-banner-3 .banner-inner .banner-content .sub-title {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -7400,25 +7155,22 @@ form.form-dark .form-control:focus {
     background: linear-gradient(60deg, #3663d8 -20%, #77beff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.main-banner.main-banner-3 .banner-inner .banner-conent .title {
+.main-banner.main-banner-3 .banner-inner .banner-content .title {
     font-size: 92px;
     line-height: 92px;
     margin-bottom: 50px;
+    font-weight: 700;
 }
 
-.main-banner.main-banner-3 .banner-inner .banner-conent .title .icon-title {
+.main-banner.main-banner-3 .banner-inner .banner-content .title .icon-title {
     position: relative;
     display: inline-block;
 }
 
-.main-banner.main-banner-3
-    .banner-inner
-    .banner-conent
-    .title
-    .icon-title
-    .banner-icon {
+.main-banner.main-banner-3 .banner-inner .banner-content .title .icon-title .banner-icon {
     width: 45px;
     height: 45px;
     position: absolute;
@@ -7426,71 +7178,102 @@ form.form-dark .form-control:focus {
     left: 68px;
 }
 
-.main-banner.main-banner-3 .banner-inner .banner-conent .conent {
+.main-banner.main-banner-3 .banner-inner .banner-content .banner-description {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+}
+
+.main-banner.main-banner-3 .banner-inner .banner-content .banner-content-footer {
     display: flex;
+    align-items: center;
+    gap: 50px;
     flex-wrap: wrap;
-    margin-bottom: 30px;
 }
 
-.main-banner.main-banner-3 .banner-inner .banner-conent .conent .small-text {
-    max-width: 450px;
-    margin-bottom: 0px;
-    margin-top: 20px;
-}
-
-.main-banner.main-banner-3 .banner-inner .banner-conent .conent .title {
-    position: relative;
-    margin-left: 28px;
-}
-
-.main-banner.main-banner-3
-    .banner-inner
-    .banner-conent
-    .conent
-    .title
-    .banner-icon {
-    position: absolute;
-    top: 54px;
-    left: 102px;
-}
 .sub-title img {
     height: 52px;
     width: 52px;
 }
 
-.main-banner.main-banner-3 .banner-inner .banner-conent .banner-conent-footer {
+/* Banner Actions */
+.banner-actions {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.attract-hover .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.attract-hover .btn-effect {
+    background: linear-gradient(60deg, #3663d8, #77beff);
+    color: white;
+}
+
+.attract-hover .btn-outline {
+    background: transparent;
+    border-color: white;
+    color: white;
+}
+
+.attract-hover .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Client Reviews */
+.client-reviews {
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 15px;
 }
 
-.rotate {
-    -webkit-animation: rotate 50s normal linear infinite;
-    animation: rotate 50s normal linear infinite;
+.client-profile {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-@keyframes rotate {
-    0% {
-        -webkit-transform: rotate3d(0, 0, 1, 0deg);
-        transform: rotate3d(0, 0, 1, 0deg);
-    }
-    25% {
-        -webkit-transform: rotate3d(0, 0, 1, 90deg);
-        transform: rotate3d(0, 0, 1, 90deg);
-    }
-    50% {
-        -webkit-transform: rotate3d(0, 0, 1, 180deg);
-        transform: rotate3d(0, 0, 1, 180deg);
-    }
-    75% {
-        -webkit-transform: rotate3d(0, 0, 1, 270deg);
-        transform: rotate3d(0, 0, 1, 270deg);
-    }
-    100% {
-        -webkit-transform: rotate3d(0, 0, 1, 360deg);
-        transform: rotate3d(0, 0, 1, 360deg);
-    }
+.client-profile li {
+    margin-left: -10px;
 }
+
+.client-profile li:first-child {
+    margin-left: 0;
+}
+
+.client-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.reviews-number {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
 
 /*------------------------------*/
 /* Responsive CSS */
@@ -7519,369 +7302,272 @@ form.form-dark .form-control:focus {
     }
 }
 
+
+/* Responsive Design */
 @media (max-width: 1399px) {
-    /* Main Banner 1 ----------*/
-    .main-banner-1 .banner-title {
-        font-size: 250px;
-        line-height: 270px;
-    }
-    .main-banner-1 .banner-content h2 {
-        font-size: 50px;
-        line-height: 58px;
-    }
-    /* Main Banner 2 ----------*/
-    .main-banner.main-banner-2 .banner-inner .banner-conent .title {
-        font-size: 110px;
-        line-height: 120px;
-    }
-    .main-banner.main-banner-2
-        .banner-inner
-        .banner-conent
-        .conent
-        .title
-        .banner-icon {
-        top: 38px;
-        left: 75px;
-    }
-    /* Main Banner 3 ----------*/
-    .main-banner.main-banner-3 {
-        padding: 250px 0 150px 0;
-    }
     .main-banner.main-banner-3 .banner-inner {
-        padding: 0 80px;
+        padding: 0 100px;
     }
-    .main-banner.main-banner-3 .banner-inner .banner-conent {
-        width: 90%;
+
+    .main-banner.main-banner-3 .banner-inner .banner-content {
+        width: 70%;
     }
 }
 
 @media (max-width: 1199px) {
-    /* Main Banner 1 ----------*/
-    .main-banner-1 {
-        height: 840px;
-        padding-top: 180px;
-    }
-    .main-banner-1 .banner-title {
-        font-size: 190px;
-        line-height: 210px;
-    }
-    .main-banner-1 .rotate-img {
-        margin-left: 0;
-        margin-top: 30px;
-    }
-    .main-banner-1 .banner-content {
-        padding-left: 0px;
-    }
-    .main-banner-1 .banner-content h2 {
-        font-size: 40px;
-        line-height: 48px;
-    }
-    /* Main Banner 2 ----------*/
-    .main-banner.main-banner-2 {
-        padding-top: 200px;
-    }
-    .main-banner.main-banner-2 .banner-inner .banner-conent .title {
-        font-size: 85px;
-        line-height: 95px;
-    }
-    .main-banner.main-banner-2
-        .banner-inner
-        .banner-conent
-        .conent
-        .title
-        .banner-icon {
-        top: 32px;
-        left: 59px;
-        width: 40px;
-    }
-    /* Main Banner 3 ----------*/
     .main-banner.main-banner-3 {
-        padding: 180px 0 120px 0;
+        padding: 220px 0 140px 0;
     }
+
     .main-banner.main-banner-3 .banner-inner {
-        padding: 0 50px;
+        padding: 0 80px;
     }
-    .main-banner.main-banner-3 .banner-inner .banner-conent .title {
+
+    .main-banner.main-banner-3 .banner-inner .banner-content {
+        width: 75%;
+    }
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .title {
         font-size: 80px;
-        line-height: 90px;
-        margin-bottom: 40px;
+        line-height: 85px;
     }
-    .main-banner.main-banner-3
-        .banner-inner
-        .banner-conent
-        .title
-        .icon-title
-        .banner-icon {
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .title .icon-title .banner-icon {
         width: 40px;
         height: 40px;
-        top: 30px;
-        left: 59px;
+        top: 25px;
+        left: 60px;
     }
 }
 
 @media (max-width: 991px) {
-    /* Main Banner 1 ----------*/
-    .main-banner-1 {
-        height: 650px;
-        padding-top: 125px;
-    }
-    .main-banner-1 .banner-title {
-        font-size: 140px;
-        line-height: 160px;
-    }
-    .main-banner-1 .rotate-img {
-        margin-top: 0px;
-    }
-    .main-banner-1 .banner-content h2 {
-        font-size: 36px;
-        line-height: 44px;
-    }
-    /* Main Banner 2 ----------*/
-    .main-banner.main-banner-2 {
-        padding-top: 140px;
-    }
-    .main-banner.main-banner-2 .banner-inner {
-        padding-bottom: 30px;
-    }
-    .main-banner.main-banner-2 .banner-inner .banner-conent {
-        padding: 50px 0px;
-    }
-    .main-banner.main-banner-2 .banner-inner .banner-conent .title {
-        font-size: 62px;
-        line-height: 72px;
-    }
-    .main-banner.main-banner-2
-        .banner-inner
-        .banner-conent
-        .conent
-        .small-text {
-        max-width: 400px;
-        margin-right: 15px;
-        margin-top: 0px;
-    }
-    .main-banner.main-banner-2 .banner-inner .banner-conent .conent .title {
-        margin-left: 0px;
-    }
-    .main-banner.main-banner-2
-        .banner-inner
-        .banner-conent
-        .conent
-        .title
-        .banner-icon {
-        top: 24px;
-        left: 43px;
-        width: 30px;
-    }
-    /* Main Banner 3 ----------*/
     .main-banner.main-banner-3 {
-        padding: 180px 0 50px 0;
+        padding: 180px 0 100px 0;
     }
+
     .main-banner.main-banner-3 .banner-inner {
-        padding: 0 30px;
+        padding: 0 50px;
     }
-    .main-banner.main-banner-3 .banner-inner .banner-conent {
-        width: 100%;
+
+    .main-banner.main-banner-3 .banner-inner .banner-content {
+        width: 85%;
     }
-    .main-banner.main-banner-3 .banner-inner .banner-conent .title {
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .title {
         font-size: 64px;
-        line-height: 64px;
+        line-height: 70px;
+        margin-bottom: 40px;
     }
-    .main-banner.main-banner-3
-        .banner-inner
-        .banner-conent
-        .title
-        .icon-title
-        .banner-icon {
-        width: 30px;
-        height: 30px;
-        top: 20px;
-        left: 48px;
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .title .icon-title .banner-icon {
+        width: 35px;
+        height: 35px;
+        top: 22px;
+        left: 50px;
+    }
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .banner-description {
+        font-size: 16px;
+        margin-bottom: 35px;
     }
 }
 
 @media (max-width: 767px) {
-    /* Main Banner 1 ----------*/
-    .main-banner-1 .rotate-img {
-        width: 150px;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-    }
-    .main-banner-1 .banner-title {
-        font-size: 90px;
-        line-height: 110px;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 0;
-    }
-    .main-banner-1 .banner-content {
+    .main-banner.main-banner-3 {
+        padding: 150px 0 80px 0;
         text-align: center;
     }
-    .main-banner-1 .banner-content h2 {
-        font-size: 30px;
-        line-height: 38px;
-        margin-top: 30px;
+
+    .main-banner.main-banner-3 .banner-inner {
+        padding: 0 30px;
+    }
+
+    .main-banner.main-banner-3 .banner-inner .banner-content {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .sub-title {
+        justify-content: center;
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .title {
+        font-size: 48px;
+        line-height: 55px;
         margin-bottom: 30px;
     }
-    .main-banner-1 .banner-content .attract-hover {
-        position: inherit;
-        right: inherit;
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .title .icon-title .banner-icon {
+        width: 28px;
+        height: 28px;
+        top: 18px;
+        left: 40px;
     }
-    /* Main Banner 2 ----------*/
-    .main-banner.main-banner-2 .banner-bg {
-        display: none;
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .banner-description {
+        font-size: 15px;
+        margin: 0 auto 30px auto;
+        max-width: 500px;
     }
-    .main-banner.main-banner-2 .banner-inner {
-        padding-bottom: 40px;
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .banner-content-footer {
+        justify-content: center;
+        gap: 30px;
     }
-    .main-banner.main-banner-2 .banner-inner .banner-conent {
-        padding: 0px;
+
+    .banner-actions {
+        justify-content: center;
     }
-    .main-banner.main-banner-2 .banner-inner .banner-conent .title {
-        font-size: 62px;
-        line-height: 72px;
-    }
-    .main-banner.main-banner-2
-        .banner-inner
-        .banner-conent
-        .conent
-        .small-text {
-        order: 1;
-        max-width: 100%;
-    }
-    .main-banner.main-banner-2
-        .banner-inner
-        .banner-conent
-        .counter.counter-style-1 {
-        margin-left: 0px;
-    }
-    /* Main Banner 3 ----------*/
-    .main-banner.main-banner-3 {
-        padding: 150px 0 40px 0;
-    }
-    .main-banner.main-banner-3 .banner-bg {
-        display: none;
-    }
-    .main-banner.main-banner-3 .banner-inner {
-        padding: 0;
-    }
-    .main-banner.main-banner-3 .banner-inner .banner-conent .sub-title {
-        margin-bottom: 20px;
-    }
-    .main-banner.main-banner-3 .banner-inner .banner-conent .title {
-        font-size: 56px;
-        line-height: 60px;
-    }
-    .main-banner.main-banner-3
-        .banner-inner
-        .banner-conent
-        .title
-        .icon-title
-        .banner-icon {
-        width: 26px;
-        height: 26px;
-        top: 21px;
-        left: 41px;
+
+    .client-reviews {
+        justify-content: center;
     }
 }
 
 @media (max-width: 575px) {
-    /* Main Banner 1 ----------*/
-    .main-banner-1 .banner-content h2 {
-        margin-bottom: 15px;
+    .main-banner.main-banner-3 {
+        padding: 120px 0 60px 0;
     }
-    /* Main Banner 2 ----------*/
-    .main-banner.main-banner-2 .banner-bg {
-        display: none;
+
+    .main-banner.main-banner-3 .banner-inner {
+        padding: 0 20px;
     }
-    .main-banner.main-banner-2 .banner-inner {
-        padding-bottom: 40px;
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .title {
+        font-size: 40px;
+        line-height: 46px;
+        margin-bottom: 25px;
     }
-    .main-banner.main-banner-2 .banner-inner .banner-conent {
-        padding: 0px;
-    }
-    .main-banner.main-banner-2 .banner-inner .banner-conent .title {
-        font-size: 44px;
-        line-height: 60px;
-        margin: 0px !important;
-    }
-    .main-banner.main-banner-2
-        .banner-inner
-        .banner-conent
-        .conent
-        .small-text {
-        order: 1;
-        max-width: 100%;
-    }
-    .main-banner.main-banner-2
-        .banner-inner
-        .banner-conent
-        .conent
-        .title
-        .banner-icon {
-        top: 20px;
-        left: 30px;
-        width: 22px;
-    }
-    .main-banner.main-banner-2
-        .banner-inner
-        .banner-conent
-        .counter.counter-style-1 {
-        margin-bottom: 40px;
-    }
-    /* Main Banner 3 ----------*/
-    .main-banner.main-banner-3 .banner-inner .banner-conent .title {
-        font-size: 46px;
-        line-height: 54px;
-    }
-    .main-banner.main-banner-3
-        .banner-inner
-        .banner-conent
-        .title
-        .icon-title
-        .banner-icon {
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .title .icon-title .banner-icon {
         width: 22px;
         height: 22px;
-        top: 19px;
-        left: 35px;
+        top: 15px;
+        left: 32px;
+    }
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .sub-title {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .sub-title img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .banner-description {
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+
+    .banner-actions {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .attract-hover .btn {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+    }
+
+    .ml-3 {
+        margin-left: 0 !important;
+    }
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .banner-content-footer {
+        gap: 25px;
     }
 }
 
 @media (max-width: 479px) {
-    /* Main Banner 1 ----------*/
-    .main-banner-1 .banner-title {
-        font-size: 70px;
-        line-height: 90px;
-    }
-    /* Main Banner 3 ----------*/
     .main-banner.main-banner-3 {
-        padding: 125px 0 30px 0;
+        padding: 100px 0 50px 0;
     }
-    .main-banner.main-banner-3 .banner-inner .banner-conent .sub-title {
-        font-size: 16px;
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .title {
+        font-size: 32px;
+        line-height: 38px;
     }
-    .main-banner.main-banner-3 .banner-inner .banner-conent .title {
-        font-size: 34px;
-        line-height: 40px;
-        margin-bottom: 30px;
-    }
-    .main-banner.main-banner-3
-        .banner-inner
-        .banner-conent
-        .title
-        .icon-title
-        .banner-icon {
-        width: 16px;
-        height: 16px;
-        top: 14px;
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .title .icon-title .banner-icon {
+        width: 18px;
+        height: 18px;
+        top: 12px;
         left: 26px;
     }
-    .main-banner.main-banner-3
-        .banner-inner
-        .banner-conent
-        .banner-conent-footer {
-        flex-direction: column-reverse;
-        align-items: flex-start;
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .sub-title {
+        font-size: 13px;
+    }
+
+    .sub-title img {
+        height: 35px;
+        width: 35px;
+    }
+
+    .client-reviews {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .reviews {
+        align-items: center;
+    }
+}
+
+/* Animation */
+.rotate {
+    -webkit-animation: rotate 50s normal linear infinite;
+    animation: rotate 50s normal linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        -webkit-transform: rotate3d(0, 0, 1, 0deg);
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+    25% {
+        -webkit-transform: rotate3d(0, 0, 1, 90deg);
+        transform: rotate3d(0, 0, 1, 90deg);
+    }
+    50% {
+        -webkit-transform: rotate3d(0, 0, 1, 180deg);
+        transform: rotate3d(0, 0, 1, 180deg);
+    }
+    75% {
+        -webkit-transform: rotate3d(0, 0, 1, 270deg);
+        transform: rotate3d(0, 0, 1, 270deg);
+    }
+    100% {
+        -webkit-transform: rotate3d(0, 0, 1, 360deg);
+        transform: rotate3d(0, 0, 1, 360deg);
+    }
+}
+
+/* Ensure proper background on mobile */
+@media (max-width: 767px) {
+    .main-banner.main-banner-3 .banner-bg {
+        object-position: center top;
+    }
+}
+
+/* Fix for very small screens */
+@media (max-width: 359px) {
+    .main-banner.main-banner-3 .banner-inner .banner-content .title {
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+    .main-banner.main-banner-3 .banner-inner .banner-content .title .icon-title .banner-icon {
+        width: 16px;
+        height: 16px;
+        top: 10px;
+        left: 22px;
     }
 }
 

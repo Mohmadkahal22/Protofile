@@ -69,6 +69,8 @@
                 </a>
             </h4>
         </div>
+
+        <!-- القائمة الرئيسية للشاشات الكبيرة -->
         <div class="site-menu d-none d-xl-block">
             <ul class="main-menu">
                 <li class="nav-item active">
@@ -114,17 +116,11 @@
                         data-i18n="header.contact"
                     ></a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a
-                        class="nav-link"
-                        href="page2.html#JoinOurTeam"
-                        data-i18n="header.join_team"
-                    ></a>
-                </li> -->
             </ul>
         </div>
 
-        <div class="site-action">
+        <!-- الإجراءات للشاشات الكبيرة -->
+        <div class="site-action d-none d-xl-flex">
             <select
                 class="language-select"
                 onchange="changeLanguage(this.value)"
@@ -148,21 +144,24 @@
             </div>
         </div>
 
-        <div class="mobile-action">
-            <form class="header-search-form">
-                <input
-                    type="text"
-                    class="form-control"
-                    data-i18n-placeholder="header.search_placeholder"
-                    placeholder="Search"
-                />
-                <button
-                    type="submit"
-                    class="search-btn"
-                    data-i18n="header.search"
-                ></button>
-            </form>
+        <!-- الإجراءات للشاشات الصغيرة -->
+        <div class="mobile-action d-flex d-xl-none">
+            <!-- زر اختيار اللغة للشاشات الصغيرة -->
+            <div class="mobile-language me-3">
+                <select
+                    class="language-select-mobile"
+                    onchange="changeLanguage(this.value)"
+                >
+                    <option value="en" data-i18n="header.languages.en">
+                        EN
+                    </option>
+                    <option value="ar" data-i18n="header.languages.ar">
+                        AR
+                    </option>
+                </select>
+            </div>
 
+            <!-- زر القائمة المتنقلة للشاشات الصغيرة -->
             <div class="mobile-hamburger">
                 <a
                     class="hamburger"
@@ -173,16 +172,114 @@
                     aria-label="Toggle mobile menu"
                 >
                     <span class="hamburger-container">
-                        <i
-                            class="fa-solid fa-bars"
-                            data-i18n="header.menu_alt"
-                        ></i>
+                        <i class="fa-solid fa-bars"></i>
                     </span>
                 </a>
             </div>
         </div>
     </div>
 </header>
+
+<!-- القائمة المتنقلة للشاشات الصغيرة -->
+<div
+    class="offcanvas offcanvas-end mobile-menu-offcanvas"
+    tabindex="-1"
+    id="menuOffcanvas"
+    aria-labelledby="menuOffcanvasLabel"
+>
+    <div class="offcanvas-header">
+        <h5
+            class="offcanvas-title"
+            id="menuOffcanvasLabel"
+            data-i18n="header.menu"
+        >
+            Menu
+        </h5>
+        <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+        >
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+    <div class="offcanvas-body">
+        <ul class="mobile-menu">
+            <li class="nav-item active">
+                <a
+                    class="nav-link"
+                    href="index.html#"
+                    data-i18n="header.home"
+                    onclick="closeMobileMenu()"
+                ></a>
+            </li>
+
+            <li class="nav-item">
+                <a
+                    class="nav-link"
+                    href="index.html#Service"
+                    data-i18n="header.services"
+                    onclick="closeMobileMenu()"
+                ></a>
+            </li>
+            <li class="nav-item">
+                <a
+                    class="nav-link"
+                    href="index.html#projects"
+                    data-i18n="header.projects"
+                    onclick="closeMobileMenu()"
+                ></a>
+            </li>
+            <li class="nav-item">
+                <a
+                    class="nav-link"
+                    href="index.html#ourteam"
+                    data-i18n="header.ourteam"
+                    onclick="closeMobileMenu()"
+                ></a>
+            </li>
+            <li class="nav-item">
+                <a
+                    class="nav-link"
+                    href="index.html#Blog"
+                    data-i18n="header.why_choose_us"
+                    onclick="closeMobileMenu()"
+                ></a>
+            </li>
+            <li class="nav-item">
+                <a
+                    class="nav-link"
+                    href="page2.html#contact"
+                    data-i18n="header.contact"
+                    onclick="closeMobileMenu()"
+                ></a>
+            </li>
+        </ul>
+
+        <!-- اختيار اللغة في القائمة المتنقلة -->
+        <div class="mobile-language-selector mt-4">
+            <label for="mobileLanguageSelect" data-i18n="header.select_language"
+                >Select Language:</label
+            >
+            <select
+                id="mobileLanguageSelect"
+                class="form-select mt-2"
+                onchange="changeLanguage(this.value)"
+            >
+                <option value="en" data-i18n="header.languages.en">
+                    English
+                </option>
+                <option value="ar" data-i18n="header.languages.ar">
+                    العربية
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<!-- Offcanvas الجانبي الأصلي (للشاشات الكبيرة) -->
 <div
     class="offcanvas offcanvas-end sidepanel-offcanvas"
     tabindex="-1"
@@ -247,6 +344,99 @@
 </div>
 
 <style>
+    /* تحسينات عامة للهيدر */
+    .header {
+        padding: 15px 0;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 1000;
+    }
+
+    .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+
+    .site-logo {
+        flex-shrink: 0;
+    }
+
+    .site-logo h4 {
+        margin: 0;
+    }
+
+    /* تحسينات للشاشات الصغيرة */
+    .mobile-action {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .mobile-language select {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: white;
+        font-size: 14px;
+    }
+
+    .mobile-hamburger .hamburger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: #2b9bff;
+        border-radius: 4px;
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .mobile-hamburger .hamburger:hover {
+        background-color: #1a7fd9;
+    }
+
+    /* تصميم القائمة المتنقلة للشاشات الصغيرة */
+    .mobile-menu-offcanvas {
+        width: 280px;
+    }
+
+    .mobile-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mobile-menu .nav-item {
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .mobile-menu .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    .mobile-menu .nav-link {
+        display: block;
+        padding: 15px 0;
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .mobile-menu .nav-link:hover {
+        color: #2b9bff;
+    }
+
+    .mobile-language-selector label {
+        font-weight: 600;
+        color: #333;
+    }
+
+    /* تصميم Offcanvas الجانبي الأصلي */
     .sidepanel-offcanvas {
         background-color: #f8f9fa;
         color: #333333;
@@ -369,7 +559,8 @@
     }
 
     /* RTL support for Arabic */
-    html[dir="rtl"] .sidepanel-offcanvas {
+    html[dir="rtl"] .sidepanel-offcanvas,
+    html[dir="rtl"] .mobile-menu-offcanvas {
         direction: rtl;
     }
 
