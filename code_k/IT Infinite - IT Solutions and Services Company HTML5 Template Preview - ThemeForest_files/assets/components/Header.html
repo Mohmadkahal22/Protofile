@@ -78,7 +78,10 @@
                         class="nav-link"
                         href="index.html#"
                         data-i18n="header.home"
-                    ></a>
+                    >
+                        <i class="fas fa-home nav-icon"></i>
+                        <span data-i18n="header.home"></span>
+                    </a>
                 </li>
 
                 <li class="nav-item">
@@ -86,48 +89,66 @@
                         class="nav-link"
                         href="index.html#Service"
                         data-i18n="header.services"
-                    ></a>
+                    >
+                        <i class="fas fa-cogs nav-icon"></i>
+                        <span data-i18n="header.services"></span>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a
                         class="nav-link"
                         href="index.html#projects"
                         data-i18n="header.projects"
-                    ></a>
+                    >
+                        <i class="fas fa-briefcase nav-icon"></i>
+                        <span data-i18n="header.projects"></span>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a
                         class="nav-link"
                         href="index.html#ourteam"
                         data-i18n="header.ourteam"
-                    ></a>
+                    >
+                        <i class="fas fa-users nav-icon"></i>
+                        <span data-i18n="header.ourteam"></span>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a
                         class="nav-link"
                         href="index.html#Blog"
                         data-i18n="header.why_choose_us"
-                    ></a>
+                    >
+                        <i class="fas fa-star nav-icon"></i>
+                        <span data-i18n="header.why_choose_us"></span>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a
                         class="nav-link"
                         href="page2.html#contact"
                         data-i18n="header.contact"
-                    ></a>
+                    >
+                        <i class="fas fa-envelope nav-icon"></i>
+                        <span data-i18n="header.contact"></span>
+                    </a>
                 </li>
             </ul>
         </div>
 
         <!-- الإجراءات للشاشات الكبيرة -->
         <div class="site-action d-none d-xl-flex">
-            <select
-                class="language-select"
-                onchange="changeLanguage(this.value)"
-            >
-                <option value="en" data-i18n="header.languages.en">EN</option>
-                <option value="ar" data-i18n="header.languages.ar">AR</option>
-            </select>
+            <div class="language-selector">
+                <i class="fas fa-globe language-icon"></i>
+                <select
+                    class="language-select"
+                    onchange="changeLanguage(this.value)"
+                >
+                    <option value="en" data-i18n="header.languages.en">EN</option>
+                    <option value="ar" data-i18n="header.languages.ar">AR</option>
+                </select>
+            </div>
 
             <div class="action-hamburger">
                 <a
@@ -138,7 +159,7 @@
                     aria-controls="offcanvasRight"
                 >
                     <span class="hamburger-container">
-                        <i class="fa-solid fa-bars"></i>
+                        <i class="fa-solid fa-bars-staggered"></i>
                     </span>
                 </a>
             </div>
@@ -148,17 +169,20 @@
         <div class="mobile-action d-flex d-xl-none">
             <!-- زر اختيار اللغة للشاشات الصغيرة -->
             <div class="mobile-language me-3">
-                <select
-                    class="language-select-mobile"
-                    onchange="changeLanguage(this.value)"
-                >
-                    <option value="en" data-i18n="header.languages.en">
-                        EN
-                    </option>
-                    <option value="ar" data-i18n="header.languages.ar">
-                        AR
-                    </option>
-                </select>
+                <div class="language-selector-mobile">
+                    <i class="fas fa-globe language-icon"></i>
+                    <select
+                        class="language-select-mobile"
+                        onchange="changeLanguage(this.value)"
+                    >
+                        <option value="en" data-i18n="header.languages.en">
+                            EN
+                        </option>
+                        <option value="ar" data-i18n="header.languages.ar">
+                            AR
+                        </option>
+                    </select>
+                </div>
             </div>
 
             <!-- زر القائمة المتنقلة للشاشات الصغيرة -->
@@ -188,12 +212,9 @@
     aria-labelledby="menuOffcanvasLabel"
 >
     <div class="offcanvas-header">
-        <h5
-            class="offcanvas-title"
-            id="menuOffcanvasLabel"
-            data-i18n="header.menu"
-        >
-            Menu
+        <h5 class="offcanvas-title" id="menuOffcanvasLabel">
+            <i class="fas fa-bars me-2"></i>
+            <span data-i18n="header.menu">Menu</span>
         </h5>
         <button
             type="button"
@@ -201,7 +222,7 @@
             data-bs-dismiss="offcanvas"
             aria-label="Close"
         >
-            <i class="fa-solid fa-xmark"></i>
+            <i class="fa-solid fa-times"></i>
         </button>
     </div>
 
@@ -211,58 +232,71 @@
                 <a
                     class="nav-link"
                     href="index.html#"
-                    data-i18n="header.home"
                     onclick="closeMobileMenu()"
-                ></a>
+                >
+                    <i class="fas fa-home nav-icon"></i>
+                    <span data-i18n="header.home"></span>
+                </a>
             </li>
 
             <li class="nav-item">
                 <a
                     class="nav-link"
                     href="index.html#Service"
-                    data-i18n="header.services"
                     onclick="closeMobileMenu()"
-                ></a>
+                >
+                    <i class="fas fa-cogs nav-icon"></i>
+                    <span data-i18n="header.services"></span>
+                </a>
             </li>
             <li class="nav-item">
                 <a
                     class="nav-link"
                     href="index.html#projects"
-                    data-i18n="header.projects"
                     onclick="closeMobileMenu()"
-                ></a>
+                >
+                    <i class="fas fa-briefcase nav-icon"></i>
+                    <span data-i18n="header.projects"></span>
+                </a>
             </li>
             <li class="nav-item">
                 <a
                     class="nav-link"
                     href="index.html#ourteam"
-                    data-i18n="header.ourteam"
                     onclick="closeMobileMenu()"
-                ></a>
+                >
+                    <i class="fas fa-users nav-icon"></i>
+                    <span data-i18n="header.ourteam"></span>
+                </a>
             </li>
             <li class="nav-item">
                 <a
                     class="nav-link"
                     href="index.html#Blog"
-                    data-i18n="header.why_choose_us"
                     onclick="closeMobileMenu()"
-                ></a>
+                >
+                    <i class="fas fa-star nav-icon"></i>
+                    <span data-i18n="header.why_choose_us"></span>
+                </a>
             </li>
             <li class="nav-item">
                 <a
                     class="nav-link"
                     href="page2.html#contact"
-                    data-i18n="header.contact"
                     onclick="closeMobileMenu()"
-                ></a>
+                >
+                    <i class="fas fa-envelope nav-icon"></i>
+                    <span data-i18n="header.contact"></span>
+                </a>
             </li>
         </ul>
 
         <!-- اختيار اللغة في القائمة المتنقلة -->
         <div class="mobile-language-selector mt-4">
-            <label for="mobileLanguageSelect" data-i18n="header.select_language"
-                >Select Language:</label
-            >
+            <label for="mobileLanguageSelect">
+                <i class="fas fa-globe me-2"></i>
+                <span data-i18n="header.select_language">Select Language:</span>
+            </label>
             <select
                 id="mobileLanguageSelect"
                 class="form-select mt-2"
@@ -293,51 +327,87 @@
             data-bs-dismiss="offcanvas"
             aria-label="Close"
         >
-            <i class="fa-solid fa-xmark"></i>
+            <i class="fa-solid fa-times"></i>
         </button>
     </div>
 
     <div class="offcanvas-body lenis-scroll-disable">
         <div class="body-inner">
             <div class="about-info">
-                <h4 class="title">Scalable Business for Startups</h4>
+                <h4 class="title">
+                    <i class="fas fa-rocket me-2"></i>
+                    Scalable Business for Startups
+                </h4>
                 <p>
+                    <i class="fas fa-quote-left text-muted me-2"></i>
                     Get the oars in the water and start rowing. Execution is the
                     single biggest factor in achievement so the faster and
                     better your execution.
                 </p>
             </div>
             <div class="socail-info">
+                <h6 class="section-title">
+                    <i class="fas fa-share-alt me-2"></i>
+                    Follow Us
+                </h6>
                 <ul>
                     <li>
-                        <a href="#"
-                            ><i class="fa-brands fa-facebook-f"></i>Facebook</a
-                        >
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="#"
-                            ><i class="fa-brands fa-instagram"></i>Instagram</a
-                        >
+                        <a href="#">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="#"
-                            ><i class="fab fa-linkedin-in"></i>Linkedin</a
-                        >
+                        <a href="#">
+                            <i class="fab fa-linkedin-in"></i>
+                            <span>LinkedIn</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="#"><i class="fab fa-twitter"></i>Twitter</a>
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                            <span>Twitter</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
                     </li>
                 </ul>
             </div>
             <div class="contact-info">
-                <span class="number">+963 935 027 218</span>
-                <a class="mail" href="mailto:majdbayer77@gmail.com"
-                    >majdbayer77@gmail.com</a
-                >
-                <span class="text"
-                    >Looking for collaboration for your next creative
-                    project?</span
-                >
+                <h6 class="section-title">
+                    <i class="fas fa-address-card me-2"></i>
+                    Contact Info
+                </h6>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span class="number">+963 935 027 218</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a class="mail" href="mailto:majdbayer77@gmail.com">
+                        majdbayer77@gmail.com
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="location">Damascus, Syria</span>
+                </div>
+                <div class="collaboration-text mt-3">
+                    <i class="fas fa-handshake me-2"></i>
+                    <span class="text">
+                        Looking for collaboration for your next creative project?
+                    </span>
+                </div>
             </div>
         </div>
     </div>
@@ -367,19 +437,76 @@
         margin: 0;
     }
 
+    /* تحسينات القائمة الرئيسية */
+    .main-menu {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 30px;
+    }
+
+    .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        padding: 10px 0;
+    }
+
+    .nav-link:hover {
+        color: #2b9bff;
+    }
+
+    .nav-icon {
+        font-size: 14px;
+        width: 16px;
+        text-align: center;
+    }
+
+    /* تحسينات أداة اختيار اللغة */
+    .language-selector {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .language-icon {
+        color: #666;
+        font-size: 16px;
+    }
+
+    .language-select,
+    .language-select-mobile {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        background-color: white;
+        font-size: 14px;
+        cursor: pointer;
+        transition: border-color 0.3s ease;
+    }
+
+    .language-select:hover,
+    .language-select-mobile:hover {
+        border-color: #2b9bff;
+    }
+
+    .language-selector-mobile {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
     /* تحسينات للشاشات الصغيرة */
     .mobile-action {
         display: flex;
         align-items: center;
         gap: 15px;
-    }
-
-    .mobile-language select {
-        padding: 8px 12px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        background-color: white;
-        font-size: 14px;
     }
 
     .mobile-hamburger .hamburger {
@@ -389,19 +516,20 @@
         width: 40px;
         height: 40px;
         background-color: #2b9bff;
-        border-radius: 4px;
+        border-radius: 6px;
         color: white;
         text-decoration: none;
-        transition: background-color 0.3s ease;
+        transition: all 0.3s ease;
     }
 
     .mobile-hamburger .hamburger:hover {
         background-color: #1a7fd9;
+        transform: translateY(-2px);
     }
 
     /* تصميم القائمة المتنقلة للشاشات الصغيرة */
     .mobile-menu-offcanvas {
-        width: 280px;
+        width: 300px;
     }
 
     .mobile-menu {
@@ -419,47 +547,63 @@
     }
 
     .mobile-menu .nav-link {
-        display: block;
+        display: flex;
+        align-items: center;
+        gap: 12px;
         padding: 15px 0;
         color: #333;
         text-decoration: none;
         font-weight: 500;
-        transition: color 0.3s ease;
+        transition: all 0.3s ease;
     }
 
     .mobile-menu .nav-link:hover {
         color: #2b9bff;
+        background-color: #f8f9fa;
+        padding-left: 10px;
+    }
+
+    .mobile-menu .nav-icon {
+        width: 20px;
+        text-align: center;
+        font-size: 16px;
     }
 
     .mobile-language-selector label {
+        display: flex;
+        align-items: center;
         font-weight: 600;
         color: #333;
+        margin-bottom: 10px;
     }
 
     /* تصميم Offcanvas الجانبي الأصلي */
     .sidepanel-offcanvas {
-        background-color: #f8f9fa;
-        color: #333333;
-        width: 280px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        width: 320px;
         font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
-        direction: ltr;
     }
 
     .offcanvas-header {
-        padding: 15px 20px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         display: flex;
         justify-content: flex-end;
     }
 
-    .btn-close .fa-xmark {
+    .btn-close {
+        background: none;
+        border: none;
+        color: white;
         font-size: 20px;
-        color: #333333;
+        cursor: pointer;
         transition: color 0.3s ease;
+        padding: 5px;
     }
 
-    .btn-close .fa-xmark:hover {
-        color: #2b9bff;
+    .btn-close:hover {
+        color: #ffd700;
     }
 
     .offcanvas-body {
@@ -467,95 +611,118 @@
     }
 
     .body-inner {
-        display: grid;
-        grid-template-rows: auto auto auto;
-        gap: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
     }
 
     .about-info .title {
-        font-size: 25px;
+        font-size: 22px;
         font-weight: 600;
-        margin-bottom: 10px;
-        color: #2b9bff;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
     }
 
     .about-info p {
         font-size: 14px;
-        line-height: 1.5;
+        line-height: 1.6;
         margin: 0;
-        color: #555555;
+        opacity: 0.9;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .section-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
     }
 
     .socail-info ul {
         list-style: none;
         padding: 0;
-        display: flex;
-        gap: 15px;
-        flex-wrap: wrap;
+        margin: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
     }
 
     .socail-info li a {
         display: flex;
         align-items: center;
-        gap: 8px;
-        color: #333333;
+        gap: 10px;
+        color: white;
         text-decoration: none;
         font-size: 14px;
         font-weight: 500;
-        transition: color 0.3s ease;
+        padding: 10px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .socail-info li a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateX(5px);
     }
 
     .socail-info li a i {
         font-size: 16px;
-        color: #2b9bff;
-        transition: transform 0.3s ease;
+        width: 20px;
+        text-align: center;
     }
 
-    .socail-info li a:hover {
-        color: #2b9bff;
-    }
-
-    .socail-info li a:hover i {
-        transform: scale(1.2);
-    }
-
-    .contact-info {
+    .contact-info .contact-item {
         display: flex;
-        flex-direction: column;
-        gap: 10px;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+        padding: 8px 0;
     }
 
-    .contact-info .number {
-        font-size: 16px;
-        font-weight: 600;
-        color: #333333;
+    .contact-info .contact-item i {
+        width: 20px;
+        text-align: center;
+        color: #ffd700;
+    }
+
+    .contact-info .number,
+    .contact-info .mail,
+    .contact-info .location {
+        font-size: 14px;
     }
 
     .contact-info .mail {
-        color: #2b9bff;
+        color: #ffd700;
         text-decoration: none;
-        font-size: 14px;
-        transition: text-decoration 0.3s ease;
+        transition: color 0.3s ease;
     }
 
     .contact-info .mail:hover {
+        color: white;
         text-decoration: underline;
     }
 
-    .contact-info .text {
-        font-size: 14px;
-        color: #555555;
-        line-height: 1.5;
-        margin-bottom: 10px;
+    .collaboration-text {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        border-left: 4px solid #ffd700;
     }
 
-    .contact-info .text::after {
-        content: "";
-        display: block;
-        width: 50px;
-        height: 2px;
-        background-color: #2b9bff;
-        margin-top: 10px;
+    .collaboration-text i {
+        color: #ffd700;
+    }
+
+    .collaboration-text .text {
+        font-size: 14px;
+        line-height: 1.4;
     }
 
     /* RTL support for Arabic */
@@ -568,11 +735,19 @@
         justify-content: flex-start;
     }
 
-    html[dir="rtl"] .socail-info ul {
+    html[dir="rtl"] .nav-link,
+    html[dir="rtl"] .mobile-menu .nav-link {
         flex-direction: row-reverse;
     }
 
-    html[dir="rtl"] .socail-info li a {
-        flex-direction: row-reverse;
+    html[dir="rtl"] .socail-info li a:hover {
+        transform: translateX(-5px);
+    }
+
+    html[dir="rtl"] .collaboration-text {
+        border-left: none;
+        border-right: 4px solid #ffd700;
     }
 </style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
