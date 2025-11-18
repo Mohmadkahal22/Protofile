@@ -79,7 +79,7 @@
                         href="index.html#"
                         data-i18n="header.home"
                     >
-                        <i class="fas fa-home nav-icon"></i>
+                        <span class="nav-icon">🏠</span>
                         <span data-i18n="header.home"></span>
                     </a>
                 </li>
@@ -90,7 +90,7 @@
                         href="index.html#Service"
                         data-i18n="header.services"
                     >
-                        <i class="fas fa-cogs nav-icon"></i>
+                        <span class="nav-icon">⚙️</span>
                         <span data-i18n="header.services"></span>
                     </a>
                 </li>
@@ -100,7 +100,7 @@
                         href="index.html#projects"
                         data-i18n="header.projects"
                     >
-                        <i class="fas fa-briefcase nav-icon"></i>
+                        <span class="nav-icon">💼</span>
                         <span data-i18n="header.projects"></span>
                     </a>
                 </li>
@@ -110,7 +110,7 @@
                         href="index.html#ourteam"
                         data-i18n="header.ourteam"
                     >
-                        <i class="fas fa-users nav-icon"></i>
+                        <span class="nav-icon">👥</span>
                         <span data-i18n="header.ourteam"></span>
                     </a>
                 </li>
@@ -120,7 +120,7 @@
                         href="index.html#Blog"
                         data-i18n="header.why_choose_us"
                     >
-                        <i class="fas fa-star nav-icon"></i>
+                        <span class="nav-icon">⭐</span>
                         <span data-i18n="header.why_choose_us"></span>
                     </a>
                 </li>
@@ -130,7 +130,7 @@
                         href="page2.html#contact"
                         data-i18n="header.contact"
                     >
-                        <i class="fas fa-envelope nav-icon"></i>
+                        <span class="nav-icon">📧</span>
                         <span data-i18n="header.contact"></span>
                     </a>
                 </li>
@@ -140,7 +140,7 @@
         <!-- الإجراءات للشاشات الكبيرة -->
         <div class="site-action d-none d-xl-flex">
             <div class="language-selector">
-                <i class="fas fa-globe language-icon"></i>
+                <span class="language-icon">🌐</span>
                 <select
                     class="language-select"
                     onchange="changeLanguage(this.value)"
@@ -152,14 +152,14 @@
 
             <div class="action-hamburger">
                 <a
-                    class="hamburger"
+                    class="hamburger1"
                     href="#"
                     data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRight"
                     aria-controls="offcanvasRight"
                 >
                     <span class="hamburger-container">
-                        <i class="fa-solid fa-bars-staggered"></i>
+                        <span class="hamburger-icon">☰</span>
                     </span>
                 </a>
             </div>
@@ -170,7 +170,7 @@
             <!-- زر اختيار اللغة للشاشات الصغيرة -->
             <div class="mobile-language me-3">
                 <div class="language-selector-mobile">
-                    <i class="fas fa-globe language-icon"></i>
+                    <span class="language-icon">🌐</span>
                     <select
                         class="language-select-mobile"
                         onchange="changeLanguage(this.value)"
@@ -188,7 +188,7 @@
             <!-- زر القائمة المتنقلة للشاشات الصغيرة -->
             <div class="mobile-hamburger">
                 <a
-                    class="hamburger"
+                    class="hamburger1"
                     href=""
                     data-bs-toggle="offcanvas"
                     data-bs-target="#menuOffcanvas"
@@ -196,7 +196,7 @@
                     aria-label="Toggle mobile menu"
                 >
                     <span class="hamburger-container">
-                        <i class="fa-solid fa-bars"></i>
+                        <span class="hamburger-icon">☰</span>
                     </span>
                 </a>
             </div>
@@ -213,7 +213,7 @@
 >
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="menuOffcanvasLabel">
-            <i class="fas fa-bars me-2"></i>
+            <span class="menu-icon">📱</span>
             <span data-i18n="header.menu">Menu</span>
         </h5>
         <button
@@ -222,7 +222,7 @@
             data-bs-dismiss="offcanvas"
             aria-label="Close"
         >
-            <i class="fa-solid fa-times"></i>
+            <span class="close-icon">✕</span>
         </button>
     </div>
 
@@ -234,7 +234,7 @@
                     href="index.html#"
                     onclick="closeMobileMenu()"
                 >
-                    <i class="fas fa-home nav-icon"></i>
+                    <span class="nav-icon">🏠</span>
                     <span data-i18n="header.home"></span>
                 </a>
             </li>
@@ -245,7 +245,7 @@
                     href="index.html#Service"
                     onclick="closeMobileMenu()"
                 >
-                    <i class="fas fa-cogs nav-icon"></i>
+                    <span class="nav-icon">⚙️</span>
                     <span data-i18n="header.services"></span>
                 </a>
             </li>
@@ -255,7 +255,7 @@
                     href="index.html#projects"
                     onclick="closeMobileMenu()"
                 >
-                    <i class="fas fa-briefcase nav-icon"></i>
+                    <span class="nav-icon">💼</span>
                     <span data-i18n="header.projects"></span>
                 </a>
             </li>
@@ -265,7 +265,7 @@
                     href="index.html#ourteam"
                     onclick="closeMobileMenu()"
                 >
-                    <i class="fas fa-users nav-icon"></i>
+                    <span class="nav-icon">👥</span>
                     <span data-i18n="header.ourteam"></span>
                 </a>
             </li>
@@ -275,7 +275,7 @@
                     href="index.html#Blog"
                     onclick="closeMobileMenu()"
                 >
-                    <i class="fas fa-star nav-icon"></i>
+                    <span class="nav-icon">⭐</span>
                     <span data-i18n="header.why_choose_us"></span>
                 </a>
             </li>
@@ -285,7 +285,7 @@
                     href="page2.html#contact"
                     onclick="closeMobileMenu()"
                 >
-                    <i class="fas fa-envelope nav-icon"></i>
+                    <span class="nav-icon">📧</span>
                     <span data-i18n="header.contact"></span>
                 </a>
             </li>
@@ -294,7 +294,7 @@
         <!-- اختيار اللغة في القائمة المتنقلة -->
         <div class="mobile-language-selector mt-4">
             <label for="mobileLanguageSelect">
-                <i class="fas fa-globe me-2"></i>
+                <span class="language-icon">🌐</span>
                 <span data-i18n="header.select_language">Select Language:</span>
             </label>
             <select
@@ -327,7 +327,7 @@
             data-bs-dismiss="offcanvas"
             aria-label="Close"
         >
-            <i class="fa-solid fa-times"></i>
+            <span class="close-icon">✕</span>
         </button>
     </div>
 
@@ -335,11 +335,11 @@
         <div class="body-inner">
             <div class="about-info">
                 <h4 class="title">
-                    <i class="fas fa-rocket me-2"></i>
+                    <span class="title-icon">🚀</span>
                     Scalable Business for Startups
                 </h4>
                 <p>
-                    <i class="fas fa-quote-left text-muted me-2"></i>
+                    <span class="quote-icon">❝</span>
                     Get the oars in the water and start rowing. Execution is the
                     single biggest factor in achievement so the faster and
                     better your execution.
@@ -347,37 +347,37 @@
             </div>
             <div class="socail-info">
                 <h6 class="section-title">
-                    <i class="fas fa-share-alt me-2"></i>
+                    <span class="section-icon">📢</span>
                     Follow Us
                 </h6>
                 <ul>
                     <li>
                         <a href="#">
-                            <i class="fab fa-facebook-f"></i>
+                            <span class="social-icon">📘</span>
                             <span>Facebook</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fab fa-instagram"></i>
+                            <span class="social-icon">📷</span>
                             <span>Instagram</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fab fa-linkedin-in"></i>
+                            <span class="social-icon">💼</span>
                             <span>LinkedIn</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fab fa-twitter"></i>
+                            <span class="social-icon">🐦</span>
                             <span>Twitter</span>
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fab fa-github"></i>
+                            <span class="social-icon">🐱</span>
                             <span>GitHub</span>
                         </a>
                     </li>
@@ -385,25 +385,25 @@
             </div>
             <div class="contact-info">
                 <h6 class="section-title">
-                    <i class="fas fa-address-card me-2"></i>
+                    <span class="section-icon">📞</span>
                     Contact Info
                 </h6>
                 <div class="contact-item">
-                    <i class="fas fa-phone"></i>
+                    <span class="contact-icon">📞</span>
                     <span class="number">+963 935 027 218</span>
                 </div>
                 <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
+                    <span class="contact-icon">✉️</span>
                     <a class="mail" href="mailto:majdbayer77@gmail.com">
                         majdbayer77@gmail.com
                     </a>
                 </div>
                 <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="contact-icon">📍</span>
                     <span class="location">Damascus, Syria</span>
                 </div>
                 <div class="collaboration-text mt-3">
-                    <i class="fas fa-handshake me-2"></i>
+                    <span class="collab-icon">🤝</span>
                     <span class="text">
                         Looking for collaboration for your next creative project?
                     </span>
@@ -462,8 +462,8 @@
     }
 
     .nav-icon {
-        font-size: 14px;
-        width: 16px;
+        font-size: 16px;
+        width: 20px;
         text-align: center;
     }
 
@@ -476,13 +476,12 @@
     }
 
     .language-icon {
-        color: #666;
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .language-select,
     .language-select-mobile {
-        padding: 8px 12px;
+        /* padding: 8px 12px; */
         border: 1px solid #ddd;
         border-radius: 6px;
         background-color: white;
@@ -499,32 +498,36 @@
     .language-selector-mobile {
         display: flex;
         align-items: center;
-        gap: 8px;
     }
 
     /* تحسينات للشاشات الصغيرة */
     .mobile-action {
         display: flex;
         align-items: center;
-        gap: 15px;
     }
 
-    .mobile-hamburger .hamburger {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        background-color: #2b9bff;
-        border-radius: 6px;
-        color: white;
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
+   .mobile-hamburger .hamburger1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px !important;
+    height: 20px !important;
+    padding: 100%;
+    background-color: #2b9bff;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    transform: translateX(-20px); /* أضف هذا السطر */
+}
 
     .mobile-hamburger .hamburger:hover {
         background-color: #1a7fd9;
         transform: translateY(-2px);
+    }
+
+    .hamburger-icon {
+        font-size: 18px;
     }
 
     /* تصميم القائمة المتنقلة للشاشات الصغيرة */
@@ -575,6 +578,7 @@
         font-weight: 600;
         color: #333;
         margin-bottom: 10px;
+        gap: 8px;
     }
 
     /* تصميم Offcanvas الجانبي الأصلي */
@@ -606,6 +610,10 @@
         color: #ffd700;
     }
 
+    .close-icon {
+        font-size: 18px;
+    }
+
     .offcanvas-body {
         padding: 20px;
     }
@@ -622,6 +630,7 @@
         margin-bottom: 15px;
         display: flex;
         align-items: center;
+        gap: 8px;
     }
 
     .about-info p {
@@ -631,6 +640,7 @@
         opacity: 0.9;
         display: flex;
         align-items: flex-start;
+        gap: 8px;
     }
 
     .section-title {
@@ -639,6 +649,7 @@
         margin-bottom: 15px;
         display: flex;
         align-items: center;
+        gap: 8px;
     }
 
     .socail-info ul {
@@ -669,7 +680,7 @@
         transform: translateX(5px);
     }
 
-    .socail-info li a i {
+    .social-icon {
         font-size: 16px;
         width: 20px;
         text-align: center;
@@ -683,7 +694,7 @@
         padding: 8px 0;
     }
 
-    .contact-info .contact-item i {
+    .contact-info .contact-item .contact-icon {
         width: 20px;
         text-align: center;
         color: #ffd700;
@@ -716,13 +727,83 @@
         border-left: 4px solid #ffd700;
     }
 
-    .collaboration-text i {
+    .collab-icon {
         color: #ffd700;
+        font-size: 18px;
     }
 
     .collaboration-text .text {
         font-size: 14px;
         line-height: 1.4;
+    }
+
+    /* تحسينات الريسبونسيف للشاشات الصغيرة */
+    @media (max-width: 1200px) {
+        .header-inner {
+            padding: 0 15px;
+        }
+
+        .site-logo .header-logo {
+            width: 250px;
+            height: 80px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .header {
+            padding: 10px 0;
+        }
+
+        .header-inner {
+            padding: 0 10px;
+        }
+
+        .site-logo .header-logo {
+            width: 200px;
+            height: 60px;
+        }
+
+        .mobile-action {
+            gap: 10px;
+        }
+
+        .mobile-language {
+            margin-right: 10px;
+        }
+
+        .language-selector-mobile {
+            gap: 5px;
+        }
+
+        .language-select-mobile {
+            padding: 6px 8px;
+            font-size: 12px;
+        }
+
+        .mobile-hamburger .hamburger1 {
+            width: 35px;
+            height: 35px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .site-logo .header-logo {
+            width: 150px;
+            height: 50px;
+        }
+
+        .mobile-menu-offcanvas {
+            width: 280px;
+        }
+
+        .mobile-language-selector label {
+            font-size: 14px;
+        }
+
+        .mobile-menu .nav-link {
+            padding: 12px 0;
+            font-size: 14px;
+        }
     }
 
     /* RTL support for Arabic */
@@ -748,6 +829,11 @@
         border-left: none;
         border-right: 4px solid #ffd700;
     }
-</style>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    html[dir="rtl"] .about-info .title,
+    html[dir="rtl"] .about-info p,
+    html[dir="rtl"] .section-title,
+    html[dir="rtl"] .mobile-language-selector label {
+        flex-direction: row-reverse;
+    }
+</style>

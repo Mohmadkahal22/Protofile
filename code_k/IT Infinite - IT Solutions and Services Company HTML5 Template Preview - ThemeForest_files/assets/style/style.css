@@ -1904,7 +1904,6 @@ blockquote.blockquote-style-1:before {
     background: linear-gradient(135deg, #3663d8, #77beff, #00d1ff);
     border: none;
     border-radius: 12px;
-    padding: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -6608,7 +6607,7 @@ form.form-dark .form-control:focus {
 .header-3.is-sticky.sticky-show {
     top: 0;
 }
-.hamburger-container .fa-bars {
+/* .hamburger-container .fa-bars {
     font-size: 24px;
     color: #ffffff;
     transition: color 0.3s ease, transform 0.3s ease;
@@ -6621,8 +6620,7 @@ form.form-dark .form-control:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px;
-}
+} */
 
 /*---------------------------------*/
 /* Menu Overlay */
