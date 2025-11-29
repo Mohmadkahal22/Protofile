@@ -1,5 +1,22 @@
 {
     "header": {
+        "select_language": "Select Language:",
+        "menu": "Menu",
+        "offcanvas": {
+            "title": "Scalable Business for Startups",
+            "quote": "Get the oars in the water and start rowing. Execution is the single biggest factor in achievement so the faster and better your execution.",
+            "follow_us": "Follow Us",
+            "contact_info": "Contact Info",
+            "phone": "Phone",
+            "email": "Email",
+            "location": "Location",
+            "collaboration": "Looking for collaboration for your next creative project?",
+            "facebook": "Facebook",
+            "instagram": "Instagram",
+            "linkedin": "LinkedIn",
+            "twitter": "Twitter",
+            "github": "GitHub"
+        },
         "logo_part1": "Hexa",
         "logo_part2": "Terminal",
 
@@ -393,6 +410,8 @@
         "contact_us": "Contact Us for More Inquiries"
     },
     "reviews": {
+        "no_reviews": "No reviews available at the moment",
+
         "subtitle": "Customer Reviews",
         "title": "What Our Clients Say",
         "description": "Discover the experiences and feedback from our valued clients.",
@@ -403,5 +422,39 @@
     "video_section.subtitle_icon": "Video Icon",
     "video_section.description": "Watch this introductory video to learn about our vision, mission and goals.",
     "video_section.loading": "Loading video...",
-    "video_section.no_video": "No video available at the moment."
+    "video_section.no_video": "No video available at the moment.",
+    "project": {
+        "title": "Project Details",
+        "loading": "Loading project...",
+        "error": "An error occurred while loading the project",
+        "retry": "Retry",
+        "overview": "Project Overview",
+        "details": "Project Details",
+        "features": "Key Features",
+        "video": "Video Presentation",
+        "visit_project": "Visit Project",
+        "back_to_projects": "Back to Projects",
+        "no_images": "No images available for this project",
+        "no_description": "No description available",
+        "no_features": "No features available",
+        "no_video": "No video available",
+        "category": "Project",
+        "service": "Service",
+        "title_label": "Title",
+        "service_label": "Service",
+        "service_description": "Service Description",
+        "not_available": "Not Available",
+        "project_id_missing": "Project ID is missing",
+        "auth_missing": "Authentication token missing",
+        "fetch_error": "Failed to fetch project details",
+        "timeout_error": "Connection timeout. Please try again."
+    },
+
+    "social": {
+        "github": "GitHub",
+        "linkedin": "LinkedIn",
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "twitter": "Twitter"
+    }
 }

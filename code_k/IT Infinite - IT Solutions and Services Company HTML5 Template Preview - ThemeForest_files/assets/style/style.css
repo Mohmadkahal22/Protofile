@@ -77,10 +77,17 @@ body {
     font-size: 18px;
     color: #d4d6d7;
     overflow-x: hidden;
+    overflow-y: auto;
     background-color: #000000;
+    height: auto;
+    min-height: 100vh;
 }
 html {
     scroll-behavior: smooth;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: auto;
+    min-height: 100vh;
 }
 
 .language-switcher {
@@ -271,50 +278,591 @@ label {
 /*----------------------------------*/
 /* Section Title */
 /*----------------------------------*/
+/* ============================================
+   Section Title - Professional Styling
+   ============================================ */
 .section-title {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #3663d8 0%, #77beff 50%, #00d1ff 100%);
+    border-radius: 2px;
+    transition: width 0.5s ease;
+}
+
+.section-title:hover::after {
+    width: 100px;
+}
+
+/* السطر الأول: الأيقونة + النص الفرعي بجانب بعض */
 .section-title .sub-title {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     align-items: center;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
-    margin-bottom: 15px;
-    background: linear-gradient(60deg, #3663d8 -20%, #77beff 100%);
+    letter-spacing: 1.5px;
+    margin-bottom: 0;
+    background: linear-gradient(135deg, #3663d8 0%, #77beff 50%, #00d1ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    transition: all 0.3s ease;
+    width: 100%;
 }
 
+.section-title .sub-title img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(54, 99, 216, 0.3));
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.section-title .sub-title:hover img {
+    transform: scale(1.1) translateY(-5px);
+    filter: drop-shadow(0 6px 12px rgba(54, 99, 216, 0.5));
+}
+
+.section-title .sub-title span {
+    flex: 1;
+}
+
+/* السطر الثاني: العنوان الرئيسي */
 .section-title .title {
-    margin-bottom: 25px;
+    margin-bottom: 0;
+    margin-top: 0;
     text-transform: capitalize;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.2;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    transition: all 0.3s ease;
+    width: 100%;
 }
 
+.section-title .title::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(135deg, rgba(54, 99, 216, 0.1) 0%, rgba(119, 190, 255, 0.1) 100%);
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.section-title:hover .title::before {
+    opacity: 1;
+}
+
+/* المحتوى داخل section-title */
 .section-title p {
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 0;
-    line-height: normal;
+    margin-top: 25px;
+    line-height: 1.8;
     color: #d4d6d7;
+    transition: color 0.3s ease;
 }
 
 .section-title p + p {
     margin-top: 20px;
 }
 
+/* المحتوى الذي يأتي بعد section-title (الوصف) */
+.section-title + div,
+.section-title + .ps-xxl-5,
+.section-title ~ div.ps-xxl-5,
+.section-title ~ div.ms-0 {
+    margin-top: 30px;
+}
+
+.section-title + div p,
+.section-title + .ps-xxl-5 p,
+.section-title ~ div.ps-xxl-5 p,
+.section-title ~ div.ms-0 p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #d4d6d7;
+    margin-bottom: 0;
+}
+
+/* تحسين التباعد في السكشنات المختلفة */
+.col-xxl-6 .section-title + div,
+.col-xxl-5 .section-title + div,
+.col-lg-8 .section-title + div {
+    margin-top: 30px;
+}
+
+/* للسكشنات التي لديها الوصف في نفس الصف */
+.row .section-title + .col-xxl-6 p,
+.row .section-title ~ .col-xxl-6 p,
+.row .section-title ~ .col-xxl-5 p,
+.row .section-title ~ .col-lg-4 p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #d4d6d7;
+    margin-top: 0;
+}
+
+/* تحسين التباعد العام للمحتوى بعد section-title */
+section .section-title ~ *:not(.section-title) {
+    margin-top: 0;
+}
+
+/* تحسين عرض المحتوى في السكشنات */
+.ps-xxl-5,
+.ms-0,
+.ms-md-5 {
+    margin-top: 30px;
+}
+
+.ps-xxl-5 p,
+.ms-0 p,
+.ms-md-5 p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #d4d6d7;
+    margin-bottom: 0;
+}
+
+/* للسكشنات التي تستخدم sticky-top */
+.sticky-top .section-title {
+    margin-bottom: 30px;
+}
+
+.sticky-top .section-title + div {
+    margin-top: 25px;
+}
+
+/* تحسين responsive للمحتوى */
+@media (max-width: 991px) {
+    .section-title {
+        margin-bottom: 30px;
+    }
+    
+    .section-title + div,
+    .section-title + .ps-xxl-5,
+    .section-title ~ div.ps-xxl-5 {
+        margin-top: 25px;
+    }
+    
+    .ps-xxl-5,
+    .ms-0,
+    .ms-md-5 {
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 767px) {
+    .section-title {
+        margin-bottom: 25px;
+    }
+    
+    .section-title + div,
+    .section-title + .ps-xxl-5,
+    .section-title ~ div.ps-xxl-5 {
+        margin-top: 20px;
+    }
+    
+    .ps-xxl-5,
+    .ms-0,
+    .ms-md-5 {
+        margin-top: 20px;
+    }
+    
+    .section-title p,
+    .section-title + div p,
+    .ps-xxl-5 p {
+        font-size: 16px;
+    }
+}
+
 .section-title.section-title-light .title {
     color: #ffffff;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .section-title.section-title-light p {
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 /* Title in BG Dark */
 .bg-dark .section-title p {
     color: #d4d6d7;
+}
+
+.bg-dark .section-title .title {
+    color: #ffffff;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ============================================
+   Professional Section Elements Styling
+   ============================================ */
+
+/* Enhanced Images */
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.img-fluid:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 16px 40px rgba(54, 99, 216, 0.4);
+}
+
+/* Vision Content */
+.vision-content {
+    position: relative;
+    padding: 30px 0;
+}
+
+.vision-content p {
+    font-size: 16px;
+    line-height: 1.9;
+    color: #d4d6d7;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.vision-content p::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #77beff;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.vision-content p:hover {
+    border-left-color: #77beff;
+    padding-left: 30px;
+    color: #ffffff;
+}
+
+.vision-content p:hover::before {
+    opacity: 1;
+}
+
+/* Objectives Box */
+.objectives-box {
+    position: relative;
+    background: linear-gradient(135deg, rgba(54, 99, 216, 0.1) 0%, rgba(119, 190, 255, 0.1) 100%);
+    border-radius: 20px;
+    padding: 40px 30px;
+    border: 1px solid rgba(119, 190, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.objectives-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(119, 190, 255, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.objectives-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(54, 99, 216, 0.3);
+    border-color: rgba(119, 190, 255, 0.4);
+}
+
+.objectives-box .bg-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, rgba(54, 99, 216, 0.2) 0%, rgba(119, 190, 255, 0.2) 100%);
+    border-radius: 50%;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.objectives-box .list-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+.objectives-box .process-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 25px;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.objectives-box .list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.objectives-box .list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 18px;
+    padding: 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.objectives-box .list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #3663d8 0%, #77beff 100%);
+    border-radius: 0 3px 3px 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.objectives-box .list li:hover {
+    background: rgba(119, 190, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.objectives-box .list li:hover::before {
+    opacity: 1;
+}
+
+.objectives-box .objective-number {
+    font-size: 18px;
+    font-weight: 700;
+    color: #77beff;
+    min-width: 35px;
+    background: rgba(119, 190, 255, 0.15);
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.objectives-box .list li:hover .objective-number {
+    background: rgba(119, 190, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.objectives-box .list li span:last-child {
+    flex: 1;
+    color: #d4d6d7;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+.objectives-box .list li:hover span:last-child {
+    color: #ffffff;
+}
+
+/* Project Boxes */
+.project-boxs {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.project-boxs .grid-wrapper {
+    display: grid;
+    gap: 25px;
+}
+
+.project-boxs .project-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(26, 26, 26, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.project-boxs .project-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(54, 99, 216, 0.4);
+    border-color: rgba(119, 190, 255, 0.3);
+}
+
+/* Container Enhancements */
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+.container .row {
+    position: relative;
+}
+
+/* Sticky Top Enhancement */
+.sticky-top {
+    position: sticky;
+    top: 120px;
+    transition: all 0.3s ease;
+}
+
+.sticky-top:hover {
+    transform: translateY(-2px);
+}
+
+/* Responsive Enhancements for Section Title */
+@media (max-width: 1199px) {
+    .section-title .title {
+        font-size: 42px;
+    }
+    
+    .section-title .sub-title {
+        font-size: 15px;
+    }
+    
+    .section-title .sub-title img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 991px) {
+    .section-title {
+        margin-bottom: 40px;
+        gap: 12px;
+    }
+    
+    .section-title .title {
+        font-size: 36px;
+    }
+    
+    .section-title .sub-title {
+        font-size: 14px;
+    }
+    
+    .section-title .sub-title img {
+        width: 38px;
+        height: 38px;
+    }
+    
+    .objectives-box {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .section-title {
+        gap: 10px;
+    }
+    
+    .section-title .title {
+        font-size: 32px;
+        line-height: 1.3;
+    }
+    
+    .section-title .sub-title {
+        font-size: 13px;
+        gap: 10px;
+    }
+    
+    .section-title .sub-title img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .section-title::after {
+        width: 40px;
+    }
+    
+    .vision-content p {
+        padding-left: 15px;
+    }
+    
+    .objectives-box {
+        padding: 25px 15px;
+    }
+    
+    .img-fluid {
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 575px) {
+    .section-title .title {
+        font-size: 28px;
+    }
+    
+    .section-title .sub-title {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+    
+    .section-title .sub-title img {
+        width: 30px;
+        height: 30px;
+    }
 }
 
 /*----------------------------------*/
@@ -744,12 +1292,139 @@ blockquote.blockquote-style-1:before {
 /*----------------------------*/
 /* Section Margin Padding */
 /*----------------------------*/
+/* ============================================
+   Section Spacing - Professional
+   ============================================ */
 .space-ptb {
     padding: 150px 0;
+    position: relative;
 }
 
 .space-pt {
     padding: 150px 0 0;
+    position: relative;
+}
+
+.space-pb {
+    padding: 0 0 150px;
+    position: relative;
+}
+
+/* Enhanced section backgrounds */
+.bg-black {
+    background-color: #000000;
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-black::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(54, 99, 216, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(119, 190, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bg-black > * {
+    position: relative;
+    z-index: 1;
+}
+
+.bg-dark {
+    background-color: #0a0a0a;
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(54, 99, 216, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bg-dark > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Fix header overlap with sections when header is absolute */
+.site-content .space-pt:first-of-type,
+.site-content > div > section.space-pt:first-of-type {
+    padding-top: 120px;
+}
+
+/* Fix banner padding when header is absolute */
+.site-content .main-banner.main-banner-3 {
+    padding-top: 150px;
+}
+
+/* Ensure sections don't overlap with sticky header */
+.header-sticky ~ .site-content,
+.header-absolute ~ .site-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Fix Vision section overlap */
+#vision-container .space-pt,
+#vision-container section.space-pt {
+    padding-top: 120px;
+}
+
+/* Fix Projects section overlap */
+#projects-showcase-container .space-pt,
+#projects-showcase-container section.space-pt,
+#projects.space-pt {
+    padding-top: 120px;
+}
+
+/* Fix all other sections to prevent header overlap */
+#services-hero-container section,
+#services-list-container section,
+#team-section-container section,
+#reviews-section-container section,
+#faq-container section {
+    position: relative;
+    z-index: 1;
+}
+
+/* Ensure sections with space-pt class have proper spacing */
+.site-content > div[id$="-container"] section.space-pt,
+.site-content > div[id$="-container"] > section.space-pt {
+    padding-top: 120px;
+}
+
+/* Fix Services sections overlap */
+#services-hero-container section.space-pt,
+#Service.space-pt,
+#services-list-container section.space-pt {
+    padding-top: 120px;
+}
+
+/* Fix Team section overlap */
+#team-section-container section.space-pt {
+    padding-top: 120px;
+}
+
+/* Fix Reviews section overlap */
+#reviews-section-container section.space-pt {
+    padding-top: 120px;
+}
+
+/* Fix FAQ section overlap */
+#faq-container section.space-pt {
+    padding-top: 120px;
 }
 
 .space-pb {
@@ -2755,10 +3430,166 @@ blockquote.blockquote-style-1:before {
     transition: all 0.3s ease-in-out;
 }
 
+.team-style-2 .team-social .share-icon ul li a svg {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    fill: currentColor;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
 .team-style-2 .team-social .share-icon ul li a i {
     height: 26px;
     width: 18px;
     line-height: 26px;
+    font-size: 18px;
+    display: inline-block;
+}
+
+/* Fix Font Awesome icons in team social */
+.team-style-2 .team-social .share-icon ul li a i.fa-brands,
+.team-style-2 .team-social .share-icon ul li a i.fab,
+.team-style-2 .team-social .share-icon ul li a i.fas {
+    font-size: 18px;
+    line-height: 26px;
+    width: auto;
+    height: auto;
+    display: inline-block;
+}
+
+/* ============================================
+   Review Rating Stars - Professional Styling
+   ============================================ */
+.review-rating {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.review-rating svg {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    fill: currentColor;
+}
+
+.review-rating svg.star-filled {
+    color: #f5c518;
+    fill: #f5c518;
+}
+
+.review-rating svg.star-empty {
+    color: rgba(245, 197, 24, 0.3);
+    fill: rgba(245, 197, 24, 0.3);
+}
+
+.review-rating:hover svg.star-filled {
+    transform: scale(1.2);
+    color: #ffd700;
+    fill: #ffd700;
+}
+
+/* Ensure Font Awesome icons are visible */
+.review-rating i.fa-star,
+.review-rating i.fas,
+.review-rating i.far {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Pro", "Font Awesome 5 Free", "Font Awesome 5 Pro", "FontAwesome", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    text-rendering: auto;
+    speak: none;
+}
+
+.review-rating i.far.fa-star {
+    font-weight: 400;
+}
+
+/* Fallback for missing Font Awesome fonts - Use Unicode */
+.review-rating i.fas.fa-star::before {
+    content: "★";
+    font-family: "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+.review-rating i.far.fa-star::before {
+    content: "☆";
+    font-family: "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+/* Team Social Icons - Ensure visibility */
+.team-style-2 .team-social .share-icon ul li a i.fa-brands,
+.team-style-2 .team-social .share-icon ul li a i.fab {
+    font-family: "Font Awesome 6 Brands", "Font Awesome 5 Brands", "FontAwesome", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    text-rendering: auto;
+    speak: none;
+}
+
+.team-style-2 .team-social .share-icon ul li a i.fas {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Pro", "Font Awesome 5 Free", "Font Awesome 5 Pro", "FontAwesome", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    text-rendering: auto;
+    speak: none;
+}
+
+/* Fallback Unicode for social icons */
+.team-style-2 .team-social .share-icon ul li a i.fab.fa-github::before {
+    content: "⚫";
+    font-family: "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+.team-style-2 .team-social .share-icon ul li a i.fab.fa-linkedin-in::before {
+    content: "💼";
+    font-family: "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+.team-style-2 .team-social .share-icon ul li a i.fab.fa-facebook-f::before {
+    content: "📘";
+    font-family: "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+/* General Font Awesome fallback */
+.fa,
+.fas,
+.far,
+.fab,
+.fa-solid,
+.fa-regular,
+.fa-brands {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome 5 Free", "Font Awesome 5 Brands", "FontAwesome", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    display: inline-block !important;
+    speak: none;
+}
+
+.fas,
+.fa-solid {
+    font-weight: 900 !important;
+}
+
+.far,
+.fa-regular {
+    font-weight: 400 !important;
+}
+
+.fab,
+.fa-brands {
+    font-weight: 400 !important;
 }
 
 .team-style-2 .team-social .share-icon ul li a:hover {
@@ -6786,18 +7617,54 @@ form.form-dark .form-control:focus {
 }
 
 .offcanvas.sidepanel-offcanvas .offcanvas-body {
-    gap: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
     padding: 50px;
     padding-top: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 100vh;
+    height: auto;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body * {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .body-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 30px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: auto !important;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .about-info,
+.offcanvas.sidepanel-offcanvas .offcanvas-body .socail-info,
+.offcanvas.sidepanel-offcanvas .offcanvas-body .contact-info {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .socail-info ul,
+.offcanvas.sidepanel-offcanvas .offcanvas-body .socail-info ul li,
+.offcanvas.sidepanel-offcanvas .offcanvas-body .contact-info .contact-item {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .offcanvas.sidepanel-offcanvas .offcanvas-body .body-inner {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: auto;
     gap: 30px;
-    overflow: auto;
-    justify-content: space-between;
+    overflow: visible;
+    justify-content: flex-start;
 }
 
 .offcanvas.sidepanel-offcanvas
@@ -6818,8 +7685,49 @@ form.form-dark .form-control:focus {
     background-color: #000000;
 }
 
+.offcanvas.sidepanel-offcanvas .offcanvas-body .about-info {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    margin-bottom: 30px;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .about-info .title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
 .offcanvas.sidepanel-offcanvas .offcanvas-body .about-info p {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
     margin-bottom: 0;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.9;
+    visibility: visible;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .socail-info {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    margin-bottom: 30px;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .socail-info .section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
     color: #ffffff;
 }
 
@@ -6830,6 +7738,8 @@ form.form-dark .form-control:focus {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    visibility: visible;
+    opacity: 1;
 }
 
 .offcanvas.sidepanel-offcanvas .offcanvas-body .socail-info ul li a {
@@ -6846,6 +7756,94 @@ form.form-dark .form-control:focus {
 
 .offcanvas.sidepanel-offcanvas .offcanvas-body .socail-info ul li i {
     width: 30px;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding-top: 25px;
+    border-top: 3px solid #000000;
+    visibility: visible;
+    opacity: 1;
+    margin-top: 0;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .contact-info .section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .contact-info .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding: 8px 0;
+    visibility: visible;
+    opacity: 1;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .contact-info .contact-item .contact-icon {
+    width: 16px;
+    height: 16px;
+    color: #ffd700;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .contact-info .number,
+.offcanvas.sidepanel-offcanvas .offcanvas-body .contact-info .mail,
+.offcanvas.sidepanel-offcanvas .offcanvas-body .contact-info .location {
+    font-size: 14px;
+    color: #ffffff;
+    visibility: visible;
+    opacity: 1;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .contact-info .mail {
+    color: #ffd700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .contact-info .mail:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .contact-info .collaboration-text {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid #ffd700;
+    margin-top: 15px;
+    visibility: visible;
+    opacity: 1;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .contact-info .collaboration-text .collab-icon {
+    width: 18px;
+    height: 18px;
+    color: #ffd700;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .contact-info .collaboration-text .text {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #ffffff;
+    visibility: visible;
+    opacity: 1;
 }
 
 /* Comman Offcanvas */
@@ -7114,7 +8112,7 @@ form.form-dark .form-control:focus {
 /* Banner Base Styles */
 .main-banner.main-banner-3 {
     overflow: hidden;
-    padding: 280px 0 175px 0;
+    padding: 150px 0 175px 0;
     position: relative;
     min-height: 100vh;
     display: flex;
@@ -7314,7 +8312,22 @@ form.form-dark .form-control:focus {
 
 @media (max-width: 1199px) {
     .main-banner.main-banner-3 {
-        padding: 220px 0 140px 0;
+        padding: 130px 0 140px 0;
+    }
+    
+    /* Fix header overlap on medium screens */
+    .site-content .main-banner.main-banner-3 {
+        padding-top: 130px;
+    }
+    
+    .site-content .space-pt:first-of-type,
+    .site-content > div > section.space-pt:first-of-type,
+    #vision-container .space-pt,
+    #vision-container section.space-pt,
+    #projects-showcase-container .space-pt,
+    #projects-showcase-container section.space-pt,
+    #projects.space-pt {
+        padding-top: 100px;
     }
 
     .main-banner.main-banner-3 .banner-inner {
@@ -7340,7 +8353,28 @@ form.form-dark .form-control:focus {
 
 @media (max-width: 991px) {
     .main-banner.main-banner-3 {
-        padding: 180px 0 100px 0;
+        padding: 120px 0 100px 0;
+    }
+    
+    /* Fix header overlap on tablets */
+    .site-content .main-banner.main-banner-3 {
+        padding-top: 120px;
+    }
+    
+    .site-content .space-pt:first-of-type,
+    .site-content > div > section.space-pt:first-of-type,
+    #vision-container .space-pt,
+    #vision-container section.space-pt,
+    #projects-showcase-container .space-pt,
+    #projects-showcase-container section.space-pt,
+    #projects.space-pt,
+    #services-hero-container section.space-pt,
+    #Service.space-pt,
+    #services-list-container section.space-pt,
+    #team-section-container section.space-pt,
+    #reviews-section-container section.space-pt,
+    #faq-container section.space-pt {
+        padding-top: 90px;
     }
 
     .main-banner.main-banner-3 .banner-inner {
@@ -7372,8 +8406,29 @@ form.form-dark .form-control:focus {
 
 @media (max-width: 767px) {
     .main-banner.main-banner-3 {
-        padding: 150px 0 80px 0;
+        padding: 110px 0 80px 0;
         text-align: center;
+    }
+    
+    /* Fix header overlap on mobile */
+    .site-content .main-banner.main-banner-3 {
+        padding-top: 110px;
+    }
+    
+    .site-content .space-pt:first-of-type,
+    .site-content > div > section.space-pt:first-of-type,
+    #vision-container .space-pt,
+    #vision-container section.space-pt,
+    #projects-showcase-container .space-pt,
+    #projects-showcase-container section.space-pt,
+    #projects.space-pt,
+    #services-hero-container section.space-pt,
+    #Service.space-pt,
+    #services-list-container section.space-pt,
+    #team-section-container section.space-pt,
+    #reviews-section-container section.space-pt,
+    #faq-container section.space-pt {
+        padding-top: 80px;
     }
 
     .main-banner.main-banner-3 .banner-inner {
@@ -7426,7 +8481,28 @@ form.form-dark .form-control:focus {
 
 @media (max-width: 575px) {
     .main-banner.main-banner-3 {
-        padding: 120px 0 60px 0;
+        padding: 100px 0 60px 0;
+    }
+    
+    /* Fix header overlap on small mobile */
+    .site-content .main-banner.main-banner-3 {
+        padding-top: 100px;
+    }
+    
+    .site-content .space-pt:first-of-type,
+    .site-content > div > section.space-pt:first-of-type,
+    #vision-container .space-pt,
+    #vision-container section.space-pt,
+    #projects-showcase-container .space-pt,
+    #projects-showcase-container section.space-pt,
+    #projects.space-pt,
+    #services-hero-container section.space-pt,
+    #Service.space-pt,
+    #services-list-container section.space-pt,
+    #team-section-container section.space-pt,
+    #reviews-section-container section.space-pt,
+    #faq-container section.space-pt {
+        padding-top: 70px;
     }
 
     .main-banner.main-banner-3 .banner-inner {
@@ -8591,101 +9667,7 @@ select.form-control {
     position: relative;
 }
 
-.item-efftect {
-    position: fixed;
-    top: 0px;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-    bottom: 0;
-}
-
-.item-efftect .efftect {
-    position: absolute;
-    width: 1px;
-    height: 100vh;
-    top: 0px;
-    background: rgba(255, 255, 255, 0.04);
-    overflow: hidden;
-}
-
-.item-efftect .efftect::after {
-    position: absolute;
-    top: -50%;
-    left: 0;
-    content: "";
-    height: 70px;
-    width: 100%;
-    background: linear-gradient(
-        to bottom,
-        rgba(131, 131, 131, 0.1) 0%,
-        #77beff 75%,
-        rgba(131, 131, 131, 0.1) 100%
-    );
-    display: block;
-    -webkit-animation: run 5s 0s infinite;
-    animation: run 5s 0s infinite;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
-    animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
-}
-
-.item-efftect .efftect:nth-child(1) {
-    left: 5%;
-}
-
-.item-efftect .efftect:nth-child(1)::after {
-    -webkit-animation-delay: 0.05s;
-    animation-delay: 0.05s;
-}
-
-.item-efftect .efftect:nth-child(2) {
-    left: 25%;
-}
-
-.item-efftect .efftect:nth-child(2)::after {
-    -webkit-animation-delay: 0.15s;
-    animation-delay: 0.15s;
-}
-
-.item-efftect .efftect:nth-child(3) {
-    left: 50%;
-}
-
-.item-efftect .efftect:nth-child(3)::after {
-    -webkit-animation-delay: 0.25s;
-    animation-delay: 0.25s;
-}
-
-.item-efftect .efftect:nth-child(4) {
-    left: 75%;
-}
-
-.item-efftect .efftect:nth-child(4)::after {
-    -webkit-animation-delay: 0.35s;
-    animation-delay: 0.35s;
-}
-
-.item-efftect .efftect:nth-child(5) {
-    left: 95%;
-}
-
-.item-efftect .efftect:nth-child(5)::after {
-    -webkit-animation-delay: 0.45s;
-    animation-delay: 0.45s;
-}
-
-@keyframes run {
-    0% {
-        top: -50%;
-    }
-    100% {
-        top: 110%;
-    }
-}
+/* Rain effect removed - item-efftect styles disabled */
 
 /*------------------------------*/
 /* Ellipse Shep */

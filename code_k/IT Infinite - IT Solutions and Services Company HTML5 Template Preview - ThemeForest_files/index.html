@@ -1,71 +1,191 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="no-js">
     <head>
+        <!-- ============================================
+             Document Metadata & SEO
+             ============================================ -->
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
         />
+        <meta name="format-detection" content="telephone=no" />
 
+        <!-- Primary Meta Tags -->
         <title>HexaTerminal | Software & Web Development Company</title>
-
-        <!-- Meta Tags -->
+        <meta
+            name="title"
+            content="HexaTerminal | Software & Web Development Company"
+        />
         <meta
             name="description"
-            content="HexaTerminal is a professional software development company..."
+            content="HexaTerminal is a professional software development company specializing in innovative digital solutions, web development, and cutting-edge technology services."
         />
         <meta
             name="description:ar"
-            content="هيكسا تيرمينال هي شركة برمجيات احترافية..."
+            content="هيكسا تيرمينال هي شركة برمجيات احترافية متخصصة في الحلول الرقمية المبتكرة وتطوير الويب وخدمات التكنولوجيا المتطورة."
         />
         <meta
             name="keywords"
-            content="HexaTerminal, Software Development, Web Development..."
+            content="HexaTerminal, Software Development, Web Development, IT Solutions, Digital Transformation, Technology Services, Software Company"
         />
         <meta name="author" content="HexaTerminal Team" />
+        <meta name="robots" content="index, follow" />
+        <meta name="language" content="Arabic, English" />
 
-        <!-- Open Graph -->
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://hexa-terminal.com" />
         <meta
             property="og:title"
             content="HexaTerminal | Software Development Company"
         />
         <meta
             property="og:description"
-            content="Innovative software development and digital solutions..."
+            content="Innovative software development and digital solutions for your business growth."
         />
         <meta
             property="og:image"
             content="https://hexa-terminal.com/assets/images/og-image.jpg"
         />
-        <meta property="og:url" content="https://hexa-terminal.com" />
-        <meta property="og:type" content="website" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="ar_AR" />
+        <meta property="og:locale:alternate" content="en_US" />
 
-        <!-- Preload Critical Resources -->
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://hexa-terminal.com" />
+        <meta
+            name="twitter:title"
+            content="HexaTerminal | Software Development Company"
+        />
+        <meta
+            name="twitter:description"
+            content="Innovative software development and digital solutions."
+        />
+        <meta
+            name="twitter:image"
+            content="https://hexa-terminal.com/assets/images/og-image.jpg"
+        />
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+        <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+
+        <!-- ============================================
+             Critical Resource Preloading
+             ============================================ -->
         <link
             rel="preload"
             href="assets/libs/css/font-awesome.min.css"
             as="style"
         />
-        <link rel="preload" href="assets/libs/css/cairo-font.css" as="style" />
-        <link rel="preload" href="assets/style/bootstrap.min.css" as="style" />
-        <link rel="preload" href="assets/style/style.css" as="style" />
+        <link
+            rel="preload"
+            href="assets/libs/css/cairo-font.css"
+            as="style"
+        />
+        <link
+            rel="preload"
+            href="assets/style/bootstrap.min.css"
+            as="style"
+        />
+        <link
+            rel="preload"
+            href="assets/style/style.css"
+            as="style"
+        />
+        <link
+            rel="preconnect"
+            href="https://fonts.googleapis.com"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="dns-prefetch"
+            href="https://fonts.googleapis.com"
+        />
 
-        <!-- CSS Files -->
-        <link href="assets/libs/css/font-awesome.min.css" rel="stylesheet" />
-        <link href="assets/libs/css/cairo-font.css" rel="stylesheet" />
+        <!-- ============================================
+             Stylesheets (Ordered by Priority)
+             ============================================ -->
+        <!-- Core Styles -->
+        <link
+            href="assets/libs/css/font-awesome.min.css"
+            rel="stylesheet"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link
+                href="assets/libs/css/font-awesome.min.css"
+                rel="stylesheet"
+            />
+        </noscript>
+        <link
+            href="assets/libs/css/cairo-font.css"
+            rel="stylesheet"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link href="assets/libs/css/cairo-font.css" rel="stylesheet" />
+        </noscript>
         <link href="assets/style/bootstrap.min.css" rel="stylesheet" />
-        <link href="assets/style/all.min.css" rel="stylesheet" />
         <link href="assets/style/css2.css" rel="stylesheet" />
-        <link href="assets/style/magnific-popup.css" rel="stylesheet" />
-        <link href="assets/style/owl.carousel.min.css" rel="stylesheet" />
-        <link href="assets/style/swiper.min.css" rel="stylesheet" />
         <link href="assets/style/style.css" rel="stylesheet" />
-        <link href="assets/libs/css/sweetalert2.min.css" rel="stylesheet" />
+        <link href="assets/style/header.css" rel="stylesheet" />
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- Component Styles -->
+        <link
+            href="assets/style/magnific-popup.css"
+            rel="stylesheet"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link href="assets/style/magnific-popup.css" rel="stylesheet" />
+        </noscript>
+        <link
+            href="assets/style/owl.carousel.min.css"
+            rel="stylesheet"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link href="assets/style/owl.carousel.min.css" rel="stylesheet" />
+        </noscript>
+        <link
+            href="assets/style/swiper.min.css"
+            rel="stylesheet"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link href="assets/style/swiper.min.css" rel="stylesheet" />
+        </noscript>
+        <link
+            href="assets/style/all.min.css"
+            rel="stylesheet"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link href="assets/style/all.min.css" rel="stylesheet" />
+        </noscript>
+        <link
+            href="assets/libs/css/sweetalert2.min.css"
+            rel="stylesheet"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link
+                href="assets/libs/css/sweetalert2.min.css"
+                rel="stylesheet"
+            />
+        </noscript>
 
         <style>
             /* شاشة التحميل */
@@ -135,9 +255,25 @@
             #page {
                 opacity: 0;
                 transition: opacity 0.5s ease;
+                visibility: hidden;
             }
             #page.loaded {
                 opacity: 1;
+                visibility: visible;
+            }
+            
+            /* Ensure text is visible even if fonts fail to load */
+            body {
+                font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif !important;
+            }
+            
+            /* Prevent FOUT (Flash of Unstyled Text) */
+            .font-loading {
+                visibility: hidden;
+            }
+            
+            .font-loaded {
+                visibility: visible;
             }
 
             .error-message {
@@ -158,63 +294,154 @@
                 border-radius: 4px;
                 cursor: pointer;
                 margin-top: 10px;
+                transition: background-color 0.3s ease;
+            }
+
+            .retry-button:hover,
+            .retry-button:focus {
+                background-color: #0056b3;
+                outline: 2px solid #0056b3;
+                outline-offset: 2px;
+            }
+
+            /* Skip to main content link (Accessibility) */
+            .skip-to-main-content {
+                position: absolute;
+                top: -100px;
+                left: 0;
+                background: #000;
+                color: #fff;
+                padding: 1rem;
+                text-decoration: none;
+                z-index: 10000;
+                border: 2px solid #fff;
+            }
+
+            .skip-to-main-content:focus {
+                top: 0;
+            }
+
+            /* Loading state */
+            body.loading {
+                overflow: hidden;
+            }
+            
+            body.loaded {
+                overflow: auto;
+            }
+            
+            body.loaded #page {
+                overflow: visible;
+            }
+
+
+            /* Reduced motion preference */
+            @media (prefers-reduced-motion: reduce) {
+                *,
+                *::before,
+                *::after {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                }
             }
         </style>
     </head>
 
-    <body>
-        <!-- شاشة التحميل -->
-        <div id="loading-screen">
-            <div class="loading-logo">HexaTerminal</div>
-            <div class="loading-spinner"></div>
-            <div class="loading-text" id="loading-status">
+    <body class="loading" data-theme="dark">
+        <!-- ============================================
+             Loading Screen (Accessibility Enhanced)
+             ============================================ -->
+        <div
+            id="loading-screen"
+            role="status"
+            aria-live="polite"
+            aria-label="جاري تحميل الصفحة"
+        >
+            <div class="loading-logo" aria-hidden="true">HexaTerminal</div>
+            <div class="loading-spinner" aria-hidden="true"></div>
+            <div class="loading-text" id="loading-status" aria-live="polite">
                 جاري تحميل المحتوى...
             </div>
-            <div class="loading-progress">
+            <div class="loading-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="مستوى التحميل">
                 <div
                     class="loading-progress-bar"
                     id="loading-progress-bar"
+                    aria-hidden="true"
                 ></div>
             </div>
         </div>
 
-        <!-- المحتوى الرئيسي -->
-        <div id="page" class="main">
-            <!-- Include Header -->
-            <div id="header-container"></div>
+        <!-- ============================================
+             Main Content (Semantic HTML5 Structure)
+             ============================================ -->
+        <div id="page" class="main" aria-hidden="true">
+            <!-- Skip to main content link for accessibility -->
+            <a href="#main-content" class="skip-to-main-content">
+                التخطي إلى المحتوى الرئيسي
+            </a>
 
-            <div class="site-content">
-                <div class="container-fluid">
-                    <div class="item-efftect">
-                        <div class="efftect overflow-hidden"></div>
-                        <div class="efftect overflow-hidden"></div>
-                        <div class="efftect overflow-hidden"></div>
-                        <div class="efftect overflow-hidden"></div>
-                        <div class="efftect overflow-hidden"></div>
-                    </div>
-                </div>
+            <!-- Header Section -->
+            <header id="header-container" role="banner"></header>
 
-                <!-- Include Components -->
-                <div id="banner-container"></div>
-                <div id="services-hero-container"></div>
-                <div id="services-list-container"></div>
-                <div id="projects-showcase-container"></div>
-                <div id="team-section-container"></div>
-                <!-- <div id="advantages-section-container"></div> -->
-                <div id="reviews-section-container"></div>
-                <div id="faq-container"></div>
-                <div id="vision-container"></div>
-            </div>
+            <!-- Main Content Area -->
+            <main id="main-content" class="site-content" role="main">
+                <!-- Hero/Banner Section -->
+                <section id="banner-container" aria-label="القسم الرئيسي"></section>
 
-            <!-- Include Footer -->
-            <div id="footer-container"></div>
+                <!-- Services Hero Section -->
+                <section
+                    id="services-hero-container"
+                    aria-labelledby="services-hero-title"
+                ></section>
+
+                <!-- Services List Section -->
+                <section
+                    id="services-list-container"
+                    aria-labelledby="services-list-title"
+                ></section>
+
+                <!-- Projects Showcase Section -->
+                <section
+                    id="projects-showcase-container"
+                    aria-labelledby="projects-showcase-title"
+                ></section>
+
+                <!-- Team Section -->
+                <section
+                    id="team-section-container"
+                    aria-labelledby="team-section-title"
+                ></section>
+
+                <!-- Reviews Section -->
+                <section
+                    id="reviews-section-container"
+                    aria-labelledby="reviews-section-title"
+                ></section>
+
+                <!-- FAQ Section -->
+                <section
+                    id="faq-container"
+                    aria-labelledby="faq-section-title"
+                ></section>
+
+                <!-- Vision Section -->
+                <section
+                    id="vision-container"
+                    aria-labelledby="vision-section-title"
+                ></section>
+            </main>
+
+            <!-- Footer Section -->
+            <footer id="footer-container" role="contentinfo"></footer>
         </div>
 
         <!-- JavaScript Libraries (محلي) -->
+        <script src="assets/js/jquery-3.7.1.min.js"></script>
+        <script src="assets/js/font-loader.js"></script>
         <script src="assets/libs/js/i18next.min.js"></script>
         <script src="assets/libs/js/i18next-browser-languagedetector.min.js"></script>
         <script src="assets/libs/js/i18next-http-backend.min.js"></script>
-        <script src="assets/js/jquery-3.7.1.min.js"></script>
         <script src="assets/libs/js/alpinejs.min.js" defer></script>
         <script src="assets/libs/js/sweetalert2.min.js"></script>
         <script src="assets/libs/js/lenis.min.js"></script>
@@ -241,90 +468,287 @@
         <script src="assets/components/header.js"></script>
 
         <script>
-            // تهيئة التحميل
+            /**
+             * ============================================
+             * Component Loader System
+             * ============================================
+             * Manages dynamic loading of HTML components with:
+             * - Error handling and retry logic
+             * - Progress tracking
+             * - Accessibility support
+             * - Performance optimization
+             * ============================================
+             */
+            
+            'use strict';
+
+            /**
+             * Component loading state management
+             * @type {Object}
+             */
             const componentState = {
                 loaded: 0,
-                total: 11,
+                total: 0,
                 errors: 0,
                 maxRetries: 2,
                 retryDelays: [1000, 3000],
+                startTime: null,
             };
 
-            function updateProgress() {
-                const progress =
-                    (componentState.loaded / componentState.total) * 100;
-                document.getElementById("loading-progress-bar").style.width =
-                    progress + "%";
-
-                const statusText =
-                    componentState.errors > 0
-                        ? `جاري تحميل المحتوى... (${componentState.errors} أخطاء)`
-                        : `جاري تحميل المحتوى...`;
-                document.getElementById("loading-status").textContent =
-                    statusText;
+            /**
+             * Update loading progress bar and status text
+             * @param {number} progress - Progress percentage (0-100)
+             */
+            function updateProgress(progress = null) {
+                const progressBar = document.getElementById("loading-progress-bar");
+                const progressContainer = progressBar?.parentElement;
+                const statusEl = document.getElementById("loading-status");
+                
+                // Calculate progress if not provided
+                if (progress === null && componentState.total > 0) {
+                    progress = Math.round((componentState.loaded / componentState.total) * 100);
+                }
+                
+                // Update progress bar
+                if (progressBar && progress !== null) {
+                    progressBar.style.width = `${progress}%`;
+                    if (progressContainer) {
+                        progressContainer.setAttribute('aria-valuenow', progress);
+                    }
+                }
+                
+                // Update status text
+                if (statusEl) {
+                    let statusText = `جاري تحميل المحتوى... (${progress || 0}%)`;
+                    if (componentState.errors > 0) {
+                        statusText += ` - ${componentState.errors} أخطاء`;
+                    }
+                    statusEl.textContent = statusText;
+                }
             }
 
+            /**
+             * Show page content after all components are loaded
+             * Handles accessibility and performance optimizations
+             */
             function showPage() {
-                if (
-                    componentState.loaded + componentState.errors >=
-                    componentState.total
-                ) {
+                if (componentState.loaded + componentState.errors >= componentState.total) {
+                    const loadingScreen = document.getElementById("loading-screen");
+                    const page = document.getElementById("page");
+                    const body = document.body;
+                    
+                    // Calculate load time
+                    if (componentState.startTime) {
+                        const loadTime = Date.now() - componentState.startTime;
+                        console.log(`Page loaded in ${loadTime}ms`);
+                    }
+                    
+                    // Fade out loading screen
                     setTimeout(() => {
-                        document.getElementById(
-                            "loading-screen"
-                        ).style.opacity = "0";
-                        document.getElementById("page").classList.add("loaded");
+                        if (loadingScreen) {
+                            loadingScreen.style.opacity = "0";
+                            loadingScreen.setAttribute('aria-hidden', 'true');
+                        }
+                        
+                        if (page) {
+                            page.classList.add("loaded");
+                            page.setAttribute('aria-hidden', 'false');
+                        }
+                        
+                        // Remove loading class from body
+                        if (body) {
+                            body.classList.remove("loading");
+                            body.classList.add("loaded");
+                        }
 
+                        // Hide loading screen completely
                         setTimeout(() => {
-                            document.getElementById(
-                                "loading-screen"
-                            ).style.display = "none";
-
-                            // تهيئة Lenis
-                            const lenis = new Lenis({
-                                duration: 1.2,
-                                easing: (t) =>
-                                    Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                                smooth: true,
-                            });
-
-                            function raf(time) {
-                                lenis.raf(time);
-                                requestAnimationFrame(raf);
+                            if (loadingScreen) {
+                                loadingScreen.style.display = "none";
                             }
-                            requestAnimationFrame(raf);
+
+                            // Initialize Lenis smooth scroll (if available)
+                            if (typeof Lenis !== 'undefined') {
+                                try {
+                                    // Ensure body and html allow scrolling
+                                    document.body.style.overflow = 'auto';
+                                    document.documentElement.style.overflow = 'auto';
+                                    
+                                    const lenis = new Lenis({
+                                        duration: 1.2,
+                                        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                                        smooth: true,
+                                        smoothTouch: false, // Disable on touch devices for better performance
+                                        wrapper: window,
+                                        content: document.documentElement,
+                                    });
+
+                                    function raf(time) {
+                                        lenis.raf(time);
+                                        requestAnimationFrame(raf);
+                                    }
+                                    requestAnimationFrame(raf);
+                                    
+                                    // Store lenis instance globally for debugging
+                                    window.lenis = lenis;
+                                } catch (error) {
+                                    console.warn('Lenis initialization failed:', error);
+                                    // Fallback: ensure scrolling works without Lenis
+                                    document.body.style.overflow = 'auto';
+                                    document.documentElement.style.overflow = 'auto';
+                                }
+                            } else {
+                                // Fallback: ensure scrolling works without Lenis
+                                document.body.style.overflow = 'auto';
+                                document.documentElement.style.overflow = 'auto';
+                            }
+
+                            // Dispatch custom event for other scripts
+                            window.dispatchEvent(new CustomEvent('pageLoaded', {
+                                detail: {
+                                    loadTime: componentState.startTime ? Date.now() - componentState.startTime : null,
+                                    errors: componentState.errors,
+                                }
+                            }));
                         }, 500);
                     }, 500);
                 }
             }
 
+            /**
+             * Load HTML component into container
+             * @param {string} containerId - CSS selector for container
+             * @param {string} url - URL of HTML component to load
+             * @param {number} retryCount - Current retry attempt
+             * @returns {Promise} Resolves when component is loaded or failed
+             */
             function loadComponent(containerId, url, retryCount = 0) {
-                return new Promise((resolve, reject) => {
-                    $(containerId).load(url, function (response, status, xhr) {
-                        if (status === "error") {
+                return new Promise((resolve) => {
+                    // Validate container exists
+                    if (!$(containerId).length) {
+                        console.error(`Container ${containerId} not found`);
+                        componentState.errors++;
+                        updateProgress();
+                        resolve();
+                        return;
+                    }
+                    
+                    // Use fetch API for better error handling
+                    fetch(url)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+                            return response.text();
+                        })
+                        .then(html => {
+                            if (!html || html.trim() === '') {
+                                throw new Error('Empty response');
+                            }
+                            
+                            // Clean and validate HTML before inserting
+                            try {
+                                // Remove any potential problematic characters
+                                const cleanedHtml = html.trim();
+                                
+                                // Use DOMParser to validate HTML structure
+                                const parser = new DOMParser();
+                                const doc = parser.parseFromString(cleanedHtml, 'text/html');
+                                
+                                // Check for parser errors
+                                const parserError = doc.querySelector('parsererror');
+                                if (parserError) {
+                                    console.warn('HTML parsing warning for', url, parserError.textContent);
+                                    // Try to extract valid content despite parser error
+                                    const bodyContent = doc.body ? doc.body.innerHTML : cleanedHtml;
+                                    if (!bodyContent || bodyContent.trim() === '') {
+                                        throw new Error('No valid HTML content found');
+                                    }
+                                }
+                                
+                                // Get the container element
+                                const container = document.querySelector(containerId);
+                                if (!container) {
+                                    throw new Error(`Container ${containerId} not found in DOM`);
+                                }
+                                
+                                // Insert HTML using native DOM method to avoid jQuery.appear interference
+                                // This bypasses jQuery's html() method which triggers jquery.appear's append hook
+                                container.innerHTML = cleanedHtml;
+                                
+                                // Note: Scripts in dynamically loaded HTML are not executed automatically
+                                // If scripts need to run, they should be handled separately
+                                // For now, we skip script re-execution to avoid replaceChild issues
+                                // Most components don't have inline scripts that need execution
+                                
+                                // Update translations for newly loaded content
+                                if (typeof updateContent === 'function') {
+                                    // Force update header translations immediately if this is the header
+                                    if (containerId === '#header-container') {
+                                        setTimeout(() => {
+                                            updateContent();
+                                            // Force update header translations specifically
+                                            if (typeof i18next !== 'undefined' && i18next.isInitialized) {
+                                                document.querySelectorAll('#header-container [data-i18n], .offcanvas [data-i18n], .nav-link [data-i18n], .nav-link span[data-i18n], .mobile-menu [data-i18n], .mobile-menu span[data-i18n]').forEach(el => {
+                                                    const key = el.getAttribute('data-i18n');
+                                                    if (key) {
+                                                        try {
+                                                            const translatedText = i18next.t(key);
+                                                            if (translatedText && translatedText !== key && !translatedText.startsWith('translation:')) {
+                                                                el.textContent = translatedText;
+                                                                el.style.visibility = 'visible';
+                                                                el.style.opacity = '1';
+                                                                if (el.tagName === 'SPAN') {
+                                                                    el.style.display = 'inline-block';
+                                                                }
+                                                            }
+                                                        } catch (error) {
+                                                            // Silently handle errors
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                        }, 50);
+                                        // Also update after a longer delay to ensure resources are loaded
+                                        setTimeout(() => {
+                                            updateContent();
+                                        }, 300);
+                                    } else {
+                                        setTimeout(() => {
+                                            updateContent();
+                                        }, 100);
+                                    }
+                                }
+                                
+                                componentState.loaded++;
+                                updateProgress();
+                            } catch (e) {
+                                console.error('HTML processing error for', url, ':', e);
+                                throw new Error('Invalid HTML: ' + e.message);
+                            }
+                        })
+                        .catch(error => {
+                            console.error(`Error loading ${url}:`, error);
                             if (retryCount < componentState.maxRetries) {
-                                const delay =
-                                    componentState.retryDelays[retryCount];
-                                document.getElementById(
-                                    "loading-status"
-                                ).textContent = `خطأ في تحميل ${url}. إعادة المحاولة بعد ${
-                                    delay / 1000
-                                } ثواني...`;
-
+                                const delay = componentState.retryDelays[retryCount];
+                                const statusEl = document.getElementById("loading-status");
+                                if (statusEl) {
+                                    statusEl.textContent = `خطأ في تحميل ${url}. إعادة المحاولة بعد ${delay / 1000} ثواني...`;
+                                }
                                 setTimeout(() => {
-                                    loadComponent(
-                                        containerId,
-                                        url,
-                                        retryCount + 1
-                                    )
+                                    loadComponent(containerId, url, retryCount + 1)
                                         .then(resolve)
-                                        .catch(reject);
+                                        .catch(() => {
+                                            componentState.errors++;
+                                            updateProgress();
+                                            resolve();
+                                        });
                                 }, delay);
                             } else {
                                 componentState.errors++;
                                 $(containerId).html(`
                                     <div class="error-message">
-                                        <p>تعذر تحميل هذا القسم.</p>
+                                        <p>تعذر تحميل هذا القسم: ${url}</p>
                                         <button class="retry-button" onclick="retryComponent('${containerId}', '${url}')">
                                             إعادة المحاولة
                                         </button>
@@ -333,26 +757,35 @@
                                 updateProgress();
                                 resolve();
                             }
-                        } else {
-                            componentState.loaded++;
-                            updateProgress();
-                            resolve();
-                        }
-                    });
+                        });
+                    
                 });
             }
 
+            /**
+             * Retry loading a failed component
+             * @param {string} containerId - CSS selector for container
+             * @param {string} url - URL of HTML component to load
+             */
             function retryComponent(containerId, url) {
-                $(containerId).html(
-                    '<div class="text-center">جاري إعادة التحميل...</div>'
-                );
+                const container = document.querySelector(containerId);
+                if (container) {
+                    container.innerHTML = '<div class="text-center">جاري إعادة التحميل...</div>';
+                }
                 componentState.errors--;
                 loadComponent(containerId, url).then(showPage);
             }
 
-            // تحميل المكونات
+            /**
+             * Initialize component loading on page ready
+             * Uses modern async/await pattern with proper error handling
+             */
             $(document).ready(async function () {
+                // Record start time for performance tracking
+                componentState.startTime = Date.now();
+                
                 try {
+                    // Define components to load (ordered by priority)
                     const components = [
                         {
                             id: "#header-container",
@@ -382,7 +815,6 @@
                             id: "#team-section-container",
                             url: "assets/components/Services/TeamSection.html",
                         },
-                  
                         {
                             id: "#reviews-section-container",
                             url: "assets/components/Services/ReviewsSection.html",
@@ -397,19 +829,122 @@
                         },
                     ];
 
+                    // Set total components count
                     componentState.total = components.length;
+                    updateProgress(0);
+                    
+                    // Load all components in parallel with error handling
                     const loadPromises = components.map((comp) =>
-                        loadComponent(comp.id, comp.url)
+                        loadComponent(comp.id, comp.url).catch((error) => {
+                            console.error(`Failed to load component ${comp.id}:`, error);
+                            componentState.errors++;
+                            updateProgress();
+                            return null; // Return null instead of throwing
+                        })
                     );
+                    
+                    // Wait for all components to load (or fail)
                     await Promise.allSettled(loadPromises);
+                    
+                    // Update translations after all components are loaded
+                    if (typeof updateContent === 'function') {
+                        setTimeout(() => {
+                            // Force update all translations including header
+                            updateContent();
+                            
+                            // Force update header translations specifically with multiple attempts
+                            const updateHeaderTranslations = () => {
+                                if (typeof i18next === 'undefined' || !i18next.isInitialized) return;
+                                
+                                document.querySelectorAll('#header-container [data-i18n], .offcanvas [data-i18n], .offcanvas-body [data-i18n], .body-inner [data-i18n], .nav-link [data-i18n], .nav-link span[data-i18n], .mobile-menu [data-i18n], .mobile-menu span[data-i18n]').forEach(el => {
+                                    const key = el.getAttribute('data-i18n');
+                                    if (key) {
+                                        try {
+                                            const translatedText = i18next.t(key);
+                                            if (translatedText && translatedText !== key && !translatedText.startsWith('translation:')) {
+                                                el.textContent = translatedText;
+                                                el.style.visibility = 'visible';
+                                                el.style.opacity = '1';
+                                                if (el.tagName === 'SPAN') {
+                                                    el.style.display = 'inline-block';
+                                                }
+                                            }
+                                        } catch (error) {
+                                            // Silently handle errors
+                                        }
+                                    }
+                                });
+                            };
+                            
+                            // Update immediately
+                            updateHeaderTranslations();
+                            
+                            // Update again after short delays to ensure all translations are applied
+                            setTimeout(updateHeaderTranslations, 100);
+                            setTimeout(updateHeaderTranslations, 300);
+                            setTimeout(updateHeaderTranslations, 500);
+                            setTimeout(updateHeaderTranslations, 800);
+                            
+                            // Add event listener for offcanvas show to update translations
+                            document.addEventListener('shown.bs.offcanvas', function() {
+                                setTimeout(() => {
+                                    updateHeaderTranslations();
+                                    updateContent();
+                                }, 50);
+                            }, { once: false });
+                            
+                            // Also trigger language change event to ensure all translations are applied
+                                        if (typeof i18next !== 'undefined' && i18next.language) {
+                                            if (typeof applyLanguageStyles === 'function') {
+                                                applyLanguageStyles(i18next.language);
+                                            } else {
+                                                // Fallback if applyLanguageStyles is not available
+                                                const html = document.documentElement;
+                                                const body = document.body;
+                                                if (i18next.language === 'ar') {
+                                                    html.dir = 'rtl';
+                                                    html.lang = 'ar';
+                                                    body.classList.add('rtl', 'arabic-font');
+                                                    body.classList.remove('ltr', 'latin-font');
+                                                } else {
+                                                    html.dir = 'ltr';
+                                                    html.lang = i18next.language;
+                                                    body.classList.add('ltr', 'latin-font');
+                                                    body.classList.remove('rtl', 'arabic-font');
+                                                }
+                                            }
+                                        }
+                                        
+                                        // Add event listener for offcanvas show to update translations
+                                        document.addEventListener('shown.bs.offcanvas', function() {
+                                            setTimeout(() => {
+                                                updateHeaderTranslations();
+                                                updateContent();
+                                            }, 50);
+                                        }, { once: false });
+                                    }, 200);
+                                }
+                    
+                    // Final progress update
+                    updateProgress(100);
+                    
+                    // Show page after short delay
                     showPage();
                 } catch (error) {
                     console.error("خطأ أثناء تحميل المكونات:", error);
-                    document.getElementById("loading-status").textContent =
-                        "حدث خطأ غير متوقع. جاري تحميل الصفحة...";
+                    const statusEl = document.getElementById("loading-status");
+                    if (statusEl) {
+                        statusEl.textContent = "حدث خطأ غير متوقع. جاري تحميل الصفحة...";
+                    }
+                    componentState.errors++;
+                    updateProgress(100);
                     showPage();
                 }
             });
+            
+            // Remove no-js class if JavaScript is enabled
+            document.documentElement.classList.remove('no-js');
+            document.documentElement.classList.add('js');
         </script>
 
         <script>
