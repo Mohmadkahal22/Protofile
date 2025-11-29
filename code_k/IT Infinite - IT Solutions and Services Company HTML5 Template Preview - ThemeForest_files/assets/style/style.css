@@ -7648,6 +7648,51 @@ form.form-dark .form-control:focus {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
+    margin-bottom: 30px !important;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .socail-info ul {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .socail-info ul li {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .socail-info ul li a {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #ffffff !important;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .contact-info .contact-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-bottom: 12px !important;
+    padding: 8px 0 !important;
+}
+
+.offcanvas.sidepanel-offcanvas .offcanvas-body .contact-info .contact-item span,
+.offcanvas.sidepanel-offcanvas .offcanvas-body .contact-info .contact-item a {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #ffffff !important;
 }
 
 .offcanvas.sidepanel-offcanvas .offcanvas-body .socail-info ul,
