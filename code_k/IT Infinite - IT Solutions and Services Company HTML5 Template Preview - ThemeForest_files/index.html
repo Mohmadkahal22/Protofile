@@ -447,16 +447,41 @@
         <script src="assets/libs/js/lenis.min.js"></script>
 
         <!-- JavaScript Files -->
+        <!-- Popper.js must be loaded before Bootstrap -->
+        <script src="assets/js/popper.min.js"></script>
         <script src="assets/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.appear.js"></script>
         <script src="assets/js/jquery.countTo.js"></script>
         <script src="assets/js/jquery.magnific-popup.js"></script>
         <script src="assets/js/owl.carousel.min.js"></script>
-        <script src="assets/js/popper.min.js"></script>
         <script src="assets/js/shuffle.min.js"></script>
         <script src="assets/js/swiper.min.js"></script>
         <script src="assets/js/SwiperAnimation.min.js"></script>
         <script src="assets/js/translations.js"></script>
+
+        <!-- Initialize Bootstrap Offcanvas after DOM is ready -->
+        <script>
+            // Fix Bootstrap backdrop issue by ensuring Popper is loaded
+            document.addEventListener('DOMContentLoaded', function() {
+                // Wait for Bootstrap to be fully loaded
+                if (typeof bootstrap !== 'undefined') {
+                    // Initialize offcanvas manually if needed
+                    const offcanvasElements = document.querySelectorAll('.offcanvas');
+                    offcanvasElements.forEach(function(element) {
+                        try {
+                            // Get or create instance
+                            const offcanvas = bootstrap.Offcanvas.getOrCreateInstance(element, {
+                                backdrop: true,
+                                keyboard: true,
+                                scroll: false
+                            });
+                        } catch (error) {
+                            console.warn('Offcanvas initialization warning:', error);
+                        }
+                    });
+                }
+            });
+        </script>
 
         <!-- Component Scripts -->
         <script src="assets/components/Services/ServicesList.js"></script>

@@ -81,6 +81,9 @@ body {
     background-color: #000000;
     height: auto;
     min-height: 100vh;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    position: relative;
 }
 html {
     scroll-behavior: smooth;
@@ -88,6 +91,27 @@ html {
     overflow-x: hidden;
     height: auto;
     min-height: 100vh;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+}
+
+/* Fix mobile scrolling */
+body.loaded,
+body.loaded #page {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    height: auto;
+    min-height: 100vh;
+}
+
+/* Ensure main content is scrollable on mobile */
+.site-content {
+    overflow-y: visible;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
 }
 
 .language-switcher {
@@ -7626,6 +7650,8 @@ form.form-dark .form-control:focus {
     overflow-x: hidden;
     max-height: 100vh;
     height: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
 }
 
 .offcanvas.sidepanel-offcanvas .offcanvas-body * {
@@ -9717,15 +9743,16 @@ select.form-control {
 /*------------------------------*/
 /* Ellipse Shep */
 /*------------------------------*/
+/* Note: ellipse images are disabled to avoid 404 errors */
 .ellipse-top {
-    background-image: url("../images/bg/ellipse-top.png");
+    /* background-image: url("../images/bg/ellipse-top.png"); */
     background-position: center top;
     background-repeat: no-repeat;
     background-size: auto;
 }
 
 .ellipse-bottom {
-    background-image: url("../images/bg/ellipse-bottom.png");
+    /* background-image: url("../images/bg/ellipse-bottom.png"); */
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: auto;
@@ -11472,4 +11499,231 @@ select.form-control {
             font-size: 1rem; /* 16px */
         }
     }
+}
+
+/* ============================================
+   RTL Support - تحسينات العرض للغة العربية
+   ============================================ */
+
+/* General RTL adjustments */
+html[dir="rtl"],
+html[dir="rtl"] body {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .container,
+html[dir="rtl"] .container-fluid,
+html[dir="rtl"] .row {
+    direction: rtl;
+}
+
+/* Text alignment */
+html[dir="rtl"] p,
+html[dir="rtl"] span,
+html[dir="rtl"] div,
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] h5,
+html[dir="rtl"] h6 {
+    text-align: right;
+}
+
+/* Flexbox adjustments */
+html[dir="rtl"] .d-flex,
+html[dir="rtl"] .flex-row {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .justify-content-start {
+    justify-content: flex-end;
+}
+
+html[dir="rtl"] .justify-content-end {
+    justify-content: flex-start;
+}
+
+/* Margin and padding adjustments */
+html[dir="rtl"] .me-1,
+html[dir="rtl"] .me-2,
+html[dir="rtl"] .me-3,
+html[dir="rtl"] .me-4,
+html[dir="rtl"] .me-5 {
+    margin-right: 0 !important;
+    margin-left: var(--bs-spacer) !important;
+}
+
+html[dir="rtl"] .ms-1,
+html[dir="rtl"] .ms-2,
+html[dir="rtl"] .ms-3,
+html[dir="rtl"] .ms-4,
+html[dir="rtl"] .ms-5 {
+    margin-left: 0 !important;
+    margin-right: var(--bs-spacer) !important;
+}
+
+html[dir="rtl"] .pe-1,
+html[dir="rtl"] .pe-2,
+html[dir="rtl"] .pe-3,
+html[dir="rtl"] .pe-4,
+html[dir="rtl"] .pe-5 {
+    padding-right: 0 !important;
+    padding-left: var(--bs-spacer) !important;
+}
+
+html[dir="rtl"] .ps-1,
+html[dir="rtl"] .ps-2,
+html[dir="rtl"] .ps-3,
+html[dir="rtl"] .ps-4,
+html[dir="rtl"] .ps-5 {
+    padding-left: 0 !important;
+    padding-right: var(--bs-spacer) !important;
+}
+
+/* Section title improvements */
+html[dir="rtl"] .section-title {
+    text-align: right;
+}
+
+html[dir="rtl"] .section-title .sub-title {
+    justify-content: flex-end;
+}
+
+html[dir="rtl"] .section-title .sub-title img {
+    margin-right: 0;
+    margin-left: 12px;
+}
+
+html[dir="rtl"] .section-title::after {
+    left: auto;
+    right: 0;
+}
+
+/* Navigation improvements */
+html[dir="rtl"] .main-menu {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .nav-link {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .nav-link .nav-icon {
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+/* Buttons */
+html[dir="rtl"] .btn {
+    text-align: right;
+}
+
+html[dir="rtl"] .btn i,
+html[dir="rtl"] .btn svg {
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+/* Cards and boxes */
+html[dir="rtl"] .card,
+html[dir="rtl"] .project-boxs,
+html[dir="rtl"] .objectives-box {
+    text-align: right;
+}
+
+html[dir="rtl"] .card-body,
+html[dir="rtl"] .project-boxs .project-boxs-content {
+    text-align: right;
+}
+
+/* Lists */
+html[dir="rtl"] ul,
+html[dir="rtl"] ol {
+    padding-right: 20px;
+    padding-left: 0;
+}
+
+html[dir="rtl"] .list li {
+    padding-right: 25px;
+    padding-left: 0;
+}
+
+html[dir="rtl"] .list li::before {
+    right: 0;
+    left: auto;
+}
+
+/* Forms */
+html[dir="rtl"] .form-control,
+html[dir="rtl"] .form-select,
+html[dir="rtl"] input,
+html[dir="rtl"] textarea,
+html[dir="rtl"] select {
+    text-align: right;
+    direction: rtl;
+}
+
+html[dir="rtl"] .form-label {
+    text-align: right;
+}
+
+/* Icons alignment */
+html[dir="rtl"] .icon-left {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+html[dir="rtl"] .icon-right {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+/* Project gallery */
+html[dir="rtl"] .project-gallery__thumbnails {
+    direction: rtl;
+}
+
+/* Footer */
+html[dir="rtl"] .footer,
+html[dir="rtl"] .footer-content {
+    text-align: right;
+}
+
+/* Responsive RTL adjustments */
+@media (max-width: 991px) {
+    html[dir="rtl"] .section-title {
+        text-align: center;
+    }
+    
+    html[dir="rtl"] .section-title .sub-title {
+        justify-content: center;
+    }
+}
+
+/* Font improvements for Arabic */
+html[dir="rtl"] body,
+html[dir="rtl"] .arabic-lang {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Improve line height for Arabic text */
+html[dir="rtl"] p,
+html[dir="rtl"] .about-details p,
+html[dir="rtl"] .vision-content p {
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+}
+
+/* Number formatting */
+html[dir="rtl"] .counter,
+html[dir="rtl"] .number {
+    direction: ltr;
+    display: inline-block;
+    unicode-bidi: embed;
 }

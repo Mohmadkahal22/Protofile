@@ -163,6 +163,7 @@
                     data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRight"
                     aria-controls="offcanvasRight"
+                    onclick="event.preventDefault(); openOffcanvas('offcanvasRight');"
                 >
                     <span class="hamburger-container">
                         <span class="hamburger-icon">☰</span>
@@ -195,11 +196,12 @@
             <div class="mobile-hamburger">
                 <a
                     class="hamburger1"
-                    href=""
+                    href="#"
                     data-bs-toggle="offcanvas"
                     data-bs-target="#menuOffcanvas"
                     aria-controls="menuOffcanvas"
                     aria-label="Toggle mobile menu"
+                    onclick="event.preventDefault(); openOffcanvas('menuOffcanvas');"
                 >
                     <span class="hamburger-container">
                         <span class="hamburger-icon">☰</span>
@@ -456,3 +458,589 @@
 </div>
 
 <!-- Header Component Styles are loaded from assets/style/header.css -->
+
+<script>
+    /**
+     * Safely open Bootstrap Offcanvas
+     * @param {string} offcanvasId - The ID of the offcanvas element
+     */
+    function openOffcanvas(offcanvasId) {
+        try {
+            if (typeof bootstrap === 'undefined') {
+                console.warn('Bootstrap is not loaded yet');
+                // Fallback: use data-bs-toggle attribute
+                const element = document.getElementById(offcanvasId);
+                if (element) {
+                    const toggleBtn = document.querySelector(`[data-bs-target="#${offcanvasId}"]`);
+                    if (toggleBtn) {
+                        toggleBtn.setAttribute('data-bs-toggle', 'offcanvas');
+                        toggleBtn.click();
+                    }
+                }
+                return;
+            }
+
+            const element = document.getElementById(offcanvasId);
+            if (!element) {
+                console.error('Offcanvas element not found:', offcanvasId);
+                return;
+            }
+
+            // Check if Popper is available (required for backdrop)
+            if (typeof bootstrap.Offcanvas === 'undefined') {
+                console.warn('Bootstrap Offcanvas is not available');
+                return;
+            }
+
+            // Get or create instance with safe options
+            let offcanvas;
+            try {
+                offcanvas = bootstrap.Offcanvas.getOrCreateInstance(element, {
+                    backdrop: true,
+                    keyboard: true,
+                    scroll: false
+                });
+            } catch (error) {
+                // If getOrCreateInstance fails, try without options
+                console.warn('Failed to create instance with options, trying without:', error);
+                try {
+                    offcanvas = bootstrap.Offcanvas.getOrCreateInstance(element);
+                } catch (e) {
+                    console.error('Failed to create offcanvas instance:', e);
+                    return;
+                }
+            }
+
+            // Show the offcanvas
+            if (offcanvas && typeof offcanvas.show === 'function') {
+                offcanvas.show();
+            }
+        } catch (error) {
+            console.error('Error opening offcanvas:', error);
+        }
+    }
+
+    /**
+     * Close mobile menu offcanvas
+     */
+    function closeMobileMenu() {
+        try {
+            const menuOffcanvas = document.getElementById('menuOffcanvas');
+            if (menuOffcanvas && typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
+                const offcanvas = bootstrap.Offcanvas.getInstance(menuOffcanvas);
+                if (offcanvas) {
+                    offcanvas.hide();
+                }
+            }
+        } catch (error) {
+            console.error('Error closing mobile menu:', error);
+        }
+    }
+</script>
+
+    <div class="offcanvas-body lenis-scroll-disable">
+        <div class="body-inner">
+            <div class="about-info">
+                <h4 class="title">
+                    <span class="title-icon">🚀</span>
+                    Scalable Business for Startups
+                </h4>
+                <p>
+                    <span class="quote-icon">❝</span>
+                    Get the oars in the water and start rowing. Execution is the
+                    single biggest factor in achievement so the faster and
+                    better your execution.
+                </p>
+            </div>
+            <div class="socail-info">
+                <h6 class="section-title">
+                    <span class="section-icon">📢</span>
+                    Follow Us
+                </h6>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="social-icon">📘</span>
+                            <span>Facebook</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="social-icon">📷</span>
+                            <span>Instagram</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="social-icon">💼</span>
+                            <span>LinkedIn</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="social-icon">🐦</span>
+                            <span>Twitter</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="social-icon">🐱</span>
+                            <span>GitHub</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="contact-info">
+                <h6 class="section-title">
+                    <span class="section-icon">📞</span>
+                    Contact Info
+                </h6>
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <span class="number">+963 935 027 218</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <a class="mail" href="mailto:majdbayer77@gmail.com">
+                        majdbayer77@gmail.com
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span class="location">Damascus, Syria</span>
+                </div>
+                <div class="collaboration-text mt-3">
+                    <span class="collab-icon">🤝</span>
+                    <span class="text">
+                        Looking for collaboration for your next creative project?
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* تحسينات عامة للهيدر */
+    .header {
+        padding: 15px 0;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 1000;
+    }
+
+    .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+
+    .site-logo {
+        flex-shrink: 0;
+    }
+
+    .site-logo h4 {
+        margin: 0;
+    }
+
+    /* تحسينات القائمة الرئيسية */
+    .main-menu {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 30px;
+    }
+
+    .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        padding: 10px 0;
+    }
+
+    .nav-link:hover {
+        color: #2b9bff;
+    }
+
+    .nav-icon {
+        font-size: 16px;
+        width: 20px;
+        text-align: center;
+    }
+
+    /* تحسينات أداة اختيار اللغة */
+    .language-selector {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .language-icon {
+        font-size: 18px;
+    }
+
+    .language-select,
+    .language-select-mobile {
+        /* padding: 8px 12px; */
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        background-color: white;
+        font-size: 14px;
+        cursor: pointer;
+        transition: border-color 0.3s ease;
+    }
+
+    .language-select:hover,
+    .language-select-mobile:hover {
+        border-color: #2b9bff;
+    }
+
+    .language-selector-mobile {
+        display: flex;
+        align-items: center;
+    }
+
+    /* تحسينات للشاشات الصغيرة */
+    .mobile-action {
+        display: flex;
+        align-items: center;
+    }
+
+   .mobile-hamburger .hamburger1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px !important;
+    height: 20px !important;
+    padding: 100%;
+    background-color: #2b9bff;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    transform: translateX(-20px); /* أضف هذا السطر */
+}
+
+    .mobile-hamburger .hamburger:hover {
+        background-color: #1a7fd9;
+        transform: translateY(-2px);
+    }
+
+    .hamburger-icon {
+        font-size: 18px;
+    }
+
+    /* تصميم القائمة المتنقلة للشاشات الصغيرة */
+    .mobile-menu-offcanvas {
+        width: 300px;
+    }
+
+    .mobile-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mobile-menu .nav-item {
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .mobile-menu .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    .mobile-menu .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 15px 0;
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-menu .nav-link:hover {
+        color: #2b9bff;
+        background-color: #f8f9fa;
+        padding-left: 10px;
+    }
+
+    .mobile-menu .nav-icon {
+        width: 20px;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .mobile-language-selector label {
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 10px;
+        gap: 8px;
+    }
+
+    /* تصميم Offcanvas الجانبي الأصلي */
+    .sidepanel-offcanvas {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        width: 320px;
+        font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    .offcanvas-header {
+        padding: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .btn-close {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        transition: color 0.3s ease;
+        padding: 5px;
+    }
+
+    .btn-close:hover {
+        color: #ffd700;
+    }
+
+    .close-icon {
+        font-size: 18px;
+    }
+
+    .offcanvas-body {
+        padding: 20px;
+    }
+
+    .body-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .about-info .title {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .about-info p {
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 0;
+        opacity: 0.9;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .section-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .socail-info ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .socail-info li a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 10px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .socail-info li a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateX(5px);
+    }
+
+    .social-icon {
+        font-size: 16px;
+        width: 20px;
+        text-align: center;
+    }
+
+    .contact-info .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+        padding: 8px 0;
+    }
+
+    .contact-info .contact-item .contact-icon {
+        width: 20px;
+        text-align: center;
+        color: #ffd700;
+    }
+
+    .contact-info .number,
+    .contact-info .mail,
+    .contact-info .location {
+        font-size: 14px;
+    }
+
+    .contact-info .mail {
+        color: #ffd700;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .contact-info .mail:hover {
+        color: white;
+        text-decoration: underline;
+    }
+
+    .collaboration-text {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        border-left: 4px solid #ffd700;
+    }
+
+    .collab-icon {
+        color: #ffd700;
+        font-size: 18px;
+    }
+
+    .collaboration-text .text {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    /* تحسينات الريسبونسيف للشاشات الصغيرة */
+    @media (max-width: 1200px) {
+        .header-inner {
+            padding: 0 15px;
+        }
+
+        .site-logo .header-logo {
+            width: 250px;
+            height: 80px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .header {
+            padding: 10px 0;
+        }
+
+        .header-inner {
+            padding: 0 10px;
+        }
+
+        .site-logo .header-logo {
+            width: 200px;
+            height: 60px;
+        }
+
+        .mobile-action {
+            gap: 10px;
+        }
+
+        .mobile-language {
+            margin-right: 10px;
+        }
+
+        .language-selector-mobile {
+            gap: 5px;
+        }
+
+        .language-select-mobile {
+            padding: 6px 8px;
+            font-size: 12px;
+        }
+
+        .mobile-hamburger .hamburger1 {
+            width: 35px;
+            height: 35px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .site-logo .header-logo {
+            width: 150px;
+            height: 50px;
+        }
+
+        .mobile-menu-offcanvas {
+            width: 280px;
+        }
+
+        .mobile-language-selector label {
+            font-size: 14px;
+        }
+
+        .mobile-menu .nav-link {
+            padding: 12px 0;
+            font-size: 14px;
+        }
+    }
+
+    /* RTL support for Arabic */
+    html[dir="rtl"] .sidepanel-offcanvas,
+    html[dir="rtl"] .mobile-menu-offcanvas {
+        direction: rtl;
+    }
+
+    html[dir="rtl"] .offcanvas-header {
+        justify-content: flex-start;
+    }
+
+    html[dir="rtl"] .nav-link,
+    html[dir="rtl"] .mobile-menu .nav-link {
+        flex-direction: row-reverse;
+    }
+
+    html[dir="rtl"] .socail-info li a:hover {
+        transform: translateX(-5px);
+    }
+
+    html[dir="rtl"] .collaboration-text {
+        border-left: none;
+        border-right: 4px solid #ffd700;
+    }
+
+    html[dir="rtl"] .about-info .title,
+    html[dir="rtl"] .about-info p,
+    html[dir="rtl"] .section-title,
+    html[dir="rtl"] .mobile-language-selector label {
+        flex-direction: row-reverse;
+    }
+</style>
