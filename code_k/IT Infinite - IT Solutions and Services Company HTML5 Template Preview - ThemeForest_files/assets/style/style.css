@@ -95,23 +95,86 @@ html {
     touch-action: pan-y;
 }
 
-/* Fix mobile scrolling */
+/* Scrolling - Force Enable (إصلاح نهائي للسكرول) */
+html.scroll-enabled,
+html.scroll-enabled body,
+body.scroll-enabled,
 body.loaded,
-body.loaded #page {
+body.loaded #page,
+#page.loaded {
     overflow-y: auto !important;
     overflow-x: hidden !important;
-    -webkit-overflow-scrolling: touch;
-    touch-action: pan-y;
-    height: auto;
-    min-height: 100vh;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-y !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    max-height: none !important;
+    position: relative !important;
 }
 
-/* Ensure main content is scrollable on mobile */
+/* Remove Lenis blocking classes */
+html.lenis-stopped,
+html.lenis-locked,
+body.lenis-stopped,
+body.lenis-locked {
+    overflow: auto !important;
+    overflow-y: auto !important;
+}
+
+/* Scrollbar Visibility */
+body.loaded::-webkit-scrollbar,
+body.loaded #page::-webkit-scrollbar,
+html.loaded::-webkit-scrollbar {
+    width: 4px;
+    display: block;
+}
+
+body.loaded::-webkit-scrollbar-track,
+body.loaded #page::-webkit-scrollbar-track,
+html.loaded::-webkit-scrollbar-track {
+    background-color: #dfdfdf;
+}
+
+body.loaded::-webkit-scrollbar-thumb,
+body.loaded #page::-webkit-scrollbar-thumb,
+html.loaded::-webkit-scrollbar-thumb {
+    background-color: #77beff;
+}
+
+/* Main Content Scrolling */
 .site-content {
-    overflow-y: visible;
+    overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     touch-action: pan-y;
+    height: auto;
+}
+
+/* Mobile Scrolling - Disable Lenis */
+@media (max-width: 767px) {
+    html.lenis,
+    html.lenis-smooth {
+        scroll-behavior: auto;
+    }
+    
+    html.lenis-stopped,
+    html.lenis-locked {
+        overflow: auto;
+    }
+    
+    body {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+        height: auto;
+    }
+    
+    #page {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+        height: auto;
+    }
 }
 
 .language-switcher {
@@ -127,32 +190,25 @@ body.loaded #page {
 }
 
 a {
-    outline: medium none !important;
+    outline: none;
     color: #77beff;
     transition: all 0.3s ease-in-out;
     text-decoration: none;
 }
 
-a:focus {
-    color: #000000;
-    text-decoration: none !important;
-}
-
+a:focus,
 a:hover {
     color: #000000;
-    text-decoration: none !important;
+    text-decoration: none;
 }
 
-a.text-dark:focus {
-    color: #77beff !important;
-}
-
+a.text-dark:focus,
 a.text-dark:hover {
-    color: #77beff !important;
+    color: #77beff;
 }
 
 input {
-    outline: medium none !important;
+    outline: none;
     color: #77beff;
 }
 
@@ -2274,6 +2330,15 @@ blockquote.blockquote-style-1:before {
 /* تنسيقات الشعار الديناميكي */
 .header-logo {
     transition: transform 0.3s ease, filter 0.3s ease;
+    display: block;
+}
+
+.header-logo svg {
+    display: block;
+    width: 300px;
+    height: 100px;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 /* للغة العربية - قلب اتجاه الشعار */
@@ -8746,26 +8811,71 @@ form.form-dark .form-control:focus {
     }
 }
 
+/* Scrollbar Styles - إصلاح ظهور السكرول على السيرفر */
 ::-webkit-scrollbar {
-    width: var(--scrollbar-width) !important;
+    width: 4px !important;
+    height: 4px !important;
+    display: block !important;
+    visibility: visible !important;
 }
 
 .table-responsive::-webkit-scrollbar {
     width: auto;
-    height: var(--scrollbar-width);
-}
-
-::-webkit-scrollbar {
-    width: 4px;
+    height: 4px !important;
+    display: block !important;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #dfdfdf;
-    border: 1px solid #dfdfdf;
+    background-color: #dfdfdf !important;
+    border: 1px solid #dfdfdf !important;
+    display: block !important;
+    visibility: visible !important;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #77beff;
+    background-color: #77beff !important;
+    display: block !important;
+    visibility: visible !important;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #3663d8 !important;
+}
+
+/* Force scrollbar visibility on server - إصلاح نهائي */
+html,
+html.scroll-enabled,
+body,
+body.scroll-enabled {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    scrollbar-width: thin !important; /* Firefox */
+    scrollbar-color: #77beff #dfdfdf !important; /* Firefox */
+    height: auto !important;
+    min-height: 100vh !important;
+    max-height: none !important;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: 4px !important;
+    display: block !important;
+    visibility: visible !important;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+    background-color: #dfdfdf !important;
+    display: block !important;
+    visibility: visible !important;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+    background-color: #77beff !important;
+    display: block !important;
+    visibility: visible !important;
 }
 
 /*----------------------------------*/
@@ -11582,23 +11692,106 @@ html[dir="rtl"] .ps-5 {
     padding-right: var(--bs-spacer) !important;
 }
 
-/* Section title improvements */
+/* Section title improvements - إعادة ترتيب للغة العربية */
+/* السطر الأول: اللوغو (الأيقونة + النص الفرعي) وتقييمات العملاء */
+/* السطر الثاني: العنوان الرئيسي */
 html[dir="rtl"] .section-title {
     text-align: right;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
 }
 
+/* السطر الأول: sub-title (اللوغو) - wrapper للسطر الأول */
 html[dir="rtl"] .section-title .sub-title {
     justify-content: flex-end;
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+    order: 1 !important; /* السطر الأول */
+    width: 100%;
+    flex-wrap: wrap; /* للسماح بتقييمات العملاء في نفس السطر */
+    flex-direction: row-reverse; /* عكس الترتيب: النص أولاً، الأيقونة ثانياً */
 }
 
 html[dir="rtl"] .section-title .sub-title img {
-    margin-right: 0;
-    margin-left: 12px;
+    margin-right: 12px; /* المسافة على اليمين */
+    margin-left: 0;
+    order: 2; /* الأيقونة في اليمين */
+    flex-shrink: 0;
+}
+
+html[dir="rtl"] .section-title .sub-title span {
+    order: 1; /* النص في اليسار */
+    flex: 0 1 auto;
+}
+
+/* السطر الثاني: title (العنوان الرئيسي) */
+html[dir="rtl"] .section-title .title {
+    order: 2 !important; /* السطر الثاني */
+    width: 100%;
+    text-align: right;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
 }
 
 html[dir="rtl"] .section-title::after {
     left: auto;
     right: 0;
+}
+
+/* إضافة تقييمات العملاء في السطر الأول (إذا كانت موجودة) */
+html[dir="rtl"] .section-title .client-ratings,
+html[dir="rtl"] .section-title .reviews-info,
+html[dir="rtl"] .section-title .rating-info {
+    order: 0 !important; /* قبل النص والأيقونة في نفس السطر (أقصى اليسار) */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 20px;
+    margin-left: 0;
+    font-size: 14px;
+    color: #77beff;
+    white-space: nowrap;
+}
+
+html[dir="rtl"] .section-title .client-ratings::before,
+html[dir="rtl"] .section-title .reviews-info::before,
+html[dir="rtl"] .section-title .rating-info::before {
+    content: '⭐';
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+/* Responsive adjustments for RTL section titles */
+@media (max-width: 991px) {
+    html[dir="rtl"] .section-title .sub-title {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    html[dir="rtl"] .section-title .client-ratings,
+    html[dir="rtl"] .section-title .reviews-info,
+    html[dir="rtl"] .section-title .rating-info {
+        margin-right: 10px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 767px) {
+    html[dir="rtl"] .section-title .sub-title {
+        flex-direction: row-reverse; /* الحفاظ على الترتيب: النص ثم الأيقونة */
+        justify-content: flex-start;
+    }
+    
+    html[dir="rtl"] .section-title .client-ratings,
+    html[dir="rtl"] .section-title .reviews-info,
+    html[dir="rtl"] .section-title .rating-info {
+        width: 100%;
+        margin-right: 0;
+        margin-top: 8px;
+        order: 4 !important; /* نقل إلى سطر جديد على الشاشات الصغيرة */
+    }
 }
 
 /* Navigation improvements */

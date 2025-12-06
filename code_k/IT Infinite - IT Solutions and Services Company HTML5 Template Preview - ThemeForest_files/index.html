@@ -98,6 +98,11 @@
             as="style"
         />
         <link
+            rel="preload"
+            href="assets/style/header.css"
+            as="style"
+        />
+        <link
             rel="preconnect"
             href="https://fonts.googleapis.com"
             crossorigin="anonymous"
@@ -130,12 +135,12 @@
             onload="this.media='all'"
         />
         <noscript>
-            <link href="assets/libs/css/cairo-font.css" rel="stylesheet" />
+        <link href="assets/libs/css/cairo-font.css" rel="stylesheet" />
         </noscript>
         <link href="assets/style/bootstrap.min.css" rel="stylesheet" />
         <link href="assets/style/css2.css" rel="stylesheet" />
-        <link href="assets/style/style.css" rel="stylesheet" />
-        <link href="assets/style/header.css" rel="stylesheet" />
+        <link href="assets/style/style.css" rel="stylesheet" type="text/css" />
+        <link href="assets/style/header.css" rel="stylesheet" type="text/css" />
 
         <!-- Component Styles -->
         <link
@@ -145,7 +150,7 @@
             onload="this.media='all'"
         />
         <noscript>
-            <link href="assets/style/magnific-popup.css" rel="stylesheet" />
+        <link href="assets/style/magnific-popup.css" rel="stylesheet" />
         </noscript>
         <link
             href="assets/style/owl.carousel.min.css"
@@ -154,7 +159,7 @@
             onload="this.media='all'"
         />
         <noscript>
-            <link href="assets/style/owl.carousel.min.css" rel="stylesheet" />
+        <link href="assets/style/owl.carousel.min.css" rel="stylesheet" />
         </noscript>
         <link
             href="assets/style/swiper.min.css"
@@ -163,7 +168,7 @@
             onload="this.media='all'"
         />
         <noscript>
-            <link href="assets/style/swiper.min.css" rel="stylesheet" />
+        <link href="assets/style/swiper.min.css" rel="stylesheet" />
         </noscript>
         <link
             href="assets/style/all.min.css"
@@ -202,6 +207,12 @@
                 align-items: center;
                 z-index: 9999;
                 transition: opacity 0.5s ease;
+                overflow: hidden; /* Only loading screen should not scroll */
+                pointer-events: none; /* Allow clicks to pass through when hidden */
+            }
+            
+            #loading-screen[aria-hidden="true"] {
+                display: none !important; /* Completely remove when hidden */
             }
 
             .loading-logo {
@@ -256,10 +267,18 @@
                 opacity: 0;
                 transition: opacity 0.5s ease;
                 visibility: hidden;
+                overflow-y: auto;
+                overflow-x: hidden;
+                height: auto;
+                min-height: 100vh;
             }
             #page.loaded {
                 opacity: 1;
                 visibility: visible;
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+                height: auto !important;
+                min-height: 100vh !important;
             }
             
             /* Ensure text is visible even if fonts fail to load */
@@ -327,11 +346,21 @@
             }
             
             body.loaded {
-                overflow: auto;
+                overflow: auto !important;
+                overflow-y: auto !important;
             }
             
             body.loaded #page {
                 overflow: visible;
+                overflow-y: auto !important;
+            }
+            
+            /* Force enable scrolling when page is loaded */
+            html.scroll-enabled,
+            body.scroll-enabled {
+                overflow: auto !important;
+                overflow-y: auto !important;
+                height: auto !important;
             }
 
 
@@ -442,6 +471,62 @@
         <script src="assets/libs/js/i18next.min.js"></script>
         <script src="assets/libs/js/i18next-browser-languagedetector.min.js"></script>
         <script src="assets/libs/js/i18next-http-backend.min.js"></script>
+        <!-- Ensure CSS files are loaded on server -->
+        <script>
+            // Force load CSS files if they fail to load
+            (function() {
+                'use strict';
+                
+                function ensureCSSLoaded() {
+                    const cssFiles = [
+                        'assets/style/style.css',
+                        'assets/style/header.css'
+                    ];
+                    
+                    cssFiles.forEach(function(cssFile) {
+                        const link = document.querySelector('link[href="' + cssFile + '"]');
+                        if (link) {
+                            // Check if CSS is loaded
+                            const testLink = document.createElement('link');
+                            testLink.rel = 'stylesheet';
+                            testLink.href = cssFile;
+                            testLink.onerror = function() {
+                                console.warn('CSS file failed to load:', cssFile);
+                                // Try to reload with absolute path
+                                const absolutePath = window.location.origin + '/' + cssFile;
+                                const newLink = document.createElement('link');
+                                newLink.rel = 'stylesheet';
+                                newLink.href = absolutePath;
+                                newLink.type = 'text/css';
+                                document.head.appendChild(newLink);
+                            };
+                            // If link doesn't have type, add it
+                            if (!link.getAttribute('type')) {
+                                link.setAttribute('type', 'text/css');
+                            }
+                        } else {
+                            // CSS link not found, create it
+                            const newLink = document.createElement('link');
+                            newLink.rel = 'stylesheet';
+                            newLink.href = cssFile;
+                            newLink.type = 'text/css';
+                            document.head.appendChild(newLink);
+                        }
+                    });
+                }
+                
+                // Run on DOM ready
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', ensureCSSLoaded);
+                } else {
+                    ensureCSSLoaded();
+                }
+                
+                // Also run after a short delay to catch late-loading issues
+                setTimeout(ensureCSSLoaded, 100);
+            })();
+        </script>
+
         <script src="assets/libs/js/alpinejs.min.js" defer></script>
         <script src="assets/libs/js/sweetalert2.min.js"></script>
         <script src="assets/libs/js/lenis.min.js"></script>
@@ -462,24 +547,79 @@
         <!-- Initialize Bootstrap Offcanvas after DOM is ready -->
         <script>
             // Fix Bootstrap backdrop issue by ensuring Popper is loaded
-            document.addEventListener('DOMContentLoaded', function() {
-                // Wait for Bootstrap to be fully loaded
-                if (typeof bootstrap !== 'undefined') {
-                    // Initialize offcanvas manually if needed
-                    const offcanvasElements = document.querySelectorAll('.offcanvas');
-                    offcanvasElements.forEach(function(element) {
-                        try {
-                            // Get or create instance
-                            const offcanvas = bootstrap.Offcanvas.getOrCreateInstance(element, {
-                                backdrop: true,
-                                keyboard: true,
-                                scroll: false
-                            });
-                        } catch (error) {
-                            console.warn('Offcanvas initialization warning:', error);
+            // Note: We don't initialize offcanvas here to prevent auto-opening
+            // Offcanvas will be initialized when user clicks the hamburger button
+            let offcanvasInitialized = false;
+            
+            function initializeOffcanvasOnLoad() {
+                // Only run once on initial page load, not after components are loaded
+                if (offcanvasInitialized) return;
+                offcanvasInitialized = true;
+                
+                // Ensure all offcanvas elements are hidden by default (only on initial load)
+                const offcanvasElements = document.querySelectorAll('.offcanvas');
+                offcanvasElements.forEach(function(element) {
+                    // Only hide if not already showing and not currently being opened
+                    if (!element.classList.contains('show') && 
+                        !element.classList.contains('showing') &&
+                        !element.hasAttribute('data-offcanvas-opening')) {
+                        // Remove 'show' class if present (Bootstrap uses this to show offcanvas)
+                        element.classList.remove('show');
+                        // Ensure offcanvas is hidden
+                        element.setAttribute('aria-hidden', 'true');
+                        // Remove any inline styles that might show it
+                        if (element.style.display === 'block') {
+                            element.style.display = '';
                         }
-                    });
-                }
+                    }
+                });
+            }
+            
+            document.addEventListener('DOMContentLoaded', initializeOffcanvasOnLoad);
+            
+            // Prevent hiding offcanvas when it's being shown
+            document.addEventListener('show.bs.offcanvas', function(event) {
+                // Offcanvas is about to show, don't interfere
+                console.log('Offcanvas is showing:', event.target.id);
+                const element = event.target;
+                // Mark that this offcanvas is opening
+                element.setAttribute('data-offcanvas-opening', 'true');
+                element.setAttribute('aria-hidden', 'false');
+                // Ensure body has offcanvas-open class for Bootstrap
+                document.body.classList.add('offcanvas-open');
+            });
+            
+            document.addEventListener('shown.bs.offcanvas', function(event) {
+                // Offcanvas is now shown, ensure it stays visible
+                console.log('Offcanvas is shown:', event.target.id);
+                const element = event.target;
+                // Ensure it stays visible
+                element.setAttribute('aria-hidden', 'false');
+                element.classList.add('show');
+                // Force visibility with inline styles as backup
+                element.style.visibility = 'visible';
+                element.style.display = 'flex';
+                element.style.opacity = '1';
+                // Ensure body has offcanvas-open class
+                document.body.classList.add('offcanvas-open');
+                // Remove the opening flag after a delay
+                setTimeout(function() {
+                    if (element.classList.contains('show')) {
+                        element.removeAttribute('data-offcanvas-opening');
+                    }
+                }, 1000);
+            });
+            
+            // When offcanvas is hidden, remove body class
+            document.addEventListener('hidden.bs.offcanvas', function(event) {
+                console.log('Offcanvas is hidden:', event.target.id);
+                document.body.classList.remove('offcanvas-open', 'modal-open');
+            });
+            
+            // Prevent hiding offcanvas when it's being hidden
+            document.addEventListener('hide.bs.offcanvas', function(event) {
+                // Only allow hiding if user explicitly closes it
+                console.log('Offcanvas is hiding:', event.target.id);
             });
         </script>
 
@@ -491,6 +631,110 @@
         <script src="assets/components/Services/ReviewsSection.js"></script>
         <script src="assets/components/VideoSection.js"></script>
         <script src="assets/components/header.js"></script>
+
+        <!-- Offcanvas Functions - Must be global for onclick handlers -->
+        <script>
+            /**
+             * Safely open Bootstrap Offcanvas
+             * @param {string} offcanvasId - The ID of the offcanvas element
+             */
+            function openOffcanvas(offcanvasId) {
+                try {
+                    if (typeof bootstrap === 'undefined') {
+                        console.warn('Bootstrap is not loaded yet');
+                        // Fallback: use data-bs-toggle attribute
+                        const element = document.getElementById(offcanvasId);
+                        if (element) {
+                            const toggleBtn = document.querySelector(`[data-bs-target="#${offcanvasId}"]`);
+                            if (toggleBtn) {
+                                toggleBtn.setAttribute('data-bs-toggle', 'offcanvas');
+                                toggleBtn.click();
+                            }
+                        }
+                        return;
+                    }
+
+                    const element = document.getElementById(offcanvasId);
+                    if (!element) {
+                        console.error('Offcanvas element not found:', offcanvasId);
+                        return;
+                    }
+
+                    // Check if Popper is available (required for backdrop)
+                    if (typeof bootstrap.Offcanvas === 'undefined') {
+                        console.warn('Bootstrap Offcanvas is not available');
+                        return;
+                    }
+
+                    // Get or create instance with safe options
+                    let offcanvas;
+                    try {
+                        offcanvas = bootstrap.Offcanvas.getOrCreateInstance(element, {
+                            backdrop: true,
+                            keyboard: true,
+                            scroll: false
+                        });
+                    } catch (error) {
+                        // If getOrCreateInstance fails, try without options
+                        console.warn('Failed to create instance with options, trying without:', error);
+                        try {
+                            offcanvas = bootstrap.Offcanvas.getOrCreateInstance(element);
+                        } catch (e) {
+                            console.error('Failed to create offcanvas instance:', e);
+                            return;
+                        }
+                    }
+
+                    // Show the offcanvas
+                    if (offcanvas && typeof offcanvas.show === 'function') {
+                        // Ensure body has offcanvas-open class before showing
+                        document.body.classList.add('offcanvas-open');
+                        
+                        // Force visibility before showing
+                        element.style.visibility = 'visible';
+                        element.style.display = 'flex';
+                        element.style.opacity = '1';
+                        element.style.zIndex = '1045';
+                        
+                        // Show the offcanvas
+                        offcanvas.show();
+                        
+                        // Force visibility after a short delay to ensure it appears
+                        setTimeout(function() {
+                            if (element) {
+                                element.style.visibility = 'visible';
+                                element.style.display = 'flex';
+                                element.style.opacity = '1';
+                                element.style.zIndex = '1045';
+                            }
+                        }, 100);
+                    }
+                } catch (error) {
+                    console.error('Error opening offcanvas:', error);
+                }
+            }
+
+            /**
+             * Close mobile menu offcanvas
+             */
+            function closeMobileMenu() {
+                try {
+                    const menuOffcanvas = document.getElementById('menuOffcanvas');
+                    if (menuOffcanvas && typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
+                        const offcanvas = bootstrap.Offcanvas.getInstance(menuOffcanvas);
+                        if (offcanvas) {
+                            offcanvas.hide();
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error closing mobile menu:', error);
+                }
+            }
+
+            // Make functions globally available
+            window.openOffcanvas = openOffcanvas;
+            window.closeMobileMenu = closeMobileMenu;
+        </script>
 
         <script>
             /**
@@ -568,42 +812,130 @@
                         console.log(`Page loaded in ${loadTime}ms`);
                     }
                     
-                    // Fade out loading screen
+                    // Fade out loading screen and enable scrolling immediately
                     setTimeout(() => {
-                        if (loadingScreen) {
-                            loadingScreen.style.opacity = "0";
-                            loadingScreen.setAttribute('aria-hidden', 'true');
+                        // Enable scrolling FIRST before hiding loading screen
+                        const html = document.documentElement;
+                        html.classList.add("scroll-enabled");
+                        html.style.overflow = '';
+                        html.style.overflowY = '';
+                        html.style.height = '';
+                        
+                        if (body) {
+                            body.classList.remove("loading");
+                            body.classList.add("loaded", "scroll-enabled");
+                            body.style.overflow = '';
+                            body.style.overflowY = '';
+                            body.style.height = '';
                         }
                         
                         if (page) {
                             page.classList.add("loaded");
                             page.setAttribute('aria-hidden', 'false');
+                            page.style.overflow = '';
+                            page.style.overflowY = '';
+                            page.style.height = '';
                         }
                         
-                        // Remove loading class from body
-                        if (body) {
-                            body.classList.remove("loading");
-                            body.classList.add("loaded");
+                        if (loadingScreen) {
+                            loadingScreen.style.opacity = "0";
+                            loadingScreen.setAttribute('aria-hidden', 'true');
                         }
 
-                        // Hide loading screen completely
+                        // Hide loading screen completely and ensure it doesn't block
                         setTimeout(() => {
                             if (loadingScreen) {
                                 loadingScreen.style.display = "none";
+                                loadingScreen.style.position = 'absolute';
+                                loadingScreen.style.pointerEvents = 'none';
+                            }
+                            
+                            // Final scroll enable check
+                            html.style.overflow = '';
+                            html.style.overflowY = '';
+                            if (body) {
+                                body.style.overflow = '';
+                                body.style.overflowY = '';
+                            }
+                            if (page) {
+                                page.style.overflow = '';
+                                page.style.overflowY = '';
                             }
 
-                            // Initialize Lenis smooth scroll (if available)
-                            if (typeof Lenis !== 'undefined') {
+                            // Force enable scrolling - إصلاح نهائي للسكرول على السيرفر
+                            function forceEnableScrolling() {
+                                // Remove Lenis classes that might block scrolling
+                                document.documentElement.classList.remove('lenis', 'lenis-smooth', 'lenis-stopped', 'lenis-locked');
+                                
+                                // Force enable scrolling on body and html
+                                const html = document.documentElement;
+                                const body = document.body;
+                                
+                                // Remove any inline styles that might block scrolling
+                                html.style.overflow = '';
+                                html.style.overflowY = '';
+                                html.style.overflowX = '';
+                                html.style.height = '';
+                                html.style.maxHeight = '';
+                                
+                                body.style.overflow = '';
+                                body.style.overflowY = '';
+                                body.style.overflowX = '';
+                                body.style.height = '';
+                                body.style.maxHeight = '';
+                                
+                                // Force enable scrolling with CSS classes
+                                html.classList.add('scroll-enabled');
+                                body.classList.add('scroll-enabled', 'loaded');
+                                
+                                // Ensure page element allows scrolling
+                                const page = document.getElementById('page');
+                                if (page) {
+                                    page.style.overflow = '';
+                                    page.style.overflowY = '';
+                                    page.style.overflowX = '';
+                                    page.style.height = '';
+                                    page.style.maxHeight = '';
+                                    page.classList.add('loaded');
+                                }
+                                
+                                // Force enable scrolling on site-content
+                                const siteContent = document.querySelector('.site-content');
+                                if (siteContent) {
+                                    siteContent.style.overflow = '';
+                                    siteContent.style.overflowY = '';
+                                    siteContent.style.overflowX = '';
+                                    siteContent.style.height = '';
+                                    siteContent.style.maxHeight = '';
+                                }
+                                
+                                console.log('Scrolling force-enabled');
+                            }
+                            
+                            // Call immediately and multiple times to ensure it works
+                            forceEnableScrolling();
+                            setTimeout(forceEnableScrolling, 50);
+                            setTimeout(forceEnableScrolling, 100);
+                            setTimeout(forceEnableScrolling, 200);
+                            setTimeout(forceEnableScrolling, 500);
+                            setTimeout(forceEnableScrolling, 1000);
+                            
+                            // Disable Lenis completely to prevent scrolling conflicts on server
+                            // Use native scrolling for better compatibility (like page2.html)
+                            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+                            
+                            // Lenis disabled by default for server compatibility
+                            // page2.html works because it doesn't use Lenis
+                            const enableLenis = false;
+                            
+                            if (!isMobile && enableLenis && typeof Lenis !== 'undefined') {
                                 try {
-                                    // Ensure body and html allow scrolling
-                                    document.body.style.overflow = 'auto';
-                                    document.documentElement.style.overflow = 'auto';
-                                    
                                     const lenis = new Lenis({
                                         duration: 1.2,
                                         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                                        smooth: true,
-                                        smoothTouch: false, // Disable on touch devices for better performance
+                                        smoothWheel: true,
+                                        smoothTouch: false,
+                                        syncTouch: false,
                                         wrapper: window,
                                         content: document.documentElement,
                                     });
@@ -614,19 +946,65 @@
                                     }
                                     requestAnimationFrame(raf);
                                     
-                                    // Store lenis instance globally for debugging
                                     window.lenis = lenis;
                                 } catch (error) {
                                     console.warn('Lenis initialization failed:', error);
-                                    // Fallback: ensure scrolling works without Lenis
-                                    document.body.style.overflow = 'auto';
-                                    document.documentElement.style.overflow = 'auto';
+                                    forceEnableScrolling();
                                 }
                             } else {
-                                // Fallback: ensure scrolling works without Lenis
-                                document.body.style.overflow = 'auto';
-                                document.documentElement.style.overflow = 'auto';
+                                // Use native scrolling (recommended for server compatibility - same as page2.html)
+                                forceEnableScrolling();
                             }
+                            
+                            // Final check after all operations complete - إصلاح نهائي
+                            setTimeout(function() {
+                                const html = document.documentElement;
+                                const body = document.body;
+                                const page = document.getElementById('page');
+                                const loadingScreen = document.getElementById('loading-screen');
+                                
+                                // Completely remove loading screen if still present
+                                if (loadingScreen) {
+                                    loadingScreen.style.display = 'none';
+                                    loadingScreen.style.position = 'absolute';
+                                    loadingScreen.style.pointerEvents = 'none';
+                                    loadingScreen.setAttribute('aria-hidden', 'true');
+                                }
+                                
+                                // Force remove any blocking styles
+                                html.style.overflow = '';
+                                html.style.overflowY = '';
+                                html.style.overflowX = '';
+                                html.style.height = '';
+                                html.style.maxHeight = '';
+                                
+                                body.style.overflow = '';
+                                body.style.overflowY = '';
+                                body.style.overflowX = '';
+                                body.style.height = '';
+                                body.style.maxHeight = '';
+                                
+                                if (page) {
+                                    page.style.overflow = '';
+                                    page.style.overflowY = '';
+                                    page.style.overflowX = '';
+                                    page.style.height = '';
+                                    page.style.maxHeight = '';
+                                }
+                                
+                                // Ensure classes are set
+                                html.classList.add('scroll-enabled');
+                                body.classList.add('scroll-enabled', 'loaded');
+                                if (page) {
+                                    page.classList.add('loaded');
+                                }
+                                
+                                // Remove Lenis classes that might block
+                                html.classList.remove('lenis', 'lenis-smooth', 'lenis-stopped', 'lenis-locked');
+                                body.classList.remove('lenis', 'lenis-smooth', 'lenis-stopped', 'lenis-locked');
+                                
+                                console.log('Final scrolling check completed - Scrolling should work now (like page2.html)');
+                            }, 1500);
 
                             // Dispatch custom event for other scripts
                             window.dispatchEvent(new CustomEvent('pageLoaded', {
@@ -638,6 +1016,57 @@
                         }, 500);
                     }, 500);
                 }
+            }
+
+            /**
+             * Get base path for assets
+             * Works correctly on server whether in root or subdirectory
+             */
+            function getBasePath() {
+                // Try to detect from current location
+                const path = window.location.pathname;
+                const pathArray = path.split('/');
+                pathArray.pop(); // Remove filename
+                let basePath = pathArray.join('/') || '/';
+                
+                // Ensure base path starts with /
+                if (basePath && !basePath.startsWith('/')) {
+                    basePath = '/' + basePath;
+                }
+                
+                // Remove trailing slash
+                if (basePath.endsWith('/') && basePath !== '/') {
+                    basePath = basePath.slice(0, -1);
+                }
+                
+                return basePath || '';
+            }
+            
+            /**
+             * Normalize URL to work on server
+             * @param {string} url - Relative or absolute URL
+             * @returns {string} Normalized URL
+             */
+            function normalizeUrl(url) {
+                // If URL is already absolute, return as is
+                if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('//')) {
+                    return url;
+                }
+                
+                // If URL starts with /, it's already absolute from root
+                if (url.startsWith('/')) {
+                    return url;
+                }
+                
+                // Otherwise, make it relative to current location
+                const basePath = getBasePath();
+                if (basePath && basePath !== '/') {
+                    // Remove leading ./ or . from URL if present
+                    const cleanUrl = url.replace(/^\.\//, '');
+                    return basePath + '/' + cleanUrl;
+                }
+                
+                return url;
             }
 
             /**
@@ -658,10 +1087,23 @@
                         return;
                     }
                     
+                    // Normalize URL for server compatibility
+                    const normalizedUrl = normalizeUrl(url);
+                    
                     // Use fetch API for better error handling
-                    fetch(url)
+                    fetch(normalizedUrl)
                         .then(response => {
                             if (!response.ok) {
+                                // Try original URL if normalized fails
+                                if (normalizedUrl !== url) {
+                                    console.warn(`Failed to load ${normalizedUrl}, trying original URL ${url}`);
+                                    return fetch(url).then(res => {
+                                        if (!res.ok) {
+                                            throw new Error(`HTTP error! status: ${res.status}`);
+                                        }
+                                        return res.text();
+                                    });
+                                }
                                 throw new Error(`HTTP error! status: ${response.status}`);
                             }
                             return response.text();
@@ -683,7 +1125,7 @@
                                 // Check for parser errors
                                 const parserError = doc.querySelector('parsererror');
                                 if (parserError) {
-                                    console.warn('HTML parsing warning for', url, parserError.textContent);
+                                    console.warn('HTML parsing warning for', normalizedUrl, parserError.textContent);
                                     // Try to extract valid content despite parser error
                                     const bodyContent = doc.body ? doc.body.innerHTML : cleanedHtml;
                                     if (!bodyContent || bodyContent.trim() === '') {
@@ -706,11 +1148,31 @@
                                 // For now, we skip script re-execution to avoid replaceChild issues
                                 // Most components don't have inline scripts that need execution
                                 
+                                // If this is the header container, ensure offcanvas is not hidden after loading
+                                if (containerId === '#header-container') {
+                                    // Wait a bit for offcanvas elements to be in DOM
+                                    setTimeout(function() {
+                                        const offcanvasElements = container.querySelectorAll('.offcanvas');
+                                        offcanvasElements.forEach(function(element) {
+                                            // Only ensure hidden state if not currently showing, showing, or being opened
+                                            if (!element.classList.contains('show') && 
+                                                !element.classList.contains('showing') &&
+                                                !element.hasAttribute('data-offcanvas-opening') &&
+                                                element.getAttribute('aria-hidden') !== 'false') {
+                                                element.setAttribute('aria-hidden', 'true');
+                                            } else if (element.classList.contains('show') || element.classList.contains('showing')) {
+                                                // If offcanvas is showing, ensure it stays visible
+                                                element.setAttribute('aria-hidden', 'false');
+                                            }
+                                        });
+                                    }, 100);
+                                }
+                                
                                 // Update translations for newly loaded content
                                 if (typeof updateContent === 'function') {
                                     // Force update header translations immediately if this is the header
                                     if (containerId === '#header-container') {
-                                        setTimeout(() => {
+                                setTimeout(() => {
                                             updateContent();
                                             // Force update header translations specifically
                                             if (typeof i18next !== 'undefined' && i18next.isInitialized) {
@@ -753,7 +1215,14 @@
                             }
                         })
                         .catch(error => {
-                            console.error(`Error loading ${url}:`, error);
+                            console.error(`Error loading ${normalizedUrl}:`, error);
+                            
+                            // Try original URL if normalized URL failed
+                            if (normalizedUrl !== url && retryCount === 0) {
+                                console.log(`Retrying with original URL: ${url}`);
+                                return loadComponent(containerId, url, retryCount + 1).then(resolve);
+                            }
+                            
                             if (retryCount < componentState.maxRetries) {
                                 const delay = componentState.retryDelays[retryCount];
                                 const statusEl = document.getElementById("loading-status");
@@ -774,15 +1243,16 @@
                                 $(containerId).html(`
                                     <div class="error-message">
                                         <p>تعذر تحميل هذا القسم: ${url}</p>
+                                        <p style="font-size: 12px; color: #666; margin-top: 5px;">Base Path: ${getBasePath()}</p>
                                         <button class="retry-button" onclick="retryComponent('${containerId}', '${url}')">
                                             إعادة المحاولة
                                         </button>
                                     </div>
                                 `);
-                                updateProgress();
-                                resolve();
-                            }
-                        });
+                            updateProgress();
+                            resolve();
+                        }
+                    });
                     
                 });
             }

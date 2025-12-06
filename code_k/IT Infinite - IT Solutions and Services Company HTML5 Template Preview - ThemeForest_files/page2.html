@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx" class="lenis" style="--scrollbar-width: 4px">
+<html lang="zxx" class="no-js" style="--scrollbar-width: 4px">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="keywords" content="HTML5 Template" />
@@ -18,16 +18,14 @@
         <link rel="shortcut icon" href="assets/images/favicon.ico" />
 
         <!-- CSS Files -->
-        <link
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-            rel="stylesheet"
-        />
+        <!-- Font Awesome removed - using SVG icons instead -->
         <link href="assets/style/css2.css" rel="stylesheet" />
         <link href="assets/style/bootstrap.min.css" rel="stylesheet" />
         <link href="assets/style/magnific-popup.css" rel="stylesheet" />
         <link href="assets/style/owl.carousel.min.css" rel="stylesheet" />
         <link href="assets/style/swiper.min.css" rel="stylesheet" />
-        <link href="assets/style/style.css" rel="stylesheet" />
+        <link href="assets/style/style.css" rel="stylesheet" type="text/css" />
+        <link href="assets/style/header.css" rel="stylesheet" type="text/css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -107,6 +105,90 @@
         <script src="assets/js/translations.js"></script>
         <script src="assets/js/config.js"></script>
         <script src="assets/components/Services/ContactSection.js"></script>
+
+        <!-- Offcanvas Functions - Must be global for onclick handlers -->
+        <script>
+            /**
+             * Safely open Bootstrap Offcanvas
+             * @param {string} offcanvasId - The ID of the offcanvas element
+             */
+            function openOffcanvas(offcanvasId) {
+                try {
+                    if (typeof bootstrap === 'undefined') {
+                        console.warn('Bootstrap is not loaded yet');
+                        // Fallback: use data-bs-toggle attribute
+                        const element = document.getElementById(offcanvasId);
+                        if (element) {
+                            const toggleBtn = document.querySelector(`[data-bs-target="#${offcanvasId}"]`);
+                            if (toggleBtn) {
+                                toggleBtn.setAttribute('data-bs-toggle', 'offcanvas');
+                                toggleBtn.click();
+                            }
+                        }
+                        return;
+                    }
+
+                    const element = document.getElementById(offcanvasId);
+                    if (!element) {
+                        console.error('Offcanvas element not found:', offcanvasId);
+                        return;
+                    }
+
+                    // Check if Popper is available (required for backdrop)
+                    if (typeof bootstrap.Offcanvas === 'undefined') {
+                        console.warn('Bootstrap Offcanvas is not available');
+                        return;
+                    }
+
+                    // Get or create instance with safe options
+                    let offcanvas;
+                    try {
+                        offcanvas = bootstrap.Offcanvas.getOrCreateInstance(element, {
+                            backdrop: true,
+                            keyboard: true,
+                            scroll: false
+                        });
+                    } catch (error) {
+                        // If getOrCreateInstance fails, try without options
+                        console.warn('Failed to create instance with options, trying without:', error);
+                        try {
+                            offcanvas = bootstrap.Offcanvas.getOrCreateInstance(element);
+                        } catch (e) {
+                            console.error('Failed to create offcanvas instance:', e);
+                            return;
+                        }
+                    }
+
+                    // Show the offcanvas
+                    if (offcanvas && typeof offcanvas.show === 'function') {
+                        offcanvas.show();
+                    }
+                } catch (error) {
+                    console.error('Error opening offcanvas:', error);
+                }
+            }
+
+            /**
+             * Close mobile menu offcanvas
+             */
+            function closeMobileMenu() {
+                try {
+                    const menuOffcanvas = document.getElementById('menuOffcanvas');
+                    if (menuOffcanvas && typeof bootstrap !== 'undefined' && bootstrap.Offcanvas) {
+                        const offcanvas = bootstrap.Offcanvas.getInstance(menuOffcanvas);
+                        if (offcanvas) {
+                            offcanvas.hide();
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error closing mobile menu:', error);
+                }
+            }
+
+            // Make functions globally available
+            window.openOffcanvas = openOffcanvas;
+            window.closeMobileMenu = closeMobileMenu;
+        </script>
 
         <!-- Component Loader -->
         <script>

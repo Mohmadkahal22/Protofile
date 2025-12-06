@@ -11,6 +11,21 @@
         typeof i18nextBrowserLanguageDetector !== 'undefined' && 
         typeof i18nextHttpBackend !== 'undefined') {
         
+        // Get base path for translations
+        // This ensures translations work whether site is in root or subdirectory
+        function getTranslationsPath() {
+            // Get the directory of current page
+            const pathname = window.location.pathname;
+            const lastSlash = pathname.lastIndexOf('/');
+            const directory = lastSlash >= 0 ? pathname.substring(0, lastSlash + 1) : '/';
+            
+            // Return relative path from current directory
+            // This works whether site is in root or subdirectory
+            return directory + 'translations/{{lng}}.json';
+        }
+        
+        const translationsPath = getTranslationsPath();
+        
         i18next
             .use(i18nextBrowserLanguageDetector)
             .use(i18nextHttpBackend)
@@ -20,8 +35,13 @@
                 ns: ['translation'],
                 defaultNS: 'translation',
                 backend: {
-                    loadPath: './translations/{{lng}}.json',
-                    crossDomain: false
+                    loadPath: translationsPath,
+                    crossDomain: false,
+                    allowMultiLoading: false,
+                    // Add requestOptions to prevent double URL
+                    requestOptions: {
+                        cache: 'default'
+                    }
                 },
                 detection: {
                     order: ['localStorage', 'navigator'],
