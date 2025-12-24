@@ -10,12 +10,20 @@ use Symfony\Component\HttpFoundation\Response;
 class ResponseCache
 {
     /**
-     * Handle an incoming request and cache GET responses in Redis.
+     * Handle an incoming request and cache GET responses using the configured cache store.
      */
     public function handle(Request $request, Closure $next)
-    {
-        // Only cache safe GET requests
-        if (! $request->isMethod('get')) {
+        try {
+            $store = config('cache.default') ?: null;
+            if ($store) {
+                if (Cache::store($store)->has($key)) {
+                    $cached = Cache::store($store)->get($key);
+                } else {
+                    $cached = null;
+                }
+            } else {
+                $cached = null;
+            }
             return $next($request);
         }
 
@@ -51,9 +59,13 @@ class ResponseCache
                     ];
 
                     try {
-                        Cache::store('redis')->put($key, $payload, $ttl);
+                        if ($store) {
+                            Cache::store($store)->put($key, $payload, $ttl);
+                        } else {
+                            Cache::put($key, $payload, $ttl);
+                        }
                     } catch (\Exception $e) {
-                        // ignore redis store errors
+                        // ignore cache store errors
                     }
                 }
             }

@@ -33,7 +33,7 @@ class ProjectService
                 $tmpPath = storage_path('app/uploads/' . $tmpName);
                 $file->move(dirname($tmpPath), basename($tmpPath));
 
-                ProcessProjectImage::dispatch($project->id, $tmpPath)->onConnection('redis');
+                ProcessProjectImage::dispatch($project->id, $tmpPath);
             }
 
             if (! empty($features)) {
@@ -68,7 +68,7 @@ class ProjectService
                 $tmpName = Str::random(40) . '.' . $file->getClientOriginalExtension();
                 $tmpPath = storage_path('app/uploads/' . $tmpName);
                 $file->move(dirname($tmpPath), basename($tmpPath));
-                ProcessProjectImage::dispatch($project->id, $tmpPath)->onConnection('redis');
+                ProcessProjectImage::dispatch($project->id, $tmpPath);
             }
 
             if (! empty($features)) {

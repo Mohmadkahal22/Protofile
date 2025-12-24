@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Services\VideoService;
 
 class VideoController extends Controller
 {
@@ -18,20 +18,12 @@ class VideoController extends Controller
     public function index()
     {
         try {
-            $videos = Video::orderBy('created_at', 'desc')->get();
-
-            return response()->json([
-                'status' => 'success',
-                'data' => $videos,
-                'count' => $videos->count()
-            ]);
-
+            $service = app(VideoService::class);
+            $videos = $service->index();
+            return response()->json(['status' => 'success', 'data' => $videos, 'count' => $videos->count()]);
         } catch (\Exception $e) {
             Log::error('Failed to fetch videos: ' . $e->getMessage());
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Failed to fetch videos'
-            ], 500);
+            return response()->json(['status' => 'error', 'message' => 'Failed to fetch videos'], 500);
         }
     }
 
@@ -57,32 +49,13 @@ class VideoController extends Controller
             ], 422);
         }
 
-        DB::beginTransaction();
-
         try {
-            $video = Video::create([
-                'title' => $request->title,
-                'description' => $request->description,
-                'location' => $request->location,
-                'video_url' => $request->video_url
-            ]);
-
-            DB::commit();
-
-            return response()->json([
-                'status' => 'success',
-                'data' => $video,
-                'message' => 'Video created successfully'
-            ], 201);
-
+            $service = app(VideoService::class);
+            $video = $service->store($request->only(['title','description','location','video_url']));
+            return response()->json(['status' => 'success', 'data' => $video, 'message' => 'Video created successfully'], 201);
         } catch (\Exception $e) {
-            DB::rollBack();
             Log::error('Video creation failed: ' . $e->getMessage());
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Video creation failed',
-                'error' => $e->getMessage()
-            ], 500);
+            return response()->json(['status' => 'error', 'message' => 'Video creation failed', 'error' => $e->getMessage()], 500);
         }
     }
 
@@ -95,26 +68,13 @@ class VideoController extends Controller
     public function show($id)
     {
         try {
-            $video = Video::find($id);
-
-            if (!$video) {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Video not found'
-                ], 404);
-            }
-
-            return response()->json([
-                'status' => 'success',
-                'data' => $video
-            ]);
-
+            $service = app(VideoService::class);
+            $video = $service->show($id);
+            if (! $video) return response()->json(['status' => 'error', 'message' => 'Video not found'], 404);
+            return response()->json(['status' => 'success', 'data' => $video]);
         } catch (\Exception $e) {
             Log::error('Failed to fetch video: ' . $e->getMessage());
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Failed to fetch video'
-            ], 500);
+            return response()->json(['status' => 'error', 'message' => 'Failed to fetch video'], 500);
         }
     }
 
@@ -141,37 +101,14 @@ class VideoController extends Controller
             ], 422);
         }
 
-        DB::beginTransaction();
-
         try {
-            $video = Video::find($id);
-
-            if (!$video) {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Video not found'
-                ], 404);
-            }
-
-            $video->update($validator->validated());
-
-            DB::commit();
-
-            return response()->json([
-                'status' => 'success',
-                'data' => $video,
-                'message' => 'Video updated successfully',
-                'changes' => $video->getChanges()
-            ]);
-
+            $service = app(VideoService::class);
+            $video = $service->update($id, $validator->validated());
+            if (! $video) return response()->json(['status' => 'error', 'message' => 'Video not found'], 404);
+            return response()->json(['status' => 'success', 'data' => $video, 'message' => 'Video updated successfully', 'changes' => $video->getChanges()]);
         } catch (\Exception $e) {
-            DB::rollBack();
             Log::error('Video update failed: ' . $e->getMessage());
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Video update failed',
-                'error' => $e->getMessage()
-            ], 500);
+            return response()->json(['status' => 'error', 'message' => 'Video update failed', 'error' => $e->getMessage()], 500);
         }
     }
 
@@ -183,36 +120,14 @@ class VideoController extends Controller
      */
     public function destroy($id)
     {
-        DB::beginTransaction();
-
         try {
-            $video = Video::find($id);
-
-            if (!$video) {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Video not found'
-                ], 404);
-            }
-
-            $video->delete();
-
-            DB::commit();
-
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Video deleted successfully',
-                'deleted_id' => $id
-            ]);
-
+            $service = app(VideoService::class);
+            $res = $service->delete($id);
+            if (! $res) return response()->json(['status' => 'error', 'message' => 'Video not found'], 404);
+            return response()->json(['status' => 'success', 'message' => 'Video deleted successfully', 'deleted_id' => $id]);
         } catch (\Exception $e) {
-            DB::rollBack();
             Log::error('Video deletion failed: ' . $e->getMessage());
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Video deletion failed',
-                'error' => $e->getMessage()
-            ], 500);
+            return response()->json(['status' => 'error', 'message' => 'Video deletion failed', 'error' => $e->getMessage()], 500);
         }
     }
 

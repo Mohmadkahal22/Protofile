@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Contact_Us;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Services\ContactUsService;
 
 class ContactUsController extends Controller
 {
@@ -15,22 +15,21 @@ class ContactUsController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+    protected $service;
+
+    public function __construct(ContactUsService $service)
+    {
+        $this->service = $service;
+    }
+
     public function index()
     {
         try {
-            $contacts = Contact_Us::all();
-
-            return response()->json([
-                'status' => 'success',
-                'data' => $contacts
-            ]);
-
+            $contacts = $this->service->index();
+            return response()->json(['status' => 'success', 'data' => $contacts]);
         } catch (\Exception $e) {
             Log::error('Failed to fetch contact messages: ' . $e->getMessage());
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Failed to fetch contact messages'
-            ], 500);
+            return response()->json(['status' => 'error', 'message' => 'Failed to fetch contact messages'], 500);
         }
     }
 
@@ -57,33 +56,13 @@ class ContactUsController extends Controller
             ], 422);
         }
 
-        DB::beginTransaction();
-
         try {
-            $contact = Contact_Us::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'subject' => $request->subject,
-                'message' => $request->message,
-                'status' => $request->status ?? 'pending'
-            ]);
-
-            DB::commit();
-
-            return response()->json([
-                'status' => 'success',
-                'data' => $contact,
-                'message' => 'Contact message created successfully'
-            ], 201);
-
+            $data = $request->only(['name','email','phone','subject','message','status']);
+            $contact = $this->service->store($data);
+            return response()->json(['status' => 'success', 'data' => $contact, 'message' => 'Contact message created successfully'], 201);
         } catch (\Exception $e) {
-            DB::rollBack();
             Log::error('Contact message creation failed: ' . $e->getMessage());
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Contact message creation failed'
-            ], 500);
+            return response()->json(['status' => 'error', 'message' => 'Contact message creation failed'], 500);
         }
     }
 
@@ -96,26 +75,12 @@ class ContactUsController extends Controller
     public function show($id)
     {
         try {
-            $contact = Contact_Us::find($id);
-
-            if (!$contact) {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Contact message not found'
-                ], 404);
-            }
-
-            return response()->json([
-                'status' => 'success',
-                'data' => $contact
-            ]);
-
+            $contact = $this->service->show($id);
+            if (! $contact) return response()->json(['status' => 'error', 'message' => 'Contact message not found'], 404);
+            return response()->json(['status' => 'success', 'data' => $contact]);
         } catch (\Exception $e) {
             Log::error('Failed to fetch contact message: ' . $e->getMessage());
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Failed to fetch contact message'
-            ], 500);
+            return response()->json(['status' => 'error', 'message' => 'Failed to fetch contact message'], 500);
         }
     }
 
@@ -144,35 +109,14 @@ class ContactUsController extends Controller
             ], 422);
         }
 
-        DB::beginTransaction();
-
         try {
-            $contact = Contact_Us::find($id);
-
-            if (!$contact) {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Contact message not found'
-                ], 404);
-            }
-
-            $contact->update($request->all());
-
-            DB::commit();
-
-            return response()->json([
-                'status' => 'success',
-                'data' => $contact,
-                'message' => 'Contact message updated successfully'
-            ]);
-
+            $data = $request->only(['name','email','phone','subject','message','status']);
+            $contact = $this->service->update($id, $data);
+            if (! $contact) return response()->json(['status' => 'error', 'message' => 'Contact message not found'], 404);
+            return response()->json(['status' => 'success', 'data' => $contact, 'message' => 'Contact message updated successfully']);
         } catch (\Exception $e) {
-            DB::rollBack();
             Log::error('Contact message update failed: ' . $e->getMessage());
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Contact message update failed'
-            ], 500);
+            return response()->json(['status' => 'error', 'message' => 'Contact message update failed'], 500);
         }
     }
 
@@ -184,34 +128,13 @@ class ContactUsController extends Controller
      */
     public function destroy($id)
     {
-        DB::beginTransaction();
-
         try {
-            $contact = Contact_Us::find($id);
-
-            if (!$contact) {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Contact message not found'
-                ], 404);
-            }
-
-            $contact->delete();
-
-            DB::commit();
-
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Contact message deleted successfully'
-            ]);
-
+            $res = $this->service->delete($id);
+            if (! $res) return response()->json(['status' => 'error', 'message' => 'Contact message not found'], 404);
+            return response()->json(['status' => 'success', 'message' => 'Contact message deleted successfully']);
         } catch (\Exception $e) {
-            DB::rollBack();
             Log::error('Contact message deletion failed: ' . $e->getMessage());
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Contact message deletion failed'
-            ], 500);
+            return response()->json(['status' => 'error', 'message' => 'Contact message deletion failed'], 500);
         }
     }
 }

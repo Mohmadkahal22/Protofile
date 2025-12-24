@@ -7,6 +7,8 @@ use Illuminate\Support\Str;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Services\TeamService;
+use Illuminate\Support\Facades\Log;
 
 class TeamController extends Controller
 {
@@ -15,11 +17,9 @@ class TeamController extends Controller
      */
     public function index()
     {
-        $teams = Team::all();
-        return response()->json([
-            'status' => 'success',
-            'data' => $teams
-        ]);
+        $service = app(TeamService::class);
+        $teams = $service->index();
+        return response()->json(['status' => 'success', 'data' => $teams]);
     }
 
     /**
@@ -46,46 +46,16 @@ class TeamController extends Controller
             ], 422);
         }
 
-        DB::beginTransaction();
-
         try {
-            $data = $request->except(['photo', 'cv_file']);
-
-            // Handle photo upload
-            if ($request->hasFile('photo')) {
-                $photoName = Str::random(32).'.'.$request->file('photo')->getClientOriginalExtension();
-                $photoPath = 'team_photos/' . $photoName;
-                Storage::disk('public')->put($photoPath, file_get_contents($request->file('photo')));
-                $data['photo'] = url('api/storage/' . $photoPath);
-            }
-
-            // Handle CV file upload (similar to images in first example)
-            if ($request->hasFile('cv_file')) {
-                $cvName = Str::random(32).'.'.$request->file('cv_file')->getClientOriginalExtension();
-                $cvPath = 'team_cvs/' . $cvName;
-                Storage::disk('public')->put($cvPath, file_get_contents($request->file('cv_file')));
-                $data['cv_file'] = url('api/storage/' . $cvPath);
-            }
-
-            $team = Team::create($data);
-
-            DB::commit();
-
-            return response()->json([
-                'status' => 'success',
-                'data' => $team,
-                'photo_url' => $data['photo'] ?? null,
-                'cv_file_url' => $data['cv_file'] ?? null
-            ], 201);
-
+            $data = $request->except(['photo','cv_file']);
+            $photo = $request->file('photo');
+            $cv = $request->file('cv_file');
+            $service = app(TeamService::class);
+            $team = $service->store($data, $photo, $cv);
+            return response()->json(['status' => 'success', 'data' => $team, 'photo_url' => $team->photo ?? null, 'cv_file_url' => $team->cv_file ?? null], 201);
         } catch (\Exception $e) {
-            DB::rollBack();
             Log::error('Team member creation failed: ' . $e->getMessage());
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Team member creation failed',
-                'error' => $e->getMessage()
-            ], 500);
+            return response()->json(['status' => 'error', 'message' => 'Team member creation failed', 'error' => $e->getMessage()], 500);
         }
     }
 
@@ -94,10 +64,7 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        return response()->json([
-            'status' => 'success',
-            'data' => $team
-        ]);
+        return response()->json(['status' => 'success', 'data' => $team]);
     }
 
     /**
@@ -124,56 +91,16 @@ class TeamController extends Controller
             ], 422);
         }
 
-        DB::beginTransaction();
-
         try {
-            $data = $request->except(['photo', 'cv_file']);
-
-            // Handle photo update
-            if ($request->hasFile('photo')) {
-                // Delete old photo if exists
-                if ($team->photo) {
-                    $this->deleteFile($team->photo);
-                }
-
-                $photoName = Str::random(32).'.'.$request->file('photo')->getClientOriginalExtension();
-                $photoPath = 'team_photos/' . $photoName;
-                Storage::disk('public')->put($photoPath, file_get_contents($request->file('photo')));
-                $data['photo'] = url('api/storage/' . $photoPath);
-            }
-
-            // Handle CV file update
-            if ($request->hasFile('cv_file')) {
-                // Delete old CV if exists
-                if ($team->cv_file) {
-                    $this->deleteFile($team->cv_file);
-                }
-
-                $cvName = Str::random(32).'.'.$request->file('cv_file')->getClientOriginalExtension();
-                $cvPath = 'team_cvs/' . $cvName;
-                Storage::disk('public')->put($cvPath, file_get_contents($request->file('cv_file')));
-                $data['cv_file'] = url('api/storage/' . $cvPath);
-            }
-
-            $team->update($data);
-
-            DB::commit();
-
-            return response()->json([
-                'status' => 'success',
-                'data' => $team,
-                'photo_url' => $data['photo'] ?? $team->photo,
-                'cv_file_url' => $data['cv_file'] ?? $team->cv_file
-            ]);
-
+            $data = $request->except(['photo','cv_file']);
+            $photo = $request->file('photo');
+            $cv = $request->file('cv_file');
+            $service = app(TeamService::class);
+            $team = $service->update($team, $data, $photo, $cv);
+            return response()->json(['status' => 'success', 'data' => $team, 'photo_url' => $team->photo ?? null, 'cv_file_url' => $team->cv_file ?? null]);
         } catch (\Exception $e) {
-            DB::rollBack();
             Log::error('Team member update failed: ' . $e->getMessage());
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Team member update failed',
-                'error' => $e->getMessage()
-            ], 500);
+            return response()->json(['status' => 'error', 'message' => 'Team member update failed', 'error' => $e->getMessage()], 500);
         }
     }
 
@@ -201,19 +128,13 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
-        // Delete associated files
-        if ($team->photo) {
-            Storage::disk('public')->delete($team->photo);
+        try {
+            $service = app(TeamService::class);
+            $service->delete($team);
+            return response()->json(['status' => 'success', 'message' => 'Team member deleted successfully']);
+        } catch (\Exception $e) {
+            Log::error('Team member deletion failed: ' . $e->getMessage());
+            return response()->json(['status' => 'error', 'message' => 'Team member deletion failed', 'error' => $e->getMessage()], 500);
         }
-        if ($team->cv_file) {
-            Storage::disk('public')->delete($team->cv_file);
-        }
-
-        $team->delete();
-
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Team member deleted successfully'
-        ]);
     }
 }
