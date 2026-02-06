@@ -1,8 +1,6 @@
 <!-- ═══ ABOUT SECTION ═══ -->
 <section id="about" class="section" style="background: var(--dark-bg-2); position:relative; overflow:hidden;">
-    <div class="glow-dot" style="width:500px;height:500px;background:var(--gold);bottom:-150px;right:-150px;opacity:0.03;"></div>
-    <div class="glow-dot" style="width:400px;height:400px;background:var(--gold-light);top:-100px;left:-100px;opacity:0.02;"></div>
-    <div class="glow-line" style="width:100%;top:0;left:0;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.06),transparent);"></div>
+    <div class="glow-dot" style="width:300px;height:300px;background:var(--gold);bottom:-100px;right:-100px;"></div>
 
     <div class="container">
         <!-- Skeleton -->
@@ -41,7 +39,7 @@
 .about-image-wrap:hover img { transform: scale(1.03); }
 .about-image-badge {
     position: absolute; bottom: 1.5rem; left: 1.5rem;
-    background: rgba(6,9,24,0.85); backdrop-filter: blur(12px);
+    background: rgba(6,9,24,0.92);
     border: 1px solid rgba(212,175,55,0.2);
     padding: 0.85rem 1.25rem; border-radius: var(--radius-md);
     display: flex; align-items: center; gap: 0.75rem;

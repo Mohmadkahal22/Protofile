@@ -7,14 +7,12 @@
 <section id="home" class="section hero-section" style="padding: 0; min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden;">
     <!-- Background effects -->
     <div class="hero-bg">
-        <div class="glow-dot" style="width:900px;height:900px;background:var(--gold);top:-350px;right:-250px;opacity:0.04;"></div>
-        <div class="glow-dot" style="width:600px;height:600px;background:var(--gold);bottom:-200px;left:-150px;opacity:0.04;"></div>
-        <div class="glow-dot" style="width:400px;height:400px;background:var(--secondary);top:40%;left:40%;opacity:0.025;"></div>
+        <div class="glow-dot" style="width:500px;height:500px;background:var(--gold);top:-200px;right:-150px;"></div>
+        <div class="glow-dot" style="width:400px;height:400px;background:var(--gold);bottom:-150px;left:-100px;"></div>
         <!-- Luxury grid pattern -->
         <div class="hero-grid-pattern"></div>
-        <!-- Decorative geometric shapes -->
+        <!-- Decorative rings (hidden on mobile via CSS) -->
         <div class="hero-deco-ring hero-deco-ring-1"></div>
-        <div class="hero-deco-ring hero-deco-ring-2"></div>
     </div>
 
     <div class="container" style="position: relative; z-index: 2; padding-top: 6rem; padding-bottom: 4rem;">
@@ -24,7 +22,7 @@
                 <div style="margin-bottom:1.5rem;">
                     <span class="section-badge" style="animation:fadeInUp 0.6s ease;" data-i18n="hero_badge">
                         <span class="hero-badge-dot"></span>
-                        Welcome to HexaTerminal
+                Welcome to HexaTerminal
                     </span>
                 </div>
                 <h1 class="hero-title">
@@ -33,7 +31,7 @@
                     <span style="display:block;color:var(--text-secondary);font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:500;margin-top:0.5rem;" data-i18n="hero_title_3">
                         with Modern Software Solutions
                     </span>
-                </h1>
+            </h1>
                 <p style="font-size:1.05rem;color:var(--text-secondary);margin:2rem 0 2.5rem;line-height:1.85;max-width:540px;" data-i18n="hero_desc">
                     We deliver cutting-edge software solutions with innovative technologies,
                     helping businesses transform and grow in the digital landscape.
@@ -97,11 +95,9 @@
                             <text x="200" y="190" font-family="'Courier New', monospace" font-weight="700" font-size="60" fill="url(#heroGrad3)" text-anchor="middle" dominant-baseline="middle" opacity="0.9">&gt;_</text>
                             <text x="200" y="235" font-family="Inter, sans-serif" font-weight="600" font-size="14" fill="rgba(212,175,55,0.5)" text-anchor="middle" letter-spacing="4">SOFTWARE DEVELOPMENT</text>
                         </svg>
-                        <!-- Floating dots with gold -->
-                        <div class="hero-float-dot" style="top:10%;left:15%;width:6px;height:6px;animation-delay:0s;background:var(--gold);"></div>
-                        <div class="hero-float-dot" style="top:75%;right:10%;width:8px;height:8px;animation-delay:1s;"></div>
-                        <div class="hero-float-dot" style="bottom:15%;left:20%;width:5px;height:5px;animation-delay:0.5s;background:var(--gold);"></div>
-                        <div class="hero-float-dot" style="top:30%;right:5%;width:4px;height:4px;animation-delay:1.5s;"></div>
+                        <!-- Floating dots -->
+                        <div class="hero-float-dot" style="top:10%;left:15%;width:5px;height:5px;animation-delay:0s;background:var(--gold);"></div>
+                        <div class="hero-float-dot" style="top:75%;right:10%;width:6px;height:6px;animation-delay:1s;"></div>
                     </div>
                 </div>
             </div>
@@ -128,8 +124,7 @@
 
 <!-- ═══ CONTACT SECTION ═══ -->
 <section id="contact" class="section" style="background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-bg-2) 100%); position:relative; overflow:hidden;">
-    <div class="glow-dot" style="width:500px;height:500px;background:var(--gold);top:-100px;right:-100px;opacity:0.03;"></div>
-    <div class="glow-dot" style="width:400px;height:400px;background:var(--gold-light);bottom:-100px;left:-100px;opacity:0.02;"></div>
+    <div class="glow-dot" style="width:300px;height:300px;background:var(--gold);top:-80px;right:-80px;"></div>
 
     <div class="container">
         <div class="section-header" data-aos="fade-up">
@@ -144,23 +139,23 @@
                 <div class="contact-info-card">
                     <div class="contact-info-item">
                         <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
-                        <div>
+                <div>
                             <h4 data-i18n="contact_email_title">Email Us</h4>
                             <p>contact@hexaterminal.com</p>
                             <span data-i18n="contact_email_reply">Reply within 24 hours</span>
                         </div>
-                    </div>
+                </div>
                     <div class="contact-info-item">
                         <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
-                        <div>
+                <div>
                             <h4 data-i18n="contact_phone_title">Call Us</h4>
                             <p>+963 935 027 218</p>
                             <span data-i18n="contact_phone_hours">Mon - Fri, 9am - 6pm</span>
                         </div>
-                    </div>
+                </div>
                     <div class="contact-info-item">
                         <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div>
+                <div>
                             <h4 data-i18n="contact_visit_title">Visit Us</h4>
                             <p>Damascus, Syria</p>
                             <span data-i18n="contact_visit_hq">HexaTerminal HQ</span>
@@ -219,14 +214,14 @@
                     <div class="form-group">
                         <label class="form-label"><i class="fas fa-comment" style="margin-right:0.4rem;color:var(--gold);font-size:0.75rem;"></i><span data-i18n="contact_message">Message</span></label>
                         <textarea name="message" rows="5" class="form-input" placeholder="Tell us about your project..." data-i18n-placeholder="contact_message_ph" required style="resize:vertical;min-height:120px;"></textarea>
-                    </div>
+                </div>
                     <button type="submit" id="contact-btn" class="btn btn-gold" style="width:100%;justify-content:center;padding:1rem;font-size:0.95rem;">
                         <span id="contact-btn-text"><i class="fas fa-paper-plane" style="margin-right:0.5rem;"></i><span data-i18n="contact_send">Send Message</span></span>
                         <span id="contact-btn-loading" style="display:none;">
                             <i class="fas fa-spinner fa-spin" style="margin-right:0.5rem;"></i> <span data-i18n="contact_sending">Sending...</span>
                         </span>
-                    </button>
-                </form>
+                </button>
+            </form>
             </div>
         </div>
     </div>
@@ -245,19 +240,14 @@
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black, transparent);
 }
-/* Decorative rings */
+/* Decorative ring */
 .hero-deco-ring {
     position: absolute; border-radius: 50%; pointer-events: none;
-    border: 1px solid rgba(212,175,55,0.06);
+    border: 1px solid rgba(212,175,55,0.05);
 }
 .hero-deco-ring-1 {
-    width: 500px; height: 500px; top: -100px; right: -100px;
+    width: 400px; height: 400px; top: -80px; right: -80px;
     animation: rotate-slow 40s linear infinite;
-}
-.hero-deco-ring-2 {
-    width: 300px; height: 300px; bottom: 10%; left: 5%;
-    border-color: rgba(74,143,231,0.05);
-    animation: rotate-slow 30s linear infinite reverse;
 }
 .hero-title {
     font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 900;
@@ -315,9 +305,9 @@
 /* ═══ CONTACT ═══ */
 .contact-info-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
 .contact-info-card {
-    background: var(--card-bg); backdrop-filter: blur(12px);
+    background: var(--card-bg-solid);
     border: 1px solid var(--card-border); border-radius: var(--radius-lg);
-    padding: 2rem; display: flex; flex-direction: column; gap: 1.75rem;
+    padding: 1.75rem; display: flex; flex-direction: column; gap: 1.5rem;
 }
 .contact-info-item { display: flex; gap: 1rem; align-items: flex-start; }
 .contact-info-icon {
@@ -332,9 +322,9 @@
 .contact-info-item span { font-size: 0.75rem; color: var(--text-muted); }
 
 .contact-process {
-    background: var(--card-bg); backdrop-filter: blur(12px);
+    background: var(--card-bg-solid);
     border: 1px solid var(--card-border); border-radius: var(--radius-lg);
-    padding: 1.75rem;
+    padding: 1.5rem;
 }
 .process-step {
     display: flex; align-items: center; gap: 1rem;
@@ -348,7 +338,7 @@
     display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
 
-.contact-form-card { background: var(--card-bg) !important; backdrop-filter: blur(12px); }
+.contact-form-card { background: var(--card-bg-solid) !important; }
 
 /* ═══ LIGHT THEME OVERRIDES ═══ */
 [data-theme="light"] .hero-section { background: #F5F3EF; }
@@ -366,7 +356,7 @@
 [data-theme="light"] .contact-process { background: #FDFCF9; border-color: rgba(0,0,0,0.05); box-shadow: 0 2px 12px rgba(0,0,0,0.03); }
 [data-theme="light"] .contact-info-icon { background: linear-gradient(135deg, rgba(184,148,31,0.06), rgba(184,148,31,0.02)); border-color: rgba(184,148,31,0.1); }
 [data-theme="light"] .process-step:not(:last-child) { border-bottom-color: rgba(0,0,0,0.04); }
-[data-theme="light"] .contact-form-card { background: #FDFCF9 !important; backdrop-filter: none !important; box-shadow: 0 2px 16px rgba(0,0,0,0.04) !important; }
+[data-theme="light"] .contact-form-card { background: #FDFCF9 !important; box-shadow: 0 2px 12px rgba(0,0,0,0.04) !important; }
 
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 1024px) {
@@ -397,29 +387,22 @@
 
 @push('scripts')
 <script>
-// Hero stats with counter animation
-(function() {
-    var stats = { projects: 0, services: 0, team: 0 };
-    var loaded = 0;
-    var total = 3;
-
-    function renderStats() {
-        loaded++;
-        if (loaded < total) return;
+// Hero stats — populated by section scripts via global hooks (no extra API calls)
+window._heroStats = { projects: 0, services: 0, team: 0, loaded: 0 };
+window._updateHeroStat = function(key, val) {
+    window._heroStats[key] = val;
+    window._heroStats.loaded++;
+    if (window._heroStats.loaded >= 3) {
         var items = [
-            { el: document.querySelector('#stat-projects .hero-stat-number'), val: stats.projects },
-            { el: document.querySelector('#stat-services .hero-stat-number'), val: stats.services },
-            { el: document.querySelector('#stat-team .hero-stat-number'), val: stats.team }
+            { el: document.querySelector('#stat-projects .hero-stat-number'), val: window._heroStats.projects },
+            { el: document.querySelector('#stat-services .hero-stat-number'), val: window._heroStats.services },
+            { el: document.querySelector('#stat-team .hero-stat-number'), val: window._heroStats.team }
         ];
         items.forEach(function(item) {
             if (item.el) animateCounter(item.el, item.val);
         });
     }
-
-    axios.get(API_BASE + '/projects/index?all=1').then(function(r) { stats.projects = (r.data.data || []).length; renderStats(); }).catch(function() { renderStats(); });
-    axios.get(API_BASE + '/services/index?all=1').then(function(r) { stats.services = (r.data.data || []).length; renderStats(); }).catch(function() { renderStats(); });
-    axios.get(API_BASE + '/teams/index?all=1').then(function(r) { stats.team = (r.data.data || []).length; renderStats(); }).catch(function() { renderStats(); });
-})();
+};
 
 // Contact form submit
 function submitContactForm(e) {
@@ -461,7 +444,14 @@ function submitContactForm(e) {
         });
 }
 
-// Re-apply translations after dynamic content loaded
-setTimeout(function() { if (typeof applyTranslations === 'function') applyTranslations(); }, 500);
+// Re-apply translations after dynamic content loaded (debounced)
+var _applyTimer;
+window._scheduleTranslationRefresh = function() {
+    clearTimeout(_applyTimer);
+    _applyTimer = setTimeout(function() {
+        if (typeof applyTranslations === 'function') applyTranslations();
+    }, 200);
+};
+setTimeout(function() { window._scheduleTranslationRefresh(); }, 400);
 </script>
 @endpush

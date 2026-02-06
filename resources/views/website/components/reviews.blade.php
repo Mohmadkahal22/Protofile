@@ -1,7 +1,6 @@
 <!-- ═══ REVIEWS SECTION ═══ -->
 <section id="reviews" class="section" style="background: var(--dark-bg); position:relative; overflow:hidden;">
-    <div class="glow-dot" style="width:500px;height:500px;background:var(--gold);top:-120px;left:-120px;opacity:0.03;"></div>
-    <div class="glow-dot" style="width:300px;height:300px;background:var(--gold-light);bottom:-80px;right:-80px;opacity:0.02;"></div>
+    <div class="glow-dot" style="width:300px;height:300px;background:var(--gold);top:-80px;left:-80px;"></div>
 
     <div class="container">
         <div class="section-header" data-aos="fade-up">
@@ -33,7 +32,7 @@
 @push('styles')
 <style>
 .review-card {
-    padding: 2.25rem; display: flex; flex-direction: column; height: 100%;
+    padding: 1.5rem; display: flex; flex-direction: column; height: 100%;
     position: relative;
 }
 .review-quote {

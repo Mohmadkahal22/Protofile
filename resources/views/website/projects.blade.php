@@ -7,7 +7,6 @@
 <section style="padding:8rem 0 3rem;background:var(--dark-bg-2);position:relative;overflow:hidden;">
     <div class="glow-dot" style="width:500px;height:500px;background:var(--gold);top:-200px;right:-100px;opacity:0.03;"></div>
     <div class="glow-dot" style="width:400px;height:400px;background:var(--gold-light);bottom:-100px;left:-100px;opacity:0.02;"></div>
-    <div class="glow-line" style="width:100%;bottom:0;left:0;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.06),transparent);"></div>
 
     <div class="container" style="text-align:center;">
         <span class="section-badge" data-aos="fade-up"><i class="fas fa-trophy"></i> <span data-i18n="portfolio">Portfolio</span></span>
@@ -33,14 +32,14 @@
 <section class="section" style="background:var(--dark-bg);padding-top:4rem;">
     <div class="container">
         <!-- Skeleton -->
-        <div id="all-projects-skeleton" class="grid-3">
+        <div id="all-projects-skeleton" class="all-proj-grid">
             @for($i = 0; $i < 9; $i++)
-            <div class="skeleton skeleton-card"></div>
+            <div class="skeleton" style="height:380px;border-radius:12px;"></div>
             @endfor
         </div>
 
         <!-- Actual content -->
-        <div id="all-projects-grid" class="grid-3" style="display:none;"></div>
+        <div id="all-projects-grid" class="all-proj-grid" style="display:none;"></div>
 
         <!-- Pagination -->
         <div id="all-projects-pagination" style="display:none;"></div>
@@ -62,44 +61,82 @@
 
 @push('styles')
 <style>
-.project-card { cursor: pointer; overflow: hidden; }
-.project-card-img-wrap { position: relative; overflow: hidden; height: 260px; }
-.project-card-img {
+/* ═══ All Projects Grid ═══ */
+.all-proj-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+@media (max-width: 1024px) { .all-proj-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .all-proj-grid { grid-template-columns: 1fr; } }
+
+/* ═══ PROJECT CARD (grid page) — matches ht-project-card ═══ */
+.all-proj-card {
+    position: relative; z-index: 1;
+    border-radius: 12px; overflow: hidden;
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+.all-proj-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(212,175,55,0.12), 0 0 0 1px rgba(212,175,55,0.1);
+    border-color: rgba(212,175,55,0.2);
+}
+.all-proj-card-img {
+    position: relative; overflow: hidden;
+    aspect-ratio: 4/3;
+}
+.all-proj-card-img img {
     width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s ease;
+    transform: scale(1); transition: all 0.5s ease-in-out;
 }
-.card:hover .project-card-img { transform: scale(1.08); filter: brightness(0.7); }
-.project-card-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(7,10,24,0.95) 0%, rgba(7,10,24,0.3) 40%, transparent 70%);
-    display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem;
-    opacity: 0; transition: opacity 0.4s;
+.all-proj-card:hover .all-proj-card-img img { transform: scale(1.08); }
+.all-proj-card-img .overlay {
+    position: absolute; left: 0; right: 0; bottom: 0; top: 40%;
+    z-index: 1; opacity: 0; transition: all 0.4s ease;
+    background: linear-gradient(180deg, rgba(7,10,24,0) 10%, rgba(7,10,24,0.85) 90%);
 }
-.card:hover .project-card-overlay { opacity: 1; }
-.project-card-overlay .view-btn {
+.all-proj-card:hover .all-proj-card-img .overlay { opacity: 1; }
+.all-proj-card-img .view-btn {
+    position: absolute; bottom: 16px; left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    z-index: 2;
     display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.5rem 1rem; background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.3);
-    border-radius: var(--radius-sm); color: var(--gold); font-size: 0.8rem; font-weight: 600;
-    width: fit-content; backdrop-filter: blur(8px);
+    padding: 0.6rem 1.5rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #070A18; font-weight: 700; font-size: 0.85rem;
+    border-radius: 100px; text-decoration: none;
+    box-shadow: 0 4px 16px rgba(212,175,55,0.3);
+    opacity: 0; transition: all 0.4s ease;
 }
-.project-card-body { padding: 1.5rem; }
-.project-card-title { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; line-height: 1.3; }
-.project-card-desc {
+.all-proj-card:hover .all-proj-card-img .view-btn {
+    opacity: 1; transform: translateX(-50%) translateY(0);
+}
+.all-proj-card-body { padding: 1.5rem 1.25rem; }
+.all-proj-card-title {
+    font-size: 1.15rem; font-weight: 800;
+    color: var(--text-primary); margin-bottom: 0.5rem; line-height: 1.3;
+}
+.all-proj-card-desc {
     color: var(--text-secondary); font-size: 0.85rem; line-height: 1.65;
     display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
     margin-bottom: 1rem;
 }
-.project-tag {
-    display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.3rem 0.8rem;
-    background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(183,134,11,0.04));
-    border: 1px solid rgba(212,175,55,0.1); color: var(--gold); border-radius: 999px;
-    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.5px;
-}
-.project-card-placeholder {
+.all-proj-card-placeholder {
     width: 100%; height: 100%;
     background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(183,134,11,0.06));
     display: flex; align-items: center; justify-content: center;
 }
+.all-proj-tag {
+    display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.25rem 0.7rem;
+    background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(74,143,231,0.05));
+    border: 1px solid rgba(212,175,55,0.1);
+    color: var(--gold); border-radius: 999px;
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.3px;
+}
+
+/* Pagination */
 .pagination-wrap {
     display: flex; justify-content: center; align-items: center; gap: 0.5rem;
     margin-top: 4rem; flex-wrap: wrap;
@@ -124,11 +161,13 @@
     color: var(--text-muted); font-size: 0.82rem;
 }
 
-/* Light theme */
+/* ═══ LIGHT THEME ═══ */
+[data-theme="light"] .all-proj-card { background: #FDFCF9; border-color: rgba(0,0,0,0.06); }
+[data-theme="light"] .all-proj-card:hover { box-shadow: 0 20px 50px rgba(0,0,0,0.08); border-color: rgba(184,148,31,0.15); }
+[data-theme="light"] .all-proj-card-img .overlay { background: linear-gradient(180deg, rgba(255,255,255,0) 10%, rgba(0,0,0,0.7) 90%); }
 [data-theme="light"] .page-btn { background: var(--card-bg); border-color: rgba(183,134,11,0.08); }
 [data-theme="light"] .page-btn:hover { background: rgba(183,134,11,0.04); border-color: var(--gold); }
-[data-theme="light"] .page-btn.active { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border-color: transparent; color: #fff; box-shadow: 0 4px 12px rgba(183,134,11,0.2); }
-[data-theme="light"] .project-card-placeholder { background: linear-gradient(135deg, rgba(183,134,11,0.06), rgba(212,175,55,0.04)); }
+[data-theme="light"] .page-btn.active { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #fff; box-shadow: 0 4px 12px rgba(183,134,11,0.2); }
 </style>
 @endpush
 
@@ -170,30 +209,35 @@
                     var images = project.images || [];
                     var firstImage = images.length > 0 ? (images[0].image_path || images[0]) : '';
                     var imageUrl = getImageUrl(firstImage);
+                    var serviceTitle = project.service ? (project.service.title || project.service.name) : '';
 
                     var card = document.createElement('div');
-                    card.className = 'card card-gold-border project-card';
+                    card.className = 'all-proj-card';
                     card.setAttribute('data-aos', 'fade-up');
                     card.setAttribute('data-aos-delay', (index % 3 * 80).toString());
                     card.onclick = function() { window.location.href = '/project/' + (project.id || 0); };
 
+                    var tagsHtml = '';
+                    if (serviceTitle) {
+                        tagsHtml += '<span class="all-proj-tag"><i class="fas fa-cog" style="font-size:0.6rem;"></i> ' + serviceTitle + '</span> ';
+                    }
+                    if (project.category) {
+                        tagsHtml += '<span class="all-proj-tag"><i class="fas fa-tag" style="font-size:0.6rem;"></i> ' + project.category + '</span>';
+                    }
+
                     card.innerHTML =
-                        '<div class="project-card-img-wrap">' +
+                        '<div class="all-proj-card-img">' +
                             (imageUrl
-                                ? '<img src="' + imageUrl + '" alt="' + (project.title || 'Project') + '" class="project-card-img" loading="lazy">'
-                                : '<div class="project-card-placeholder"><i class="fas fa-image" style="font-size:3rem;color:rgba(212,175,55,0.2);"></i></div>'
+                                ? '<img src="' + imageUrl + '" alt="' + (project.title || 'Project') + '" loading="lazy">'
+                                : '<div class="all-proj-card-placeholder"><i class="fas fa-image" style="font-size:3rem;color:rgba(212,175,55,0.2);"></i></div>'
                             ) +
-                            '<div class="project-card-overlay">' +
-                                '<span class="view-btn"><i class="fas fa-eye"></i> ' + t('view_details') + '</span>' +
-                            '</div>' +
+                            '<div class="overlay"></div>' +
+                            '<a href="/project/' + (project.id || 0) + '" class="view-btn" onclick="event.stopPropagation();"><i class="fas fa-eye"></i> ' + t('view_details') + '</a>' +
                         '</div>' +
-                        '<div class="project-card-body">' +
-                            '<h3 class="project-card-title">' + (project.title || 'Untitled Project') + '</h3>' +
-                            '<p class="project-card-desc">' + (project.description || t('no_desc')) + '</p>' +
-                            '<div style="display:flex;gap:0.5rem;flex-wrap:wrap;">' +
-                                (project.service ? '<span class="project-tag"><i class="fas fa-cogs"></i> ' + (project.service.title || project.service.name || 'Service') + '</span>' : '') +
-                                (project.category ? '<span class="project-tag"><i class="fas fa-tag"></i> ' + project.category + '</span>' : '') +
-                            '</div>' +
+                        '<div class="all-proj-card-body">' +
+                            '<h3 class="all-proj-card-title">' + (project.title || 'Untitled Project') + '</h3>' +
+                            '<p class="all-proj-card-desc">' + (project.description || t('no_desc')) + '</p>' +
+                            (tagsHtml ? '<div style="display:flex;gap:0.4rem;flex-wrap:wrap;">' + tagsHtml + '</div>' : '') +
                         '</div>';
                     grid.appendChild(card);
                 });

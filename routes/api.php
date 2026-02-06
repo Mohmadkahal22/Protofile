@@ -37,13 +37,14 @@ Route::get('/storage/{path}', function ($path) {
 /*
 |--------------------------------------------------------------------------
 | Public API Routes (no auth required - used by website via Axios)
+| Public GET endpoints cached for 5 minutes in the browser
 |--------------------------------------------------------------------------
 */
 
 // Teams
 Route::prefix('teams')->group(function () {
-    Route::get('index', [TeamController::class, 'index']);
-    Route::get('show/{team}', [TeamController::class, 'show']);
+    Route::get('index', [TeamController::class, 'index'])->middleware('cache.headers:public;max_age=300;etag');
+    Route::get('show/{team}', [TeamController::class, 'show'])->middleware('cache.headers:public;max_age=300;etag');
 
     Route::post('store', [TeamController::class, 'store'])->middleware(['auth:sanctum', 'admin']);
     Route::post('update/{team}', [TeamController::class, 'update'])->middleware(['auth:sanctum', 'admin']);
@@ -52,8 +53,8 @@ Route::prefix('teams')->group(function () {
 
 // Services
 Route::prefix('services')->group(function () {
-    Route::get('index', [ServicesController::class, 'index']);
-    Route::get('show/{id}', [ServicesController::class, 'show']);
+    Route::get('index', [ServicesController::class, 'index'])->middleware('cache.headers:public;max_age=300;etag');
+    Route::get('show/{id}', [ServicesController::class, 'show'])->middleware('cache.headers:public;max_age=300;etag');
 
     Route::post('store', [ServicesController::class, 'store'])->middleware(['auth:sanctum', 'admin']);
     Route::post('update/{id}', [ServicesController::class, 'update'])->middleware(['auth:sanctum', 'admin']);
@@ -62,8 +63,8 @@ Route::prefix('services')->group(function () {
 
 // Projects
 Route::prefix('projects')->group(function () {
-    Route::get('index', [ProjectsController::class, 'index']);
-    Route::get('show/{id}', [ProjectsController::class, 'show']);
+    Route::get('index', [ProjectsController::class, 'index'])->middleware('cache.headers:public;max_age=300;etag');
+    Route::get('show/{id}', [ProjectsController::class, 'show'])->middleware('cache.headers:public;max_age=300;etag');
 
     Route::post('store', [ProjectsController::class, 'store'])->middleware(['auth:sanctum', 'admin']);
     Route::post('update/{id}', [ProjectsController::class, 'update'])->middleware(['auth:sanctum', 'admin']);
@@ -72,8 +73,8 @@ Route::prefix('projects')->group(function () {
 
 // About Us
 Route::prefix('about_us')->group(function () {
-    Route::get('index', [AboutUsController::class, 'index']);
-    Route::get('show', [AboutUsController::class, 'show']);
+    Route::get('index', [AboutUsController::class, 'index'])->middleware('cache.headers:public;max_age=300;etag');
+    Route::get('show', [AboutUsController::class, 'show'])->middleware('cache.headers:public;max_age=300;etag');
 
     Route::post('store', [AboutUsController::class, 'store'])->middleware(['auth:sanctum', 'admin']);
     Route::post('update', [AboutUsController::class, 'update'])->middleware(['auth:sanctum', 'admin']);
@@ -92,8 +93,8 @@ Route::prefix('contact_us')->group(function () {
 
 // FAQ
 Route::prefix('faq')->group(function () {
-    Route::get('index', [FAQController::class, 'index']);
-    Route::get('show/{id}', [FAQController::class, 'show']);
+    Route::get('index', [FAQController::class, 'index'])->middleware('cache.headers:public;max_age=300;etag');
+    Route::get('show/{id}', [FAQController::class, 'show'])->middleware('cache.headers:public;max_age=300;etag');
 
     Route::post('store', [FAQController::class, 'store'])->middleware(['auth:sanctum', 'admin']);
     Route::put('update/{id}', [FAQController::class, 'update'])->middleware(['auth:sanctum', 'admin']);
@@ -102,8 +103,8 @@ Route::prefix('faq')->group(function () {
 
 // Reviews (store is public - anyone can submit a review)
 Route::prefix('review')->group(function () {
-    Route::get('index', [ReviewController::class, 'index']);
-    Route::get('show/{id}', [ReviewController::class, 'show']);
+    Route::get('index', [ReviewController::class, 'index'])->middleware('cache.headers:public;max_age=300;etag');
+    Route::get('show/{id}', [ReviewController::class, 'show'])->middleware('cache.headers:public;max_age=300;etag');
     Route::post('store', [ReviewController::class, 'store']);
 
     Route::put('update/{id}', [ReviewController::class, 'update'])->middleware(['auth:sanctum', 'admin']);
@@ -112,8 +113,8 @@ Route::prefix('review')->group(function () {
 
 // Videos
 Route::prefix('video')->group(function () {
-    Route::get('index', [VideoController::class, 'index']);
-    Route::get('show/{id}', [VideoController::class, 'show']);
+    Route::get('index', [VideoController::class, 'index'])->middleware('cache.headers:public;max_age=300;etag');
+    Route::get('show/{id}', [VideoController::class, 'show'])->middleware('cache.headers:public;max_age=300;etag');
 
     Route::post('store', [VideoController::class, 'store'])->middleware(['auth:sanctum', 'admin']);
     Route::put('update/{id}', [VideoController::class, 'update'])->middleware(['auth:sanctum', 'admin']);

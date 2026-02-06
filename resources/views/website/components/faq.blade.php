@@ -1,6 +1,6 @@
 <!-- ═══ FAQ SECTION ═══ -->
 <section id="faq" class="section" style="background: var(--dark-bg); position:relative; overflow:hidden;">
-    <div class="glow-dot" style="width:400px;height:400px;background:var(--gold);bottom:-100px;right:-100px;opacity:0.03;"></div>
+    <div class="glow-dot" style="width:250px;height:250px;background:var(--gold);bottom:-80px;right:-80px;"></div>
 
     <div class="container">
         <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:4rem;align-items:start;">
@@ -44,10 +44,10 @@
 @push('styles')
 <style>
 .faq-item {
-    background: var(--card-bg); backdrop-filter: blur(12px);
+    background: var(--card-bg-solid);
     border: 1px solid var(--card-border); border-radius: var(--radius-md);
-    margin-bottom: 0.75rem; overflow: hidden;
-    transition: var(--transition);
+    margin-bottom: 0.6rem; overflow: hidden;
+    transition: border-color 0.3s ease;
 }
 .faq-item:hover { border-color: rgba(212,175,55,0.15); }
 .faq-item.active { border-color: rgba(212,175,55,0.3); box-shadow: 0 0 20px rgba(212,175,55,0.05); }

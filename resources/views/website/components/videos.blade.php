@@ -1,6 +1,6 @@
 <!-- ═══ VIDEOS SECTION ═══ -->
 <section id="videos" class="section" style="background: var(--dark-bg-2); position:relative; overflow:hidden;">
-    <div class="glow-dot" style="width:450px;height:450px;background:var(--gold);bottom:-100px;left:-100px;opacity:0.03;"></div>
+    <div class="glow-dot" style="width:250px;height:250px;background:var(--gold);bottom:-80px;left:-80px;"></div>
 
     <div class="container">
         <div class="section-header" data-aos="fade-up">
