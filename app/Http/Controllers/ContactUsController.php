@@ -5,27 +5,50 @@ namespace App\Http\Controllers;
 use App\Models\Contact_Us;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use App\Services\ContactUsService;
 
 class ContactUsController extends Controller
 {
-    /**
-     * Display a listing of the contact messages.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
     protected $service;
+    private const CACHE_TTL = 1800;
 
     public function __construct(ContactUsService $service)
     {
         $this->service = $service;
     }
 
-    public function index()
+    public function index(Request $request)
     {
         try {
-            $contacts = $this->service->index();
+            // Server-side pagination when ?page= is present
+            if ($request->has('page')) {
+                $perPage = min((int) $request->input('per_page', 12), 100);
+                $page = (int) $request->input('page', 1);
+
+                $paginated = Contact_Us::latest()
+                    ->paginate($perPage, ['*'], 'page', $page);
+
+                return response()->json([
+                    'status' => 'success',
+                    'data' => $paginated->items(),
+                    'pagination' => [
+                        'current_page' => $paginated->currentPage(),
+                        'last_page' => $paginated->lastPage(),
+                        'per_page' => $paginated->perPage(),
+                        'total' => $paginated->total(),
+                        'from' => $paginated->firstItem(),
+                        'to' => $paginated->lastItem(),
+                    ]
+                ]);
+            }
+
+            // Return all (cached)
+            $contacts = Cache::remember('api_contacts_all', self::CACHE_TTL, function () {
+                return $this->service->index();
+            });
+
             return response()->json(['status' => 'success', 'data' => $contacts]);
         } catch (\Exception $e) {
             Log::error('Failed to fetch contact messages: ' . $e->getMessage());
@@ -33,12 +56,6 @@ class ContactUsController extends Controller
         }
     }
 
-    /**
-     * Store a newly created contact message.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -50,15 +67,15 @@ class ContactUsController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'status' => 'error',
-                'errors' => $validator->errors()
-            ], 422);
+            return response()->json(['status' => 'error', 'errors' => $validator->errors()], 422);
         }
 
         try {
-            $data = $request->only(['name','email','phone','subject','message','status']);
+            $data = $request->only(['name', 'email', 'phone', 'subject', 'message', 'status']);
             $contact = $this->service->store($data);
+
+            Cache::forget('api_contacts_all');
+
             return response()->json(['status' => 'success', 'data' => $contact, 'message' => 'Contact message created successfully'], 201);
         } catch (\Exception $e) {
             Log::error('Contact message creation failed: ' . $e->getMessage());
@@ -66,17 +83,14 @@ class ContactUsController extends Controller
         }
     }
 
-    /**
-     * Display the specified contact message.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function show($id)
     {
         try {
-            $contact = $this->service->show($id);
-            if (! $contact) return response()->json(['status' => 'error', 'message' => 'Contact message not found'], 404);
+            $contact = Cache::remember('api_contact_' . $id, self::CACHE_TTL, function () use ($id) {
+                return $this->service->show($id);
+            });
+
+            if (!$contact) return response()->json(['status' => 'error', 'message' => 'Contact message not found'], 404);
             return response()->json(['status' => 'success', 'data' => $contact]);
         } catch (\Exception $e) {
             Log::error('Failed to fetch contact message: ' . $e->getMessage());
@@ -84,13 +98,6 @@ class ContactUsController extends Controller
         }
     }
 
-    /**
-     * Update the specified contact message.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
@@ -103,16 +110,17 @@ class ContactUsController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'status' => 'error',
-                'errors' => $validator->errors()
-            ], 422);
+            return response()->json(['status' => 'error', 'errors' => $validator->errors()], 422);
         }
 
         try {
-            $data = $request->only(['name','email','phone','subject','message','status']);
+            $data = $request->only(['name', 'email', 'phone', 'subject', 'message', 'status']);
             $contact = $this->service->update($id, $data);
-            if (! $contact) return response()->json(['status' => 'error', 'message' => 'Contact message not found'], 404);
+            if (!$contact) return response()->json(['status' => 'error', 'message' => 'Contact message not found'], 404);
+
+            Cache::forget('api_contacts_all');
+            Cache::forget('api_contact_' . $id);
+
             return response()->json(['status' => 'success', 'data' => $contact, 'message' => 'Contact message updated successfully']);
         } catch (\Exception $e) {
             Log::error('Contact message update failed: ' . $e->getMessage());
@@ -120,17 +128,15 @@ class ContactUsController extends Controller
         }
     }
 
-    /**
-     * Remove the specified contact message.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function destroy($id)
     {
         try {
             $res = $this->service->delete($id);
-            if (! $res) return response()->json(['status' => 'error', 'message' => 'Contact message not found'], 404);
+            if (!$res) return response()->json(['status' => 'error', 'message' => 'Contact message not found'], 404);
+
+            Cache::forget('api_contacts_all');
+            Cache::forget('api_contact_' . $id);
+
             return response()->json(['status' => 'success', 'message' => 'Contact message deleted successfully']);
         } catch (\Exception $e) {
             Log::error('Contact message deletion failed: ' . $e->getMessage());

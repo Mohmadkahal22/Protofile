@@ -44,11 +44,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
-
-    public function canAccessFilament(): bool
-    {
-        return $this->type == 1; // Only users with type = 1 can access
-    }
-
 }

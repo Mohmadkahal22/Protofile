@@ -1,30 +1,51 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
+
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Cache;
 use App\Services\TeamService;
 use Illuminate\Support\Facades\Log;
 
 class TeamController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    private const CACHE_TTL = 3600; // 1 hour
+
+    public function index(Request $request)
     {
-        $service = app(TeamService::class);
-        $teams = $service->index();
+        // Server-side pagination when ?page= is present
+        if ($request->has('page')) {
+            $perPage = min((int) $request->input('per_page', 12), 100);
+            $page = (int) $request->input('page', 1);
+
+            $paginated = Team::paginate($perPage, ['*'], 'page', $page);
+
+            return response()->json([
+                'status' => 'success',
+                'data' => $paginated->items(),
+                'pagination' => [
+                    'current_page' => $paginated->currentPage(),
+                    'last_page' => $paginated->lastPage(),
+                    'per_page' => $paginated->perPage(),
+                    'total' => $paginated->total(),
+                    'from' => $paginated->firstItem(),
+                    'to' => $paginated->lastItem(),
+                ]
+            ]);
+        }
+
+        // Return all (cached — used by homepage)
+        $teams = Cache::remember('api_teams_all', self::CACHE_TTL, function () {
+            $service = app(TeamService::class);
+            return $service->index();
+        });
+
         return response()->json(['status' => 'success', 'data' => $teams]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -40,18 +61,18 @@ class TeamController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'status' => 'error',
-                'errors' => $validator->errors()
-            ], 422);
+            return response()->json(['status' => 'error', 'errors' => $validator->errors()], 422);
         }
 
         try {
-            $data = $request->except(['photo','cv_file']);
+            $data = $request->except(['photo', 'cv_file']);
             $photo = $request->file('photo');
             $cv = $request->file('cv_file');
             $service = app(TeamService::class);
             $team = $service->store($data, $photo, $cv);
+
+            $this->clearCache();
+
             return response()->json(['status' => 'success', 'data' => $team, 'photo_url' => $team->photo ?? null, 'cv_file_url' => $team->cv_file ?? null], 201);
         } catch (\Exception $e) {
             Log::error('Team member creation failed: ' . $e->getMessage());
@@ -59,17 +80,15 @@ class TeamController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Team $team)
     {
-        return response()->json(['status' => 'success', 'data' => $team]);
+        $data = Cache::remember('api_team_' . $team->id, self::CACHE_TTL, function () use ($team) {
+            return $team;
+        });
+
+        return response()->json(['status' => 'success', 'data' => $data]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Team $team)
     {
         $validator = Validator::make($request->all(), [
@@ -85,18 +104,18 @@ class TeamController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'status' => 'error',
-                'errors' => $validator->errors()
-            ], 422);
+            return response()->json(['status' => 'error', 'errors' => $validator->errors()], 422);
         }
 
         try {
-            $data = $request->except(['photo','cv_file']);
+            $data = $request->except(['photo', 'cv_file']);
             $photo = $request->file('photo');
             $cv = $request->file('cv_file');
             $service = app(TeamService::class);
             $team = $service->update($team, $data, $photo, $cv);
+
+            $this->clearCache($team->id);
+
             return response()->json(['status' => 'success', 'data' => $team, 'photo_url' => $team->photo ?? null, 'cv_file_url' => $team->cv_file ?? null]);
         } catch (\Exception $e) {
             Log::error('Team member update failed: ' . $e->getMessage());
@@ -104,37 +123,27 @@ class TeamController extends Controller
         }
     }
 
-    /**
-     * Delete file from storage
-     */
-    protected function deleteFile($fileUrl)
-    {
-        try {
-            $filePath = parse_url($fileUrl, PHP_URL_PATH);
-            $filePath = str_replace('api/storage/', '', $filePath);
-
-            if (Storage::disk('public')->exists($filePath)) {
-                Storage::disk('public')->delete($filePath);
-                return true;
-            }
-            return false;
-        } catch (\Exception $e) {
-            Log::error('Failed to delete file: ' . $e->getMessage());
-            return false;
-        }
-    }
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Team $team)
     {
         try {
+            $id = $team->id;
             $service = app(TeamService::class);
             $service->delete($team);
+
+            $this->clearCache($id);
+
             return response()->json(['status' => 'success', 'message' => 'Team member deleted successfully']);
         } catch (\Exception $e) {
             Log::error('Team member deletion failed: ' . $e->getMessage());
             return response()->json(['status' => 'error', 'message' => 'Team member deletion failed', 'error' => $e->getMessage()], 500);
+        }
+    }
+
+    private function clearCache($id = null)
+    {
+        Cache::forget('api_teams_all');
+        if ($id) {
+            Cache::forget('api_team_' . $id);
         }
     }
 }

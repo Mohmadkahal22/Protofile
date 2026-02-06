@@ -13,36 +13,37 @@ class ResponseCache
      * Handle an incoming request and cache GET responses using the configured cache store.
      */
     public function handle(Request $request, Closure $next)
+    {
+        $ttl = (int) env('CACHE_RESPONSE_TTL', 60);
+        $key = 'response_cache:' . md5($request->fullUrl());
+        $store = config('cache.default') ?: null;
+
         try {
-            $store = config('cache.default') ?: null;
             if ($store) {
                 if (Cache::store($store)->has($key)) {
                     $cached = Cache::store($store)->get($key);
-                } else {
-                    $cached = null;
+                    if (is_array($cached) && isset($cached['content'])) {
+                        $response = response($cached['content'], $cached['status'] ?? 200);
+                        if (! empty($cached['headers']) && is_array($cached['headers'])) {
+                            $response->headers->add($cached['headers']);
+                        }
+                        return $response;
+                    }
                 }
             } else {
-                $cached = null;
-            }
-            return $next($request);
-        }
-
-        $ttl = (int) env('CACHE_RESPONSE_TTL', 60);
-        $key = 'response_cache:' . md5($request->fullUrl());
-
-        try {
-            if (Cache::store('redis')->has($key)) {
-                $cached = Cache::store('redis')->get($key);
-                if (is_array($cached) && isset($cached['content'])) {
-                    $response = response($cached['content'], $cached['status'] ?? 200);
-                    if (! empty($cached['headers']) && is_array($cached['headers'])) {
-                        $response->headers->add($cached['headers']);
+                if (Cache::has($key)) {
+                    $cached = Cache::get($key);
+                    if (is_array($cached) && isset($cached['content'])) {
+                        $response = response($cached['content'], $cached['status'] ?? 200);
+                        if (! empty($cached['headers']) && is_array($cached['headers'])) {
+                            $response->headers->add($cached['headers']);
+                        }
+                        return $response;
                     }
-                    return $response;
                 }
             }
         } catch (\Exception $e) {
-            // Redis may be down — silently continue to live response
+            // Cache store may be down — silently continue to live response
         }
 
         $response = $next($request);

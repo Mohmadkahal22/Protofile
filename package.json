@@ -12,5 +12,11 @@
         "laravel-vite-plugin": "^1.0.0",
         "sass": "^1.56.1",
         "vite": "^5.0.0"
+    },
+    "dependencies": {
+        "@fontsource/cairo": "^5.2.7",
+        "@fontsource/inter": "^5.2.8",
+        "@fortawesome/fontawesome-free": "^7.1.0",
+        "aos": "^2.3.4"
     }
 }

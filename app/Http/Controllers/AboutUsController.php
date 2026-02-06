@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\About_Us;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use App\Services\AboutUsService;
 
 class AboutUsController extends Controller
 {
     protected $service;
+    private const CACHE_TTL = 3600;
 
     public function __construct(AboutUsService $service)
     {
@@ -19,7 +21,10 @@ class AboutUsController extends Controller
 
     public function index()
     {
-        $aboutUs = $this->service->index();
+        $aboutUs = Cache::remember('api_about_us', self::CACHE_TTL, function () {
+            return $this->service->index();
+        });
+
         return response()->json(['status' => 'success', 'data' => $aboutUs]);
     }
 
@@ -39,10 +44,7 @@ class AboutUsController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'status' => 'error',
-                'errors' => $validator->errors()
-            ], 422);
+            return response()->json(['status' => 'error', 'errors' => $validator->errors()], 422);
         }
 
         try {
@@ -54,6 +56,8 @@ class AboutUsController extends Controller
                 return response()->json(['status' => 'error', 'message' => 'About Us record already exists. Use update instead.'], 409);
             }
 
+            $this->clearCache();
+
             return response()->json(['status' => 'success', 'data' => $result, 'logo_url' => $result->company_logo ?? null], 201);
         } catch (\Exception $e) {
             Log::error('About Us creation failed: ' . $e->getMessage());
@@ -63,15 +67,18 @@ class AboutUsController extends Controller
 
     public function show()
     {
-        $aboutUs = $this->service->show();
-        if (! $aboutUs) return response()->json(['status' => 'error', 'message' => 'About Us record not found'], 404);
+        $aboutUs = Cache::remember('api_about_us_show', self::CACHE_TTL, function () {
+            return $this->service->show();
+        });
+
+        if (!$aboutUs) return response()->json(['status' => 'error', 'message' => 'About Us record not found'], 404);
         return response()->json(['status' => 'success', 'data' => $aboutUs]);
     }
 
     public function update(Request $request)
     {
         $aboutUs = About_Us::first();
-        if (! $aboutUs) {
+        if (!$aboutUs) {
             return response()->json(['status' => 'error', 'message' => 'About Us record not found'], 404);
         }
 
@@ -89,17 +96,17 @@ class AboutUsController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'status' => 'error',
-                'errors' => $validator->errors()
-            ], 422);
+            return response()->json(['status' => 'error', 'errors' => $validator->errors()], 422);
         }
 
         try {
             $data = $request->except(['company_logo']);
             $file = $request->file('company_logo');
             $result = $this->service->update($data, $file);
-            if (! $result) return response()->json(['status' => 'error', 'message' => 'About Us record not found'], 404);
+            if (!$result) return response()->json(['status' => 'error', 'message' => 'About Us record not found'], 404);
+
+            $this->clearCache();
+
             return response()->json(['status' => 'success', 'data' => $result, 'logo_url' => $data['company_logo'] ?? $result->company_logo]);
         } catch (\Exception $e) {
             Log::error('About Us update failed: ' . $e->getMessage());
@@ -111,11 +118,20 @@ class AboutUsController extends Controller
     {
         try {
             $res = $this->service->destroy();
-            if (! $res) return response()->json(['status' => 'error', 'message' => 'About Us record not found'], 404);
+            if (!$res) return response()->json(['status' => 'error', 'message' => 'About Us record not found'], 404);
+
+            $this->clearCache();
+
             return response()->json(['status' => 'success', 'message' => 'About Us record deleted successfully']);
         } catch (\Exception $e) {
             Log::error('About Us deletion failed: ' . $e->getMessage());
             return response()->json(['status' => 'error', 'message' => 'About Us deletion failed', 'error' => $e->getMessage()], 500);
         }
+    }
+
+    private function clearCache()
+    {
+        Cache::forget('api_about_us');
+        Cache::forget('api_about_us_show');
     }
 }

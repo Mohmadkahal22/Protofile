@@ -4,31 +4,52 @@ namespace App\Http\Controllers;
 
 use App\Models\Services;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Cache;
 use App\Services\ServicesService;
 use Illuminate\Support\Facades\Log;
 
 class ServicesController extends Controller
 {
     protected $service;
+    private const CACHE_TTL = 3600;
 
     public function __construct(ServicesService $service)
     {
         $this->service = $service;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $services = $this->service->index();
+        // Server-side pagination when ?page= is present
+        if ($request->has('page')) {
+            $perPage = min((int) $request->input('per_page', 12), 100);
+            $page = (int) $request->input('page', 1);
+
+            $paginated = Services::with('projects')->paginate($perPage, ['*'], 'page', $page);
+
+            return response()->json([
+                'status' => 'success',
+                'data' => $paginated->items(),
+                'pagination' => [
+                    'current_page' => $paginated->currentPage(),
+                    'last_page' => $paginated->lastPage(),
+                    'per_page' => $paginated->perPage(),
+                    'total' => $paginated->total(),
+                    'from' => $paginated->firstItem(),
+                    'to' => $paginated->lastItem(),
+                ]
+            ]);
+        }
+
+        // Return all (cached — used by homepage)
+        $services = Cache::remember('api_services_all', self::CACHE_TTL, function () {
+            return $this->service->index();
+        });
+
         return response()->json(['status' => 'success', 'data' => $services]);
     }
 
-    /**
-     * Store a newly created service.
-     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -45,6 +66,9 @@ class ServicesController extends Controller
             $data = $request->except(['image']);
             $image = $request->file('image');
             $res = $this->service->store($data, $image);
+
+            $this->clearCache();
+
             return response()->json(['status' => 'success', 'data' => $res, 'image_url' => $res->image_path ?? null], 201);
         } catch (\Exception $e) {
             Log::error('Service creation failed: ' . $e->getMessage());
@@ -52,19 +76,16 @@ class ServicesController extends Controller
         }
     }
 
-    /**
-     * Display the specified service.
-     */
     public function show($id)
     {
-        $res = $this->service->show($id);
-        if (! $res) return response()->json(['status' => 'error', 'message' => 'Service not found'], 404);
+        $res = Cache::remember('api_service_' . $id, self::CACHE_TTL, function () use ($id) {
+            return $this->service->show($id);
+        });
+
+        if (!$res) return response()->json(['status' => 'error', 'message' => 'Service not found'], 404);
         return response()->json(['status' => 'success', 'data' => $res]);
     }
 
-    /**
-     * Update the specified service.
-     */
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
@@ -81,7 +102,10 @@ class ServicesController extends Controller
             $data = $request->except(['image']);
             $image = $request->file('image');
             $res = $this->service->update($id, $data, $image);
-            if (! $res) return response()->json(['status' => 'error', 'message' => 'Service not found'], 404);
+            if (!$res) return response()->json(['status' => 'error', 'message' => 'Service not found'], 404);
+
+            $this->clearCache($id);
+
             return response()->json(['status' => 'success', 'data' => $res, 'image_url' => $res->image_path ?? null]);
         } catch (\Exception $e) {
             Log::error('Service update failed: ' . $e->getMessage());
@@ -89,14 +113,14 @@ class ServicesController extends Controller
         }
     }
 
-    /**
-     * Remove the specified service.
-     */
     public function destroy($id)
     {
         try {
             $res = $this->service->delete($id);
-            if (! $res) return response()->json(['status' => 'error', 'message' => 'Service not found'], 404);
+            if (!$res) return response()->json(['status' => 'error', 'message' => 'Service not found'], 404);
+
+            $this->clearCache($id);
+
             return response()->json(['status' => 'success', 'message' => 'Service deleted successfully']);
         } catch (\Exception $e) {
             Log::error('Service deletion failed: ' . $e->getMessage());
@@ -104,23 +128,11 @@ class ServicesController extends Controller
         }
     }
 
-    /**
-     * Delete file from storage
-     */
-    protected function deleteFile($fileUrl)
+    private function clearCache($id = null)
     {
-        try {
-            $filePath = parse_url($fileUrl, PHP_URL_PATH);
-            $filePath = str_replace('/storage/', '', $filePath);
-
-            if (Storage::disk('public')->exists($filePath)) {
-                Storage::disk('public')->delete($filePath);
-                return true;
-            }
-            return false;
-        } catch (\Exception $e) {
-            Log::error('Failed to delete file: ' . $e->getMessage());
-            return false;
+        Cache::forget('api_services_all');
+        if ($id) {
+            Cache::forget('api_service_' . $id);
         }
     }
 }

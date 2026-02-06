@@ -14,17 +14,15 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        User::firstOrCreate(
+            ['email' => 'admin@example.com'],
+            [
+                'name' => 'Admin',
+                'password' => Hash::make('password'),
+                'type' => 1,
+            ]
+        );
 
-        User::create([
-            'id' => 1,
-            'name' => 'Admin',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('password'),
-            'type' => 1,
-
-
-        ]);
-
-
+        $this->command->info('Admin user created (admin@example.com / password)');
     }
 }
