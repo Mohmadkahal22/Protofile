@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="HexaTerminal - Professional Software Development Company specializing in innovative digital solutions">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="theme-color" content="#060918">
+
+    {{-- Prevent flash: apply saved theme before any CSS paints --}}
+    <script>!function(){var t=localStorage.getItem('ht-theme')||'dark';document.documentElement.setAttribute('data-theme',t);var m=document.querySelector('meta[name="theme-color"]');if(m)m.content=t==='light'?'#f8fafc':'#060918'}()</script>
 
     <title>@yield('title', 'HexaTerminal - Software Development Company')</title>
 
@@ -72,6 +75,48 @@
             --transition-slow: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
+        /* ═══════════════════════════════════════════
+           LIGHT THEME
+           ═══════════════════════════════════════════ */
+        [data-theme="light"] {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #60a5fa;
+            --primary-glow: rgba(37, 99, 235, 0.12);
+            --secondary: #6366f1;
+            --accent: #8b5cf6;
+            --accent-2: #ec4899;
+            --green: #059669;
+            --green-glow: rgba(5, 150, 105, 0.1);
+            --success: #16a34a;
+            --warning: #d97706;
+            --danger: #dc2626;
+            --gold: #d97706;
+
+            --dark-bg: #f8fafc;
+            --dark-bg-2: #ffffff;
+            --dark-bg-3: #f1f5f9;
+            --card-bg: rgba(255, 255, 255, 0.92);
+            --card-bg-solid: #ffffff;
+            --card-bg-hover: #f8fafc;
+            --card-border: rgba(0, 0, 0, 0.07);
+
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --border-hover: rgba(37, 99, 235, 0.3);
+
+            --glass: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(0, 0, 0, 0.06);
+
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.08);
+            --shadow-glow: 0 0 30px rgba(37,99,235,0.06);
+            --shadow-card: 0 1px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
+        }
+
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
@@ -85,6 +130,10 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
+
+        /* ─── RESPONSIVE IMAGES ─── */
+        img { max-width: 100%; height: auto; }
+        video, iframe { max-width: 100%; }
 
         /* ─── SELECTION ─── */
         ::selection { background: rgba(43, 155, 255, 0.3); color: #fff; }
@@ -119,8 +168,12 @@
             margin: 0 auto;
             padding: 0 2rem;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
         }
 
         /* Logo */
@@ -139,6 +192,7 @@
         }
 
         /* Navigation */
+        .site-nav { margin-left: auto; }
         .nav-menu { display: flex; gap: 0.15rem; list-style: none; align-items: center; }
         .nav-link {
             color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.88rem;
@@ -447,6 +501,90 @@
             border-color: var(--primary) !important;
         }
 
+        /* ═══════════════════════════════════════════
+           THEME TOGGLE BUTTON
+           ═══════════════════════════════════════════ */
+        .theme-toggle {
+            width: 42px; height: 42px; border-radius: 50%;
+            border: 1px solid var(--border-color); background: var(--card-bg);
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            color: var(--text-secondary); font-size: 1.05rem;
+            transition: all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+            position: relative; overflow: hidden; flex-shrink: 0;
+        }
+        .theme-toggle:hover {
+            border-color: var(--primary); color: var(--primary);
+            background: rgba(43,155,255,0.08); transform: rotate(20deg) scale(1.05);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+        .theme-icon-sun, .theme-icon-moon {
+            position: absolute;
+            transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease;
+        }
+        [data-theme="dark"] .theme-icon-sun  { opacity: 1; transform: rotate(0) scale(1); }
+        [data-theme="dark"] .theme-icon-moon { opacity: 0; transform: rotate(90deg) scale(0); }
+        [data-theme="light"] .theme-icon-sun  { opacity: 0; transform: rotate(-90deg) scale(0); }
+        [data-theme="light"] .theme-icon-moon { opacity: 1; transform: rotate(0) scale(1); }
+
+        /* ═══════════════════════════════════════════
+           LIGHT THEME — Element Overrides
+           ═══════════════════════════════════════════ */
+        [data-theme="light"] ::selection { background: rgba(37,99,235,0.2); color: #0f172a; }
+        [data-theme="light"] ::-webkit-scrollbar-track { background: #f1f5f9; }
+        [data-theme="light"] ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #2563eb, #8b5cf6); }
+
+        /* Header */
+        [data-theme="light"] .site-header { background: rgba(255,255,255,0.92); border-bottom-color: rgba(0,0,0,0.06); }
+        [data-theme="light"] .site-header.scrolled { background: rgba(255,255,255,0.97); box-shadow: 0 1px 12px rgba(0,0,0,0.06); }
+        [data-theme="light"] .site-nav { background: rgba(255,255,255,0.98) !important; border-bottom-color: rgba(0,0,0,0.06) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.06) !important; }
+        [data-theme="light"] .nav-link { color: var(--text-secondary); }
+        [data-theme="light"] .nav-link:hover, [data-theme="light"] .nav-link.active { color: #0f172a; background: rgba(37,99,235,0.06); }
+        [data-theme="light"] .hamburger { border-color: rgba(0,0,0,0.12); }
+        [data-theme="light"] .hamburger:hover { border-color: #2563eb; background: rgba(37,99,235,0.04); }
+        [data-theme="light"] .hamburger span { background: #0f172a; }
+
+        /* Cards */
+        [data-theme="light"] .card { backdrop-filter: none; box-shadow: var(--shadow-card); background: var(--card-bg); }
+        [data-theme="light"] .card:hover { border-color: rgba(37,99,235,0.15); box-shadow: 0 12px 35px rgba(0,0,0,0.08), 0 0 0 1px rgba(37,99,235,0.08); }
+        [data-theme="light"] .card::before { background: linear-gradient(90deg, transparent, rgba(37,99,235,0.12), transparent); }
+
+        /* Skeleton */
+        [data-theme="light"] .skeleton { background: linear-gradient(90deg, #e2e8f0 25%, #f8fafc 50%, #e2e8f0 75%); background-size: 200% 100%; }
+
+        /* Glow effects — subtle in light mode */
+        [data-theme="light"] .glow-dot { opacity: 0.03 !important; }
+        [data-theme="light"] .glow-line { opacity: 0.08 !important; }
+
+        /* Forms */
+        [data-theme="light"] .form-input { background: #fff; border-color: rgba(0,0,0,0.12); }
+        [data-theme="light"] .form-input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.08), 0 0 15px rgba(37,99,235,0.04); }
+        [data-theme="light"] .form-input::placeholder { color: #94a3b8; }
+
+        /* Footer */
+        [data-theme="light"] .site-footer { background: #f1f5f9; border-top-color: rgba(0,0,0,0.06); }
+        [data-theme="light"] .site-footer::before { background: linear-gradient(90deg, transparent, #2563eb, transparent); opacity: 0.3; }
+        [data-theme="light"] .footer-social a { background: rgba(37,99,235,0.04); border-color: rgba(37,99,235,0.08); }
+        [data-theme="light"] .footer-social a:hover { background: #2563eb; color: #fff; border-color: #2563eb; }
+        [data-theme="light"] .footer-newsletter-form input { background: #fff; border-color: rgba(0,0,0,0.1); }
+        [data-theme="light"] .footer-newsletter-form button { background: #2563eb; }
+        [data-theme="light"] .footer-newsletter-form button:hover { background: #1d4ed8; }
+
+        /* Toast */
+        [data-theme="light"] .toast { background: #fff; border-color: rgba(0,0,0,0.08); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+
+        /* Buttons */
+        [data-theme="light"] .btn-primary { box-shadow: 0 4px 15px rgba(37,99,235,0.2); }
+        [data-theme="light"] .btn-primary:hover { box-shadow: 0 6px 25px rgba(37,99,235,0.25); }
+        [data-theme="light"] .btn-outline { border-color: rgba(37,99,235,0.25); color: #2563eb; }
+        [data-theme="light"] .btn-outline:hover { background: rgba(37,99,235,0.06); border-color: #2563eb; }
+        [data-theme="light"] .btn-green { color: #fff; }
+        [data-theme="light"] .btn-nav-cta { background: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(139,92,246,0.04)) !important; border-color: rgba(37,99,235,0.15) !important; }
+
+        /* Misc */
+        [data-theme="light"] .section-badge { background: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(139,92,246,0.04)); border-color: rgba(37,99,235,0.12); }
+        [data-theme="light"] .divider { background: linear-gradient(90deg, transparent, rgba(37,99,235,0.1), transparent); }
+        [data-theme="light"] .text-gradient { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
     @stack('styles')
     </style>
 </head>
@@ -472,10 +610,6 @@
                 </div>
             </a>
 
-            <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
-
             <nav class="site-nav" id="main-nav">
                 <ul class="nav-menu">
                     <li><a href="{{ url('/') }}#home" class="nav-link"><i class="fas fa-home" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> Home</a></li>
@@ -488,6 +622,16 @@
                     <li><a href="{{ url('/') }}#contact" class="nav-link btn-nav-cta"><i class="fas fa-envelope" style="font-size:0.7rem;margin-right:0.3rem;"></i> Contact</a></li>
                 </ul>
             </nav>
+
+            <div class="header-right">
+                <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle theme">
+                    <i class="fas fa-sun theme-icon-sun"></i>
+                    <i class="fas fa-moon theme-icon-moon"></i>
+                </button>
+                <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -643,6 +787,16 @@
                 toast.style.animation = 'slideOut 0.4s ease forwards';
                 setTimeout(function() { toast.remove(); }, 400);
             }, 4000);
+        }
+
+        // ── Theme Toggle ──
+        function toggleTheme() {
+            var html = document.documentElement;
+            var current = html.getAttribute('data-theme') || 'dark';
+            var next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('ht-theme', next);
+            document.querySelector('meta[name="theme-color"]').content = next === 'dark' ? '#060918' : '#f8fafc';
         }
 
         // Image URL helper

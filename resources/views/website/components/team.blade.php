@@ -85,6 +85,11 @@
     background: var(--primary); color: #fff; border-color: var(--primary);
     transform: translateY(-2px);
 }
+
+/* Light theme */
+[data-theme="light"] .team-photo-inner { border-color: #fff; }
+[data-theme="light"] .team-social a { background: rgba(37,99,235,0.04); border-color: rgba(37,99,235,0.08); }
+[data-theme="light"] .team-social a:hover { background: #2563eb; color: #fff; }
 </style>
 @endpush
 

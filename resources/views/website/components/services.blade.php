@@ -70,6 +70,10 @@
 }
 .card:hover .service-view-link { opacity: 1 !important; }
 .card:hover .service-view-link i { transform: translateX(4px); }
+
+/* Light theme */
+[data-theme="light"] .service-icon { background: linear-gradient(135deg, rgba(37,99,235,0.08), rgba(139,92,246,0.05)); border-color: rgba(37,99,235,0.1); }
+[data-theme="light"] .card:hover .service-icon { background: linear-gradient(135deg, #2563eb, #8b5cf6); border-color: transparent; box-shadow: 0 8px 20px rgba(37,99,235,0.2); }
 </style>
 @endpush
 

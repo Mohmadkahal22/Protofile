@@ -63,6 +63,11 @@
 }
 .review-author-name { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.1rem; }
 .review-author-company { font-size: 0.75rem; color: var(--text-muted); }
+
+/* Light theme */
+[data-theme="light"] .review-quote { color: rgba(37,99,235,0.08); }
+[data-theme="light"] .review-author { border-top-color: rgba(0,0,0,0.04); }
+[data-theme="light"] .review-avatar { border-color: rgba(37,99,235,0.15); }
 </style>
 @endpush
 

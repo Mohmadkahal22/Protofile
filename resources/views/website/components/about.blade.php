@@ -66,6 +66,13 @@
 .about-feature i { color: var(--green); font-size: 0.85rem; flex-shrink: 0; }
 .about-feature span { font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; }
 
+/* Light theme */
+[data-theme="light"] .about-image-wrap::after { border-color: rgba(37,99,235,0.1); }
+[data-theme="light"] .about-image-badge { background: rgba(255,255,255,0.9); border-color: rgba(0,0,0,0.06); backdrop-filter: blur(12px); }
+[data-theme="light"] .about-mission { background: linear-gradient(135deg, rgba(37,99,235,0.04), rgba(139,92,246,0.02)); border-left-color: #2563eb; }
+[data-theme="light"] .about-feature { background: rgba(37,99,235,0.02); border-color: rgba(37,99,235,0.05); }
+[data-theme="light"] .about-feature:hover { background: rgba(37,99,235,0.04); border-color: rgba(37,99,235,0.12); }
+
 @media (max-width: 768px) {
     .about-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
     .about-features { grid-template-columns: 1fr; }

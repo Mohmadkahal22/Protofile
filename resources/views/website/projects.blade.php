@@ -26,7 +26,7 @@
             <i class="fas fa-chevron-right" style="color:var(--text-muted);font-size:0.55rem;"></i>
             <span style="color:var(--primary);font-weight:600;">Projects</span>
         </nav>
-    </div>
+                </div>
 </section>
 
 <!-- ═══ PROJECTS GRID ═══ -->
@@ -123,6 +123,12 @@
     display: block; text-align: center; margin-top: 1rem;
     color: var(--text-muted); font-size: 0.82rem;
 }
+
+/* Light theme */
+[data-theme="light"] .page-btn { background: #fff; border-color: rgba(0,0,0,0.08); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+[data-theme="light"] .page-btn:hover { background: rgba(37,99,235,0.04); border-color: #2563eb; }
+[data-theme="light"] .page-btn.active { background: linear-gradient(135deg, #2563eb, #6366f1); border-color: transparent; box-shadow: 0 4px 12px rgba(37,99,235,0.2); }
+[data-theme="light"] .project-card-placeholder { background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(139,92,246,0.08)); }
 </style>
 @endpush
 

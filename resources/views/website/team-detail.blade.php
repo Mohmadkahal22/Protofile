@@ -178,6 +178,14 @@
     margin-top: 2rem;
 }
 
+/* Light theme */
+[data-theme="light"] .member-photo-img { border-color: #fff; }
+[data-theme="light"] .member-initials-large { border-color: #fff; }
+[data-theme="light"] .member-info-item { background: #fff; border-color: rgba(0,0,0,0.06); box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+[data-theme="light"] .member-info-item:hover { border-color: rgba(37,99,235,0.15); background: rgba(37,99,235,0.02); }
+[data-theme="light"] .member-info-icon { background: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(139,92,246,0.04)); border-color: rgba(37,99,235,0.1); }
+[data-theme="light"] .member-position-badge { background: linear-gradient(135deg, rgba(37,99,235,0.08), rgba(139,92,246,0.05)); border-color: rgba(37,99,235,0.15); }
+
 @media (max-width: 768px) {
     .member-profile-grid {
         grid-template-columns: 1fr !important;
