@@ -1,12 +1,12 @@
 <!-- ═══ VIDEOS SECTION ═══ -->
 <section id="videos" class="section" style="background: var(--dark-bg-2); position:relative; overflow:hidden;">
-    <div class="glow-dot" style="width:400px;height:400px;background:var(--accent-2);bottom:-100px;left:-100px;opacity:0.04;"></div>
+    <div class="glow-dot" style="width:450px;height:450px;background:var(--gold);bottom:-100px;left:-100px;opacity:0.03;"></div>
 
     <div class="container">
         <div class="section-header" data-aos="fade-up">
-            <span class="section-badge"><i class="fas fa-play-circle"></i> Media</span>
-            <h2 class="section-title">Our Videos</h2>
-            <p class="section-subtitle">Watch our latest content, demos, and behind-the-scenes footage</p>
+            <span class="section-badge"><i class="fas fa-play-circle"></i> <span data-i18n="section_videos_badge">Media</span></span>
+            <h2 class="section-title" data-i18n="section_videos_title">Our Videos</h2>
+            <p class="section-subtitle" data-i18n="section_videos_subtitle">Watch our latest content, demos, and behind-the-scenes footage</p>
         </div>
 
         <!-- Skeleton -->
@@ -21,10 +21,10 @@
 
         <!-- Empty state -->
         <div id="videos-empty" style="display:none;text-align:center;padding:4rem 0;">
-            <div style="width:80px;height:80px;margin:0 auto 1.5rem;border-radius:50%;background:rgba(236,72,153,0.08);display:flex;align-items:center;justify-content:center;">
-                <i class="fas fa-play" style="font-size:2rem;color:var(--accent-2);"></i>
+            <div style="width:80px;height:80px;margin:0 auto 1.5rem;border-radius:50%;background:rgba(212,175,55,0.06);display:flex;align-items:center;justify-content:center;">
+                <i class="fas fa-play" style="font-size:2rem;color:var(--gold);"></i>
             </div>
-            <p style="font-size:1.1rem;color:var(--text-secondary);font-weight:500;">Videos coming soon!</p>
+            <p style="font-size:1.1rem;color:var(--text-secondary);font-weight:500;" data-i18n="videos_coming_soon">Videos coming soon!</p>
         </div>
     </div>
 </section>
@@ -44,7 +44,7 @@
     margin-bottom: 0.4rem; line-height: 1.35;
     display: flex; align-items: center; gap: 0.5rem;
 }
-.video-card-title i { color: var(--accent-2); font-size: 0.85rem; }
+.video-card-title i { color: var(--gold); font-size: 0.85rem; }
 .video-card-desc {
     color: var(--text-secondary); font-size: 0.85rem; line-height: 1.65;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
@@ -76,7 +76,7 @@
                 var youtubeId = extractYoutubeId(video.video_url);
 
                 var card = document.createElement('div');
-                card.className = 'card';
+                card.className = 'card card-gold-border';
                 card.setAttribute('data-aos', 'fade-up');
                 card.setAttribute('data-aos-delay', (index * 100).toString());
 

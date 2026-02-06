@@ -1,8 +1,8 @@
 <!-- ═══ ABOUT SECTION ═══ -->
 <section id="about" class="section" style="background: var(--dark-bg-2); position:relative; overflow:hidden;">
-    <div class="glow-dot" style="width:500px;height:500px;background:var(--accent);bottom:-150px;right:-150px;"></div>
-    <div class="glow-dot" style="width:400px;height:400px;background:var(--primary);top:-100px;left:-100px;opacity:0.04;"></div>
-    <div class="glow-line" style="width:100%;top:0;left:0;"></div>
+    <div class="glow-dot" style="width:500px;height:500px;background:var(--gold);bottom:-150px;right:-150px;opacity:0.03;"></div>
+    <div class="glow-dot" style="width:400px;height:400px;background:var(--gold-light);top:-100px;left:-100px;opacity:0.02;"></div>
+    <div class="glow-line" style="width:100%;top:0;left:0;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.06),transparent);"></div>
 
     <div class="container">
         <!-- Skeleton -->
@@ -31,7 +31,7 @@
 .about-image-wrap::after {
     content: ''; position: absolute; inset: 0;
     border-radius: inherit;
-    border: 2px solid rgba(43,155,255,0.12);
+    border: 2px solid rgba(212,175,55,0.15);
     pointer-events: none;
 }
 .about-image-wrap img {
@@ -42,14 +42,14 @@
 .about-image-badge {
     position: absolute; bottom: 1.5rem; left: 1.5rem;
     background: rgba(6,9,24,0.85); backdrop-filter: blur(12px);
-    border: 1px solid rgba(43,155,255,0.15);
+    border: 1px solid rgba(212,175,55,0.2);
     padding: 0.85rem 1.25rem; border-radius: var(--radius-md);
     display: flex; align-items: center; gap: 0.75rem;
 }
 .about-mission {
     margin-top: 2rem; padding: 1.5rem 1.75rem;
-    background: linear-gradient(135deg, rgba(43,155,255,0.06), rgba(168,85,247,0.03));
-    border-left: 3px solid var(--primary); border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    background: linear-gradient(135deg, rgba(212,175,55,0.06), rgba(183,134,11,0.03));
+    border-left: 3px solid var(--gold); border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
 .about-features {
     display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
@@ -58,20 +58,24 @@
 .about-feature {
     display: flex; align-items: center; gap: 0.75rem;
     padding: 0.75rem; border-radius: var(--radius-sm);
-    background: rgba(43,155,255,0.03);
-    border: 1px solid rgba(43,155,255,0.05);
+    background: rgba(212,175,55,0.03);
+    border: 1px solid rgba(212,175,55,0.06);
     transition: var(--transition-fast);
 }
-.about-feature:hover { border-color: rgba(43,155,255,0.15); background: rgba(43,155,255,0.06); }
-.about-feature i { color: var(--green); font-size: 0.85rem; flex-shrink: 0; }
+.about-feature:hover {
+    border-color: rgba(212,175,55,0.18);
+    background: rgba(212,175,55,0.06);
+    transform: translateY(-2px);
+}
+.about-feature i { color: var(--gold); font-size: 0.85rem; flex-shrink: 0; }
 .about-feature span { font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; }
 
 /* Light theme */
-[data-theme="light"] .about-image-wrap::after { border-color: rgba(37,99,235,0.1); }
-[data-theme="light"] .about-image-badge { background: rgba(255,255,255,0.9); border-color: rgba(0,0,0,0.06); backdrop-filter: blur(12px); }
-[data-theme="light"] .about-mission { background: linear-gradient(135deg, rgba(37,99,235,0.04), rgba(139,92,246,0.02)); border-left-color: #2563eb; }
-[data-theme="light"] .about-feature { background: rgba(37,99,235,0.02); border-color: rgba(37,99,235,0.05); }
-[data-theme="light"] .about-feature:hover { background: rgba(37,99,235,0.04); border-color: rgba(37,99,235,0.12); }
+[data-theme="light"] .about-image-wrap::after { border-color: rgba(183,134,11,0.12); }
+[data-theme="light"] .about-image-badge { background: rgba(255,255,255,0.92); border-color: rgba(183,134,11,0.1); backdrop-filter: blur(12px); }
+[data-theme="light"] .about-mission { background: linear-gradient(135deg, rgba(183,134,11,0.05), rgba(212,175,55,0.02)); border-left-color: var(--gold); }
+[data-theme="light"] .about-feature { background: rgba(183,134,11,0.02); border-color: rgba(183,134,11,0.06); }
+[data-theme="light"] .about-feature:hover { background: rgba(183,134,11,0.05); border-color: rgba(183,134,11,0.14); }
 
 @media (max-width: 768px) {
     .about-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
@@ -98,9 +102,9 @@
                     '<div class="about-image-wrap">' +
                         '<img src="' + getImageUrl(aboutUs.company_logo || aboutUs.image) + '" alt="About HexaTerminal" loading="lazy">' +
                         '<div class="about-image-badge">' +
-                            '<i class="fas fa-check-circle" style="color:var(--green);font-size:1.2rem;"></i>' +
-                            '<div><span style="font-size:0.75rem;color:var(--text-muted);">Trusted by</span><br>' +
-                            '<span style="font-size:0.95rem;font-weight:700;color:var(--text-primary);">100+ Clients</span></div>' +
+                            '<i class="fas fa-crown" style="color:var(--gold);font-size:1.2rem;"></i>' +
+                            '<div><span style="font-size:0.75rem;color:var(--text-muted);" data-i18n="trusted_by">' + t('trusted_by') + '</span><br>' +
+                            '<span style="font-size:0.95rem;font-weight:700;color:var(--text-primary);">100+ ' + t('clients') + '</span></div>' +
                         '</div>' +
                     '</div>' +
                   '</div>'
@@ -108,8 +112,8 @@
 
             var missionHtml = aboutUs.mission
                 ? '<div class="about-mission">' +
-                    '<h3 style="color:var(--primary);margin-bottom:0.5rem;font-weight:700;font-size:1.05rem;">' +
-                        '<i class="fas fa-bullseye" style="margin-right:0.5rem;"></i>Our Mission</h3>' +
+                    '<h3 style="color:var(--gold);margin-bottom:0.5rem;font-weight:700;font-size:1.05rem;">' +
+                        '<i class="fas fa-bullseye" style="margin-right:0.5rem;"></i>' + t('our_mission') + '</h3>' +
                     '<p style="color:var(--text-secondary);line-height:1.85;font-size:0.92rem;">' + aboutUs.mission + '</p>' +
                   '</div>'
                 : '';
@@ -117,17 +121,19 @@
             content.innerHTML =
                 '<div class="about-grid">' +
                     '<div data-aos="fade-right">' +
-                        '<span class="section-badge"><i class="fas fa-info-circle"></i> Who We Are</span>' +
-                        '<h2 style="font-size:clamp(2rem,3.5vw,2.75rem);font-weight:800;margin-bottom:1.5rem;color:var(--text-primary);line-height:1.2;letter-spacing:-0.02em;">About Us</h2>' +
+                        '<span class="section-badge"><i class="fas fa-gem"></i> <span data-i18n="section_about_badge">' + t('section_about_badge') + '</span></span>' +
+                        '<h2 style="font-size:clamp(2rem,3.5vw,2.75rem);font-weight:800;margin-bottom:1.5rem;line-height:1.2;letter-spacing:-0.02em;">' +
+                            '<span class="text-gradient-gold" data-i18n="section_about_title">' + t('section_about_title') + '</span>' +
+                        '</h2>' +
                         '<div style="color:var(--text-secondary);line-height:1.9;font-size:0.92rem;">' +
-                            (aboutUs.company_description || aboutUs.description || 'No description available.') +
+                            (aboutUs.company_description || aboutUs.description || t('no_desc')) +
                         '</div>' +
                         missionHtml +
                         '<div class="about-features">' +
-                            '<div class="about-feature"><i class="fas fa-check-circle"></i><span>Expert Team</span></div>' +
-                            '<div class="about-feature"><i class="fas fa-check-circle"></i><span>Modern Tech</span></div>' +
-                            '<div class="about-feature"><i class="fas fa-check-circle"></i><span>24/7 Support</span></div>' +
-                            '<div class="about-feature"><i class="fas fa-check-circle"></i><span>Fast Delivery</span></div>' +
+                            '<div class="about-feature"><i class="fas fa-crown"></i><span data-i18n="expert_team">' + t('expert_team') + '</span></div>' +
+                            '<div class="about-feature"><i class="fas fa-microchip"></i><span data-i18n="modern_tech">' + t('modern_tech') + '</span></div>' +
+                            '<div class="about-feature"><i class="fas fa-headset"></i><span data-i18n="support_247">' + t('support_247') + '</span></div>' +
+                            '<div class="about-feature"><i class="fas fa-rocket"></i><span data-i18n="fast_delivery">' + t('fast_delivery') + '</span></div>' +
                         '</div>' +
                     '</div>' +
                     imageHtml +

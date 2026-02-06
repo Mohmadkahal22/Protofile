@@ -1,21 +1,21 @@
 <!-- ═══ FAQ SECTION ═══ -->
 <section id="faq" class="section" style="background: var(--dark-bg); position:relative; overflow:hidden;">
-    <div class="glow-dot" style="width:400px;height:400px;background:var(--primary);bottom:-100px;right:-100px;opacity:0.04;"></div>
+    <div class="glow-dot" style="width:400px;height:400px;background:var(--gold);bottom:-100px;right:-100px;opacity:0.03;"></div>
 
     <div class="container">
         <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:4rem;align-items:start;">
             <!-- Left side info -->
             <div data-aos="fade-right">
-                <span class="section-badge"><i class="fas fa-question-circle"></i> FAQ</span>
-                <h2 style="font-size:clamp(2rem,3.5vw,2.75rem);font-weight:800;margin-bottom:1rem;color:var(--text-primary);line-height:1.2;letter-spacing:-0.02em;">
-                    Frequently Asked<br>Questions
+                <span class="section-badge"><i class="fas fa-question-circle"></i> <span data-i18n="section_faq_badge">FAQ</span></span>
+                <h2 style="font-size:clamp(2rem,3.5vw,2.75rem);font-weight:800;margin-bottom:1rem;line-height:1.2;letter-spacing:-0.02em;">
+                    <span class="text-gradient-gold" data-i18n="section_faq_title">Frequently Asked Questions</span>
                 </h2>
-                <p style="color:var(--text-secondary);line-height:1.85;font-size:0.92rem;margin-bottom:2rem;">
+                <p style="color:var(--text-secondary);line-height:1.85;font-size:0.92rem;margin-bottom:2rem;" data-i18n="section_faq_subtitle">
                     Find answers to the most common questions about our services, process, and how we work.
                 </p>
                 <a href="#contact" class="btn btn-primary" style="padding:0.85rem 2rem;">
                     <i class="fas fa-paper-plane" style="font-size:0.85rem;"></i>
-                    <span>Still Have Questions?</span>
+                    <span data-i18n="still_have_questions">Still Have Questions?</span>
                 </a>
             </div>
 
@@ -33,8 +33,8 @@
 
                 <!-- Empty state -->
                 <div id="faq-empty" style="display:none;text-align:center;padding:3rem 0;">
-                    <i class="fas fa-question-circle" style="font-size:2.5rem;color:var(--text-muted);margin-bottom:1rem;"></i>
-                    <p style="font-size:1rem;color:var(--text-secondary);">FAQs coming soon!</p>
+                    <i class="fas fa-question-circle" style="font-size:2.5rem;color:var(--gold);opacity:0.3;margin-bottom:1rem;"></i>
+                    <p style="font-size:1rem;color:var(--text-secondary);" data-i18n="faq_coming_soon">FAQs coming soon!</p>
                 </div>
             </div>
         </div>
@@ -49,8 +49,8 @@
     margin-bottom: 0.75rem; overflow: hidden;
     transition: var(--transition);
 }
-.faq-item:hover { border-color: rgba(43,155,255,0.15); }
-.faq-item.active { border-color: rgba(43,155,255,0.25); }
+.faq-item:hover { border-color: rgba(212,175,55,0.15); }
+.faq-item.active { border-color: rgba(212,175,55,0.3); box-shadow: 0 0 20px rgba(212,175,55,0.05); }
 .faq-question {
     width: 100%; padding: 1.25rem 1.5rem; background: transparent; border: none;
     text-align: left; cursor: pointer; display: flex; justify-content: space-between;
@@ -58,17 +58,19 @@
     font-size: 0.95rem; font-weight: 600; font-family: inherit;
     transition: var(--transition-fast);
 }
-.faq-question:hover { color: var(--primary); }
+.faq-question:hover { color: var(--gold); }
 .faq-toggle {
     width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
-    background: rgba(43,155,255,0.06); border: 1px solid rgba(43,155,255,0.1);
+    background: rgba(212,175,55,0.06); border: 1px solid rgba(212,175,55,0.12);
     display: flex; align-items: center; justify-content: center;
-    color: var(--primary); font-size: 0.85rem;
+    color: var(--gold); font-size: 0.85rem;
     transition: var(--transition);
 }
 .faq-item.active .faq-toggle {
-    background: var(--primary); color: #fff; border-color: var(--primary);
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #0a0a1a; border-color: var(--gold);
     transform: rotate(45deg);
+    box-shadow: 0 0 12px rgba(212,175,55,0.2);
 }
 .faq-answer {
     max-height: 0; overflow: hidden;
@@ -77,17 +79,17 @@
 .faq-answer-inner {
     padding: 0 1.5rem 1.5rem;
     color: var(--text-secondary); line-height: 1.8; font-size: 0.88rem;
-    border-top: 1px solid rgba(255,255,255,0.04);
+    border-top: 1px solid rgba(212,175,55,0.06);
     padding-top: 1rem;
 }
 
 /* Light theme */
-[data-theme="light"] .faq-item { background: #fff; border-color: rgba(0,0,0,0.06); }
-[data-theme="light"] .faq-item:hover { border-color: rgba(37,99,235,0.12); }
-[data-theme="light"] .faq-item.active { border-color: rgba(37,99,235,0.2); }
-[data-theme="light"] .faq-toggle { background: rgba(37,99,235,0.04); border-color: rgba(37,99,235,0.08); }
-[data-theme="light"] .faq-item.active .faq-toggle { background: #2563eb; color: #fff; border-color: #2563eb; }
-[data-theme="light"] .faq-answer-inner { border-top-color: rgba(0,0,0,0.04); }
+[data-theme="light"] .faq-item { background: var(--card-bg); border-color: var(--card-border); }
+[data-theme="light"] .faq-item:hover { border-color: rgba(183,134,11,0.15); }
+[data-theme="light"] .faq-item.active { border-color: rgba(183,134,11,0.25); box-shadow: 0 4px 20px rgba(183,134,11,0.06); }
+[data-theme="light"] .faq-toggle { background: rgba(183,134,11,0.04); border-color: rgba(183,134,11,0.1); }
+[data-theme="light"] .faq-item.active .faq-toggle { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #fff; border-color: var(--gold); }
+[data-theme="light"] .faq-answer-inner { border-top-color: rgba(183,134,11,0.06); }
 
 @media (max-width: 768px) {
     #faq > .container > div { grid-template-columns: 1fr !important; gap: 2.5rem !important; }

@@ -7,8 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="theme-color" content="#060918">
 
-    {{-- Prevent flash: apply saved theme before any CSS paints --}}
-    <script>!function(){var t=localStorage.getItem('ht-theme')||'dark';document.documentElement.setAttribute('data-theme',t);var m=document.querySelector('meta[name="theme-color"]');if(m)m.content=t==='light'?'#f8fafc':'#060918'}()</script>
+    {{-- Prevent flash: apply saved theme + language before any CSS paints --}}
+    <script>!function(){var t=localStorage.getItem('ht-theme')||'dark';document.documentElement.setAttribute('data-theme',t);var m=document.querySelector('meta[name="theme-color"]');if(m)m.content=t==='light'?'#F5F3EF':'#070A18';var l=localStorage.getItem('ht-lang')||'en';document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr'}()</script>
 
     <title>@yield('title', 'HexaTerminal - Software Development Company')</title>
 
@@ -26,36 +26,39 @@
            Critical CSS inlined for instant render
            ═══════════════════════════════════════════ */
         :root {
-            --primary: #2B9BFF;
-            --primary-dark: #1a7fe0;
-            --primary-light: #5cb3ff;
-            --primary-glow: rgba(43, 155, 255, 0.35);
-            --secondary: #667eea;
-            --accent: #a855f7;
-            --accent-2: #ec4899;
-            --green: #00d084;
-            --green-glow: rgba(0, 208, 132, 0.25);
+            /* ── Royal Luxury Palette ── */
+            --primary: #4A8FE7;
+            --primary-dark: #3A75C4;
+            --primary-light: #6AABE8;
+            --primary-glow: rgba(74, 143, 231, 0.25);
+            --secondary: #7B68EE;
+            --accent: #D4AF37;
+            --accent-2: #C9A84C;
+            --green: #00C9A7;
+            --green-glow: rgba(0, 201, 167, 0.2);
             --success: #22c55e;
             --warning: #f59e0b;
             --danger: #ef4444;
-            --gold: #fbbf24;
+            --gold: #D4AF37;
+            --gold-light: #E8C547;
+            --gold-glow: rgba(212, 175, 55, 0.15);
 
-            --dark-bg: #060918;
-            --dark-bg-2: #0a0e23;
-            --dark-bg-3: #0e1230;
-            --card-bg: rgba(17, 22, 56, 0.65);
-            --card-bg-solid: #111638;
-            --card-bg-hover: #161d48;
-            --card-border: rgba(43, 155, 255, 0.08);
+            --dark-bg: #070A18;
+            --dark-bg-2: #0B0F22;
+            --dark-bg-3: #0F132C;
+            --card-bg: rgba(15, 19, 44, 0.7);
+            --card-bg-solid: #12163A;
+            --card-bg-hover: #181E4A;
+            --card-border: rgba(212, 175, 55, 0.06);
 
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
-            --border-color: rgba(43, 155, 255, 0.1);
-            --border-hover: rgba(43, 155, 255, 0.3);
+            --text-primary: #E8E6E3;
+            --text-secondary: #9CA3B0;
+            --text-muted: #636B7F;
+            --border-color: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(212, 175, 55, 0.2);
 
-            --glass: rgba(17, 22, 56, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.06);
+            --glass: rgba(15, 19, 44, 0.65);
+            --glass-border: rgba(212, 175, 55, 0.04);
 
             --radius-xs: 0.375rem;
             --radius-sm: 0.5rem;
@@ -64,11 +67,11 @@
             --radius-xl: 1.75rem;
             --radius-2xl: 2.5rem;
 
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.15);
-            --shadow-md: 0 8px 30px rgba(0,0,0,0.2);
-            --shadow-lg: 0 20px 60px rgba(0,0,0,0.3);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.18);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.22);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.32);
             --shadow-glow: 0 0 40px var(--primary-glow);
-            --shadow-card: 0 4px 20px rgba(0,0,0,0.15), 0 0 0 1px rgba(43,155,255,0.05);
+            --shadow-card: 0 4px 24px rgba(0,0,0,0.18), 0 0 0 1px rgba(212,175,55,0.04);
 
             --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --transition-fast: all 0.2s ease;
@@ -78,43 +81,46 @@
         /* ═══════════════════════════════════════════
            LIGHT THEME
            ═══════════════════════════════════════════ */
+        /* ── Warm Cream Light Theme ── */
         [data-theme="light"] {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --primary-light: #60a5fa;
-            --primary-glow: rgba(37, 99, 235, 0.12);
-            --secondary: #6366f1;
-            --accent: #8b5cf6;
-            --accent-2: #ec4899;
+            --primary: #2D5FA8;
+            --primary-dark: #234B87;
+            --primary-light: #4A7FC5;
+            --primary-glow: rgba(45, 95, 168, 0.1);
+            --secondary: #5B4FBE;
+            --accent: #B8941F;
+            --accent-2: #A68419;
             --green: #059669;
-            --green-glow: rgba(5, 150, 105, 0.1);
+            --green-glow: rgba(5, 150, 105, 0.08);
             --success: #16a34a;
             --warning: #d97706;
             --danger: #dc2626;
-            --gold: #d97706;
+            --gold: #B8941F;
+            --gold-light: #D4AF37;
+            --gold-glow: rgba(184, 148, 31, 0.08);
 
-            --dark-bg: #f8fafc;
-            --dark-bg-2: #ffffff;
-            --dark-bg-3: #f1f5f9;
-            --card-bg: rgba(255, 255, 255, 0.92);
-            --card-bg-solid: #ffffff;
-            --card-bg-hover: #f8fafc;
-            --card-border: rgba(0, 0, 0, 0.07);
+            --dark-bg: #F5F3EF;
+            --dark-bg-2: #FDFCF9;
+            --dark-bg-3: #EDE9E1;
+            --card-bg: rgba(255, 255, 252, 0.95);
+            --card-bg-solid: #FFFFFF;
+            --card-bg-hover: #F5F3EF;
+            --card-border: rgba(0, 0, 0, 0.06);
 
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --text-muted: #94a3b8;
-            --border-color: rgba(0, 0, 0, 0.1);
-            --border-hover: rgba(37, 99, 235, 0.3);
+            --text-primary: #1A1A2E;
+            --text-secondary: #525266;
+            --text-muted: #8A8A9A;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --border-hover: rgba(45, 95, 168, 0.2);
 
-            --glass: rgba(255, 255, 255, 0.85);
-            --glass-border: rgba(0, 0, 0, 0.06);
+            --glass: rgba(255, 255, 252, 0.9);
+            --glass-border: rgba(0, 0, 0, 0.04);
 
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
-            --shadow-lg: 0 10px 40px rgba(0,0,0,0.08);
-            --shadow-glow: 0 0 30px rgba(37,99,235,0.06);
-            --shadow-card: 0 1px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.04);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.06);
+            --shadow-glow: 0 0 30px rgba(45,95,168,0.04);
+            --shadow-card: 0 1px 8px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.03);
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -187,7 +193,7 @@
         .logo-text-part1 { font-size: 1.2rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.02em; }
         .logo-text-part2 {
             font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--gold), var(--primary));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
 
@@ -234,13 +240,13 @@
         .section-badge {
             display: inline-flex; align-items: center; gap: 0.5rem;
             padding: 0.45rem 1.25rem;
-            background: linear-gradient(135deg, rgba(43,155,255,0.08), rgba(168,85,247,0.06));
-            border: 1px solid rgba(43,155,255,0.15);
+            background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(74,143,231,0.06));
+            border: 1px solid rgba(212,175,55,0.18);
             border-radius: 999px;
-            color: var(--primary); font-size: 0.78rem; font-weight: 600;
+            color: var(--gold); font-size: 0.78rem; font-weight: 600;
             text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1.25rem;
         }
-        .section-badge i { font-size: 0.7rem; }
+        .section-badge i { font-size: 0.7rem; color: var(--gold); }
         .section-title {
             font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; margin-bottom: 1rem;
             color: var(--text-primary); line-height: 1.2; letter-spacing: -0.03em;
@@ -259,20 +265,22 @@
         }
         .card::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(43,155,255,0.15), transparent);
+            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.2), transparent);
             opacity: 0; transition: opacity 0.4s;
         }
         .card:hover {
             transform: translateY(-6px);
-            border-color: rgba(43,155,255,0.18);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.25), 0 0 30px rgba(43,155,255,0.06);
+            border-color: rgba(212,175,55,0.15);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25), 0 0 30px rgba(212,175,55,0.04);
         }
         .card:hover::before { opacity: 1; }
 
         /* ═══ GRID ═══ */
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        .grid-masonry { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .grid-masonry > :first-child { grid-row: span 2; }
 
         /* ═══ BUTTONS ═══ */
         .btn {
@@ -285,7 +293,7 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: #fff;
-            box-shadow: 0 4px 20px rgba(43,155,255,0.25), inset 0 1px 0 rgba(255,255,255,0.1);
+            box-shadow: 0 4px 20px rgba(74,143,231,0.25), inset 0 1px 0 rgba(255,255,255,0.12);
         }
         .btn-primary::before {
             content: ''; position: absolute; inset: 0;
@@ -294,8 +302,21 @@
         }
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(43,155,255,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
+            box-shadow: 0 8px 30px rgba(74,143,231,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
         }
+        /* Gold luxury CTA */
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37, #C9A84C, #D4AF37);
+            background-size: 200% 200%;
+            color: #070A18; font-weight: 700;
+            box-shadow: 0 4px 20px rgba(212,175,55,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+            animation: goldShimmer 4s ease infinite;
+        }
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 35px rgba(212,175,55,0.4), inset 0 1px 0 rgba(255,255,255,0.25);
+        }
+        @keyframes goldShimmer { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
         .btn-primary:hover::before { opacity: 1; }
         .btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
 
@@ -428,7 +449,11 @@
 
         /* ═══ UTILITIES ═══ */
         .text-gradient {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #E8C547 40%, #C9A84C 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .text-gradient-green {
@@ -480,7 +505,9 @@
             .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
             .section { padding: 4.5rem 0; }
             .section-header { margin-bottom: 3rem; }
-            .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .grid-3, .grid-4, .grid-masonry { grid-template-columns: 1fr; }
+            .grid-masonry > :first-child { grid-row: span 1; }
             .container { padding: 0 1.25rem; }
         }
         @media (max-width: 480px) {
@@ -527,63 +554,125 @@
         [data-theme="light"] .theme-icon-moon { opacity: 1; transform: rotate(0) scale(1); }
 
         /* ═══════════════════════════════════════════
+           LANGUAGE SWITCHER
+           ═══════════════════════════════════════════ */
+        .lang-toggle {
+            height: 42px; border-radius: 999px; padding: 0 0.75rem;
+            border: 1px solid var(--border-color); background: var(--card-bg);
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+            color: var(--text-secondary); font-size: 0.78rem; font-weight: 600;
+            transition: all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+            flex-shrink: 0; letter-spacing: 0.5px; font-family: inherit;
+        }
+        .lang-toggle:hover {
+            border-color: var(--gold); color: var(--gold);
+            background: rgba(212,175,55,0.06);
+            box-shadow: 0 0 20px var(--gold-glow);
+        }
+        .lang-toggle i { font-size: 0.85rem; }
+
+        /* ═══════════════════════════════════════════
+           RTL SUPPORT
+           ═══════════════════════════════════════════ */
+        [dir="rtl"] { font-family: 'Cairo', 'Inter', -apple-system, sans-serif; }
+        [dir="rtl"] .site-nav { margin-left: 0; margin-right: auto; }
+        [dir="rtl"] .nav-link i { margin-right: 0; margin-left: 0.3rem; }
+        [dir="rtl"] .footer-link:hover { transform: translateX(-6px); }
+        [dir="rtl"] .footer-link i { transform: rotate(180deg); }
+        [dir="rtl"] .footer-title::after { left: auto; right: 0; }
+        [dir="rtl"] .process-step { direction: rtl; }
+        [dir="rtl"] .btn i { margin-right: 0; margin-left: 0.5rem; }
+        [dir="rtl"] .section-badge { direction: rtl; }
+        [dir="rtl"] .contact-info-item { direction: rtl; }
+        [dir="rtl"] .member-info-item { direction: rtl; }
+        [dir="rtl"] .feature-item { direction: rtl; }
+
+        /* ═══════════════════════════════════════════
+           LUXURY BACKGROUND TEXTURES
+           ═══════════════════════════════════════════ */
+        body::before {
+            content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+            background:
+                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(74,143,231,0.03), transparent),
+                radial-gradient(ellipse 60% 60% at 80% 20%, rgba(212,175,55,0.02), transparent),
+                radial-gradient(ellipse 50% 50% at 50% 80%, rgba(123,104,238,0.02), transparent);
+        }
+        .section::before {
+            content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(212,175,55,0.015) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(74,143,231,0.015) 0%, transparent 50%);
+        }
+        [data-theme="light"] body::before {
+            background:
+                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(45,95,168,0.02), transparent),
+                radial-gradient(ellipse 60% 60% at 80% 20%, rgba(184,148,31,0.015), transparent),
+                radial-gradient(ellipse 50% 50% at 50% 80%, rgba(91,79,190,0.015), transparent);
+        }
+
+        /* ═══════════════════════════════════════════
            LIGHT THEME — Element Overrides
            ═══════════════════════════════════════════ */
-        [data-theme="light"] ::selection { background: rgba(37,99,235,0.2); color: #0f172a; }
-        [data-theme="light"] ::-webkit-scrollbar-track { background: #f1f5f9; }
-        [data-theme="light"] ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #2563eb, #8b5cf6); }
+        [data-theme="light"] ::selection { background: rgba(45,95,168,0.15); color: #1A1A2E; }
+        [data-theme="light"] ::-webkit-scrollbar-track { background: #EDE9E1; }
+        [data-theme="light"] ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #2D5FA8, #B8941F); }
 
         /* Header */
-        [data-theme="light"] .site-header { background: rgba(255,255,255,0.92); border-bottom-color: rgba(0,0,0,0.06); }
-        [data-theme="light"] .site-header.scrolled { background: rgba(255,255,255,0.97); box-shadow: 0 1px 12px rgba(0,0,0,0.06); }
-        [data-theme="light"] .site-nav { background: rgba(255,255,255,0.98) !important; border-bottom-color: rgba(0,0,0,0.06) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.06) !important; }
+        [data-theme="light"] .site-header { background: rgba(253,252,249,0.92); border-bottom-color: rgba(0,0,0,0.05); }
+        [data-theme="light"] .site-header.scrolled { background: rgba(253,252,249,0.97); box-shadow: 0 1px 12px rgba(0,0,0,0.04); }
+        [data-theme="light"] .site-nav { background: rgba(253,252,249,0.98) !important; border-bottom-color: rgba(0,0,0,0.05) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.04) !important; }
         [data-theme="light"] .nav-link { color: var(--text-secondary); }
-        [data-theme="light"] .nav-link:hover, [data-theme="light"] .nav-link.active { color: #0f172a; background: rgba(37,99,235,0.06); }
-        [data-theme="light"] .hamburger { border-color: rgba(0,0,0,0.12); }
-        [data-theme="light"] .hamburger:hover { border-color: #2563eb; background: rgba(37,99,235,0.04); }
-        [data-theme="light"] .hamburger span { background: #0f172a; }
+        [data-theme="light"] .nav-link:hover, [data-theme="light"] .nav-link.active { color: #1A1A2E; background: rgba(45,95,168,0.05); }
+        [data-theme="light"] .hamburger { border-color: rgba(0,0,0,0.1); }
+        [data-theme="light"] .hamburger:hover { border-color: var(--primary); background: rgba(45,95,168,0.03); }
+        [data-theme="light"] .hamburger span { background: #1A1A2E; }
 
         /* Cards */
         [data-theme="light"] .card { backdrop-filter: none; box-shadow: var(--shadow-card); background: var(--card-bg); }
-        [data-theme="light"] .card:hover { border-color: rgba(37,99,235,0.15); box-shadow: 0 12px 35px rgba(0,0,0,0.08), 0 0 0 1px rgba(37,99,235,0.08); }
-        [data-theme="light"] .card::before { background: linear-gradient(90deg, transparent, rgba(37,99,235,0.12), transparent); }
+        [data-theme="light"] .card:hover { border-color: rgba(184,148,31,0.12); box-shadow: 0 12px 35px rgba(0,0,0,0.06), 0 0 0 1px rgba(184,148,31,0.06); }
+        [data-theme="light"] .card::before { background: linear-gradient(90deg, transparent, rgba(184,148,31,0.1), transparent); }
 
         /* Skeleton */
-        [data-theme="light"] .skeleton { background: linear-gradient(90deg, #e2e8f0 25%, #f8fafc 50%, #e2e8f0 75%); background-size: 200% 100%; }
+        [data-theme="light"] .skeleton { background: linear-gradient(90deg, #EDE9E1 25%, #FDFCF9 50%, #EDE9E1 75%); background-size: 200% 100%; }
 
-        /* Glow effects — subtle in light mode */
-        [data-theme="light"] .glow-dot { opacity: 0.03 !important; }
-        [data-theme="light"] .glow-line { opacity: 0.08 !important; }
+        /* Glow effects — hidden in light mode */
+        [data-theme="light"] .glow-dot { opacity: 0.02 !important; }
+        [data-theme="light"] .glow-line { opacity: 0.06 !important; }
 
         /* Forms */
-        [data-theme="light"] .form-input { background: #fff; border-color: rgba(0,0,0,0.12); }
-        [data-theme="light"] .form-input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.08), 0 0 15px rgba(37,99,235,0.04); }
-        [data-theme="light"] .form-input::placeholder { color: #94a3b8; }
+        [data-theme="light"] .form-input { background: #FDFCF9; border-color: rgba(0,0,0,0.1); }
+        [data-theme="light"] .form-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(45,95,168,0.06), 0 0 15px rgba(45,95,168,0.03); }
+        [data-theme="light"] .form-input::placeholder { color: #8A8A9A; }
 
         /* Footer */
-        [data-theme="light"] .site-footer { background: #f1f5f9; border-top-color: rgba(0,0,0,0.06); }
-        [data-theme="light"] .site-footer::before { background: linear-gradient(90deg, transparent, #2563eb, transparent); opacity: 0.3; }
-        [data-theme="light"] .footer-social a { background: rgba(37,99,235,0.04); border-color: rgba(37,99,235,0.08); }
-        [data-theme="light"] .footer-social a:hover { background: #2563eb; color: #fff; border-color: #2563eb; }
-        [data-theme="light"] .footer-newsletter-form input { background: #fff; border-color: rgba(0,0,0,0.1); }
-        [data-theme="light"] .footer-newsletter-form button { background: #2563eb; }
-        [data-theme="light"] .footer-newsletter-form button:hover { background: #1d4ed8; }
+        [data-theme="light"] .site-footer { background: #EDE9E1; border-top-color: rgba(0,0,0,0.05); }
+        [data-theme="light"] .site-footer::before { background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.25; }
+        [data-theme="light"] .footer-social a { background: rgba(45,95,168,0.04); border-color: rgba(45,95,168,0.08); }
+        [data-theme="light"] .footer-social a:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+        [data-theme="light"] .footer-newsletter-form input { background: #FDFCF9; border-color: rgba(0,0,0,0.08); }
+        [data-theme="light"] .footer-newsletter-form button { background: var(--primary); }
+        [data-theme="light"] .footer-newsletter-form button:hover { background: var(--primary-dark); }
 
         /* Toast */
-        [data-theme="light"] .toast { background: #fff; border-color: rgba(0,0,0,0.08); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        [data-theme="light"] .toast { background: #FDFCF9; border-color: rgba(0,0,0,0.06); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
 
         /* Buttons */
-        [data-theme="light"] .btn-primary { box-shadow: 0 4px 15px rgba(37,99,235,0.2); }
-        [data-theme="light"] .btn-primary:hover { box-shadow: 0 6px 25px rgba(37,99,235,0.25); }
-        [data-theme="light"] .btn-outline { border-color: rgba(37,99,235,0.25); color: #2563eb; }
-        [data-theme="light"] .btn-outline:hover { background: rgba(37,99,235,0.06); border-color: #2563eb; }
+        [data-theme="light"] .btn-primary { box-shadow: 0 4px 15px rgba(45,95,168,0.18); }
+        [data-theme="light"] .btn-primary:hover { box-shadow: 0 6px 25px rgba(45,95,168,0.22); }
+        [data-theme="light"] .btn-outline { border-color: rgba(45,95,168,0.2); color: var(--primary); }
+        [data-theme="light"] .btn-outline:hover { background: rgba(45,95,168,0.04); border-color: var(--primary); }
         [data-theme="light"] .btn-green { color: #fff; }
-        [data-theme="light"] .btn-nav-cta { background: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(139,92,246,0.04)) !important; border-color: rgba(37,99,235,0.15) !important; }
+        [data-theme="light"] .btn-gold { color: #1A1A2E; }
+        [data-theme="light"] .btn-nav-cta { background: linear-gradient(135deg, rgba(45,95,168,0.05), rgba(91,79,190,0.03)) !important; border-color: rgba(45,95,168,0.12) !important; }
+        [data-theme="light"] .lang-toggle { background: rgba(255,255,252,0.8); }
+        [data-theme="light"] .lang-toggle:hover { background: rgba(184,148,31,0.04); border-color: var(--gold); color: var(--gold); }
 
         /* Misc */
-        [data-theme="light"] .section-badge { background: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(139,92,246,0.04)); border-color: rgba(37,99,235,0.12); }
-        [data-theme="light"] .divider { background: linear-gradient(90deg, transparent, rgba(37,99,235,0.1), transparent); }
-        [data-theme="light"] .text-gradient { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        [data-theme="light"] .section-badge { background: linear-gradient(135deg, rgba(184,148,31,0.06), rgba(45,95,168,0.04)); border-color: rgba(184,148,31,0.12); color: var(--gold); }
+        [data-theme="light"] .section-badge i { color: var(--gold); }
+        [data-theme="light"] .divider { background: linear-gradient(90deg, transparent, rgba(184,148,31,0.1), transparent); }
+        [data-theme="light"] .text-gradient { background: linear-gradient(135deg, #2D5FA8 0%, #5B4FBE 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        [data-theme="light"] .text-gradient-gold { background: linear-gradient(135deg, #B8941F 0%, #A68419 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
     @stack('styles')
     </style>
@@ -596,12 +685,12 @@
                 <svg class="logo-hex" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                         <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#2B9BFF"/>
-                            <stop offset="100%" style="stop-color:#a855f7"/>
+                            <stop offset="0%" style="stop-color:#D4AF37"/>
+                            <stop offset="100%" style="stop-color:#4A8FE7"/>
                         </linearGradient>
                     </defs>
                     <polygon points="60,10 95,30 95,70 60,90 25,70 25,30" fill="none" stroke="url(#logoGrad)" stroke-width="2.5" stroke-linejoin="round"/>
-                    <polygon points="60,22 83,35 83,65 60,78 37,65 37,35" fill="rgba(43,155,255,0.06)" stroke="url(#logoGrad)" stroke-width="1" stroke-linejoin="round" opacity="0.6"/>
+                    <polygon points="60,22 83,35 83,65 60,78 37,65 37,35" fill="rgba(212,175,55,0.05)" stroke="url(#logoGrad)" stroke-width="1" stroke-linejoin="round" opacity="0.6"/>
                     <text x="60" y="53" font-family="'Courier New', monospace" font-weight="700" font-size="24" fill="url(#logoGrad)" text-anchor="middle" dominant-baseline="middle">&gt;_</text>
                 </svg>
                 <div class="logo-text">
@@ -612,18 +701,22 @@
 
             <nav class="site-nav" id="main-nav">
                 <ul class="nav-menu">
-                    <li><a href="{{ url('/') }}#home" class="nav-link"><i class="fas fa-home" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> Home</a></li>
-                    <li><a href="{{ url('/') }}#team" class="nav-link"><i class="fas fa-users" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> Team</a></li>
-                    <li><a href="{{ url('/') }}#services" class="nav-link"><i class="fas fa-cogs" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> Services</a></li>
-                    <li><a href="{{ url('/') }}#projects" class="nav-link"><i class="fas fa-briefcase" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> Projects</a></li>
-                    <li><a href="{{ url('/') }}#about" class="nav-link"><i class="fas fa-info-circle" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> About</a></li>
-                    <li><a href="{{ url('/') }}#reviews" class="nav-link"><i class="fas fa-star" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> Reviews</a></li>
-                    <li><a href="{{ url('/') }}#faq" class="nav-link"><i class="fas fa-question-circle" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> FAQ</a></li>
-                    <li><a href="{{ url('/') }}#contact" class="nav-link btn-nav-cta"><i class="fas fa-envelope" style="font-size:0.7rem;margin-right:0.3rem;"></i> Contact</a></li>
+                    <li><a href="{{ url('/') }}#home" class="nav-link"><i class="fas fa-home" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> <span data-i18n="nav_home">Home</span></a></li>
+                    <li><a href="{{ url('/') }}#team" class="nav-link"><i class="fas fa-users" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> <span data-i18n="nav_team">Team</span></a></li>
+                    <li><a href="{{ url('/') }}#services" class="nav-link"><i class="fas fa-cogs" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> <span data-i18n="nav_services">Services</span></a></li>
+                    <li><a href="{{ url('/') }}#projects" class="nav-link"><i class="fas fa-briefcase" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> <span data-i18n="nav_projects">Projects</span></a></li>
+                    <li><a href="{{ url('/') }}#about" class="nav-link"><i class="fas fa-info-circle" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> <span data-i18n="nav_about">About</span></a></li>
+                    <li><a href="{{ url('/') }}#reviews" class="nav-link"><i class="fas fa-star" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> <span data-i18n="nav_reviews">Reviews</span></a></li>
+                    <li><a href="{{ url('/') }}#faq" class="nav-link"><i class="fas fa-question-circle" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> <span data-i18n="nav_faq">FAQ</span></a></li>
+                    <li><a href="{{ url('/') }}#contact" class="nav-link btn-nav-cta"><i class="fas fa-envelope" style="font-size:0.7rem;margin-right:0.3rem;"></i> <span data-i18n="nav_contact">Contact</span></a></li>
                 </ul>
             </nav>
 
             <div class="header-right">
+                <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()" aria-label="Switch language" title="العربية / English">
+                    <i class="fas fa-globe"></i>
+                    <span id="lang-label">AR</span>
+                </button>
                 <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle theme">
                     <i class="fas fa-sun theme-icon-sun"></i>
                     <i class="fas fa-moon theme-icon-moon"></i>
@@ -644,20 +737,22 @@
 
     <!-- ═══ FOOTER ═══ -->
     <footer class="site-footer">
+        <!-- Luxury gold line accent at top -->
         <div class="footer-main">
             <div class="footer-grid">
                 <!-- Brand -->
                 <div>
                     <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;">
                         <svg width="40" height="40" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                            <polygon points="60,10 95,30 95,70 60,90 25,70 25,30" fill="none" stroke="#2B9BFF" stroke-width="2.5" stroke-linejoin="round"/>
-                            <text x="60" y="53" font-family="'Courier New', monospace" font-weight="700" font-size="24" fill="#2B9BFF" text-anchor="middle" dominant-baseline="middle">&gt;_</text>
+                            <defs><linearGradient id="footerGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#D4AF37"/><stop offset="100%" style="stop-color:#4A8FE7"/></linearGradient></defs>
+                            <polygon points="60,10 95,30 95,70 60,90 25,70 25,30" fill="none" stroke="url(#footerGrad)" stroke-width="2.5" stroke-linejoin="round"/>
+                            <text x="60" y="53" font-family="'Courier New', monospace" font-weight="700" font-size="24" fill="url(#footerGrad)" text-anchor="middle" dominant-baseline="middle">&gt;_</text>
                         </svg>
                         <div>
-                            <span style="font-size:1.1rem;font-weight:800;color:var(--text-primary);">Hexa</span><span style="font-size:1.1rem;font-weight:800;color:var(--primary);">Terminal</span>
+                            <span style="font-size:1.1rem;font-weight:800;color:var(--text-primary);">Hexa</span><span style="font-size:1.1rem;font-weight:800;color:var(--gold);">Terminal</span>
                         </div>
                     </div>
-                    <p style="color:var(--text-secondary);font-size:0.88rem;line-height:1.9;max-width:350px;margin-bottom:1.5rem;">
+                    <p style="color:var(--text-secondary);font-size:0.88rem;line-height:1.9;max-width:350px;margin-bottom:1.5rem;" data-i18n="footer_desc">
                         Professional software development company delivering innovative digital solutions with cutting-edge technologies and creative design.
                     </p>
                     <div class="footer-social">
@@ -671,40 +766,40 @@
 
                 <!-- Quick Links -->
                 <div>
-                    <h4 class="footer-title">Quick Links</h4>
-                    <a href="{{ url('/') }}#team" class="footer-link"><i class="fas fa-chevron-right"></i> Our Team</a>
-                    <a href="{{ url('/') }}#services" class="footer-link"><i class="fas fa-chevron-right"></i> Services</a>
-                    <a href="{{ url('/') }}#projects" class="footer-link"><i class="fas fa-chevron-right"></i> Projects</a>
-                    <a href="{{ url('/') }}#reviews" class="footer-link"><i class="fas fa-chevron-right"></i> Reviews</a>
-                    <a href="{{ url('/') }}#faq" class="footer-link"><i class="fas fa-chevron-right"></i> FAQ</a>
+                    <h4 class="footer-title" data-i18n="quick_links">Quick Links</h4>
+                    <a href="{{ url('/') }}#team" class="footer-link"><i class="fas fa-chevron-right"></i> <span data-i18n="nav_team">Our Team</span></a>
+                    <a href="{{ url('/') }}#services" class="footer-link"><i class="fas fa-chevron-right"></i> <span data-i18n="nav_services">Services</span></a>
+                    <a href="{{ url('/') }}#projects" class="footer-link"><i class="fas fa-chevron-right"></i> <span data-i18n="nav_projects">Projects</span></a>
+                    <a href="{{ url('/') }}#reviews" class="footer-link"><i class="fas fa-chevron-right"></i> <span data-i18n="nav_reviews">Reviews</span></a>
+                    <a href="{{ url('/') }}#faq" class="footer-link"><i class="fas fa-chevron-right"></i> <span data-i18n="nav_faq">FAQ</span></a>
                 </div>
 
                 <!-- Company -->
                 <div>
-                    <h4 class="footer-title">Company</h4>
-                    <a href="{{ url('/') }}#about" class="footer-link"><i class="fas fa-chevron-right"></i> About Us</a>
-                    <a href="{{ url('/') }}#contact" class="footer-link"><i class="fas fa-chevron-right"></i> Contact</a>
-                    <a href="#" class="footer-link"><i class="fas fa-chevron-right"></i> Privacy Policy</a>
-                    <a href="#" class="footer-link"><i class="fas fa-chevron-right"></i> Terms of Service</a>
+                    <h4 class="footer-title" data-i18n="company">Company</h4>
+                    <a href="{{ url('/') }}#about" class="footer-link"><i class="fas fa-chevron-right"></i> <span data-i18n="nav_about">About Us</span></a>
+                    <a href="{{ url('/') }}#contact" class="footer-link"><i class="fas fa-chevron-right"></i> <span data-i18n="nav_contact">Contact</span></a>
+                    <a href="#" class="footer-link"><i class="fas fa-chevron-right"></i> <span data-i18n="privacy">Privacy Policy</span></a>
+                    <a href="#" class="footer-link"><i class="fas fa-chevron-right"></i> <span data-i18n="terms">Terms of Service</span></a>
                 </div>
 
                 <!-- Newsletter -->
                 <div>
-                    <h4 class="footer-title">Newsletter</h4>
-                    <p style="color:var(--text-secondary);font-size:0.85rem;line-height:1.7;margin-bottom:0.5rem;">
+                    <h4 class="footer-title" data-i18n="newsletter">Newsletter</h4>
+                    <p style="color:var(--text-secondary);font-size:0.85rem;line-height:1.7;margin-bottom:0.5rem;" data-i18n="newsletter_desc">
                         Stay updated with our latest news and projects.
                     </p>
                     <div class="footer-newsletter-form">
-                        <input type="email" placeholder="Your email..." />
+                        <input type="email" placeholder="Your email..." data-i18n-placeholder="email_placeholder" />
                         <button type="button"><i class="fas fa-paper-plane"></i></button>
                     </div>
                     <div style="margin-top:1.5rem;">
                         <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.6rem;">
-                            <i class="fas fa-envelope" style="color:var(--primary);font-size:0.8rem;width:16px;"></i>
+                            <i class="fas fa-envelope" style="color:var(--gold);font-size:0.8rem;width:16px;"></i>
                             <span style="color:var(--text-secondary);font-size:0.85rem;">contact@hexaterminal.com</span>
                         </div>
                         <div style="display:flex;align-items:center;gap:0.6rem;">
-                            <i class="fas fa-map-marker-alt" style="color:var(--primary);font-size:0.8rem;width:16px;"></i>
+                            <i class="fas fa-map-marker-alt" style="color:var(--gold);font-size:0.8rem;width:16px;"></i>
                             <span style="color:var(--text-secondary);font-size:0.85rem;">Damascus, Syria</span>
                         </div>
                     </div>
@@ -712,8 +807,8 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; {{ date('Y') }} HexaTerminal. All rights reserved.</p>
-            <p style="display:flex;align-items:center;gap:0.5rem;">Crafted with <span style="color:var(--danger);">&#10084;</span> by <span style="color:var(--primary);font-weight:600;">HexaTerminal</span></p>
+            <p>&copy; {{ date('Y') }} HexaTerminal. <span data-i18n="rights">All rights reserved.</span></p>
+            <p style="display:flex;align-items:center;gap:0.5rem;"><span data-i18n="crafted">Crafted with</span> <span style="color:var(--danger);">&#10084;</span> <span data-i18n="by">by</span> <span style="color:var(--gold);font-weight:600;">HexaTerminal</span></p>
         </div>
     </footer>
 
@@ -796,8 +891,209 @@
             var next = current === 'dark' ? 'light' : 'dark';
             html.setAttribute('data-theme', next);
             localStorage.setItem('ht-theme', next);
-            document.querySelector('meta[name="theme-color"]').content = next === 'dark' ? '#060918' : '#f8fafc';
+            document.querySelector('meta[name="theme-color"]').content = next === 'dark' ? '#070A18' : '#F5F3EF';
         }
+
+        // ── Translation System ──
+        var _translations = {
+            en: {
+                nav_home: 'Home', nav_team: 'Team', nav_services: 'Services', nav_projects: 'Projects',
+                nav_about: 'About', nav_reviews: 'Reviews', nav_faq: 'FAQ', nav_contact: 'Contact',
+                // Hero
+                hero_badge: 'Welcome to HexaTerminal', hero_title_1: 'Building the',
+                hero_title_2: 'Digital Future', hero_title_3: 'with Modern Software Solutions',
+                hero_desc: 'We deliver cutting-edge software solutions with innovative technologies, helping businesses transform and grow in the digital landscape.',
+                hero_btn_projects: 'Explore Projects', hero_btn_contact: 'Get in Touch',
+                hero_stat_projects: 'Projects', hero_stat_services: 'Services', hero_stat_team: 'Team Members',
+                scroll_down: 'Scroll Down',
+                // Sections
+                section_team_badge: 'Our People', section_team_title: 'Meet the Team',
+                section_team_subtitle: 'The talented professionals driving our innovation and success',
+                section_services_badge: 'What We Do', section_services_title: 'Our Services',
+                section_services_subtitle: 'Innovative software solutions tailored to drive your business forward',
+                section_projects_badge: 'Our Work', section_projects_title: 'Latest Projects',
+                section_projects_subtitle: 'Explore our innovative projects that deliver exceptional digital experiences',
+                section_about_badge: 'Who We Are', section_about_title: 'About Us',
+                section_reviews_badge: 'Testimonials', section_reviews_title: 'Client Reviews',
+                section_reviews_subtitle: 'What our clients say about their experience working with us',
+                section_faq_badge: 'FAQ', section_faq_title: 'Frequently Asked Questions',
+                section_faq_subtitle: 'Find answers to the most common questions about our services, process, and how we work.',
+                section_faq_btn: 'Still Have Questions?',
+                section_videos_badge: 'Media', section_videos_title: 'Our Videos',
+                section_videos_subtitle: 'Watch our latest content, demos, and behind-the-scenes footage',
+                // Contact
+                contact_badge: 'Get in Touch', contact_title: "Let's Work Together",
+                contact_subtitle: "Have a project in mind? Let's discuss how we can bring your vision to life.",
+                contact_email_title: 'Email Us', contact_email_reply: 'Reply within 24 hours',
+                contact_phone_title: 'Call Us', contact_phone_hours: 'Mon - Fri, 9am - 6pm',
+                contact_visit_title: 'Visit Us', contact_visit_hq: 'HexaTerminal HQ',
+                contact_process: 'Our Process', contact_step1: 'Initial Consultation',
+                contact_step2: 'Planning & Design', contact_step3: 'Development & Launch',
+                contact_form_title: 'Send us a Message',
+                contact_form_desc: "Fill out the form below and we'll get back to you as soon as possible.",
+                contact_name: 'Full Name', contact_email: 'Email', contact_phone: 'Phone',
+                contact_subject: 'Subject', contact_message: 'Message',
+                contact_name_ph: 'John Doe', contact_email_ph: 'john@example.com',
+                contact_phone_ph: '+1 234 567 890', contact_subject_ph: 'How can we help?',
+                contact_message_ph: 'Tell us about your project...',
+                contact_send: 'Send Message', contact_sending: 'Sending...',
+                // Footer
+                quick_links: 'Quick Links', company: 'Company', newsletter: 'Newsletter',
+                newsletter_desc: 'Stay updated with our latest news and projects.',
+                email_placeholder: 'Your email...', privacy: 'Privacy Policy', terms: 'Terms of Service',
+                footer_desc: 'Professional software development company delivering innovative digital solutions with cutting-edge technologies and creative design.',
+                rights: 'All rights reserved.', crafted: 'Crafted with', by: 'by',
+                view_all_projects: 'View All Projects', view_profile: 'View Profile',
+                view_service: 'View Service', view_details: 'View Details',
+                no_desc: 'No description available.', loading: 'Loading...',
+                back_team: 'Back to Team', back_projects: 'All Projects', back_services: 'All Services',
+                start_project: 'Start a Project Like This', start_project_short: 'Start a Project',
+                expert_team: 'Expert Team', modern_tech: 'Modern Tech',
+                support_247: '24/7 Support', support_24: '24/7 Support', fast_delivery: 'Fast Delivery',
+                trusted_by: 'Trusted by', clients: 'Clients', our_mission: 'Our Mission',
+                // Sub-pages
+                email: 'Email', phone: 'Phone', specialization: 'Specialization', position: 'Position',
+                download_cv: 'Download CV', send_email: 'Send Email',
+                back_to_team: 'Back to Team', get_in_touch: 'Get in Touch',
+                projects_in: 'Projects in', no_projects_yet: 'No projects yet',
+                projects_appear_soon: 'Projects will appear here as they are added.',
+                all_services: 'All Services', all_projects: 'All Projects',
+                images: 'Images', features: 'Features', projects: 'Projects',
+                related_service: 'Related Service', project_features: 'Project Features',
+                start_project_like: 'Start a Project Like This',
+                portfolio: 'Portfolio', our: 'Our',
+                projects_page_subtitle: 'Explore our complete portfolio of innovative digital solutions built with cutting-edge technologies',
+                back_to_home: 'Back to Home', page: 'Page',
+                still_have_questions: 'Still Have Questions?',
+                reviews_coming_soon: 'Reviews coming soon!',
+                videos_coming_soon: 'Videos coming soon!',
+                faq_coming_soon: 'FAQs coming soon!',
+                member_not_found: 'Member Not Found',
+                member_not_found_desc: "The team member you're looking for doesn't exist or may have been removed.",
+                view_all_team: 'View All Team',
+                service_not_found: 'Service Not Found',
+                service_not_found_desc: "The service you're looking for doesn't exist or may have been removed.",
+                view_all_services: 'View All Services',
+                project_not_found: 'Project Not Found',
+                project_not_found_desc: "The project you're looking for doesn't exist or may have been removed.",
+                browse_all_projects: 'Browse All Projects',
+                projects_coming_soon_desc: "We're working on something amazing. Check back soon!"
+            },
+            ar: {
+                nav_home: 'الرئيسية', nav_team: 'الفريق', nav_services: 'الخدمات', nav_projects: 'المشاريع',
+                nav_about: 'من نحن', nav_reviews: 'التقييمات', nav_faq: 'الأسئلة', nav_contact: 'تواصل',
+                hero_badge: 'مرحباً بكم في هيكسا تيرمنال', hero_title_1: 'نبني',
+                hero_title_2: 'المستقبل الرقمي', hero_title_3: 'بحلول برمجية متطورة',
+                hero_desc: 'نقدم حلولاً برمجية متطورة بتقنيات مبتكرة، نساعد الشركات على التحول والنمو في العالم الرقمي.',
+                hero_btn_projects: 'استكشف المشاريع', hero_btn_contact: 'تواصل معنا',
+                hero_stat_projects: 'مشاريع', hero_stat_services: 'خدمات', hero_stat_team: 'أعضاء الفريق',
+                scroll_down: 'مرر للأسفل',
+                section_team_badge: 'فريقنا', section_team_title: 'تعرف على الفريق',
+                section_team_subtitle: 'المحترفون الموهوبون الذين يقودون ابتكارنا ونجاحنا',
+                section_services_badge: 'ماذا نفعل', section_services_title: 'خدماتنا',
+                section_services_subtitle: 'حلول برمجية مبتكرة مصممة لدفع أعمالك للأمام',
+                section_projects_badge: 'أعمالنا', section_projects_title: 'أحدث المشاريع',
+                section_projects_subtitle: 'اكتشف مشاريعنا المبتكرة التي تقدم تجارب رقمية استثنائية',
+                section_about_badge: 'من نحن', section_about_title: 'عنا',
+                section_reviews_badge: 'شهادات العملاء', section_reviews_title: 'تقييمات العملاء',
+                section_reviews_subtitle: 'ما يقوله عملاؤنا عن تجربتهم في العمل معنا',
+                section_faq_badge: 'الأسئلة الشائعة', section_faq_title: 'الأسئلة الشائعة',
+                section_faq_subtitle: 'اعثر على إجابات للأسئلة الأكثر شيوعاً حول خدماتنا وعملياتنا وكيف نعمل.',
+                section_faq_btn: 'لا تزال لديك أسئلة؟',
+                section_videos_badge: 'الوسائط', section_videos_title: 'فيديوهاتنا',
+                section_videos_subtitle: 'شاهد أحدث محتوانا والعروض التوضيحية وكواليس العمل',
+                contact_badge: 'تواصل معنا', contact_title: 'لنعمل معاً',
+                contact_subtitle: 'هل لديك مشروع؟ دعنا نناقش كيف يمكننا تحقيق رؤيتك.',
+                contact_email_title: 'راسلنا', contact_email_reply: 'الرد خلال 24 ساعة',
+                contact_phone_title: 'اتصل بنا', contact_phone_hours: 'الاثنين - الجمعة، 9ص - 6م',
+                contact_visit_title: 'زرنا', contact_visit_hq: 'مقر هيكسا تيرمنال',
+                contact_process: 'عمليتنا', contact_step1: 'الاستشارة الأولية',
+                contact_step2: 'التخطيط والتصميم', contact_step3: 'التطوير والإطلاق',
+                contact_form_title: 'أرسل لنا رسالة',
+                contact_form_desc: 'املأ النموذج أدناه وسنعود إليك في أقرب وقت ممكن.',
+                contact_name: 'الاسم الكامل', contact_email: 'البريد الإلكتروني', contact_phone: 'الهاتف',
+                contact_subject: 'الموضوع', contact_message: 'الرسالة',
+                contact_name_ph: 'أحمد محمد', contact_email_ph: 'ahmed@example.com',
+                contact_phone_ph: '+963 9XX XXX XXX', contact_subject_ph: 'كيف يمكننا مساعدتك؟',
+                contact_message_ph: 'أخبرنا عن مشروعك...',
+                contact_send: 'إرسال الرسالة', contact_sending: 'جاري الإرسال...',
+                quick_links: 'روابط سريعة', company: 'الشركة', newsletter: 'النشرة البريدية',
+                newsletter_desc: 'ابق على اطلاع بأحدث أخبارنا ومشاريعنا.',
+                email_placeholder: 'بريدك الإلكتروني...', privacy: 'سياسة الخصوصية', terms: 'شروط الخدمة',
+                footer_desc: 'شركة تطوير برمجيات احترافية تقدم حلولاً رقمية مبتكرة بأحدث التقنيات والتصميم الإبداعي.',
+                rights: 'جميع الحقوق محفوظة.', crafted: 'صُنع بـ', by: 'بواسطة',
+                view_all_projects: 'عرض جميع المشاريع', view_profile: 'عرض الملف',
+                view_service: 'عرض الخدمة', view_details: 'عرض التفاصيل',
+                no_desc: 'لا يوجد وصف متاح.', loading: 'جاري التحميل...',
+                back_team: 'العودة للفريق', back_projects: 'جميع المشاريع', back_services: 'جميع الخدمات',
+                start_project: 'ابدأ مشروعاً مثل هذا', start_project_short: 'ابدأ مشروعاً',
+                expert_team: 'فريق خبير', modern_tech: 'تقنيات حديثة',
+                support_247: 'دعم على مدار الساعة', support_24: 'دعم على مدار الساعة', fast_delivery: 'تسليم سريع',
+                trusted_by: 'موثوق من قبل', clients: 'عميل', our_mission: 'مهمتنا',
+                email: 'البريد الإلكتروني', phone: 'الهاتف', specialization: 'التخصص', position: 'المنصب',
+                download_cv: 'تحميل السيرة الذاتية', send_email: 'إرسال بريد',
+                back_to_team: 'العودة للفريق', get_in_touch: 'تواصل معنا',
+                projects_in: 'مشاريع في', no_projects_yet: 'لا توجد مشاريع بعد',
+                projects_appear_soon: 'ستظهر المشاريع هنا عند إضافتها.',
+                all_services: 'جميع الخدمات', all_projects: 'جميع المشاريع',
+                images: 'صور', features: 'ميزات', projects: 'مشاريع',
+                related_service: 'الخدمة المرتبطة', project_features: 'ميزات المشروع',
+                start_project_like: 'ابدأ مشروعاً مثل هذا',
+                portfolio: 'معرض الأعمال', our: 'لدينا',
+                projects_page_subtitle: 'استكشف محفظتنا الكاملة من الحلول الرقمية المبتكرة المبنية بأحدث التقنيات',
+                back_to_home: 'العودة للرئيسية', page: 'صفحة',
+                still_have_questions: 'لا تزال لديك أسئلة؟',
+                reviews_coming_soon: 'التقييمات قادمة قريباً!',
+                videos_coming_soon: 'الفيديوهات قادمة قريباً!',
+                faq_coming_soon: 'الأسئلة الشائعة قادمة قريباً!',
+                member_not_found: 'العضو غير موجود',
+                member_not_found_desc: 'عضو الفريق الذي تبحث عنه غير موجود أو ربما تمت إزالته.',
+                view_all_team: 'عرض جميع الفريق',
+                service_not_found: 'الخدمة غير موجودة',
+                service_not_found_desc: 'الخدمة التي تبحث عنها غير موجودة أو ربما تمت إزالتها.',
+                view_all_services: 'عرض جميع الخدمات',
+                project_not_found: 'المشروع غير موجود',
+                project_not_found_desc: 'المشروع الذي تبحث عنه غير موجود أو ربما تمت إزالته.',
+                browse_all_projects: 'تصفح جميع المشاريع',
+                projects_coming_soon_desc: 'نعمل على شيء مذهل. تحقق مرة أخرى قريباً!'
+            }
+        };
+
+        function _currentLang() { return localStorage.getItem('ht-lang') || 'en'; }
+        function t(key) { var lang = _currentLang(); return (_translations[lang] && _translations[lang][key]) || (_translations.en[key]) || key; }
+
+        function toggleLang() {
+            var current = _currentLang();
+            var next = current === 'en' ? 'ar' : 'en';
+            localStorage.setItem('ht-lang', next);
+            document.documentElement.lang = next;
+            document.documentElement.dir = next === 'ar' ? 'rtl' : 'ltr';
+            applyTranslations();
+        }
+
+        function applyTranslations() {
+            var lang = _currentLang();
+            // Update lang label
+            var label = document.getElementById('lang-label');
+            if (label) label.textContent = lang === 'en' ? 'AR' : 'EN';
+            // Update all data-i18n elements
+            document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n');
+                if (_translations[lang] && _translations[lang][key]) {
+                    el.textContent = _translations[lang][key];
+                }
+            });
+            // Update all data-i18n-placeholder elements
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+                var key = el.getAttribute('data-i18n-placeholder');
+                if (_translations[lang] && _translations[lang][key]) {
+                    el.placeholder = _translations[lang][key];
+                }
+            });
+        }
+
+        // Apply on load
+        applyTranslations();
 
         // Image URL helper
         function getImageUrl(path) {

@@ -5,20 +5,20 @@
 @section('content')
 <!-- ═══ PAGE HERO ═══ -->
 <section style="padding:8rem 0 2.5rem;background:var(--dark-bg-2);position:relative;overflow:hidden;">
-    <div class="glow-dot" style="width:500px;height:500px;background:var(--secondary);top:-200px;left:-100px;"></div>
-    <div class="glow-line" style="width:100%;bottom:0;left:0;"></div>
+    <div class="glow-dot" style="width:500px;height:500px;background:var(--gold);top:-200px;left:-100px;opacity:0.03;"></div>
+    <div class="glow-line" style="width:100%;bottom:0;left:0;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.06),transparent);"></div>
 
     <div class="container">
         <nav style="display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;" data-aos="fade-up">
-            <a href="{{ url('/') }}" style="color:var(--text-muted);text-decoration:none;transition:var(--transition-fast);" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">
-                <i class="fas fa-home" style="margin-right:0.3rem;"></i> Home
+            <a href="{{ url('/') }}" style="color:var(--text-muted);text-decoration:none;transition:var(--transition-fast);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">
+                <i class="fas fa-home" style="margin-right:0.3rem;"></i> <span data-i18n="nav_home">Home</span>
             </a>
             <i class="fas fa-chevron-right" style="color:var(--text-muted);font-size:0.55rem;"></i>
-            <a href="{{ url('/') }}#team" style="color:var(--text-muted);text-decoration:none;transition:var(--transition-fast);" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">
-                Team
+            <a href="{{ url('/') }}#team" style="color:var(--text-muted);text-decoration:none;transition:var(--transition-fast);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-muted)'">
+                <span data-i18n="nav_team">Team</span>
             </a>
             <i class="fas fa-chevron-right" style="color:var(--text-muted);font-size:0.55rem;"></i>
-            <span id="breadcrumb-name" style="color:var(--primary);font-weight:600;">Loading...</span>
+            <span id="breadcrumb-name" style="color:var(--gold);font-weight:600;">Loading...</span>
         </nav>
     </div>
 </section>
@@ -51,15 +51,15 @@
 
         <!-- Not found -->
         <div id="member-not-found" style="display:none;text-align:center;padding:5rem 0;">
-            <div style="width:100px;height:100px;margin:0 auto 2rem;border-radius:50%;background:rgba(239,68,68,0.06);display:flex;align-items:center;justify-content:center;">
-                <i class="fas fa-user-slash" style="font-size:2.5rem;color:var(--danger);opacity:0.5;"></i>
+            <div style="width:100px;height:100px;margin:0 auto 2rem;border-radius:50%;background:rgba(212,175,55,0.06);display:flex;align-items:center;justify-content:center;">
+                <i class="fas fa-user-slash" style="font-size:2.5rem;color:var(--gold);opacity:0.4;"></i>
             </div>
-            <h3 style="font-size:1.5rem;font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;">Member Not Found</h3>
-            <p style="color:var(--text-secondary);font-size:0.95rem;max-width:400px;margin:0 auto 2rem;">
+            <h3 style="font-size:1.5rem;font-weight:700;color:var(--text-primary);margin-bottom:0.75rem;" data-i18n="member_not_found">Member Not Found</h3>
+            <p style="color:var(--text-secondary);font-size:0.95rem;max-width:400px;margin:0 auto 2rem;" data-i18n="member_not_found_desc">
                 The team member you're looking for doesn't exist or may have been removed.
             </p>
             <a href="{{ url('/') }}#team" class="btn btn-primary" style="padding:0.85rem 2.25rem;">
-                <span>View All Team</span>
+                <span data-i18n="view_all_team">View All Team</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
         </div>
@@ -85,9 +85,13 @@
     position: absolute;
     inset: -6px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
     opacity: 0.35;
     animation: pulse-glow 3s ease-in-out infinite;
+}
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.25; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(1.02); }
 }
 .member-photo-img {
     width: 100%;
@@ -102,13 +106,13 @@
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 6rem;
     font-weight: 800;
-    color: white;
+    color: #0a0a1a;
     position: relative;
     z-index: 1;
     border: 4px solid var(--dark-bg);
@@ -118,8 +122,8 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1.25rem;
-    background: linear-gradient(135deg, rgba(43,155,255,0.12), rgba(168,85,247,0.08));
-    border: 1px solid rgba(43,155,255,0.2);
+    background: linear-gradient(135deg, rgba(212,175,55,0.12), rgba(183,134,11,0.06));
+    border: 1px solid rgba(212,175,55,0.2);
     border-radius: 999px;
     font-size: 0.88rem;
     font-weight: 600;
@@ -142,19 +146,19 @@
     transition: var(--transition-fast);
 }
 .member-info-item:hover {
-    border-color: rgba(43,155,255,0.2);
-    background: rgba(43,155,255,0.04);
+    border-color: rgba(212,175,55,0.2);
+    background: rgba(212,175,55,0.04);
 }
 .member-info-icon {
     width: 40px;
     height: 40px;
     border-radius: var(--radius-sm);
-    background: linear-gradient(135deg, rgba(43,155,255,0.1), rgba(168,85,247,0.06));
-    border: 1px solid rgba(43,155,255,0.15);
+    background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(183,134,11,0.06));
+    border: 1px solid rgba(212,175,55,0.15);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary);
+    color: var(--gold);
     font-size: 0.9rem;
     flex-shrink: 0;
 }
@@ -180,11 +184,11 @@
 
 /* Light theme */
 [data-theme="light"] .member-photo-img { border-color: #fff; }
-[data-theme="light"] .member-initials-large { border-color: #fff; }
-[data-theme="light"] .member-info-item { background: #fff; border-color: rgba(0,0,0,0.06); box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
-[data-theme="light"] .member-info-item:hover { border-color: rgba(37,99,235,0.15); background: rgba(37,99,235,0.02); }
-[data-theme="light"] .member-info-icon { background: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(139,92,246,0.04)); border-color: rgba(37,99,235,0.1); }
-[data-theme="light"] .member-position-badge { background: linear-gradient(135deg, rgba(37,99,235,0.08), rgba(139,92,246,0.05)); border-color: rgba(37,99,235,0.15); }
+[data-theme="light"] .member-initials-large { border-color: #fff; color: #fff; }
+[data-theme="light"] .member-info-item { background: var(--card-bg); border-color: var(--card-border); }
+[data-theme="light"] .member-info-item:hover { border-color: rgba(183,134,11,0.18); background: rgba(183,134,11,0.03); }
+[data-theme="light"] .member-info-icon { background: linear-gradient(135deg, rgba(183,134,11,0.08), rgba(212,175,55,0.04)); border-color: rgba(183,134,11,0.12); }
+[data-theme="light"] .member-position-badge { background: linear-gradient(135deg, rgba(183,134,11,0.08), rgba(212,175,55,0.04)); border-color: rgba(183,134,11,0.15); }
 
 @media (max-width: 768px) {
     .member-profile-grid {
@@ -255,25 +259,25 @@
             if (member.email) {
                 infoItems += '<div class="member-info-item" data-aos="fade-up" data-aos-delay="100">' +
                     '<div class="member-info-icon"><i class="fas fa-envelope"></i></div>' +
-                    '<div><div class="member-info-label">Email</div>' +
+                    '<div><div class="member-info-label">' + t('email') + '</div>' +
                     '<div class="member-info-value">' + member.email + '</div></div></div>';
             }
             if (member.phone) {
                 infoItems += '<div class="member-info-item" data-aos="fade-up" data-aos-delay="150">' +
                     '<div class="member-info-icon"><i class="fas fa-phone"></i></div>' +
-                    '<div><div class="member-info-label">Phone</div>' +
+                    '<div><div class="member-info-label">' + t('phone') + '</div>' +
                     '<div class="member-info-value">' + member.phone + '</div></div></div>';
             }
             if (member.specialization) {
                 infoItems += '<div class="member-info-item" data-aos="fade-up" data-aos-delay="200">' +
                     '<div class="member-info-icon"><i class="fas fa-code"></i></div>' +
-                    '<div><div class="member-info-label">Specialization</div>' +
+                    '<div><div class="member-info-label">' + t('specialization') + '</div>' +
                     '<div class="member-info-value">' + member.specialization + '</div></div></div>';
             }
             if (member.position) {
                 infoItems += '<div class="member-info-item" data-aos="fade-up" data-aos-delay="250">' +
                     '<div class="member-info-icon"><i class="fas fa-briefcase"></i></div>' +
-                    '<div><div class="member-info-label">Position</div>' +
+                    '<div><div class="member-info-label">' + t('position') + '</div>' +
                     '<div class="member-info-value">' + member.position + '</div></div></div>';
             }
 
@@ -281,15 +285,15 @@
             var actions = '';
             if (member.github_url) {
                 actions += '<a href="' + member.github_url + '" target="_blank" rel="noopener" class="btn btn-outline" style="padding:0.75rem 1.5rem;">' +
-                    '<i class="fab fa-github"></i> <span>GitHub Profile</span></a>';
+                    '<i class="fab fa-github"></i> <span>GitHub</span></a>';
             }
             if (member.cv_file) {
                 actions += '<a href="' + member.cv_file + '" target="_blank" rel="noopener" class="btn btn-primary" style="padding:0.75rem 1.5rem;">' +
-                    '<i class="fas fa-file-alt"></i> <span>Download CV</span></a>';
+                    '<i class="fas fa-file-alt"></i> <span>' + t('download_cv') + '</span></a>';
             }
             if (member.email) {
                 actions += '<a href="mailto:' + member.email + '" class="btn btn-outline" style="padding:0.75rem 1.5rem;">' +
-                    '<i class="fas fa-envelope"></i> <span>Send Email</span></a>';
+                    '<i class="fas fa-envelope"></i> <span>' + t('send_email') + '</span></a>';
             }
 
             content.innerHTML =
@@ -301,16 +305,16 @@
                         '</div>' +
                     '</div>' +
                     '<div>' +
-                        '<h1 style="font-size:clamp(2rem,4vw,2.75rem);font-weight:800;color:var(--text-primary);line-height:1.2;letter-spacing:-0.02em;margin-bottom:0.75rem;">' +
-                            fullName +
+                        '<h1 style="font-size:clamp(2rem,4vw,2.75rem);font-weight:800;line-height:1.2;letter-spacing:-0.02em;margin-bottom:0.75rem;">' +
+                            '<span class="text-gradient-gold">' + fullName + '</span>' +
                         '</h1>' +
                         '<div class="member-position-badge">' +
-                            '<i class="fas fa-star" style="color:var(--primary);font-size:0.75rem;"></i>' +
-                            '<span class="text-gradient">' + (member.position || 'Team Member') + '</span>' +
+                            '<i class="fas fa-crown" style="color:var(--gold);font-size:0.75rem;"></i>' +
+                            '<span style="color:var(--gold);">' + (member.position || 'Team Member') + '</span>' +
                         '</div>' +
                         (member.specialization
                             ? '<p style="color:var(--text-secondary);font-size:1rem;line-height:1.85;margin-bottom:0.5rem;">' +
-                                '<i class="fas fa-code" style="color:var(--primary);margin-right:0.5rem;font-size:0.85rem;"></i>' +
+                                '<i class="fas fa-code" style="color:var(--gold);margin-right:0.5rem;font-size:0.85rem;"></i>' +
                                 member.specialization +
                               '</p>'
                             : '') +
@@ -318,13 +322,13 @@
                         (actions ? '<div class="member-actions">' + actions + '</div>' : '') +
                     '</div>' +
                 '</div>' +
-                '<div style="margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,0.04);display:flex;justify-content:space-between;align-items:center;" data-aos="fade-up">' +
+                '<div style="margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid rgba(212,175,55,0.06);display:flex;justify-content:space-between;align-items:center;" data-aos="fade-up">' +
                     '<a href="' + '{{ url("/") }}#team' + '" class="btn btn-outline" style="padding:0.8rem 1.75rem;">' +
                         '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>' +
-                        '<span>Back to Team</span>' +
+                        '<span data-i18n="back_to_team">' + t('back_to_team') + '</span>' +
                     '</a>' +
                     '<a href="#contact" class="btn btn-primary" style="padding:0.8rem 1.75rem;">' +
-                        '<span>Get in Touch</span>' +
+                        '<span data-i18n="get_in_touch">' + t('get_in_touch') + '</span>' +
                         '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>' +
                     '</a>' +
                 '</div>';
