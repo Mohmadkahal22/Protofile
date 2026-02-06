@@ -232,6 +232,16 @@
             var photoUrl = member.photo ? getImageUrl(member.photo) : '';
             var initial = (member.first_name || 'U').charAt(0).toUpperCase();
 
+            // Photo HTML with onerror fallback
+            var photoImgHtml;
+            if (photoUrl) {
+                photoImgHtml = '<img src="' + photoUrl + '" alt="' + fullName + '" class="member-photo-img" referrerpolicy="no-referrer" ' +
+                    'onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';">' +
+                    '<div class="member-initials-large" style="display:none;">' + initial + '</div>';
+            } else {
+                photoImgHtml = '<div class="member-initials-large">' + initial + '</div>';
+            }
+
             // Info items
             var infoItems = '';
             if (member.email) {
@@ -279,9 +289,7 @@
                     '<div>' +
                         '<div class="member-photo-container">' +
                             '<div class="member-photo-ring"></div>' +
-                            (photoUrl
-                                ? '<img src="' + photoUrl + '" alt="' + fullName + '" class="member-photo-img">'
-                                : '<div class="member-initials-large">' + initial + '</div>') +
+                            photoImgHtml +
                         '</div>' +
                     '</div>' +
                     '<div>' +

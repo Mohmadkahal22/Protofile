@@ -86,10 +86,10 @@
             if (!aboutUs) return;
             content.style.display = 'block';
 
-            var imageHtml = aboutUs.image
+            var imageHtml = (aboutUs.company_logo || aboutUs.image)
                 ? '<div data-aos="fade-left" data-aos-delay="200">' +
                     '<div class="about-image-wrap">' +
-                        '<img src="' + getImageUrl(aboutUs.image) + '" alt="About HexaTerminal" loading="lazy">' +
+                        '<img src="' + getImageUrl(aboutUs.company_logo || aboutUs.image) + '" alt="About HexaTerminal" loading="lazy">' +
                         '<div class="about-image-badge">' +
                             '<i class="fas fa-check-circle" style="color:var(--green);font-size:1.2rem;"></i>' +
                             '<div><span style="font-size:0.75rem;color:var(--text-muted);">Trusted by</span><br>' +
@@ -113,7 +113,7 @@
                         '<span class="section-badge"><i class="fas fa-info-circle"></i> Who We Are</span>' +
                         '<h2 style="font-size:clamp(2rem,3.5vw,2.75rem);font-weight:800;margin-bottom:1.5rem;color:var(--text-primary);line-height:1.2;letter-spacing:-0.02em;">About Us</h2>' +
                         '<div style="color:var(--text-secondary);line-height:1.9;font-size:0.92rem;">' +
-                            (aboutUs.description || aboutUs.content || 'No description available.') +
+                            (aboutUs.company_description || aboutUs.description || 'No description available.') +
                         '</div>' +
                         missionHtml +
                         '<div class="about-features">' +

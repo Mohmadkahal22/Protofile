@@ -25,14 +25,14 @@ class AboutUsService
         DB::beginTransaction();
         try {
             if (! empty($data['foundation_date'])) {
-                $data['foundation_date'] = Carbon::createFromFormat('m/d/Y', $data['foundation_date'])->format('Y-m-d');
+                $data['foundation_date'] = Carbon::parse($data['foundation_date'])->format('Y-m-d');
             }
 
             if ($file) {
                 $logoName = Str::random(32).'.'.$file->getClientOriginalExtension();
                 $logoPath = 'company_logos/' . $logoName;
                 Storage::disk('public')->put($logoPath, file_get_contents($file));
-                $data['company_logo'] = url('storage/' . $logoPath);
+                $data['company_logo'] = url('api/storage/' . $logoPath);
             }
 
             $aboutUs = About_Us::create($data);
@@ -58,18 +58,18 @@ class AboutUsService
         DB::beginTransaction();
         try {
             if (! empty($data['foundation_date'])) {
-                $data['foundation_date'] = Carbon::createFromFormat('m/d/Y', $data['foundation_date'])->format('Y-m-d');
+                $data['foundation_date'] = Carbon::parse($data['foundation_date'])->format('Y-m-d');
             }
 
             if ($file) {
                 if ($aboutUs->company_logo) {
-                    $oldLogoPath = str_replace(url('storage/'), '', $aboutUs->company_logo);
+                    $oldLogoPath = str_replace('api/storage/', '', parse_url($aboutUs->company_logo, PHP_URL_PATH));
                     Storage::disk('public')->delete($oldLogoPath);
                 }
                 $logoName = Str::random(32).'.'.$file->getClientOriginalExtension();
                 $logoPath = 'company_logos/' . $logoName;
                 Storage::disk('public')->put($logoPath, file_get_contents($file));
-                $data['company_logo'] = url('storage/' . $logoPath);
+                $data['company_logo'] = url('api/storage/' . $logoPath);
             }
 
             $aboutUs->update($data);
@@ -90,7 +90,7 @@ class AboutUsService
         DB::beginTransaction();
         try {
             if ($aboutUs->company_logo) {
-                $logoPath = str_replace(url('storage/'), '', $aboutUs->company_logo);
+                $logoPath = str_replace('api/storage/', '', parse_url($aboutUs->company_logo, PHP_URL_PATH));
                 Storage::disk('public')->delete($logoPath);
             }
             $aboutUs->delete();

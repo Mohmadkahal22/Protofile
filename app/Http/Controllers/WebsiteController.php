@@ -37,4 +37,12 @@ class WebsiteController extends Controller
     {
         return view('website.team-detail', compact('id'));
     }
+
+    /**
+     * Service detail page - shows service info + projects by service_id.
+     */
+    public function serviceDetail($id)
+    {
+        return view('website.service-detail', compact('id'));
+    }
 }

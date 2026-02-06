@@ -479,10 +479,10 @@
             <nav class="site-nav" id="main-nav">
                 <ul class="nav-menu">
                     <li><a href="{{ url('/') }}#home" class="nav-link"><i class="fas fa-home" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> Home</a></li>
+                    <li><a href="{{ url('/') }}#team" class="nav-link"><i class="fas fa-users" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> Team</a></li>
                     <li><a href="{{ url('/') }}#services" class="nav-link"><i class="fas fa-cogs" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> Services</a></li>
                     <li><a href="{{ url('/') }}#projects" class="nav-link"><i class="fas fa-briefcase" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> Projects</a></li>
                     <li><a href="{{ url('/') }}#about" class="nav-link"><i class="fas fa-info-circle" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> About</a></li>
-                    <li><a href="{{ url('/') }}#team" class="nav-link"><i class="fas fa-users" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> Team</a></li>
                     <li><a href="{{ url('/') }}#reviews" class="nav-link"><i class="fas fa-star" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> Reviews</a></li>
                     <li><a href="{{ url('/') }}#faq" class="nav-link"><i class="fas fa-question-circle" style="font-size:0.7rem;margin-right:0.3rem;opacity:0.6;"></i> FAQ</a></li>
                     <li><a href="{{ url('/') }}#contact" class="nav-link btn-nav-cta"><i class="fas fa-envelope" style="font-size:0.7rem;margin-right:0.3rem;"></i> Contact</a></li>
@@ -528,9 +528,9 @@
                 <!-- Quick Links -->
                 <div>
                     <h4 class="footer-title">Quick Links</h4>
+                    <a href="{{ url('/') }}#team" class="footer-link"><i class="fas fa-chevron-right"></i> Our Team</a>
                     <a href="{{ url('/') }}#services" class="footer-link"><i class="fas fa-chevron-right"></i> Services</a>
                     <a href="{{ url('/') }}#projects" class="footer-link"><i class="fas fa-chevron-right"></i> Projects</a>
-                    <a href="{{ url('/') }}#team" class="footer-link"><i class="fas fa-chevron-right"></i> Our Team</a>
                     <a href="{{ url('/') }}#reviews" class="footer-link"><i class="fas fa-chevron-right"></i> Reviews</a>
                     <a href="{{ url('/') }}#faq" class="footer-link"><i class="fas fa-chevron-right"></i> FAQ</a>
                 </div>

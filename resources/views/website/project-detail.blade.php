@@ -134,6 +134,19 @@
     border-top: 1px solid rgba(255,255,255,0.04);
     display: flex; justify-content: space-between; align-items: center;
 }
+.service-info-card {
+    margin-top: 2.5rem;
+    padding: 1.75rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    transition: var(--transition);
+}
+.service-info-link:hover .service-info-card,
+.service-info-card:hover {
+    border-color: rgba(43,155,255,0.18);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15), 0 0 20px rgba(43,155,255,0.04);
+}
 @media (max-width: 768px) {
     .detail-hero-image { height: 280px; }
     .detail-nav { flex-direction: column; gap: 1rem; }
@@ -183,6 +196,10 @@
 
             // Meta info
             var metaHtml = '<div class="detail-meta" data-aos="fade-up" data-aos-delay="150">';
+            if (project.service) {
+                metaHtml += '<a href="/service/' + project.service.id + '" class="detail-meta-item" style="text-decoration:none;cursor:pointer;transition:var(--transition-fast);" onmouseover="this.style.borderColor=\'var(--primary)\'" onmouseout="this.style.borderColor=\'var(--card-border)\'">' +
+                    '<i class="fas fa-cogs"></i> ' + (project.service.title || project.service.name || 'Service') + '</a>';
+            }
             if (project.category) {
                 metaHtml += '<div class="detail-meta-item"><i class="fas fa-tag"></i> ' + project.category + '</div>';
             }
@@ -198,6 +215,33 @@
                 metaHtml += '<div class="detail-meta-item"><i class="fas fa-star"></i> ' + project.features.length + ' Feature' + (project.features.length > 1 ? 's' : '') + '</div>';
             }
             metaHtml += '</div>';
+
+            // Service info card (if related service exists)
+            var serviceInfoHtml = '';
+            if (project.service) {
+                var svc = project.service;
+                var svcImageUrl = svc.image_path ? getImageUrl(svc.image_path) : '';
+                serviceInfoHtml =
+                    '<div class="service-info-card" data-aos="fade-up" data-aos-delay="280">' +
+                        '<h2 style="font-size:1.25rem;font-weight:700;color:var(--text-primary);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;">' +
+                            '<span style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,rgba(43,155,255,0.1),rgba(168,85,247,0.06));border:1px solid rgba(43,155,255,0.15);display:flex;align-items:center;justify-content:center;">' +
+                                '<i class="fas fa-cogs" style="color:var(--primary);font-size:0.85rem;"></i>' +
+                            '</span> Related Service' +
+                        '</h2>' +
+                        '<a href="/service/' + svc.id + '" class="service-info-link" style="text-decoration:none;">' +
+                            '<div style="display:flex;gap:1.25rem;align-items:center;">' +
+                                (svcImageUrl
+                                    ? '<img src="' + svcImageUrl + '" alt="' + (svc.title || 'Service') + '" style="width:80px;height:80px;border-radius:var(--radius-md);object-fit:cover;border:1px solid var(--card-border);flex-shrink:0;" referrerpolicy="no-referrer" onerror="this.style.display=\'none\'">'
+                                    : '<div style="width:80px;height:80px;border-radius:var(--radius-md);background:linear-gradient(135deg,rgba(43,155,255,0.12),rgba(168,85,247,0.08));border:1px solid rgba(43,155,255,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-cogs" style="font-size:1.5rem;color:var(--primary);opacity:0.5;"></i></div>') +
+                                '<div>' +
+                                    '<h4 style="font-size:1.05rem;font-weight:700;color:var(--text-primary);margin-bottom:0.3rem;">' + (svc.title || svc.name || 'Service') + '</h4>' +
+                                    '<p style="color:var(--text-secondary);font-size:0.85rem;line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">' + (svc.description || '') + '</p>' +
+                                    '<span style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.5rem;color:var(--primary);font-size:0.82rem;font-weight:600;">View Service <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></span>' +
+                                '</div>' +
+                            '</div>' +
+                        '</a>' +
+                    '</div>';
+            }
 
             // Features
             var featuresHtml = '';
@@ -234,6 +278,7 @@
                     (project.description || 'No description available.').replace(/\n/g, '<br>') +
                 '</div>' +
                 featuresHtml +
+                serviceInfoHtml +
                 '<div class="detail-nav" data-aos="fade-up">' +
                     '<a href="' + '{{ route("projects") }}' + '" class="btn btn-outline" style="padding:0.8rem 1.75rem;">' +
                         '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>' +

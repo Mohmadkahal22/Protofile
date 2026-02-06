@@ -190,7 +190,8 @@ function saveItem(e) {
     fd.append('phone', document.getElementById('f-phone').value);
     fd.append('position', document.getElementById('f-position').value);
     fd.append('specialization', document.getElementById('f-specialization').value);
-    fd.append('github_url', document.getElementById('f-github_url').value);
+    var githubUrl = document.getElementById('f-github_url').value;
+    if (githubUrl) fd.append('github_url', githubUrl);
     var photo = document.getElementById('f-photo').files[0];
     var cv = document.getElementById('f-cv_file').files[0];
     if (photo) fd.append('photo', photo);

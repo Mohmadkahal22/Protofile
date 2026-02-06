@@ -111,10 +111,10 @@
 </section>
 
 <!-- All sections -->
+@include('website.components.team')
 @include('website.components.services')
 @include('website.components.projects')
 @include('website.components.about')
-@include('website.components.team')
 @include('website.components.reviews')
 @include('website.components.videos')
 @include('website.components.faq')

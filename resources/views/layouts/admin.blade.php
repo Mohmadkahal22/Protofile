@@ -370,14 +370,17 @@
         </nav>
 
         <div class="sidebar-footer">
-            <div class="sidebar-avatar" id="admin-avatar">A</div>
+            <div class="sidebar-avatar" id="admin-avatar">{{ strtoupper(substr(Auth::user()->name ?? 'A', 0, 1)) }}</div>
             <div>
-                <div class="sidebar-user-name" id="admin-name">Admin</div>
+                <div class="sidebar-user-name">{{ Auth::user()->name ?? 'Admin' }}</div>
                 <div class="sidebar-user-role">Administrator</div>
             </div>
-            <button onclick="adminLogout()" style="margin-left:auto;background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:0.95rem;" title="Logout">
-                <i class="fas fa-sign-out-alt"></i>
-            </button>
+            <form method="POST" action="{{ route('admin.logout') }}" style="margin-left:auto;">
+                @csrf
+                <button type="submit" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:0.95rem;" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </form>
         </div>
     </aside>
 
@@ -390,9 +393,12 @@
             <h1>@yield('page-title', 'Dashboard')</h1>
         </div>
         <div class="admin-header-right">
-            <button class="header-btn" onclick="adminLogout()">
-                <i class="fas fa-sign-out-alt"></i> Logout
-            </button>
+            <form method="POST" action="{{ route('admin.logout') }}" style="display:inline;">
+                @csrf
+                <button type="submit" class="header-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </form>
         </div>
     </header>
 
@@ -408,37 +414,15 @@
 
     <script>
         // ── Globals ──
-        var API_BASE = '{{ str_replace("localhost", "127.0.0.1", config("app.url")) }}/api';
-        var STORAGE_URL = '{{ str_replace("localhost", "127.0.0.1", config("app.url")) }}/storage/';
+        var API_BASE = '{{ url("/api") }}';
+        var STORAGE_URL = '{{ url("/storage") }}/';
         var ADMIN_TOKEN = localStorage.getItem('admin_token');
 
-        // Auth guard — redirect to login if no token
-        if (!ADMIN_TOKEN) {
-            window.location.href = '{{ route("admin.login") }}';
-        }
-
-        // Axios defaults with token
-        axios.defaults.headers.common['Authorization'] = 'Bearer ' + ADMIN_TOKEN;
+        // Axios defaults — CSRF for web routes + Bearer token for API routes
+        axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         axios.defaults.headers.common['Accept'] = 'application/json';
-
-        // Set admin name from stored user
-        (function() {
-            var u = localStorage.getItem('admin_user');
-            if (u) {
-                try {
-                    var user = JSON.parse(u);
-                    var nameEl = document.getElementById('admin-name');
-                    var avatarEl = document.getElementById('admin-avatar');
-                    if (nameEl && user.name) nameEl.textContent = user.name;
-                    if (avatarEl && user.name) avatarEl.textContent = user.name.charAt(0).toUpperCase();
-                } catch(e) {}
-            }
-        })();
-
-        function adminLogout() {
-            localStorage.removeItem('admin_token');
-            localStorage.removeItem('admin_user');
-            window.location.href = '{{ route("admin.login") }}';
+        if (ADMIN_TOKEN) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + ADMIN_TOKEN;
         }
 
         // Toast
@@ -460,10 +444,12 @@
             return STORAGE_URL + path;
         }
 
-        // Handle 401 errors globally
+        // Handle 401 errors — redirect to login
         axios.interceptors.response.use(function(r) { return r; }, function(err) {
             if (err.response && err.response.status === 401) {
-                adminLogout();
+                localStorage.removeItem('admin_token');
+                localStorage.removeItem('admin_user');
+                window.location.href = '{{ route("admin.login") }}';
             }
             return Promise.reject(err);
         });
@@ -479,4 +465,3 @@
     @stack('scripts')
 </body>
 </html>
-

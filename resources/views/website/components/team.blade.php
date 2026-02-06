@@ -121,13 +121,22 @@
                 socialHtml += '<a href="/team/' + member.id + '" aria-label="View Profile" onclick="event.stopPropagation();"><i class="fas fa-arrow-right"></i></a>';
                 socialHtml += '</div>';
 
+                // Always try to render image with onerror fallback to initials
+                var photoHtml;
+                if (photoUrl) {
+                    photoHtml = '<img src="' + photoUrl + '" alt="' + fullName + '" loading="lazy" ' +
+                        'onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';" ' +
+                        'referrerpolicy="no-referrer">' +
+                        '<div class="team-initials" style="display:none;">' + initials + '</div>';
+                } else {
+                    photoHtml = '<div class="team-initials">' + initials + '</div>';
+                }
+
                 card.innerHTML =
                     '<div class="team-card">' +
                         '<div class="team-photo-wrap">' +
                             '<div class="team-photo-inner">' +
-                                (photoUrl
-                                    ? '<img src="' + photoUrl + '" alt="' + fullName + '" loading="lazy">'
-                                    : '<div class="team-initials">' + initials + '</div>') +
+                                photoHtml +
                             '</div>' +
                         '</div>' +
                         '<h3 class="team-name">' + (fullName || 'Team Member') + '</h3>' +

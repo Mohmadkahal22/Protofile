@@ -185,7 +185,10 @@
                         '<div class="project-card-body">' +
                             '<h3 class="project-card-title">' + (project.title || 'Untitled Project') + '</h3>' +
                             '<p class="project-card-desc">' + (project.description || 'No description available.') + '</p>' +
-                            (project.category ? '<span class="project-tag"><i class="fas fa-tag"></i> ' + project.category + '</span>' : '') +
+                            '<div style="display:flex;gap:0.5rem;flex-wrap:wrap;">' +
+                                (project.service ? '<span class="project-tag"><i class="fas fa-cogs"></i> ' + (project.service.title || project.service.name || 'Service') + '</span>' : '') +
+                                (project.category ? '<span class="project-tag"><i class="fas fa-tag"></i> ' + project.category + '</span>' : '') +
+                            '</div>' +
                         '</div>';
                     grid.appendChild(card);
                 });

@@ -38,7 +38,9 @@ class ServicesService
 
     public function show($id)
     {
-        return Services::with('projects')->find($id);
+        return Services::with(['projects' => function ($q) {
+            $q->with(['images', 'features'])->latest('updated_at');
+        }])->find($id);
     }
 
     public function update($id, array $data, $image = null)

@@ -19,7 +19,7 @@ class StoreProjectRequest extends FormRequest
             'description' => 'required|string',
             'video_url' => 'nullable|url',
             'service_id' => 'required|exists:services,id',
-            'images' => 'required|array',
+            'images' => 'nullable|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'features' => 'nullable|array'
         ];

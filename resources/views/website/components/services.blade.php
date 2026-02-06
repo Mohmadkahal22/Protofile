@@ -68,6 +68,8 @@
 .service-desc {
     color: var(--text-secondary); font-size: 0.88rem; line-height: 1.75;
 }
+.card:hover .service-view-link { opacity: 1 !important; }
+.card:hover .service-view-link i { transform: translateX(4px); }
 </style>
 @endpush
 
@@ -102,13 +104,27 @@
             services.forEach(function(service, index) {
                 var card = document.createElement('div');
                 card.className = 'card';
+                card.style.cursor = 'pointer';
                 card.setAttribute('data-aos', 'fade-up');
                 card.setAttribute('data-aos-delay', (index * 80).toString());
+                card.onclick = function() { window.location.href = '/service/' + service.id; };
+
+                var projectCount = (service.projects || []).length;
+                var projectBadge = projectCount > 0
+                    ? '<span style="display:inline-flex;align-items:center;gap:0.35rem;margin-top:1rem;padding:0.3rem 0.75rem;background:rgba(43,155,255,0.06);border:1px solid rgba(43,155,255,0.1);border-radius:999px;font-size:0.72rem;font-weight:600;color:var(--primary);">' +
+                        '<i class="fas fa-briefcase" style="font-size:0.65rem;"></i> ' + projectCount + ' Project' + (projectCount > 1 ? 's' : '') +
+                      '</span>'
+                    : '';
+
                 card.innerHTML =
                     '<div class="service-card">' +
                         '<div class="service-icon">' + (service.icon || serviceIcons[index % serviceIcons.length]) + '</div>' +
                         '<h3 class="service-title">' + (service.title || service.name || 'Service') + '</h3>' +
                         '<p class="service-desc">' + (service.description || 'No description available.') + '</p>' +
+                        projectBadge +
+                        '<div style="margin-top:1rem;display:flex;align-items:center;gap:0.4rem;color:var(--primary);font-size:0.82rem;font-weight:600;opacity:0;transition:opacity 0.3s;" class="service-view-link">' +
+                            'View Service <i class="fas fa-arrow-right" style="font-size:0.7rem;transition:transform 0.3s;"></i>' +
+                        '</div>' +
                     '</div>';
                 grid.appendChild(card);
             });

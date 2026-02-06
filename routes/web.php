@@ -15,6 +15,7 @@ Route::get('/', [App\Http\Controllers\WebsiteController::class, 'index'])->name(
 Route::get('/projects', [App\Http\Controllers\WebsiteController::class, 'projects'])->name('projects');
 Route::get('/project/{id}', [App\Http\Controllers\WebsiteController::class, 'projectDetail'])->name('project.detail');
 Route::get('/team/{id}', [App\Http\Controllers\WebsiteController::class, 'teamDetail'])->name('team.detail');
+Route::get('/service/{id}', [App\Http\Controllers\WebsiteController::class, 'serviceDetail'])->name('service.detail');
 
 // API Documentation
 Route::get('/api-docs', [App\Http\Controllers\LandingController::class, 'index'])->name('api.docs');

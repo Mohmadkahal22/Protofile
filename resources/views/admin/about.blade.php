@@ -148,8 +148,14 @@ function saveItem(e) {
     btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Saving...';
 
     var fd = new FormData();
-    ['company_name','company_description','contact_email','website_url','foundation_date','facebook_url','instagram_url','linkedin_url','github_url'].forEach(function(f) {
-        fd.append(f, document.getElementById('f-' + f).value);
+    // Always send required fields
+    fd.append('company_name', document.getElementById('f-company_name').value);
+    fd.append('company_description', document.getElementById('f-company_description').value);
+    // Optional fields: only append if not empty
+    var optionalFields = ['contact_email','website_url','foundation_date','facebook_url','instagram_url','linkedin_url','github_url'];
+    optionalFields.forEach(function(f) {
+        var val = document.getElementById('f-' + f).value;
+        if (val) fd.append(f, val);
     });
     var logo = document.getElementById('f-company_logo').files[0];
     if (logo) fd.append('company_logo', logo);
