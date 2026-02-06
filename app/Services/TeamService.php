@@ -23,15 +23,19 @@ class TeamService
 
             if ($photo) {
                 $photoName = Str::random(32).'.'.$photo->getClientOriginalExtension();
-                $photoPath = 'team_photos/' . $photoName;
-                Storage::disk('public')->put($photoPath, file_get_contents($photo));
+                $photoPath = $photo->storeAs('team_photos', $photoName, 'public');
+                if (!$photoPath) {
+                    throw new \Exception('Failed to store photo file');
+                }
                 $payload['photo'] = url('api/storage/' . $photoPath);
             }
 
             if ($cv) {
                 $cvName = Str::random(32).'.'.$cv->getClientOriginalExtension();
-                $cvPath = 'team_cvs/' . $cvName;
-                Storage::disk('public')->put($cvPath, file_get_contents($cv));
+                $cvPath = $cv->storeAs('team_cvs', $cvName, 'public');
+                if (!$cvPath) {
+                    throw new \Exception('Failed to store CV file');
+                }
                 $payload['cv_file'] = url('api/storage/' . $cvPath);
             }
 
@@ -57,24 +61,34 @@ class TeamService
             $payload = $data;
 
             if ($photo) {
-                if ($team->photo) {
+                // Delete old photo
+                if ($team->photo && str_contains($team->photo, 'api/storage/')) {
                     $old = str_replace('api/storage/', '', parse_url($team->photo, PHP_URL_PATH));
+                    $old = ltrim($old, '/');
                     Storage::disk('public')->delete($old);
                 }
+                // Store new photo using Laravel's storeAs (reliable)
                 $photoName = Str::random(32).'.'.$photo->getClientOriginalExtension();
-                $photoPath = 'team_photos/' . $photoName;
-                Storage::disk('public')->put($photoPath, file_get_contents($photo));
+                $photoPath = $photo->storeAs('team_photos', $photoName, 'public');
+                if (!$photoPath) {
+                    throw new \Exception('Failed to store photo file');
+                }
                 $payload['photo'] = url('api/storage/' . $photoPath);
             }
 
             if ($cv) {
-                if ($team->cv_file) {
+                // Delete old CV
+                if ($team->cv_file && str_contains($team->cv_file, 'api/storage/')) {
                     $oldcv = str_replace('api/storage/', '', parse_url($team->cv_file, PHP_URL_PATH));
+                    $oldcv = ltrim($oldcv, '/');
                     Storage::disk('public')->delete($oldcv);
                 }
+                // Store new CV
                 $cvName = Str::random(32).'.'.$cv->getClientOriginalExtension();
-                $cvPath = 'team_cvs/' . $cvName;
-                Storage::disk('public')->put($cvPath, file_get_contents($cv));
+                $cvPath = $cv->storeAs('team_cvs', $cvName, 'public');
+                if (!$cvPath) {
+                    throw new \Exception('Failed to store CV file');
+                }
                 $payload['cv_file'] = url('api/storage/' . $cvPath);
             }
 

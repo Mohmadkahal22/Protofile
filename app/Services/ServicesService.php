@@ -22,8 +22,10 @@ class ServicesService
             $payload = $data;
             if ($image) {
                 $imageName = Str::random(32).'.'.$image->getClientOriginalExtension();
-                $imagePath = 'services/' . $imageName;
-                Storage::disk('public')->put($imagePath, file_get_contents($image));
+                $imagePath = $image->storeAs('services', $imageName, 'public');
+                if (!$imagePath) {
+                    throw new \Exception('Failed to store service image');
+                }
                 $payload['image_path'] = url('api/storage/' . $imagePath);
             }
             $service = Services::create($payload);
@@ -51,13 +53,16 @@ class ServicesService
             if (! $service) return null;
             $payload = $data;
             if ($image) {
-                if ($service->image_path) {
-                    $old = str_replace('/storage/', '', parse_url($service->image_path, PHP_URL_PATH));
+                if ($service->image_path && str_contains($service->image_path, 'api/storage/')) {
+                    $old = str_replace('api/storage/', '', parse_url($service->image_path, PHP_URL_PATH));
+                    $old = ltrim($old, '/');
                     Storage::disk('public')->delete($old);
                 }
                 $imageName = Str::random(32).'.'.$image->getClientOriginalExtension();
-                $imagePath = 'services/' . $imageName;
-                Storage::disk('public')->put($imagePath, file_get_contents($image));
+                $imagePath = $image->storeAs('services', $imageName, 'public');
+                if (!$imagePath) {
+                    throw new \Exception('Failed to store service image');
+                }
                 $payload['image_path'] = url('api/storage/' . $imagePath);
             }
             $service->update($payload);

@@ -30,8 +30,10 @@ class AboutUsService
 
             if ($file) {
                 $logoName = Str::random(32).'.'.$file->getClientOriginalExtension();
-                $logoPath = 'company_logos/' . $logoName;
-                Storage::disk('public')->put($logoPath, file_get_contents($file));
+                $logoPath = $file->storeAs('company_logos', $logoName, 'public');
+                if (!$logoPath) {
+                    throw new \Exception('Failed to store company logo');
+                }
                 $data['company_logo'] = url('api/storage/' . $logoPath);
             }
 
@@ -62,13 +64,16 @@ class AboutUsService
             }
 
             if ($file) {
-                if ($aboutUs->company_logo) {
+                if ($aboutUs->company_logo && str_contains($aboutUs->company_logo, 'api/storage/')) {
                     $oldLogoPath = str_replace('api/storage/', '', parse_url($aboutUs->company_logo, PHP_URL_PATH));
+                    $oldLogoPath = ltrim($oldLogoPath, '/');
                     Storage::disk('public')->delete($oldLogoPath);
                 }
                 $logoName = Str::random(32).'.'.$file->getClientOriginalExtension();
-                $logoPath = 'company_logos/' . $logoName;
-                Storage::disk('public')->put($logoPath, file_get_contents($file));
+                $logoPath = $file->storeAs('company_logos', $logoName, 'public');
+                if (!$logoPath) {
+                    throw new \Exception('Failed to store company logo');
+                }
                 $data['company_logo'] = url('api/storage/' . $logoPath);
             }
 
