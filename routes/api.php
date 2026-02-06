@@ -33,7 +33,7 @@ Route::get('/storage/{path}', function ($path) {
     }
     return response()->file(Storage::disk('public')->path($path));
 })->where('path', '.*')->name('api.storage');
-
+/**dd */
 /*
 |--------------------------------------------------------------------------
 | Public API Routes (no auth required - used by website via Axios)
