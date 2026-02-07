@@ -158,6 +158,16 @@
 }
 [data-theme="light"] .ht-service-icon { background: linear-gradient(135deg, rgba(184,148,31,0.06), rgba(45,95,168,0.04)); border-color: rgba(184,148,31,0.08); }
 [data-theme="light"] .ht-service-card:hover .ht-service-icon { box-shadow: 0 8px 20px rgba(184,148,31,0.15); }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 640px) {
+    .ht-service-card { padding: 1.25rem 1rem; }
+    .ht-service-icon { width: 48px; height: 48px; font-size: 1.2rem; margin-bottom: 0.75rem; }
+    .ht-service-title { font-size: 0.95rem; }
+    .ht-service-desc { font-size: 0.82rem; -webkit-line-clamp: 2; }
+    .ht-service-badge { font-size: 0.68rem; padding: 0.25rem 0.6rem; }
+    .ht-service-arrow { width: 32px; height: 32px; }
+}
 </style>
 @endpush
 

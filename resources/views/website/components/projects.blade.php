@@ -213,7 +213,14 @@
     .ht-stagger-offset-reverse { margin-top: 0; }
 }
 @media (max-width: 640px) {
-    .ht-stagger-grid { grid-template-columns: 1fr; }
+    .ht-stagger-grid { grid-template-columns: 1fr; gap: 14px; }
+    .ht-project-img { aspect-ratio: 16/9; }
+    .ht-project-info { padding: 0.85rem; }
+    .ht-project-title { font-size: 0.92rem; }
+    .ht-project-desc { font-size: 0.78rem; -webkit-line-clamp: 2; }
+    .ht-project-tag { font-size: 0.68rem; padding: 0.2rem 0.55rem; }
+    .ht-project-view-btn { font-size: 0.75rem; padding: 0.4rem 1rem; }
+    .ht-view-all-link { padding: 0.7rem 1.5rem; font-size: 0.82rem; }
 }
 </style>
 @endpush

@@ -49,6 +49,13 @@
     color: var(--text-secondary); font-size: 0.85rem; line-height: 1.65;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 640px) {
+    .video-card-body { padding: 1rem; }
+    .video-card-title { font-size: 0.95rem; }
+    .video-card-desc { font-size: 0.8rem; }
+}
 </style>
 @endpush
 

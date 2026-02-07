@@ -271,15 +271,26 @@
 
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 1024px) {
-    .ht-split-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .ht-split-layout { grid-template-columns: 1fr; gap: 2rem; }
     .ht-sticky-sidebar { position: static; text-align: center; }
     .ht-rotate-images { display: none; }
     .ht-sidebar-body { padding-left: 0; }
     .ht-sidebar-body p { max-width: 600px; margin: 0 auto 1.5rem; }
     .ht-stagger-offset { margin-top: 0; }
+    .ht-title { font-size: clamp(1.5rem, 5vw, 2rem); }
 }
 @media (max-width: 640px) {
-    .ht-stagger-grid { grid-template-columns: 1fr; }
+    .ht-stagger-grid { grid-template-columns: 1fr; gap: 14px; }
+    .ht-team-img { aspect-ratio: 4/3; }
+    .ht-team-info { padding: 0.85rem; }
+    .ht-team-title { font-size: 0.95rem; }
+    .ht-team-destination { font-size: 0.8rem; }
+    .ht-team-spec { font-size: 0.72rem; }
+    .ht-share-icon { height: 48px; width: 48px; }
+    .ht-team-social { bottom: -22px; right: 12px; }
+}
+@media (max-width: 400px) {
+    .ht-team-img { aspect-ratio: 1/1; }
 }
 </style>
 @endpush

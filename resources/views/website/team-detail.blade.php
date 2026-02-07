@@ -194,23 +194,36 @@
     .member-profile-grid {
         grid-template-columns: 1fr !important;
         text-align: center;
+        gap: 1.5rem !important;
     }
     .member-photo-container {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
     }
     .member-initials-large {
-        font-size: 4rem;
+        font-size: 3.5rem;
     }
     .member-info-grid {
         grid-template-columns: 1fr;
     }
     .member-actions {
         justify-content: center;
+        flex-wrap: wrap;
     }
     .member-position-badge {
         margin-left: auto;
         margin-right: auto;
+    }
+}
+@media (max-width: 480px) {
+    .member-photo-container {
+        width: 150px;
+        height: 150px;
+    }
+    .member-actions .btn {
+        width: 100%;
+        justify-content: center;
     }
 }
 </style>

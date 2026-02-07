@@ -474,9 +474,31 @@
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @keyframes countUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* ═══════════════════════════════════════════
+           CRITICAL: AOS MOBILE FIX
+           When AOS is disabled on mobile, its CSS still
+           hides [data-aos] elements (opacity:0). This rule
+           ensures all elements are always visible on phones.
+           ═══════════════════════════════════════════ */
+        @media (max-width: 767px) {
+            [data-aos] {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+        }
+
         /* ═══ RESPONSIVE ═══ */
+        @media (max-width: 1200px) {
+            .container { max-width: 100%; padding: 0 1.5rem; }
+        }
         @media (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1fr 1fr; }
+            .grid-3 { grid-template-columns: repeat(2, 1fr); }
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+            .grid-masonry { grid-template-columns: repeat(2, 1fr); }
+            .grid-masonry > :first-child { grid-row: span 1; }
+            .section { padding: 4rem 0; }
         }
         @media (max-width: 768px) {
             .hamburger { display: flex; }
@@ -488,23 +510,52 @@
                 transition: transform 0.3s ease;
                 border-bottom: 1px solid var(--border-color);
                 box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+                z-index: 999;
+                max-height: calc(100vh - 76px);
+                overflow-y: auto;
             }
             .site-nav.open { transform: translateY(0); }
             .nav-menu { flex-direction: column; gap: 0.15rem; }
-            .nav-link { width: 100%; padding: 0.85rem 1.15rem; border-radius: var(--radius-sm); }
+            .nav-link {
+                width: 100%; padding: 0.85rem 1.15rem;
+                border-radius: var(--radius-sm);
+                font-size: 0.95rem;
+                min-height: 44px; /* Touch target */
+                display: flex; align-items: center;
+            }
             .nav-link::after { display: none; }
-            .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-            .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
-            .section { padding: 4.5rem 0; }
-            .section-header { margin-bottom: 3rem; }
-            .grid-2 { grid-template-columns: 1fr; }
-            .grid-3, .grid-4, .grid-masonry { grid-template-columns: 1fr; }
-            .grid-masonry > :first-child { grid-row: span 1; }
-            .container { padding: 0 1.25rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-main { padding: 3rem 1.25rem 2rem; }
+            .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.25rem; }
+            .section { padding: 3.5rem 0; }
+            .section-header { margin-bottom: 2rem; }
+            .section-title { font-size: clamp(1.5rem, 6vw, 2.2rem); }
+            .section-subtitle { font-size: 0.92rem; }
+            .grid-2 { grid-template-columns: 1fr; gap: 1.25rem; }
+            .grid-3 { grid-template-columns: 1fr; gap: 1.25rem; }
+            .grid-4 { grid-template-columns: 1fr; gap: 1.25rem; }
+            .grid-masonry { grid-template-columns: 1fr; gap: 1.25rem; }
+            .container { padding: 0 1rem; }
+            .header-inner { padding: 0 1rem; }
+            .header-right { gap: 0.4rem; }
+            .theme-toggle { width: 38px; height: 38px; font-size: 0.95rem; }
+            .lang-toggle { height: 38px; padding: 0 0.6rem; font-size: 0.72rem; }
+            .btn { padding: 0.75rem 1.5rem; font-size: 0.88rem; min-height: 44px; }
+            .btn-gold { padding: 0.75rem 1.5rem; }
+            .form-input { padding: 0.85rem 1rem; font-size: 0.9rem; min-height: 44px; }
+            .toast { min-width: auto; max-width: calc(100vw - 2rem); font-size: 0.85rem; }
+            .toast-container { right: 1rem; left: 1rem; }
+            main { padding-top: 68px; }
+            .glow-dot { display: none; }
+            .logo-hex { width: 38px; height: 38px; }
+            .logo-text-part1, .logo-text-part2 { font-size: 1rem; }
         }
         @media (max-width: 480px) {
-            .section { padding: 3.5rem 0; }
-            .section-title { font-size: 1.75rem; }
+            .section { padding: 2.5rem 0; }
+            .section-title { font-size: 1.5rem; }
+            .section-subtitle { font-size: 0.85rem; }
+            .container { padding: 0 0.85rem; }
+            .section-badge { font-size: 0.7rem; padding: 0.35rem 0.85rem; letter-spacing: 1.5px; }
         }
 
         /* ═══ PERFORMANCE ═══ */
@@ -609,7 +660,7 @@
         /* Header */
         [data-theme="light"] .site-header { background: rgba(253,252,249,0.97); border-bottom-color: rgba(0,0,0,0.05); }
         [data-theme="light"] .site-header.scrolled { background: rgba(253,252,249,0.99); box-shadow: 0 1px 8px rgba(0,0,0,0.04); }
-        [data-theme="light"] .site-nav { background: rgba(253,252,249,0.99) !important; border-bottom-color: rgba(0,0,0,0.05) !important; box-shadow: 0 8px 20px rgba(0,0,0,0.03) !important; }
+        [data-theme="light"] .site-nav { background: rgba(253,252,249,0.99); border-bottom-color: rgba(0,0,0,0.05); box-shadow: 0 8px 20px rgba(0,0,0,0.03); }
         [data-theme="light"] .nav-link { color: var(--text-secondary); }
         [data-theme="light"] .nav-link:hover, [data-theme="light"] .nav-link.active { color: #1A1A2E; background: rgba(45,95,168,0.05); }
         [data-theme="light"] .hamburger { border-color: rgba(0,0,0,0.1); }
@@ -802,9 +853,9 @@
 
     {{-- ═══ INLINE JS — Globals needed by component scripts ═══ --}}
     <script>
-        // API base URL
-        const API_BASE = '{{ str_replace("localhost", "127.0.0.1", config("app.url")) }}/api';
-        const STORAGE_URL = '{{ str_replace("localhost", "127.0.0.1", config("app.url")) }}/storage/';
+        // API base URL — uses Laravel url() for correct domain on all devices
+        const API_BASE = '{{ rtrim(url("/api"), "/") }}';
+        const STORAGE_URL = '{{ rtrim(url("/storage"), "/") }}/';
 
         // Initialize AOS — optimized for performance
         AOS.init({ duration: 500, once: true, offset: 50, easing: 'ease-out', disable: window.innerWidth < 768 });

@@ -159,8 +159,12 @@
 [data-theme="light"] .service-info-card { background: var(--card-bg); border-color: rgba(183,134,11,0.08); }
 
 @media (max-width: 768px) {
-    .detail-hero-image { height: 280px; }
-    .detail-nav { flex-direction: column; gap: 1rem; }
+    .detail-hero-image { height: 240px; }
+    .detail-nav { flex-direction: column; gap: 1rem; align-items: stretch; }
+    .detail-nav .btn { width: 100%; justify-content: center; }
+}
+@media (max-width: 480px) {
+    .detail-hero-image { height: 180px; }
 }
 </style>
 @endpush

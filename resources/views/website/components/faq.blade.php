@@ -92,7 +92,13 @@
 [data-theme="light"] .faq-answer-inner { border-top-color: rgba(183,134,11,0.06); }
 
 @media (max-width: 768px) {
-    #faq > .container > div { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+    #faq > .container > div { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+}
+@media (max-width: 640px) {
+    .faq-question { padding: 1rem 1.15rem; font-size: 0.88rem; gap: 0.75rem; min-height: 44px; }
+    .faq-toggle { width: 28px; height: 28px; }
+    .faq-answer-inner { padding: 0 1.15rem 1.15rem; font-size: 0.82rem; }
+    .faq-item { margin-bottom: 0.5rem; }
 }
 </style>
 @endpush

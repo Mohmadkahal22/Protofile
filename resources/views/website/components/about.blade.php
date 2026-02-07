@@ -76,8 +76,15 @@
 [data-theme="light"] .about-feature:hover { background: rgba(183,134,11,0.05); border-color: rgba(183,134,11,0.14); }
 
 @media (max-width: 768px) {
-    .about-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
-    .about-features { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+    .about-features { grid-template-columns: 1fr; gap: 0.75rem; }
+}
+@media (max-width: 640px) {
+    .about-image-badge { bottom: 0.75rem; left: 0.75rem; padding: 0.65rem 0.85rem; }
+    .about-mission { padding: 1.15rem 1.25rem; margin-top: 1.5rem; }
+    .about-feature { padding: 0.65rem; }
+    .about-feature span { font-size: 0.8rem; }
+    .about-feature i { font-size: 0.75rem; }
 }
 </style>
 @endpush

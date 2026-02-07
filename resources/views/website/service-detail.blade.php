@@ -232,9 +232,15 @@
 @media (max-width: 768px) {
     .svc-detail-grid {
         grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
     }
     .svc-detail-image, .svc-detail-placeholder {
-        height: 220px;
+        height: 200px;
+    }
+}
+@media (max-width: 480px) {
+    .svc-detail-image, .svc-detail-placeholder {
+        height: 160px;
     }
 }
 </style>
@@ -368,3 +374,4 @@
 })();
 </script>
 @endpush
+

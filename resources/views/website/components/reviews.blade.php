@@ -70,6 +70,16 @@
 [data-theme="light"] .review-author { border-top-color: rgba(183,134,11,0.08); }
 [data-theme="light"] .review-avatar { border-color: rgba(183,134,11,0.2); color: #fff; }
 [data-theme="light"] .review-star.empty { color: rgba(0,0,0,0.06); }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 640px) {
+    .review-card { padding: 1.25rem; }
+    .review-text { font-size: 0.85rem; margin-bottom: 1.25rem; }
+    .review-quote { font-size: 2.5rem; top: 0.8rem; right: 1rem; }
+    .review-avatar { width: 40px; height: 40px; font-size: 0.95rem; }
+    .review-author-name { font-size: 0.88rem; }
+    .review-author-company { font-size: 0.7rem; }
+}
 </style>
 @endpush
 
